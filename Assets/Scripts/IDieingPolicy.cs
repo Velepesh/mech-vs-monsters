@@ -1,0 +1,4 @@
+interface IDieingPolicy
+{
+    void Die();
+}

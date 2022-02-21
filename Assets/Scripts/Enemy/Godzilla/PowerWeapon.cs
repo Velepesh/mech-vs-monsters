@@ -1,0 +1,80 @@
+using UnityEngine;
+using UnityEngine.Events;
+using System.Collections;
+
+[RequireComponent(typeof(Collider))]
+public class PowerWeapon : Weapon, IShooteable
+{
+    [SerializeField] private Godzilla _godzilla;
+    [SerializeField] private ParticleSystem _fireEffect;
+    [SerializeField] private int _damage;
+    [SerializeField] private float _cooldownTime;
+    
+    private Collider _attackZone;
+    private ITarget _target;
+
+    public override event UnityAction Shooted;
+
+    private void OnValidate()
+    {
+        _damage = Mathf.Clamp(_damage, 0, int.MaxValue);
+    }
+
+    private void Awake()
+    {
+        _attackZone = GetComponent<Collider>();
+    }
+
+    private void OnEnable()
+    {
+        _godzilla.Attacked += OnAttacked;
+        _godzilla.AttackStopped += OnAttackStopped;
+    }
+
+    private void OnDisable()
+    {
+        _godzilla.Attacked -= OnAttacked;
+        _godzilla.AttackStopped -= OnAttackStopped;
+    }
+
+    public new void SetTarget(ITarget target, ITarget thisITarget)
+    {
+        _target = target;
+    }
+
+    public new void Shoot()
+    {
+        _fireEffect.Play();
+        _attackZone.enabled = true;
+
+        Shooted?.Invoke();
+    }
+
+    private void OnAttacked()
+    {
+        _fireEffect.Play();
+        Shoot();
+    }
+
+    private void OnAttackStopped()
+    {
+        _fireEffect.Stop();
+        _attackZone.enabled = false;
+    }
+
+    private void OnTriggerStay(Collider other)
+    {
+        if (other.TryGetComponent(out PlayerCollider playerCollider))
+        {
+            StartCoroutine(Reload(_cooldownTime, playerCollider));
+        }
+    }
+
+    private IEnumerator Reload(float time, PlayerCollider playerCollider)
+    {
+        _attackZone.enabled = false;
+        yield return new WaitForSeconds(time);
+        _attackZone.enabled = true;
+        playerCollider.TakeDamage(_damage);
+    }
+}
