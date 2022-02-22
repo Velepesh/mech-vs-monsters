@@ -1,30 +1,25 @@
 using UnityEngine;
-using System.Collections;
 
 [RequireComponent(typeof(Player))]
 [RequireComponent(typeof(PlayerInput))]
 public class PlayerMover : MonoBehaviour
 {
     [SerializeField] private MovementOptions _options;
-    [SerializeField] private GameObject _body;
-    [SerializeField] private TargetDetector _targetDetector;
-    [SerializeField] private float _lookSpeed;
+    [SerializeField] private StopDetector _stopDetector;
+    [SerializeField] private GameObject _model;
 
     readonly private float _rotationAngle = 45f;
 
     private Player _player;
-    private ITarget _target;
+    private ITarget _target;//
     private PlayerInput _input;
-    private Vector3 _godzillaPosition;
-    private Vector3 _targetFightPosition;
     private bool _canMoving = false;
-    private bool _isAttack = false;
-    private bool _isFight = false;
+    private bool _isStopDistance = false;
 
-    private void OnValidate()
-    {
-        _lookSpeed = Mathf.Clamp(_lookSpeed, 0, float.MaxValue); 
-    }
+    public float MoveSpeed => _options.MoveSpeed;
+    public float StopDistance => _options.StopDistance;
+    public float AttackDistance => _options.AttackDistance;
+    public bool IsStopDistance => _isStopDistance;
 
     private void Awake()
     {
@@ -34,72 +29,43 @@ public class PlayerMover : MonoBehaviour
 
     private void OnEnable()
     {
-        _player.Won += OnWon;
-        _player.Prepeared += OnFought;
         _player.MovingStarted += OnMovingStarted;
         _player.MovingStopped += OnMovingStopped;
     }
 
     private void OnDisable()
     {
-        _player.Won -= OnWon;
-        _player.Prepeared -= OnFought;
         _player.MovingStarted -= OnMovingStarted;
         _player.MovingStopped -= OnMovingStopped;
     }
 
-
     private void Update()
     {
-        if (_canMoving)
-        {              
-            if(_targetDetector.IsStopDistance(_options.StopDistance, transform.position, out _target) == false)
-            {
+        _isStopDistance = _stopDetector.IsHeat(_options.StopDistance);
+        
+        if (_canMoving) 
+        {
+            if (_isStopDistance == false)
                 Move();
-                Swipe();
-            }
-            else
-            {
-                _isAttack = true;
-            }
-        }
+        } 
+    }
 
-        if (_isAttack)
-        {
-            if (_targetDetector.IsStopDistance(_options.StopDistance, transform.position, out _target))
-            {
-                TurnToTarget(_target.GetPosition(), _lookSpeed);
+    public void LookAtTarget(Vector3 target)
+    {
+        Vector3 direction = target - transform.position;
+        direction.y = 0;
 
-                if(Vector3.Distance(_target.GetPosition(), transform.position) > _options.AttackDistance)
-                {
-                    Vector3 targetPosition = new Vector3(_target.GetPosition().x, transform.position.y, _target.GetPosition().z);
-                    transform.position = Vector3.MoveTowards(transform.position, targetPosition, _options.MoveSpeed * Time.deltaTime);
-                    if (Vector3.Distance(_target.GetPosition(), transform.position) <= _options.AttackDistance)
-                        _player.Stand();
-                }
-                else
-                {
-                    _player.Attack();
+        Quaternion targetRotation = Quaternion.LookRotation(direction);
+        Quaternion lookAt = Quaternion.RotateTowards(_model.transform.rotation, targetRotation, Time.deltaTime * _options.LookSpeed);
 
-                    if (_target.IsDied)
-                        _player.StartMove();
-                }             
-            }
-            else
-            {
-                _player.StartMove();
-                _isAttack = false;
-            }
-        }
+        _model.transform.rotation = lookAt;
+    }
 
-        if (_isFight) 
-        {
-            if (_player.IsDied == false)
-            {
-                TurnToTarget(_godzillaPosition, _lookSpeed);
-                transform.position = Vector3.MoveTowards(transform.position, _targetFightPosition, _options.MoveSpeed * Time.deltaTime);
-            }
-       }
+    private void Move()
+    {
+        transform.Translate(Vector3.forward * _options.MoveSpeed * Time.deltaTime);
+
+        Swipe();
     }
 
     private void Swipe()
@@ -147,54 +113,20 @@ public class PlayerMover : MonoBehaviour
         Rotate(Mathf.Clamp(_input.MoveFactorX, -1f, 1));
     }
 
-    private void OnFought(Transform targetPoint, Godzilla godzilla)
+    private void Rotate(float directionY)
     {
-        OnMovingStopped();
-        _godzillaPosition = godzilla.GetPosition();
-        _targetFightPosition = targetPoint.position;
-        _targetFightPosition.y = transform.position.y;
-        _isFight = true;
-        _isAttack = false;
+        var currentRotation = _model.transform.rotation;
+        var targetRotation = Quaternion.Euler(new Vector3(0, directionY * _rotationAngle, 0));
+        _model.transform.rotation = Quaternion.Lerp(currentRotation, targetRotation, _options.RotationSpeed * Time.deltaTime);
     }
-   
-    private void OnWon()
-    {
-        OnMovingStopped();
-        _isAttack = false;
-        _isFight = false;
-    }
-
+ 
     private void OnMovingStarted()
     {
-        _canMoving = true;
-        _isFight = false;
+        _canMoving = true;;
     }
 
     private void OnMovingStopped()
     {
         _canMoving = false;
-    }
-
-    private void Move()
-    {
-        transform.Translate(Vector3.forward * _options.MoveSpeed * Time.deltaTime);
-    }
-
-    private void Rotate(float directionY)
-    {
-        var currentRotation = _body.transform.rotation;
-        var targetRotation = Quaternion.Euler(new Vector3(0, directionY * _rotationAngle, 0));
-        _body.transform.rotation = Quaternion.Lerp(currentRotation, targetRotation, _options.RotationSpeed * Time.deltaTime);
-    }
-
-    public void TurnToTarget(Vector3 target, float speed)
-    {
-        Vector3 direction = target - transform.position;
-        direction.y = 0;
-
-        Quaternion targetRotation = Quaternion.LookRotation(direction);
-        Quaternion lookAt = Quaternion.RotateTowards(_body.transform.rotation, targetRotation, Time.deltaTime * speed);
-
-        _body.transform.rotation = lookAt;
     }
 }

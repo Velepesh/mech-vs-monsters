@@ -62,12 +62,7 @@ public class HouseDestroyer : MonoBehaviour//разбить класс
     {
         _houses.Remove((House)damageable);
 
-        if (_houses.Count > 0)
-        {
-            House house = GetClosestTarget(_player.GetPosition(), _houses);///
-
-            house.GetComponent<Collider>().enabled = true;
-        }
+        EnableNextHouseCollider();
     }
 
     private void StartTimer()
@@ -77,9 +72,14 @@ public class HouseDestroyer : MonoBehaviour//разбить класс
         _slider.value = _time;
         _timeLeft = _time;
 
+        EnableNextHouseCollider();
+    }
+
+    private void EnableNextHouseCollider()
+    {
         if (_houses.Count > 0)
         {
-            House house = GetClosestTarget(_player.GetPosition(), _houses);///
+            House house = GetClosestTarget(_player.Position, _houses);
 
             house.GetComponent<Collider>().enabled = true;
         }
@@ -106,7 +106,7 @@ public class HouseDestroyer : MonoBehaviour//разбить класс
 
         foreach (House target in damageables)
         {
-            float distance = Vector3.Distance(target.GetPosition(), weaponPosition);
+            float distance = Vector3.Distance(target.Position, weaponPosition);
 
             if (distance < maxRange)
             {

@@ -36,9 +36,9 @@ public class Machinegun : Weapon, IShooteable
             }
             else
             {
-                if (Vector3.Distance(transform.position, _target.GetPosition()) <= _shootDistance)
+                if (Vector3.Distance(transform.position, _target.Position) <= _shootDistance)
                 {
-                    TurnToTarget(_target.GetPosition() + _offset);
+                    TurnToTarget(_target.Position + _offset);
 
                     if (_shootingTimer > _cooldownTime)
                     {

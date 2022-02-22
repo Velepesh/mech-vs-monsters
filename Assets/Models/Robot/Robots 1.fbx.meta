@@ -491,12 +491,12 @@ ModelImporter:
     - name: mixamorig:LeftUpLeg
       parentName: mixamorig:Hips
       position: {x: -0.8639543, y: 0.5170232, z: 0.008977762}
-      rotation: {x: -0.26452765, y: -0.05357293, z: 0.9603481, w: 0.069904275}
+      rotation: {x: -0.23836526, y: -0.05165327, z: 0.96717393, w: 0.07133437}
       scale: {x: 0.99998236, y: 1.0000125, z: 1.0000293}
     - name: mixamorig:LeftLeg
       parentName: mixamorig:LeftUpLeg
       position: {x: -0.00006068197, y: 1.5791948, z: -0.00002003519}
-      rotation: {x: -0.28663602, y: -0.044209514, z: 0.087305866, w: 0.9530284}
+      rotation: {x: -0.29003388, y: -0.02806418, z: 0.083518595, w: 0.95295197}
       scale: {x: 1.0000217, y: 0.99993336, z: 1.0000145}
     - name: mixamorig:LeftFoot
       parentName: mixamorig:LeftLeg

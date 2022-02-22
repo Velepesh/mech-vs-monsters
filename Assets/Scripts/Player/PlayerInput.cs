@@ -81,7 +81,7 @@ public class PlayerInput : MonoBehaviour
             _moveFactorX = _previousMoveFactorX;
     }
 
-    private void OnFought(Transform targetPoint, Godzilla godzilla)
+    private void OnFought(Godzilla godzilla)
     {
         _isFight = true;
     }

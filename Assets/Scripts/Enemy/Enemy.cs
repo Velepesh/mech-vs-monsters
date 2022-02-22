@@ -23,6 +23,7 @@ public class Enemy : MonoBehaviour, IDamageable, ITarget, IDieingPolicy
     public int Award => _award;
     public float LookSpeed => _lookSpeed;
     public bool IsDied => _health <= 0;
+    public Vector3 Position => transform.position + _offset;
 
     private void OnEnable()
     {
@@ -62,7 +63,7 @@ public class Enemy : MonoBehaviour, IDamageable, ITarget, IDieingPolicy
     private void Update()
     {
         if (_target != null && Target.IsDied == false)
-            TurnToTarget(Target.GetPosition());
+            TurnToTarget(Target.Position);
     }
 
     public void TurnToTarget(Vector3 target)
@@ -91,8 +92,6 @@ public class Enemy : MonoBehaviour, IDamageable, ITarget, IDieingPolicy
     public void Die()
     {
         Died?.Invoke(this);
-        Destroy(gameObject);
+        gameObject.SetActive(false);
     }
-    
-    public Vector3 GetPosition() => transform.position + _offset;
 }

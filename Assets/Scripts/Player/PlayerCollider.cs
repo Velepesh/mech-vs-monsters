@@ -7,7 +7,7 @@ public class PlayerCollider : MonoBehaviour, IDamageable, ITarget
 
     public event UnityAction<IDamageable> Died;
     public event UnityAction<int> HealthChanged;
-    public Vector3 GetPosition() => transform.position;
+    public Vector3 Position => transform.position;
 
     public bool IsDied => _player.Health <= 0;
     public int Health => _player.Health;
@@ -15,6 +15,7 @@ public class PlayerCollider : MonoBehaviour, IDamageable, ITarget
     public void TakeDamage(int damage)
     {
         _player.TakeDamage(damage);
+        HealthChanged?.Invoke(_player.Health);
 
         if (IsDied)
         {

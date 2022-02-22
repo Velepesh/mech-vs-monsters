@@ -2,10 +2,9 @@ using UnityEngine;
 using System.Collections;
 
 [RequireComponent(typeof(Collider))]
-public class Battle : MonoBehaviour
+public class Fight : MonoBehaviour
 {
     [SerializeField] private Godzilla _godzilla;
-    [SerializeField] private GameObject _godzillaColliderBody;
     [SerializeField] private Game _game;
     [SerializeField] private Transform _targetPlayerPosition;
     [SerializeField] private float _delayTime;
@@ -19,11 +18,6 @@ public class Battle : MonoBehaviour
     private void OnDisable()
     {
         _godzilla.Died -= OnGodzillaDied;
-    }
-
-    private void Awake()
-    {
-        _godzillaColliderBody.SetActive(false);
     }
 
     private void OnTriggerEnter(Collider other)
@@ -42,16 +36,14 @@ public class Battle : MonoBehaviour
         damageable.Died -= OnPlayerDied;
     }
 
-    private IEnumerator StartFight(Player player, float time)
+    private IEnumerator StartFight(Player player, float delayTim)
     {
         player.PrepearedForFight(_targetPlayerPosition, _godzilla);
-        yield return new WaitForSeconds(time);
+        yield return new WaitForSeconds(delayTim);
 
-        player.Fight(_targetPlayerPosition, _godzilla);
         _godzilla.Fight();
-        player.Stand();
+        player.Fight(_godzilla);
         player.Died += OnPlayerDied;
-        _godzillaColliderBody.SetActive(true);
     }
 
     private void OnGodzillaDied(IDamageable damageable)
@@ -59,6 +51,6 @@ public class Battle : MonoBehaviour
         _player.StartMove();
         _game.WinInBattle();
         damageable.Died -= OnGodzillaDied;
-        Destroy(this);
+        gameObject.SetActive(false);
     }
 }

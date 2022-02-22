@@ -8,6 +8,7 @@ public class PlayerWeaponsHolder : MonoBehaviour
 
     private Player _player;
     public int Count => _weapons.Count;
+    public IReadOnlyList<Weapon> Weapons => _weapons;
 
     private void Awake()
     {

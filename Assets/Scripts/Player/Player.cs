@@ -3,10 +3,8 @@ using UnityEngine.Events;
 
 public class Player : MonoBehaviour, IDamageable, ITarget, IDieingPolicy
 {
-    [SerializeField] private GameObject _body;
-
     private int _health;
-    private bool _isAttackAnimationEnd;
+    public Vector3 Position => transform.position;
 
     public event UnityAction LevelStarted;
     public event UnityAction MovingStarted;
@@ -17,7 +15,7 @@ public class Player : MonoBehaviour, IDamageable, ITarget, IDieingPolicy
     public event UnityAction Standed;
     public event UnityAction Attacked;
     public event UnityAction Won;
-    public event UnityAction<Transform, Godzilla> Fought;
+    public event UnityAction<Godzilla> Fought;
     public event UnityAction<Transform, Godzilla> Prepeared;
 
     public int Health => _health;
@@ -41,7 +39,7 @@ public class Player : MonoBehaviour, IDamageable, ITarget, IDieingPolicy
 
     public void Win()
     {
-        Stand();
+        StopMoving();
         Won?.Invoke();
     }
 
@@ -71,13 +69,15 @@ public class Player : MonoBehaviour, IDamageable, ITarget, IDieingPolicy
         MovingStopped?.Invoke();
     }
 
-    public void Fight(Transform targetPoint, Godzilla godzilla)
+    public void Fight(Godzilla godzilla)
     {
-        Fought?.Invoke(targetPoint, godzilla);
+        Stand();
+        Fought?.Invoke(godzilla);
     }
     
     public void PrepearedForFight(Transform targetPoint, Godzilla godzilla)
     {
+        StopMoving();
         Prepeared?.Invoke(targetPoint, godzilla);
     }
 
@@ -103,9 +103,6 @@ public class Player : MonoBehaviour, IDamageable, ITarget, IDieingPolicy
     public void Die()
     {
         StopMoving();
-        Destroy(_body);
         Died?.Invoke(this);
     }
-
-    public Vector3 GetPosition() => transform.position;
 }

@@ -5,6 +5,7 @@ using UnityEngine.Events;
 public class Godzilla : Enemy, IDamageable, IDieingPolicy, ITarget
 {
     [SerializeField] private float _attackTime;
+    [SerializeField] private GameObject _model;
 
     private Collider _collider;
 
@@ -19,14 +20,13 @@ public class Godzilla : Enemy, IDamageable, IDieingPolicy, ITarget
 
     private void Start()
     { 
-
         _collider = GetComponent<Collider>();
-        _collider.enabled = false;
+        DisableModel();;
     }
 
     public void Fight()
     {
-        _collider.enabled = true;
+        EnableModel();
         Attacked?.Invoke();
     }
 
@@ -43,5 +43,17 @@ public class Godzilla : Enemy, IDamageable, IDieingPolicy, ITarget
     public void StopAttack()
     {
         AttackStopped?.Invoke();
+    }
+
+    private void EnableModel()
+    {
+        _collider.enabled = true;
+        _model.SetActive(true);
+    }
+
+    private void DisableModel()
+    {
+        _collider.enabled = false;
+        _model.SetActive(false);
     }
 }

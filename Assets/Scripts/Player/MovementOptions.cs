@@ -9,10 +9,12 @@ public class MovementOptions
     [SerializeField] private float _borderOffset;
     [SerializeField] private float _stopDistance;
     [SerializeField] private float _attackDistance;
+    [SerializeField] private float _lookSpeed;
 
     public float MoveSpeed => _moveSpeed;
     public float RotationSpeed => _rotationSpeed;
     public float BorderOffset => _borderOffset;
     public float StopDistance => _stopDistance;
     public float AttackDistance => _attackDistance;
+    public float LookSpeed => _lookSpeed;
 }

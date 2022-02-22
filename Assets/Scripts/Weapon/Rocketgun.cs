@@ -37,9 +37,9 @@ public class Rocketgun : Weapon, IShooteable
             }
             else
             {
-                if (Vector3.Distance(transform.position, _target.GetPosition()) <= _shootDistance)
+                if (Vector3.Distance(transform.position, _target.Position) <= _shootDistance)
                 {
-                    TurnToTarget(_target.GetPosition());
+                    TurnToTarget(_target.Position);
 
                     if (_shootingTimer > _cooldownTime + _rapidFireDelay)
                     {

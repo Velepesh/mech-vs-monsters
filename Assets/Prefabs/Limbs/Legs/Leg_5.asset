@@ -14,8 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _label: Leg_5
   _price: 500
-  _icon: {fileID: 21300000, guid: d976a657e9089f34c8e856da1cdcacdc, type: 3}
+  _icon: {fileID: 21300000, guid: adaf75f82c9c2644f9490ea30610db6c, type: 3}
   _isBuyed: 0
   _type: 3
   _health: 160
-  _isSelect: 0
+  _isSelect: 1

@@ -10,7 +10,6 @@ public class PlayerAnimations : MonoBehaviour
 
     private Animator _animator;
     private int _randomAttack;
-    private bool _isAttackAnimationEnd = false;
 
     private void Awake()
     {
@@ -66,13 +65,11 @@ public class PlayerAnimations : MonoBehaviour
 
     private void AttackByLeg()
     {
-        Debug.Log("LEG");
         _animator.SetTrigger(AnimatorPlayerController.States.LegAttack);
     }
 
     private void AttackByArm()
     {
-        Debug.Log("AttackByArm");
         _animator.SetTrigger(AnimatorPlayerController.States.ArmAttack);
     }
 

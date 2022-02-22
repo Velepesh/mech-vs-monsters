@@ -7,9 +7,7 @@ public class TargetDetector : MonoBehaviour
     [SerializeField] private List<PlayerCollider> _playerColliders;
     [SerializeField] private PlayerWeaponsHolder _playerWeapons;
 
-    private List<Weapon> _weapons = new List<Weapon>();
     private List<IDamageable> _targets = new List<IDamageable>();
-    private List<IDamageable> _colliders = new List<IDamageable>();
 
     private void OnEnable()
     {
@@ -23,64 +21,19 @@ public class TargetDetector : MonoBehaviour
         _player.Died -= OnPlayerDied;
     }
 
-    private void Start()
+    public ITarget GetClosestTarget(Vector3 weaponPosition)
     {
-        for (int i = 0; i < _playerWeapons.Count; i++)
-            _weapons.Add(_playerWeapons.GetWeapon(i));
-
-        for (int i = 0; i < _playerColliders.Count; i++)
-        {
-            if (_playerColliders[i] is IDamageable damageable)
-                _colliders.Add(damageable);
-        }       
+        return SearchClosest(weaponPosition, _targets);
     }
 
-    public bool IsStopDistance(float stopDistance, Vector3 position, out ITarget target)
+    private void AddFightTarget(Godzilla godzilla)
     {
-        ITarget closest = null;
-        target = null;
-
-        if (_targets.Count > 0)
-        {
-            float maxRange = float.MaxValue;
-
-            foreach (ITarget item in _targets)
-            {
-                if (item is Godzilla == false)
-                {
-                    float distance = Mathf.Abs(item.GetPosition().z - position.z);
-
-                    if (distance < maxRange)
-                    {
-                        maxRange = distance;
-                        closest = item;
-                    }
-                }
-            }
-
-            if (closest != null)
-            {
-                target = closest;
-
-                if (target.GetPosition().z <= position.z + stopDistance)
-                    return true;
-            }
-        }
-
-        return false;
+        godzilla.Died += OnDied;
+        _targets.Add(godzilla);
+        UpdateGunsTarget();
     }
 
-    private void AddFightTarget(IDamageable damageable)
-    {
-        if (damageable is Godzilla)
-        {
-            damageable.Died += OnDied;
-            _targets.Add(damageable);
-            UpdateGunsTarget();
-        }
-    }
-
-    private void OnFought(Transform playerPosition, Godzilla godzilla)
+    private void OnFought(Godzilla godzilla)
     {
         AddFightTarget(godzilla);
     }
@@ -91,13 +44,10 @@ public class TargetDetector : MonoBehaviour
         {
             if (damageable is ITarget target)
             {
-                ITarget closestTarget = GetClosestTarget(target.GetPosition(), _colliders);
+                ITarget closestTarget = GetClosestPlayerCollider(target.Position);
 
-                if (damageable is EnemyCollider == false)
-                {
-                    _targets.Add(damageable);
-                    damageable.Died += OnDied;
-                }
+                _targets.Add(damageable);
+                damageable.Died += OnDied;
 
                 if (damageable is Enemy enemy)
                     enemy.Init(closestTarget);
@@ -128,7 +78,7 @@ public class TargetDetector : MonoBehaviour
     {
         if (_targets.Count > 0)
         {
-            foreach (Weapon weapon in _weapons)
+            foreach (Weapon weapon in _playerWeapons.Weapons)
             {
                 if (weapon.Target == null || weapon.Target.IsDied)
                     ApplyClosesTarget(weapon);
@@ -140,8 +90,8 @@ public class TargetDetector : MonoBehaviour
     {
         if (weapon != null)
         {
-            Vector3 gunPosition = weapon.transform.position;
-            ITarget target = GetClosestTarget(gunPosition, _targets);
+            Vector3 weaponPosition = weapon.transform.position;
+            ITarget target = GetClosestTarget(weaponPosition);
 
             if (weapon is Machinegun machinegun)
                 machinegun.SetTarget(target, _player);
@@ -150,15 +100,19 @@ public class TargetDetector : MonoBehaviour
         }
     }
 
+    private ITarget GetClosestPlayerCollider(Vector3 enemyPosition)
+    {
+        return SearchClosest(enemyPosition, _playerColliders);
+    }
 
-    private ITarget GetClosestTarget(Vector3 weaponPosition, List<IDamageable> damageables)
+    private ITarget SearchClosest<T>(Vector3 weaponPosition, List<T> targets)
     {
         ITarget closest = null;
         float maxRange = float.MaxValue;
 
-        foreach (ITarget target in damageables)
+        foreach (ITarget target in targets)
         {
-            float distance = Vector3.Distance(target.GetPosition(), weaponPosition);
+            float distance = Vector3.Distance(target.Position, weaponPosition);
 
             if (distance < maxRange)
             {
