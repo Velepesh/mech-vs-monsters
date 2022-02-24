@@ -11,7 +11,6 @@ public class PlayerMover : MonoBehaviour
     readonly private float _rotationAngle = 45f;
 
     private Player _player;
-    private ITarget _target;//
     private PlayerInput _input;
     private bool _canMoving = false;
     private bool _isStopDistance = false;

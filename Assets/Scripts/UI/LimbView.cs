@@ -18,13 +18,11 @@ public class LimbView : MonoBehaviour
     private void OnEnable()
     {
         _sellButton.onClick.AddListener(OnButtonClick);
-       // _sellButton.onClick.AddListener(TryLockItem);
     }
 
     private void OnDisable()
     {
         _sellButton.onClick.RemoveListener(OnButtonClick);
-        //_sellButton.onClick.RemoveListener(TryLockItem);
     }
 
     public void Render(Limb limb)
@@ -58,6 +56,7 @@ public class LimbView : MonoBehaviour
 
     private void OnButtonClick()
     {
+        Debug.Log("OnButtonClick");
         LimbButtonClick?.Invoke(_limb, this);
     }
 }

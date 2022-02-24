@@ -1,26 +1,30 @@
 using UnityEngine;
-using UnityEngine.Events;
 
-public class PlayerCollider : MonoBehaviour, IDamageable, ITarget
+[RequireComponent(typeof(Player))]
+[RequireComponent(typeof(Collider))]
+public class PlayerCollider : MonoBehaviour
 {
-    [SerializeField] private Player _player;
+    private Player _player;
+    private Collider _collider;
 
-    public event UnityAction<IDamageable> Died;
-    public event UnityAction<int> HealthChanged;
-    public Vector3 Position => transform.position;
-
-    public bool IsDied => _player.Health <= 0;
-    public int Health => _player.Health;
-
-    public void TakeDamage(int damage)
+    private void Awake()
     {
-        _player.TakeDamage(damage);
-        HealthChanged?.Invoke(_player.Health);
+        _player = GetComponent<Player>();
+        _collider = GetComponent<Collider>();
+    }
 
-        if (IsDied)
-        {
-            _player.Die();
-            Died?.Invoke(_player);
-        }
+    private void OnEnable()
+    {
+        _player.Died += OnDied;
+    }
+
+    private void OnDisable()
+    {
+        _player.Died -= OnDied;
+    }
+
+    private void OnDied(IDamageable damageable)
+    {
+        _collider.enabled = false;
     }
 }

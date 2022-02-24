@@ -9,7 +9,7 @@ public class RobotBuilder : MonoBehaviour
     [SerializeField] private List<Head> _heads;
     [SerializeField] private List<Arm> _arms;
     [SerializeField] private List<Body> _bodies;
-    [SerializeField] private List<Leg> _legs;//загрузка изначально здоровья
+    [SerializeField] private List<Leg> _legs;
 
     private const string HEAD_ID = "HeadID";
     private const string ARM_ID = "ArmID";
@@ -25,11 +25,12 @@ public class RobotBuilder : MonoBehaviour
     public bool IsArmSelected => _currentArmIndex > _defaultIndex;
    
     public event UnityAction BodySelected;
+    public event UnityAction LegSelected;
 
     private void OnEnable()
     {
         for (int i = 0; i < _limbButtons.Count; i++)
-            _limbButtons[i].LimbSelected += OnLimbSelected;        
+            _limbButtons[i].LimbSelected += OnLimbSelected;
     }
 
     private void Start()
@@ -93,6 +94,7 @@ public class RobotBuilder : MonoBehaviour
         {
             LoadLimb(_legs[_currentLegIndex]);
             UnlockButton<BodyButton>();
+            LegSelected?.Invoke();
         }
     }
 
@@ -120,9 +122,6 @@ public class RobotBuilder : MonoBehaviour
 
     private void ApplyNewLimb(PlayerLimb limb)
     {
-        if (limb is Head head)
-            head.EnableCollider();
-
         if (limb is Arm arm)
             arm.EnableCollider();
 
@@ -149,6 +148,7 @@ public class RobotBuilder : MonoBehaviour
         if (limbButtons is LegButton)
         {
             UnlockButton<BodyButton>();
+            LegSelected?.Invoke();
         }
         else if (limbButtons is BodyButton)
         {

@@ -5,6 +5,7 @@ public class House : MonoBehaviour, IDamageable, ITarget, IDieingPolicy
 {
     [SerializeField] private int _health;
     [SerializeField] private int _award;
+    [SerializeField] private GameObject _brokenHouse;
     [SerializeField] private float _offsetX = 1.2f;
 
     public int Health => _health;
@@ -37,6 +38,7 @@ public class House : MonoBehaviour, IDamageable, ITarget, IDieingPolicy
     public void Die()
     {
         Died?.Invoke(this);
-        Destroy(gameObject);
+        Instantiate(_brokenHouse, transform.position, Quaternion.identity);
+        gameObject.SetActive(false);
     }
 }

@@ -6,12 +6,13 @@ using System.Collections;
 public class CinemachineShake : MonoBehaviour 
 {
     [SerializeField] private CinemachineVirtualCamera _cinemachineVirtualCamera;
+    [SerializeField] private DownMover _downMover;
     [SerializeField] private PlayerWeaponsHolder _playerWeapons;
     [SerializeField] private RocketLauncher _rocketLauncher;
-    [SerializeField] private float _rocketLauncherIntensity;
-    [SerializeField] private float _rocketLauncherTime;
-    [SerializeField] private float _machinegunIntensity;
-    [SerializeField] private float _machinegunTime;
+    [SerializeField] private float _highIntensity;
+    [SerializeField] private float _longTime;
+    [SerializeField] private float _lowIntensity;
+    [SerializeField] private float _shortTime;
 
     private List<Weapon> _weapons = new List<Weapon>();
 
@@ -23,15 +24,16 @@ public class CinemachineShake : MonoBehaviour
 
     private void OnValidate()
     {
-        _rocketLauncherIntensity = Mathf.Clamp(_rocketLauncherIntensity, 0f, float.MaxValue);
-        _rocketLauncherTime = Mathf.Clamp(_rocketLauncherTime, 0f, float.MaxValue);
-        _machinegunIntensity = Mathf.Clamp(_machinegunIntensity, 0f, float.MaxValue);
-        _machinegunTime = Mathf.Clamp(_machinegunTime, 0f, float.MaxValue);
+        _highIntensity = Mathf.Clamp(_highIntensity, 0f, float.MaxValue);
+        _longTime = Mathf.Clamp(_longTime, 0f, float.MaxValue);
+        _lowIntensity = Mathf.Clamp(_lowIntensity, 0f, float.MaxValue);
+        _shortTime = Mathf.Clamp(_shortTime, 0f, float.MaxValue);
     }
 
     private void OnEnable()
     {
         _cinemachineBasicMultiChannelPerlin = _cinemachineVirtualCamera.GetCinemachineComponent<CinemachineBasicMultiChannelPerlin>();
+        _downMover.Landed += OnLanded;
 
         InitGuns();
     }
@@ -52,16 +54,17 @@ public class CinemachineShake : MonoBehaviour
     private void OnDisable()
     {
         _rocketLauncher.Shooted -= OnRocketLauncherShooted;
+        _downMover.Landed -= OnLanded;
 
-        for(int i = 0; i < _weapons.Count; i++)
+        for (int i = 0; i < _weapons.Count; i++)
             _weapons[i].Shooted -= OnShooted;
     }
 
     private void OnRocketLauncherShooted()
     {
         _isRocket = true;
-        ShakeCamera(_rocketLauncherIntensity, _rocketLauncherTime);
-        StartCoroutine(WaitRocketLauncherShaking(_rocketLauncherTime));
+        ShakeCamera(_highIntensity, _longTime);
+        StartCoroutine(WaitRocketLauncherShaking(_longTime));
     }
 
     private IEnumerator WaitRocketLauncherShaking(float time)
@@ -74,7 +77,12 @@ public class CinemachineShake : MonoBehaviour
     private void OnShooted()
     {
         if(_isRocket == false)
-            ShakeCamera(_machinegunIntensity, _machinegunTime);
+            ShakeCamera(_lowIntensity, _shortTime);
+    }
+
+    private void OnLanded()
+    {
+        ShakeCamera(_highIntensity, _longTime);
     }
 
     private void ShakeCamera(float intensity, float time) 

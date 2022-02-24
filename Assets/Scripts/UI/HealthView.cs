@@ -56,6 +56,7 @@ public class HealthView : MonoBehaviour
         if (_currentHealth == 0)
             DisableSlider();
     }
+
     private IEnumerator EnableSlider(float duration)
     {
         yield return new WaitForSeconds(duration);

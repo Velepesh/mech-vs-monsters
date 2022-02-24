@@ -102,6 +102,7 @@ public class Player : MonoBehaviour, IDamageable, ITarget, IDieingPolicy
 
     public void Die()
     {
+        Debug.Log("SAD");
         StopMoving();
         Died?.Invoke(this);
     }

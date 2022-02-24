@@ -19,13 +19,11 @@ public class Game : MonoBehaviour
 
     private void OnEnable()
     {
-       // _player.Fought += OnFought;
         _player.Died += OnDied;
     }
 
     private void OnDisable()
     {
-       // _player.Fought -= OnFought;
         _player.Died -= OnDied;
     }
 
@@ -78,10 +76,6 @@ public class Game : MonoBehaviour
         LevelLost?.Invoke();
     }
 
-    //private void OnFought(Transform targetPont, Godzilla godzilla)
-    //{
-    //    Fought?.Invoke();
-    //}
     private void OnDied(IDamageable damageable)
     {
         LoseGame();

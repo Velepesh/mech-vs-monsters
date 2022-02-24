@@ -5,14 +5,20 @@ using UnityEngine.UI;
 public class LimbShopsHolder : MonoBehaviour
 {
     [SerializeField] private Button _emptySpaceButton;
-    [SerializeField] private List<LimbShop> _limbShops;
     [SerializeField] private List<ChooseLimbButton> _chooseLimbButtons;
 
     private LimbShop _openedShop;
+    private bool _isSpaceButtonActive;
 
     private void Start()
     {
+        _isSpaceButtonActive = true;
         DisableEmptySpaceButton();
+    }
+
+    public void TurnOffEmptySpaceButton()
+    {
+        _isSpaceButtonActive = false;
     }
 
     private void OnEnable()
@@ -44,8 +50,9 @@ public class LimbShopsHolder : MonoBehaviour
             CloseOpenedShop();
 
             _openedShop = shop;
-            EnableEmptySpaceButton();
         }
+
+        EnableEmptySpaceButton();
     }
 
     private void CloseOpenedShop()
@@ -56,11 +63,12 @@ public class LimbShopsHolder : MonoBehaviour
 
     private void EnableEmptySpaceButton()
     {
-        _emptySpaceButton.gameObject.SetActive(true);
+        if (_isSpaceButtonActive)
+            _emptySpaceButton.interactable = true;
     }
 
     private void DisableEmptySpaceButton()
     {
-        _emptySpaceButton.gameObject.SetActive(false);
+        _emptySpaceButton.interactable = false;
     }
 }

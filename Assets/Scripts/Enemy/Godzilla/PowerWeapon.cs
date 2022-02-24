@@ -64,17 +64,16 @@ public class PowerWeapon : Weapon, IShooteable
 
     private void OnTriggerStay(Collider other)
     {
-        if (other.TryGetComponent(out PlayerCollider playerCollider))
-        {
-            StartCoroutine(Reload(_cooldownTime, playerCollider));
-        }
+        if (other.TryGetComponent(out Player player))
+            StartCoroutine(Reload(_cooldownTime, player));
     }
 
-    private IEnumerator Reload(float time, PlayerCollider playerCollider)
+    private IEnumerator Reload(float time, Player player)
     {
         _attackZone.enabled = false;
         yield return new WaitForSeconds(time);
+
         _attackZone.enabled = true;
-        playerCollider.TakeDamage(_damage);
+        player.TakeDamage(_damage);
     }
 }

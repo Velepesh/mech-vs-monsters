@@ -6,6 +6,7 @@ public class Godzilla : Enemy, IDamageable, IDieingPolicy, ITarget
 {
     [SerializeField] private float _attackTime;
     [SerializeField] private GameObject _model;
+    [SerializeField] private GameObject _healthBar;
 
     private Collider _collider;
 
@@ -47,12 +48,14 @@ public class Godzilla : Enemy, IDamageable, IDieingPolicy, ITarget
 
     private void EnableModel()
     {
+        _healthBar.SetActive(true);
         _collider.enabled = true;
         _model.SetActive(true);
     }
 
     private void DisableModel()
     {
+        _healthBar.SetActive(false);
         _collider.enabled = false;
         _model.SetActive(false);
     }

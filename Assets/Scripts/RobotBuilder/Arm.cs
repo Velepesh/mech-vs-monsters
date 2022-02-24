@@ -3,17 +3,17 @@ using System.Collections.Generic;
 
 public class Arm : PlayerLimb
 {
-    [SerializeField] private List<Collider> _armColliders;
+    [SerializeField] private List<GameObject> _arms;
 
     public void EnableCollider()
     {
-        for (int i = 0; i < _armColliders.Count; i++)
-            _armColliders[i].gameObject.SetActive(true);
+        for (int i = 0; i < _arms.Count; i++)
+            _arms[i].SetActive(true);
     }
 
     public void Disableollider()
     {
-        for (int i = 0; i < _armColliders.Count; i++)
-            _armColliders[i].gameObject.SetActive(false);
+        for (int i = 0; i < _arms.Count; i++)
+            _arms[i].SetActive(false);
     }
 }

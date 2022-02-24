@@ -9703,7 +9703,7 @@ MonoBehaviour:
       key0: {r: 1, g: 0.72794116, b: 0.72794116, a: 1}
       key1: {r: 0.83823526, g: 0.2218858, b: 0.26014197, a: 1}
       key2: {r: 0.83823526, g: 0.22188582, b: 0.26014197, a: 0}
-      key3: {r: 0.7440161, g: 0, b: 0.8235294, a: 0}
+      key3: {r: 0.9529412, g: 0.0627451, b: 0, a: 0}
       key4: {r: 0, g: 0, b: 0, a: 0}
       key5: {r: 0, g: 0, b: 0, a: 0}
       key6: {r: 0, g: 0, b: 0, a: 0}
@@ -14585,13 +14585,14 @@ GameObject:
   - component: {fileID: 4742710771910602}
   - component: {fileID: 198551564173672184}
   - component: {fileID: 199017890256160402}
+  - component: {fileID: 7593824059976935279}
   m_Layer: 7
   m_Name: decals_component
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &4742710771910602
 Transform:
   m_ObjectHideFlags: 0
@@ -19392,6 +19393,19 @@ ParticleSystemRenderer:
   m_Mesh2: {fileID: 0}
   m_Mesh3: {fileID: 0}
   m_MaskInteraction: 0
+--- !u!114 &7593824059976935279
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1308765203369454}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1a895231490da6545890b1e1794f8704, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  deathtimer: 0.5
 --- !u!1 &1407586809064136
 GameObject:
   m_ObjectHideFlags: 0
@@ -20567,7 +20581,7 @@ ParticleSystem:
         key0: {r: 1, g: 0.72794116, b: 0.72794116, a: 1}
         key1: {r: 0.83823526, g: 0.2218858, b: 0.26014197, a: 1}
         key2: {r: 0.83823526, g: 0.22188582, b: 0.26014197, a: 0}
-        key3: {r: 0.7440161, g: 0, b: 0.8235294, a: 0}
+        key3: {r: 0.9529412, g: 0.0627451, b: 0, a: 0}
         key4: {r: 0, g: 0, b: 0, a: 0}
         key5: {r: 0, g: 0, b: 0, a: 0}
         key6: {r: 0, g: 0, b: 0, a: 0}

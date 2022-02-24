@@ -3,7 +3,7 @@ using UnityEngine;
 using UnityEngine.UI;
 
 [RequireComponent(typeof(Collider))]
-public class HouseDestroyer : MonoBehaviour//разбить класс
+public class HouseDestroyer : MonoBehaviour
 {
     [SerializeField] private List<House> _houses;
     [SerializeField] private float _time;

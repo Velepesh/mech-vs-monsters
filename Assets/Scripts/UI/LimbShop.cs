@@ -1,7 +1,6 @@
 using System;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
 using UnityEngine.Events;
 
 public class LimbShop : MonoBehaviour
@@ -12,18 +11,14 @@ public class LimbShop : MonoBehaviour
     [SerializeField] private Player _player;
     [SerializeField] private LimbView _template;
     [SerializeField] private GameObject _itemContainer;
-    //[SerializeField] private Button _closeButton;
 
     private List<LimbView> _limbViews = new List<LimbView>();
     private Limb _currentLimb;
 
     public event UnityAction LimbSelected;
-   // public event UnityAction<LimbShop> Opened;
 
     private void Awake()
     {
-        //Opened?.Invoke(this);
-        
         for (int i = 0; i < _limbs.Count; i++)
         {
             Limb limb = _limbs[i];
@@ -34,34 +29,28 @@ public class LimbShop : MonoBehaviour
         }
     }
 
-    //private void OnEnable()
-    //{
-    //    _closeButton.onClick.AddListener(OnCloseButtonClick);
-    //}
+    private void OnEnable()
+    {
+        for (int i = 0; i < _limbViews.Count; i++)
+            _limbViews[i].LimbButtonClick += OnLimbButtonClick;
+    }
+
+    private void AddItem(Limb limb)
+    {
+        LimbView view = Instantiate(_template, _itemContainer.transform);
+        _limbViews.Add(view);
+        view.Render(limb);
+    }
 
     private void OnDisable()
     {
-        //_closeButton.onClick.RemoveListener(OnCloseButtonClick);
-
         for (int i = 0; i < _limbViews.Count; i++)
             _limbViews[i].LimbButtonClick -= OnLimbButtonClick;
     }
 
-    //private void OnCloseButtonClick()
-    //{
-    //    gameObject.SetActive(false);
-    //}
-
     public void CloseShop()
     {
         gameObject.SetActive(false);
-    }
-    private void AddItem(Limb limb)
-    {
-        LimbView view = Instantiate(_template, _itemContainer.transform);
-        view.LimbButtonClick += OnLimbButtonClick;
-        _limbViews.Add(view);
-        view.Render(limb);
     }
 
     private void OnLimbButtonClick(Limb limb, LimbView view)
@@ -83,7 +72,6 @@ public class LimbShop : MonoBehaviour
                 ChangePlayerHealth(limb);
             }
 
-            //SelectLimb(GetLimbIndex(limb));
             _robotBuilder.SelectLimb(limb.Type, GetLimbIndex(limb));
             LimbSelected?.Invoke();
         }
@@ -96,7 +84,7 @@ public class LimbShop : MonoBehaviour
         _player.AddHealth(_currentLimb.Health);
     }
 
-    private void TrySellLimb(Limb limb, LimbView view)//Limb Selected
+    private void TrySellLimb(Limb limb, LimbView view)
     {
         if (limb.Price <= _wallet.Money)
         {
@@ -104,18 +92,7 @@ public class LimbShop : MonoBehaviour
 
             limb.Buy();
             view.Unlock();
-            //view.SellButtonClick -= OnSellButtonClick;
         }
-    }
-    private void SelectLimb(int index)
-    {
-       // if (_currentLimb != null)//грузить текущий
-       //     _currentLimb.gameObject.SetActive(false);
-
-       //// _currentLimb = _playerLimb[index];
-       // _currentLimb.gameObject.SetActive(true);
-      
-        //LimbSelected?.Invoke();
     }
 
     private int GetLimbIndex(Limb limb)
@@ -131,14 +108,4 @@ public class LimbShop : MonoBehaviour
 
         return index;
     }
-
-    //private void EnableSelecteView()
-    //{
-    //    _skinViews[_currentTemplateIndex].SelecteView();
-    //}
-
-    //private void DisableSelecteView()
-    //{
-    //    _skinViews[_currentTemplateIndex].DisableView();
-    //}
 }
