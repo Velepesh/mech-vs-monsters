@@ -3,11 +3,15 @@ using UnityEngine.Events;
 
 public class Game : MonoBehaviour
 {
-    private const string CURRENT_LEVEL_ID = "CurrentLevelID";
-
     [SerializeField] private SceneChanger _sceneChanger;
     [SerializeField] private Player _player;
+    
+    private const string CURRENT_LEVEL_ID = "CurrentLevelID";
+
+    private float _spentTime = 0f;
+    private bool _isPlaying = false;
     public int CurrentLevel => PlayerPrefs.GetInt(CURRENT_LEVEL_ID, 1);
+    public int SpentTime => (int)_spentTime;
 
     public event UnityAction LevelStarted;
     public event UnityAction LevelWon;
@@ -30,6 +34,14 @@ public class Game : MonoBehaviour
     private void Start()
     {
         Application.targetFrameRate = 60;
+    }
+
+    private void Update()
+    {
+        if (_isPlaying)
+        {
+            _spentTime += Time.deltaTime;
+        }
     }
 
     public void Fight()
@@ -60,6 +72,7 @@ public class Game : MonoBehaviour
 
     public void StartLevel()
     {
+        _isPlaying = true;
         _player.StartLevel();
 
         LevelStarted?.Invoke();
@@ -67,12 +80,14 @@ public class Game : MonoBehaviour
 
     public void WinGame()
     {
+        _isPlaying = false;
         LevelWon?.Invoke();
         PlayerPrefs.SetInt(CURRENT_LEVEL_ID, CurrentLevel + 1);
     }
 
     public void LoseGame()
     {
+        _isPlaying = false;
         LevelLost?.Invoke();
     }
 

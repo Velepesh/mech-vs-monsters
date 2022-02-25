@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 597186044223634791}
   - component: {fileID: 1457658913}
   - component: {fileID: 2075751088}
+  - component: {fileID: 2773451001478785860}
   m_Layer: 0
   m_Name: Game
   m_TagString: Untagged
@@ -60,9 +61,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1dd7503c51e1449489999820411a94d7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _totalLevels: 0
-  _minCircledLevel: 0
-  _maxCircledLevel: 0
+  _totalLevels: 20
+  _minCircledLevel: 20
+  _maxCircledLevel: 14
 --- !u!114 &1457658913
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -118,3 +119,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b283e0399d2edeb4faff3ac8f4ccdd82, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &2773451001478785860
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 597186044223634790}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 07d4f7812bdd61c4ab0b0db8edd56902, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _wallet: {fileID: 0}

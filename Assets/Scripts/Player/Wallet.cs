@@ -12,6 +12,7 @@ public class Wallet : MonoBehaviour
     public int Money => PlayerPrefs.GetInt(BALANCE, 100500);
 
     public event UnityAction<int> MoneyChanged;
+    public event UnityAction<string, string, int> Bought;
 
     private void Awake()
     {
@@ -28,13 +29,16 @@ public class Wallet : MonoBehaviour
     {
         _player.MoneyAdded -= OnMoneyAdded;
     }
+
     public void BuyLimb(Limb limb, int price)
     {
+        Bought?.Invoke("Shop", limb.name, price);
         RemoveMoney(price);
     }
 
     public void BuyWeapon(AdditionalWeapon weapon, int price)
     {
+        Bought?.Invoke("Weapon", weapon.name, price);
         RemoveMoney(price);
     }
 
