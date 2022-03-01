@@ -1,13 +1,11 @@
 using UnityEngine;
 using UnityEngine.Events;
 
-//[RequireComponent(typeof(Collider))]
 public class Godzilla : Enemy, IDamageable, IDieingPolicy, ITarget
 {
     [SerializeField] private float _attackTime;
     [SerializeField] private GameObject _model;
 
-    //private Collider _collider;
     private int _startHealth;
 
     public int StartHealth => _startHealth;
@@ -24,7 +22,6 @@ public class Godzilla : Enemy, IDamageable, IDieingPolicy, ITarget
     private void Start()
     {
         _startHealth = Health;
-       // _collider = GetComponent<Collider>();
         DisableModel();;
     }
 
@@ -51,13 +48,11 @@ public class Godzilla : Enemy, IDamageable, IDieingPolicy, ITarget
 
     private void EnableModel()
     {
-        //_collider.enabled = true;
         _model.SetActive(true);
     }
 
     private void DisableModel()
     {
-        //_collider.enabled = false;
         _model.SetActive(false);
     }
 }
