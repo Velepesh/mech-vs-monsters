@@ -1,7 +1,6 @@
 using UnityEngine;
 using UnityEngine.Events;
 
-
 public class Attacker : MonoBehaviour
 {
     [SerializeField] private float _cooldownTime;
@@ -9,7 +8,6 @@ public class Attacker : MonoBehaviour
     private float _shootingTimer;
 
     public event UnityAction Attacked;
-
 
     private void Update()
     {

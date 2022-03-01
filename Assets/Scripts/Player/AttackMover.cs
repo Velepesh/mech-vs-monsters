@@ -61,14 +61,16 @@ public class AttackMover : MonoBehaviour
                 }
                 else
                 {
-                    _player.StartMove();
+                    StartMove();
                 }
             }
-
+            else
+            {
+                StartMove();
+            }
         }
     }
 
- 
     private void MoveToTargetPosition()
     {
         Vector3 targetPosition = new Vector3(_target.Position.x, transform.position.y, _target.Position.z);
@@ -80,7 +82,15 @@ public class AttackMover : MonoBehaviour
             _player.Stand();
             _isMoving = false;
         }
-        else if(_isMoving == false)
+        else 
+        {
+            StartMove();
+        }
+    }
+
+    private void StartMove()
+    {
+        if (_isMoving == false)
         {
             _player.StartMove();
             _isMoving = true;

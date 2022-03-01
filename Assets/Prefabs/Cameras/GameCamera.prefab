@@ -139,7 +139,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3895173847764065706}
   m_LocalRotation: {x: 0.24253562, y: -9.053432e-17, z: 6.0730304e-17, w: 0.97014254}
-  m_LocalPosition: {x: 0, y: 14, z: -8}
+  m_LocalPosition: {x: 0, y: 13, z: -8}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 3895173847691189371}
@@ -259,9 +259,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _cinemachineVirtualCamera: {fileID: 3895173847764065701}
+  _downMover: {fileID: 0}
   _playerWeapons: {fileID: 0}
   _rocketLauncher: {fileID: 0}
-  _rocketLauncherIntensity: 3.5
-  _rocketLauncherTime: 0.8
-  _machinegunIntensity: 0.85
-  _machinegunTime: 0.3
+  _highIntensity: 0
+  _longTime: 0
+  _lowIntensity: 0
+  _shortTime: 0

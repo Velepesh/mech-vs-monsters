@@ -50,6 +50,7 @@ public class ResetDataDELETE : MonoBehaviour
         PlayerPrefs.SetInt("ArmID", -1);
         PlayerPrefs.SetInt("BodyID", -1);
         PlayerPrefs.SetInt("LegID", -1);
+        PlayerPrefs.SetInt("Tutorial", 1);
     }
 
     private void IncreaseMoney()

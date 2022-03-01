@@ -18,7 +18,7 @@ public class EnemyCollider : MonoBehaviour, IDamageable, ITarget
         if(_enemy.Health - damage <= 0)
             Died?.Invoke(this);
 
-        _enemy.TakeDamage(damage);
         HealthChanged?.Invoke(_enemy.Health);
+        _enemy.TakeDamage(damage);
     }
 }

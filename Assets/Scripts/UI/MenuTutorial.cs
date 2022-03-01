@@ -1,6 +1,5 @@
 using UnityEngine;
 using UnityEngine.UI;
-using System.Collections;
 using System.Collections.Generic;
 public class MenuTutorial : MonoBehaviour
 {
@@ -14,25 +13,14 @@ public class MenuTutorial : MonoBehaviour
     [SerializeField] private LimbShopsHolder _limbShopsHolder;
     [SerializeField] private List<ChooseLimbButton> _otherButtons;
 
-    private readonly int _firstLevel = 1;
-    private readonly float _delayTime = 0.01f;
-    private bool _isBodySelected;
-    private bool _isTutorial;
+    readonly private string TUTORIAL = "Tutorial";
+    private readonly int _tutorialValue = 1;
+    private readonly int _withoutTutorialValue = 0;
+    private int _tutorial => PlayerPrefs.GetInt(TUTORIAL, 1);
 
     private void Awake()
     {
-        DisableMenuTutorial();
-    }
-    private void Start()
-    {
-        StartCoroutine(Init());
-    }
-
-    private IEnumerator Init()
-    {
-        yield return new WaitForSeconds(_delayTime);
-
-        if (_game.CurrentLevel == _firstLevel && _isBodySelected == false)
+        if(_tutorial == _tutorialValue)
             EnableMenuTutorial();
         else
             DisableMenuTutorial();
@@ -59,19 +47,22 @@ public class MenuTutorial : MonoBehaviour
     private void OnBodySelected()
     {
         _animator.SetTrigger(AnimatorMenuTutorialController.States.Battle);
-        _isBodySelected = true;
+        SaveTutorialValue(_withoutTutorialValue);
         UnlockOtherButton();
 
-        _bodyButton.GetComponent<Button>().interactable = false;
+        DisableAllButtouns();
+    }
 
-        for (int i = 0; i < _otherButtons.Count; i++)
-            _otherButtons[i].GetComponent<Button>().interactable = false;
+    private void SaveTutorialValue(int value)
+    {
+        PlayerPrefs.SetInt(TUTORIAL, value);
     }
 
     private void OnLegSelected()
     {
         _animator.SetTrigger(AnimatorMenuTutorialController.States.BodyButton);
         UnlockOtherButton();
+
         _legButton.GetComponent<Button>().interactable = false;
     }
 
@@ -79,8 +70,10 @@ public class MenuTutorial : MonoBehaviour
     {
         DisableMenuTutorial();
     }
+
     private void EnableMenuTutorial()
     {
+        _animator.enabled = true;
         _menuTutorial.SetActive(true);
         _blackPanel.gameObject.SetActive(true);
     }
@@ -95,13 +88,29 @@ public class MenuTutorial : MonoBehaviour
 
     private void DisableMenuTutorial()
     {
+        EnableAllButtouns();
+        _menuTutorial.SetActive(false);
+        _blackPanel.gameObject.SetActive(false);
+        _animator.enabled = false;
+        this.enabled = false;
+    }
+
+    private void DisableAllButtouns()
+    {
+        for (int i = 0; i < _otherButtons.Count; i++)
+            _otherButtons[i].GetComponent<Button>().interactable = false;
+
+        _legButton.GetComponent<Button>().interactable = false;
+        _bodyButton.GetComponent<Button>().interactable = false;
+    }
+
+    private void EnableAllButtouns()
+    {
         for (int i = 0; i < _otherButtons.Count; i++)
             _otherButtons[i].GetComponent<Button>().interactable = true;
 
         _legButton.GetComponent<Button>().interactable = true;
-        _menuTutorial.SetActive(false);
-        _blackPanel.gameObject.SetActive(false);
-        //this.enabled = false;
+        _bodyButton.GetComponent<Button>().interactable = true;
     }
 
     private void BlockOtherButton()
