@@ -1712,7 +1712,7 @@ MonoBehaviour:
   _maxSpeed: 3300
   _bullet: {fileID: -8238685944364814985, guid: d414b898c12e9b241917fe056bed92c7, type: 3}
   _offsetRotationX: 0
-  _offset: {x: 0, y: 0, z: 0}
+  _offset: {x: 0, y: 3, z: 0}
   _shootDistance: 31
 --- !u!1 &4972888206403998830
 GameObject:

@@ -17,6 +17,7 @@ public class FighterMover : MonoBehaviour
     {
         _moveToTargetPointTime = Mathf.Clamp(_moveToTargetPointTime, 0f, float.MaxValue);
     }
+
     private void Awake()
     {
         _player = GetComponent<Player>();
@@ -43,13 +44,6 @@ public class FighterMover : MonoBehaviour
             _playerMover.LookAtTarget(_godzillaPosition);
     }
 
-    //private IEnumerator MoveToTarget()
-    //{
-    //   // _playerMover.LookAtTarget(_godzillaPosition);
-    //    transform.position = Vector3.MoveTowards(transform.position, _targetFightPosition, _playerMover.MoveSpeed * Time.deltaTime);
-    //}
-
-
     private IEnumerator Move(float duration)
     {
         Vector3 startingPos = transform.position;
@@ -61,6 +55,8 @@ public class FighterMover : MonoBehaviour
             elapsedTime += Time.deltaTime;
             yield return null;
         }
+
+        _player.Stand();
     }
 
     private void OnPrepeared(Transform targetPoint, Godzilla godzilla)

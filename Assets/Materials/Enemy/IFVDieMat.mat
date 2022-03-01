@@ -8,9 +8,9 @@ Material:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: IFVDieMat
-  m_Shader: {fileID: 46, guid: 0000000000000000f000000000000000, type: 0}
-  m_ShaderKeywords: _CELPRIMARYMODE_NONE _SMOOTHNESS_TEXTURE_ALBEDO_CHANNEL_A _TEXTUREBLENDINGMODE_MULTIPLY
-    _UNITYSHADOWMODE_MULTIPLY
+  m_Shader: {fileID: 4800000, guid: bee44b4a58655ee4cbff107302a3e131, type: 3}
+  m_ShaderKeywords: DR_RIM_ON _CELPRIMARYMODE_NONE _SMOOTHNESS_TEXTURE_ALBEDO_CHANNEL_A
+    _TEXTUREBLENDINGMODE_MULTIPLY _UNITYSHADOWMODE_MULTIPLY
   m_LightmapFlags: 4
   m_EnableInstancingVariants: 0
   m_DoubleSidedGI: 0
@@ -80,10 +80,10 @@ Material:
     - _DetailNormalMapScale: 1
     - _DstBlend: 0
     - _EnableHeightBlend: 0
-    - _FlatRimEdgeSmoothness: 0.589
+    - _FlatRimEdgeSmoothness: 0.36
     - _FlatRimLightAlign: 0.459
-    - _FlatRimSize: 0.557
-    - _FlatSpecularEdgeSmoothness: 0
+    - _FlatRimSize: 0.48
+    - _FlatSpecularEdgeSmoothness: 0.43
     - _FlatSpecularSize: 1
     - _Flatness: 1
     - _FlatnessExtra: 1
@@ -106,7 +106,7 @@ Material:
     - _OverrideLightmapDir: 0
     - _Parallax: 0.02
     - _QueueOffset: 0
-    - _RimEnabled: 0
+    - _RimEnabled: 1
     - _SelfShadingSize: 0.5
     - _SelfShadingSizeExtra: 0.5
     - _ShadowEdgeSize: 0.05
@@ -127,15 +127,15 @@ Material:
     - _VertexColorsEnabled: 0
     - _ZWrite: 1
     m_Colors:
-    - _Color: {r: 0.12156863, g: 0.59607846, b: 0.15686275, a: 1}
+    - _Color: {r: 0.09903879, g: 0.49056602, b: 0.12816064, a: 1}
     - _ColorDim: {r: 0.20247637, g: 0.12335349, b: 0.33962262, a: 0.85}
     - _ColorDimCurve: {r: 0.85, g: 0.85, b: 0.85, a: 0.85}
     - _ColorDimExtra: {r: 0.85, g: 0.85, b: 0.85, a: 0.85}
     - _ColorDimSteps: {r: 0.85, g: 0.85, b: 0.85, a: 0.85}
     - _ColorGradient: {r: 1, g: 0.9389535, b: 0, a: 1}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
-    - _FlatRimColor: {r: 0, g: 0, b: 0, a: 1}
-    - _FlatSpecularColor: {r: 0.33245158, g: 0.33245158, b: 0.33245158, a: 1}
+    - _FlatRimColor: {r: 0.0698092, g: 0.3301887, b: 0.023050897, a: 1}
+    - _FlatSpecularColor: {r: 0.0627451, g: 0.9882353, b: 0, a: 1}
     - _LightmapDirection: {r: 0, g: 1, b: 0, a: 0}
     - _UnityShadowColor: {r: 0.65, g: 0.65, b: 0.65, a: 1}
   m_BuildTextureStacks: []

@@ -915,9 +915,9 @@ MonoBehaviour:
   _shootPoint: {fileID: 6625723748100540923}
   _muzzleflare: {fileID: 1000012903210382, guid: 4c67d95d36aeb7c4097e43725c98f0c1, type: 3}
   _lookSpeed: 100
-  _cooldownTime: 0.5
-  _minSpeed: 2700
-  _maxSpeed: 2800
+  _cooldownTime: 2
+  _minSpeed: 2500
+  _maxSpeed: 2600
   _bullet: {fileID: 8794249899869472003, guid: 7a2faf82456af04468e7e69df3f8448e, type: 3}
   _offsetRotationX: 0
   _offset: {x: 0, y: 0, z: 0}
@@ -1281,7 +1281,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a431439cde808ca4c8e5e3330673e639, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _health: 100
+  _health: 50
   _weapon: {fileID: 7953847287707122221}
   _award: 20
   _lookSpeed: 100

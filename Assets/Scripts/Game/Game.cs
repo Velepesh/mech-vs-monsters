@@ -19,7 +19,7 @@ public class Game : MonoBehaviour
     public event UnityAction LevelRestart;
     public event UnityAction LevelMainMenu;
     public event UnityAction Fought;
-    public event UnityAction BattleWon;
+    public event UnityAction FoughtWon;
 
     private void OnEnable()
     {
@@ -51,7 +51,7 @@ public class Game : MonoBehaviour
 
     public void WinInBattle()
     {
-        BattleWon?.Invoke();
+        FoughtWon?.Invoke();
     }
 
     public void MainMenu()

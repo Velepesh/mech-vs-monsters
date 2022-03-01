@@ -4,16 +4,17 @@ using UnityEngine;
 [RequireComponent(typeof(Player))]
 public class PlayerWeaponsHolder : MonoBehaviour
 {
-    [SerializeField] private List<Weapon> _weapons;
+    [SerializeField] private List<Weapon> _automaticWeapons;
 
     private Player _player;
-    public int Count => _weapons.Count;
-    public IReadOnlyList<Weapon> Weapons => _weapons;
+    public int Count => _automaticWeapons.Count;
+    public IReadOnlyList<Weapon> AutomaticWeapons => _automaticWeapons;
 
     private void Awake()
     {
         _player = GetComponent<Player>();
     }
+
     private void OnEnable()
     {
         _player.Won += OnWon;
@@ -26,12 +27,12 @@ public class PlayerWeaponsHolder : MonoBehaviour
 
     public Weapon GetWeapon(int index)
     {
-        return _weapons[index];
+        return _automaticWeapons[index];
     }
 
     private void OnWon()
     {
-        foreach (Weapon weapon in _weapons)
+        foreach (Weapon weapon in _automaticWeapons)
             weapon.StopShooting();
     }
 }

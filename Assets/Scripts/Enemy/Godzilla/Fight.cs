@@ -36,10 +36,10 @@ public class Fight : MonoBehaviour
         damageable.Died -= OnPlayerDied;
     }
 
-    private IEnumerator StartFight(Player player, float delayTim)
+    private IEnumerator StartFight(Player player, float delayTime)
     {
         player.PrepearedForFight(_targetPlayerPosition, _godzilla);
-        yield return new WaitForSeconds(delayTim);
+        yield return new WaitForSeconds(delayTime);
 
         _godzilla.Fight();
         player.Fight(_godzilla);
@@ -51,6 +51,6 @@ public class Fight : MonoBehaviour
         _player.StartMove();
         _game.WinInBattle();
         damageable.Died -= OnGodzillaDied;
-        gameObject.SetActive(false);
+        Destroy(gameObject);
     }
 }

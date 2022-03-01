@@ -16,7 +16,7 @@ public class CameraFollow : MonoBehaviour
     {
         _game.LevelStarted += OnLevelStarted;
         _game.Fought += OnFought;
-        _game.BattleWon += OnBattleWon;
+        _game.FoughtWon += OnBattleWon;
 
         CameraSwitcher.Register(_fightCamera);
         CameraSwitcher.Register(_gameCamera);
@@ -27,7 +27,7 @@ public class CameraFollow : MonoBehaviour
     {
         _game.LevelStarted -= OnLevelStarted;
         _game.Fought -= OnFought;
-        _game.BattleWon -= OnBattleWon;
+        _game.FoughtWon -= OnBattleWon;
 
         CameraSwitcher.Unregister(_menuCamera);
         CameraSwitcher.Unregister(_gameCamera);

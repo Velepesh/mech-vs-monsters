@@ -123,7 +123,10 @@ public class RobotBuilder : MonoBehaviour
     private void ApplyNewLimb(PlayerLimb limb)
     {
         if (limb is Arm arm)
-            arm.EnableCollider();
+            arm.EnableArms();
+        
+        if (limb is Head head)
+            head.EnableHead();
 
         limb.Limb.Selecte();
         limb.gameObject.SetActive(true);

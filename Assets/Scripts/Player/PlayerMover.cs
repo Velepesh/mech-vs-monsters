@@ -13,12 +13,14 @@ public class PlayerMover : MonoBehaviour
     private Player _player;
     private PlayerInput _input;
     private bool _canMoving = false;
-    private bool _isStopDistance = false;
+    private bool _isNearEnemy = false;
+    private bool _isNearObstacle = false;
 
     public float MoveSpeed => _options.MoveSpeed;
     public float StopDistance => _options.StopDistance;
     public float AttackDistance => _options.AttackDistance;
-    public bool IsStopDistance => _isStopDistance;
+    public bool IsNearEnemy => _isNearEnemy;
+    public bool IsNearObstacle => _isNearObstacle;
 
     private void Awake()
     {
@@ -40,11 +42,12 @@ public class PlayerMover : MonoBehaviour
 
     private void Update()
     {
-        _isStopDistance = _stopDetector.IsHeat(_options.StopDistance);
+        _isNearEnemy = _stopDetector.IsNearEnemy(_options.StopDistance);
+        _isNearObstacle = _stopDetector.IsNearObstacle(_options.StopDistance);
         
         if (_canMoving) 
         {
-            if (_isStopDistance == false)
+            if (_isNearEnemy == false && _isNearObstacle == false)
                 Move();
         } 
     }

@@ -34,20 +34,17 @@ public class Machinegun : Weapon, IShooteable
             {
                StopShooting();
             }
-            else
+            else if (Vector3.Distance(transform.position, _target.Position) <= _shootDistance)
             {
-                if (Vector3.Distance(transform.position, _target.Position) <= _shootDistance)
+                TurnToTarget(_target.Position + _offset);
+
+                if (_shootingTimer > _cooldownTime)
                 {
-                    TurnToTarget(_target.Position + _offset);
-
-                    if (_shootingTimer > _cooldownTime)
-                    {
-                        Shoot();
-                        _shootingTimer = 0;
-                    }
-
-                    _shootingTimer += Time.deltaTime;
+                    Shoot();
+                    _shootingTimer = 0;
                 }
+
+                _shootingTimer += Time.deltaTime;
             }
         }
     }

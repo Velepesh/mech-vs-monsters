@@ -4,7 +4,8 @@ using UnityEngine;
 public class PlayerAnimations : MonoBehaviour
 {
     [SerializeField] private Player _player;
-    [SerializeField] private PlayerInput _input;
+   // [SerializeField] private PlayerInput _input;
+    [SerializeField] private Attacker _attacker;
     [SerializeField] private RocketLauncher _rocketLauncher;
     [SerializeField] private RobotBuilder _robotBuilder;
 
@@ -22,7 +23,7 @@ public class PlayerAnimations : MonoBehaviour
         _player.Won += OnWon;
         _player.Standed += OnStanded;
         _player.Attacked += OnAttacked;
-        _input.Attacked += OnAttacked;
+        _attacker.Attacked += OnAttacked;
         _rocketLauncher.Shooted += OnShooted;
     }
 
@@ -32,7 +33,7 @@ public class PlayerAnimations : MonoBehaviour
         _player.MovingStarted -= OnMovingStarted;
         _player.Standed -= OnStanded;
         _player.Attacked -= OnAttacked;
-        _input.Attacked -= OnAttacked;
+        _attacker.Attacked -= OnAttacked;
         _rocketLauncher.Shooted -= OnShooted;
     }
 

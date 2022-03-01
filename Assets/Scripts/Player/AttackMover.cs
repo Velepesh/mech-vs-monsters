@@ -4,11 +4,9 @@ using UnityEngine;
 [RequireComponent(typeof(PlayerMover))]
 public class AttackMover : MonoBehaviour
 {
-    [SerializeField] private StopDetector _stopDetector;
+    [SerializeField] private Attacker _attacker;
     [SerializeField] private TargetDetector _targetDetector;
-    [SerializeField] private float _cooldownTime;
 
-    private float _shootingTimer;
     private Player _player;
     private PlayerMover _playerMover;
     private bool _canAttack = true;
@@ -35,7 +33,7 @@ public class AttackMover : MonoBehaviour
     {
         if (_canAttack)
         {
-            if (_playerMover.IsStopDistance && _player.IsDied == false)
+            if ((_playerMover.IsNearEnemy || _playerMover.IsNearObstacle) && _player.IsDied == false)
             {
                 _target = _targetDetector.GetClosestTarget(transform.position);
 
@@ -49,22 +47,16 @@ public class AttackMover : MonoBehaviour
                     }
                     else
                     {
-                        //if (_target == null)
-                        //{
-                        //   // _player.StartMove();
-                        //}
-                       // else 
-                        if (_shootingTimer >= _cooldownTime)
+                        if (_isMoving)
                         {
-                            Debug.Log("ATTACK");
-                            _player.Attack();
-                            _shootingTimer = 0;
+                            _isMoving = false;
+                            _player.Stand();
                         }
-                       
-                        Debug.Log("RELOAD");
+
+                         _attacker.Attack();
 
                         if (_target == null)
-                            _shootingTimer = _cooldownTime; 
+                            _attacker.Reload();
                     }
                 }
                 else
@@ -74,7 +66,6 @@ public class AttackMover : MonoBehaviour
             }
 
         }
-        _shootingTimer += Time.deltaTime;
     }
 
  
@@ -85,7 +76,7 @@ public class AttackMover : MonoBehaviour
 
         if (Vector3.Distance(_target.Position, transform.position) <= _playerMover.AttackDistance) 
         {
-            _shootingTimer = _cooldownTime;
+            _attacker.Reload();
             _player.Stand();
             _isMoving = false;
         }

@@ -4,7 +4,8 @@ using UnityEngine.Events;
 public class Player : MonoBehaviour, IDamageable, ITarget, IDieingPolicy
 {
     private int _health;
-    public Vector3 Position => transform.position;
+    private int _startHealth;
+    public Vector3 Position => transform.position + new Vector3(0f, 1f, 0f);
 
     public event UnityAction LevelStarted;
     public event UnityAction MovingStarted;
@@ -19,10 +20,12 @@ public class Player : MonoBehaviour, IDamageable, ITarget, IDieingPolicy
     public event UnityAction<Transform, Godzilla> Prepeared;
 
     public int Health => _health;
+    public int StartHealth => _startHealth;
     public bool IsDied => _health <= 0;
 
     public void StartLevel()
     {
+        _startHealth = _health;
         StartMove();
         LevelStarted?.Invoke();
     }
@@ -71,7 +74,7 @@ public class Player : MonoBehaviour, IDamageable, ITarget, IDieingPolicy
 
     public void Fight(Godzilla godzilla)
     {
-        Stand();
+        _health = _startHealth;
         Fought?.Invoke(godzilla);
     }
     
@@ -102,7 +105,6 @@ public class Player : MonoBehaviour, IDamageable, ITarget, IDieingPolicy
 
     public void Die()
     {
-        Debug.Log("SAD");
         StopMoving();
         Died?.Invoke(this);
     }

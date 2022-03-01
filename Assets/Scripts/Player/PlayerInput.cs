@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.EventSystems;
@@ -7,7 +5,8 @@ using UnityEngine.EventSystems;
 [RequireComponent(typeof(Player))]
 public class PlayerInput : MonoBehaviour
 {
-   [SerializeField] private float _sensitivity;
+    [SerializeField] private Attacker _attacker;
+    [SerializeField] private float _sensitivity;
 
     private readonly float _minMouseMove = 3f;
 
@@ -45,7 +44,7 @@ public class PlayerInput : MonoBehaviour
             if (!EventSystem.current.IsPointerOverGameObject())
             {
                 if (_isFight)
-                    Attacked?.Invoke();
+                    _attacker.Attack();
                 else
                     _mousePositionX = Input.mousePosition.x;
             }

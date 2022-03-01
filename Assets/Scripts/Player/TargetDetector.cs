@@ -4,7 +4,6 @@ using UnityEngine;
 public class TargetDetector : MonoBehaviour
 {
     [SerializeField] private Player _player;
-   // [SerializeField] private List<PlayerCollider> _playerColliders;
     [SerializeField] private PlayerWeaponsHolder _playerWeapons;
 
     private List<IDamageable> _targets = new List<IDamageable>();
@@ -44,8 +43,6 @@ public class TargetDetector : MonoBehaviour
         {
             if (damageable is ITarget target)
             {
-                //ITarget closestTarget = GetClosestPlayerCollider(_player.Position);
-
                 _targets.Add(damageable);
                 damageable.Died += OnDied;
 
@@ -78,7 +75,7 @@ public class TargetDetector : MonoBehaviour
     {
         if (_targets.Count > 0)
         {
-            foreach (Weapon weapon in _playerWeapons.Weapons)
+            foreach (Weapon weapon in _playerWeapons.AutomaticWeapons)
             {
                 if (weapon.Target == null || weapon.Target.IsDied)
                     ApplyClosesTarget(weapon);
@@ -99,11 +96,6 @@ public class TargetDetector : MonoBehaviour
                 rocketgun.SetTarget(target, _player);
         }
     }
-
-    //private ITarget GetClosestPlayerCollider(Vector3 enemyPosition)
-    //{
-    //    return SearchClosest(enemyPosition, _playerColliders);
-    //}
 
     private ITarget SearchClosest<T>(Vector3 weaponPosition, List<T> targets)
     {

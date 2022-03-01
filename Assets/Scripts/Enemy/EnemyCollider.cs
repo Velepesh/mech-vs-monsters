@@ -15,10 +15,10 @@ public class EnemyCollider : MonoBehaviour, IDamageable, ITarget
 
     public void TakeDamage(int damage)
     {
+        if(_enemy.Health - damage <= 0)
+            Died?.Invoke(this);
+
         _enemy.TakeDamage(damage);
         HealthChanged?.Invoke(_enemy.Health);
-
-        if (_enemy.IsDied)
-            Died?.Invoke(_enemy);
     }
 }

@@ -559,7 +559,7 @@ MonoBehaviour:
   _maxSpeed: 2700
   _bullet: {fileID: -7727000490251848752, guid: b8951619ffd1ecf479d0e62426c80508, type: 3}
   _offsetRotationX: 0
-  _offset: {x: 0, y: 0, z: 0}
+  _offset: {x: 0, y: 3, z: 0}
   _shootDistance: 31
 --- !u!1 &7095733444818117813
 GameObject:
@@ -820,7 +820,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dc1f3422549354048bafd05e40aecff6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _health: 350
+  _health: 600
   _weapon: {fileID: 7097448762279348734}
   _award: 150
   _lookSpeed: 0
@@ -849,7 +849,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 92303cbd05fa23049b8a12debcb7f9f0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _duration: 1
+  _duration: 10
   _startDelayTime: 0
   _game: {fileID: 0}
   _slider: {fileID: 1113645309}
