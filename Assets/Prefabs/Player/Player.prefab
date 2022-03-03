@@ -1393,7 +1393,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _options:
-    _moveSpeed: 2.5
+    _moveSpeed: 3
     _rotationSpeed: 1.5
     _borderOffset: 5.4
     _stopDistance: 6
@@ -1578,7 +1578,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a7e117cb603569348ae0dd3583c5ed1e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _cooldownTime: 1.5
+  _cooldownTime: 1.2
 --- !u!114 &1834157163
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4146,11 +4146,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6969573205807147810, guid: 7a136354f8382604980afb3891312b7a, type: 3}
       propertyPath: m_Waypoints.Array.data[2].position.y
-      value: 10.4374485
+      value: 13.1874485
       objectReference: {fileID: 0}
     - target: {fileID: 6969573205807147810, guid: 7a136354f8382604980afb3891312b7a, type: 3}
       propertyPath: m_Waypoints.Array.data[2].position.z
-      value: -7.3294945
+      value: -3.25
       objectReference: {fileID: 0}
     - target: {fileID: 6969573205807147811, guid: 7a136354f8382604980afb3891312b7a, type: 3}
       propertyPath: m_Layer
@@ -5172,7 +5172,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3895173847816799494, guid: c509e4f12cbba03438a2e7930f2c46a1, type: 3}
       propertyPath: _lowIntensity
-      value: 0.85
+      value: 0.9
       objectReference: {fileID: 0}
     - target: {fileID: 3895173847816799494, guid: c509e4f12cbba03438a2e7930f2c46a1, type: 3}
       propertyPath: _highIntensity

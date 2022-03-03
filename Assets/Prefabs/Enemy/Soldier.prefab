@@ -1281,7 +1281,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a431439cde808ca4c8e5e3330673e639, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _health: 50
+  _health: 40
   _weapon: {fileID: 7953847287707122221}
   _award: 20
   _lookSpeed: 100

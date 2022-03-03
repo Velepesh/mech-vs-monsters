@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 272940232}
   - component: {fileID: 272940234}
   - component: {fileID: 272940233}
-  m_Layer: 6
+  m_Layer: 9
   m_Name: Fill
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -84,7 +84,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 449254069}
-  m_Layer: 6
+  m_Layer: 9
   m_Name: Fill Area
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -121,7 +121,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1113645308}
   - component: {fileID: 1113645309}
-  m_Layer: 6
+  m_Layer: 9
   m_Name: Slider
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -212,7 +212,7 @@ GameObject:
   - component: {fileID: 1318718003}
   - component: {fileID: 1318718002}
   - component: {fileID: 1318718001}
-  m_Layer: 6
+  m_Layer: 9
   m_Name: Canvas
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -311,7 +311,7 @@ GameObject:
   - component: {fileID: 1715287939}
   - component: {fileID: 1715287941}
   - component: {fileID: 1715287940}
-  m_Layer: 6
+  m_Layer: 9
   m_Name: Background
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -386,7 +386,7 @@ GameObject:
   - component: {fileID: 7092752047533500545}
   - component: {fileID: 7064045244887966527}
   - component: {fileID: 7074385446369535551}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: IFV_01_Wheel_11
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -572,7 +572,7 @@ GameObject:
   - component: {fileID: 7093009889215006993}
   - component: {fileID: 7064233265919948905}
   - component: {fileID: 7073815694246119305}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: IFV_01_Wheel_02
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -660,7 +660,7 @@ GameObject:
   - component: {fileID: 7097448762279348732}
   - component: {fileID: 8990737909952321156}
   - component: {fileID: 1651388915}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: IFV_01
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -864,7 +864,7 @@ GameObject:
   - component: {fileID: 7093126624686261991}
   - component: {fileID: 7064334168960099525}
   - component: {fileID: 7074042295628072991}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: IFV_01_Wheel_10
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -945,7 +945,7 @@ GameObject:
   - component: {fileID: 7092926841252358207}
   - component: {fileID: 7064226415953716889}
   - component: {fileID: 7074827888554679013}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: IFV_01_Wheel_08
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1026,7 +1026,7 @@ GameObject:
   - component: {fileID: 7093004852477284327}
   - component: {fileID: 7064180395651223251}
   - component: {fileID: 7074449321430472433}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: IFV_01_Wheel_03
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1107,7 +1107,7 @@ GameObject:
   - component: {fileID: 7092783285621928785}
   - component: {fileID: 7064263754244311069}
   - component: {fileID: 7074864857788567551}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: IFV_01_Wheel_07
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1188,7 +1188,7 @@ GameObject:
   - component: {fileID: 7093604231868614225}
   - component: {fileID: 7064196450371536255}
   - component: {fileID: 7073749549350586307}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: IFV_01_Wheel_12
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1269,7 +1269,7 @@ GameObject:
   - component: {fileID: 7093465630948144961}
   - component: {fileID: 7063938272227646921}
   - component: {fileID: 7074840736521877897}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: IFV_01_Wheel_09
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1350,7 +1350,7 @@ GameObject:
   - component: {fileID: 7092743551018069965}
   - component: {fileID: 7064296860982571409}
   - component: {fileID: 7074049830074065561}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: IFV_01_Wheel_06
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1431,7 +1431,7 @@ GameObject:
   - component: {fileID: 7092993576577153475}
   - component: {fileID: 7064245344455622373}
   - component: {fileID: 7074392105636283593}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: IFV_01_Wheel_01
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1594,7 +1594,7 @@ GameObject:
   - component: {fileID: 7093317335668868971}
   - component: {fileID: 7064243571081696323}
   - component: {fileID: 7074086751997718595}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: IFV_01_Wheel_04
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1675,7 +1675,7 @@ GameObject:
   - component: {fileID: 7092607936212784717}
   - component: {fileID: 7063627199163238301}
   - component: {fileID: 7074569371633030539}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: IFV_01_Wheel_05
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1754,7 +1754,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7097448763382922959}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: DieEffectPoint
   m_TagString: Untagged
   m_Icon: {fileID: 0}

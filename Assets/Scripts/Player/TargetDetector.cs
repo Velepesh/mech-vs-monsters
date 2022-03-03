@@ -11,7 +11,6 @@ public class TargetDetector : MonoBehaviour
     private void OnEnable()
     {
         _player.Fought += OnFought;
-        _player. += OnFought;
         _player.Died += OnPlayerDied;
     }
 
