@@ -123,7 +123,7 @@ Transform:
   m_GameObject: {fileID: 1538104769}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 30, y: 10, z: 1}
+  m_LocalScale: {x: 50, y: 10, z: 1}
   m_Children: []
   m_Father: {fileID: 712422557}
   m_RootOrder: 0
@@ -1396,7 +1396,7 @@ MonoBehaviour:
     _moveSpeed: 3
     _rotationSpeed: 1.5
     _borderOffset: 5.4
-    _stopDistance: 6
+    _stopDistance: 5
     _attackDistance: 6
     _lookSpeed: 100
   _stopDetector: {fileID: 712422558}
@@ -4687,6 +4687,10 @@ PrefabInstance:
     m_TransformParent: {fileID: 7632472142337899052}
     m_Modifications:
     - target: {fileID: 279692355630729505, guid: a8ba132685f95fb4e9596a5102adc342, type: 3}
+      propertyPath: _lookSpeed
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 279692355630729505, guid: a8ba132685f95fb4e9596a5102adc342, type: 3}
       propertyPath: _shootDistance
       value: 28
       objectReference: {fileID: 0}
@@ -5887,6 +5891,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 7632472142337899052}
     m_Modifications:
+    - target: {fileID: 279692355630729505, guid: a8ba132685f95fb4e9596a5102adc342, type: 3}
+      propertyPath: _lookSpeed
+      value: 100
+      objectReference: {fileID: 0}
     - target: {fileID: 279692355630729505, guid: a8ba132685f95fb4e9596a5102adc342, type: 3}
       propertyPath: _shootDistance
       value: 28

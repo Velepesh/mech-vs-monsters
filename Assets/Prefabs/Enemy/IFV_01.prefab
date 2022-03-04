@@ -822,7 +822,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _health: 600
   _weapon: {fileID: 7097448762279348734}
-  _award: 150
+  _award: 20
   _lookSpeed: 0
   _offsetY: 1
 --- !u!114 &8990737909952321156

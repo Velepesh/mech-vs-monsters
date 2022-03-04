@@ -465,7 +465,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2d837df4ed5c8444a9976629c14b59a4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _health: 1000
+  _health: 200
   _weapon: {fileID: 1156406675415430962}
   _award: 1000
   _lookSpeed: 100

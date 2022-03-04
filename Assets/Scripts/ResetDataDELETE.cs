@@ -55,7 +55,7 @@ public class ResetDataDELETE : MonoBehaviour
 
     private void IncreaseMoney()
     {
-        PlayerPrefs.SetInt("Balance", 100000);
+        PlayerPrefs.SetInt("Balance", 300);
     }
 
     private void ResetMoney()

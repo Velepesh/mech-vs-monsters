@@ -13,9 +13,9 @@ MonoBehaviour:
   m_Name: Head_3
   m_EditorClassIdentifier: 
   _label: Head_3
-  _price: 300
+  _price: 900
   _icon: {fileID: 21300000, guid: f6ac445e26943c347915499498e65319, type: 3}
   _isBuyed: 0
   _type: 0
-  _health: 45
+  _health: 55
   _isSelect: 0

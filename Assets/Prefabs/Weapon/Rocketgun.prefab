@@ -218,10 +218,10 @@ MonoBehaviour:
   - {fileID: 3123258521661790828}
   - {fileID: 8109640455742068754}
   _muzzleflare: {fileID: 1000012903210382, guid: a4574c52907fcde44a58fc89f66d60a7, type: 3}
-  _lookSpeed: 75
+  _lookSpeed: 120
   _cooldownTime: 1.25
-  _minSpeed: 1600
-  _maxSpeed: 1700
+  _minSpeed: 2000
+  _maxSpeed: 2100
   _bullet: {fileID: -1186912914590230109, guid: c16bbc42f0e3ac047addad0fb5e13df1, type: 3}
   _offsetRotationX: 90
   _shootDistance: 30

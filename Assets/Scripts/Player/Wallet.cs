@@ -9,7 +9,7 @@ public class Wallet : MonoBehaviour
     private int _money;
     private Player _player;
 
-    public int Money => PlayerPrefs.GetInt(BALANCE, 100500);
+    public int Money => PlayerPrefs.GetInt(BALANCE, 300);
 
     public event UnityAction<int> MoneyChanged;
     public event UnityAction<string, string, int> Bought;
@@ -48,15 +48,14 @@ public class Wallet : MonoBehaviour
         MoneyChanged?.Invoke(_money);
         
         SaveBalance();
-
     }
 
     private void RemoveMoney(int money)
     {
         _money -= money;
-        SaveBalance();
-
         MoneyChanged?.Invoke(_money);
+
+        SaveBalance();
     }
 
     private void OnMoneyAdded(int money)

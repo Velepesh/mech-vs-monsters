@@ -307,9 +307,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _price: {fileID: 8735576779974693066}
+  _level: {fileID: 0}
   _icon: {fileID: 2127179062989772240}
   _sellButton: {fileID: 7420890831080024366}
-  _lockedView: {fileID: 3303884374399334598}
+  _lockedByLevelView: {fileID: 0}
+  _lockedByMoneyView: {fileID: 0}
 --- !u!1 &3303884374399334598
 GameObject:
   m_ObjectHideFlags: 0
@@ -497,7 +499,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 63, y: -5}
-  m_SizeDelta: {x: 80, y: 80}
+  m_SizeDelta: {x: 71.8328, y: 71.8328}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &9109696796587326634
 CanvasRenderer:
@@ -571,8 +573,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -62.090668, y: -5}
-  m_SizeDelta: {x: 137.357, y: 48.8833}
+  m_AnchoredPosition: {x: -57.706512, y: -5}
+  m_SizeDelta: {x: 158.8609, y: 53.1437}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &7672914205519883337
 CanvasRenderer:
@@ -629,8 +631,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 50
-  m_fontSizeBase: 50
+  m_fontSize: 42.5
+  m_fontSizeBase: 42.5
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
