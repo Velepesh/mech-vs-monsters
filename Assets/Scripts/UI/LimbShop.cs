@@ -19,6 +19,17 @@ public class LimbShop : MonoBehaviour
 
     private void Awake()
     {
+        InitItems();
+    }
+
+    private void OnEnable()
+    {
+        for (int i = 0; i < _limbViews.Count; i++)
+            _limbViews[i].LimbButtonClick += OnLimbButtonClick;
+    }
+
+    private void InitItems()
+    {
         for (int i = 0; i < _limbs.Count; i++)
         {
             Limb limb = _limbs[i];
@@ -29,14 +40,10 @@ public class LimbShop : MonoBehaviour
         }
     }
 
-    private void OnEnable()
-    {
-        for (int i = 0; i < _limbViews.Count; i++)
-            _limbViews[i].LimbButtonClick += OnLimbButtonClick;
-    }
-
     private void AddItem(Limb limb)
     {
+        limb.Load();
+
         LimbView view = Instantiate(_template, _itemContainer.transform);
         _limbViews.Add(view);
         view.Render(limb);
@@ -64,13 +71,9 @@ public class LimbShop : MonoBehaviour
             {
                 _player.RemoveHealth(_currentLimb.Health);
                 _currentLimb.Unselecte();
-
-                ChangePlayerHealth(limb);
             }
-            else
-            {
-                ChangePlayerHealth(limb);
-            }
+            
+            ChangePlayerHealth(limb);
 
             _robotBuilder.SelectLimb(limb.Type, GetLimbIndex(limb));
             LimbSelected?.Invoke();

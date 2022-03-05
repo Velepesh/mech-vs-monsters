@@ -4,10 +4,12 @@ using UnityEngine.Events;
 public class Barricade : MonoBehaviour, IDamageable, ITarget, IDieingPolicy
 {
     [SerializeField] private int _health;
+    [SerializeField] private int _award;
     [SerializeField] private float _offsetX = 1.2f;
 
     public int Health => _health;
     public bool IsDied => _health <= 0;
+    public int Award => _award;
     public Vector3 Position => transform.position + new Vector3(0f, _offsetX, 0f);
 
     public event UnityAction<IDamageable> Died;
@@ -16,6 +18,7 @@ public class Barricade : MonoBehaviour, IDamageable, ITarget, IDieingPolicy
     private void OnValidate()
     {
         _health = Mathf.Clamp(_health, 0, int.MaxValue);
+        _award = Mathf.Clamp(_award, 0, int.MaxValue);
         _offsetX = Mathf.Clamp(_offsetX, 0f, float.MaxValue);
     }
 

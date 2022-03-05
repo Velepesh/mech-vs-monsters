@@ -9,9 +9,13 @@ public class WeaponShop : MonoBehaviour
     [SerializeField] private Wallet _wallet;
     [SerializeField] private WeaponView _weaponView;
 
+    private readonly int _buyedIndex = 1;
+    private string LABEL => _weapon.Label;
+    private int _isBuiedInt => PlayerPrefs.GetInt(LABEL, 0);
+
     private void Start()
     {
-        if (_weapon.IsBuyed)
+        if (_isBuiedInt == _buyedIndex)
             TakeWeapon();
 
         AddItem(_weapon, _game.CurrentLevel);
@@ -56,6 +60,12 @@ public class WeaponShop : MonoBehaviour
             _wallet.BuyWeapon(weapon, weapon.Price);
             weapon.Buy();
             view.Unlock();
+            SaveWeapon();
         }
+    }
+
+    private void SaveWeapon()
+    {
+        PlayerPrefs.SetInt(LABEL, 1);
     }
 }

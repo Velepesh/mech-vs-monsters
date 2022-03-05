@@ -56,7 +56,6 @@ public class LimbView : MonoBehaviour
 
     private void OnButtonClick()
     {
-        Debug.Log("OnButtonClick");
         LimbButtonClick?.Invoke(_limb, this);
     }
 }

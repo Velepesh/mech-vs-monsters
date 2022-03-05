@@ -39,7 +39,7 @@ public class AmplitudeAnalytics : MonoBehaviour
 
         _amplitude = Amplitude.Instance;
         _amplitude.logging = true;
-        _amplitude.init("f8bee7af8cc2eb58ce2afbe81f29042d");
+        _amplitude.init("536453992e2f35a8d6b06b46e735c571");
     }
 
     private void OnEnable()

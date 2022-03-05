@@ -11,6 +11,8 @@ public class Limb : ScriptableObject
     [SerializeField] private int _health;
     [SerializeField] private bool _isSelect;
 
+    private int _isBuiedInt => PlayerPrefs.GetInt(_label, 0);
+
     public string Label => _label;
     public int Price => _price;
     public Sprite Icon => _icon;
@@ -19,9 +21,19 @@ public class Limb : ScriptableObject
     public LimbType Type => _type;
     public int Health => _health;
 
+    public void Load()
+    {
+        if (_isBuiedInt == 1)
+            _isBuyed = true;
+        else
+            _isBuyed = false;
+    }
+
     public void Buy()
     {
         _isBuyed = true;
+
+        SaveLimb();
     }
 
     public void Selecte()
@@ -32,5 +44,10 @@ public class Limb : ScriptableObject
     public void Unselecte()
     {
         _isSelect = false;
+    }
+
+    private void SaveLimb()
+    {
+        PlayerPrefs.SetInt(_label, 1);
     }
 }

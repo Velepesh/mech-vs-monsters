@@ -3,6 +3,8 @@ using UnityEngine.Events;
 
 public class Player : MonoBehaviour, IDamageable, ITarget, IDieingPolicy
 {
+    private readonly int _award = 0;
+    
     private int _health;
     private int _startHealth;
     public Vector3 Position => transform.position + new Vector3(0f, 1f, 0f);
@@ -20,6 +22,7 @@ public class Player : MonoBehaviour, IDamageable, ITarget, IDieingPolicy
     public event UnityAction<Transform, Godzilla> Prepeared;
 
     public int Health => _health;
+    public int Award => _award;
     public int StartHealth => _startHealth;
     public bool IsDied => _health <= 0;
 

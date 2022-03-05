@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a7841ef091ced4049a2e0552f9226464, type: 3}
   m_Name: MinigunRight
   m_EditorClassIdentifier: 
-  _label: Minigun
-  _price: 50
-  _level: 2
+  _label: MinigunRight
+  _price: 1000
+  _level: 10
   _icon: {fileID: 21300000, guid: 3358a8c73061de24d986c3172410048c, type: 3}
   _isBuyed: 0

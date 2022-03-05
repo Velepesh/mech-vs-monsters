@@ -56,11 +56,7 @@ public class TargetDetector : MonoBehaviour
 
     private void OnDied(IDamageable damageable)
     {
-        if (damageable is Enemy enemy)
-            _player.AddMoney(enemy.Award);
-
-        if (damageable is House house)
-            _player.AddMoney(house.Award);
+        _player.AddMoney(damageable.Award);
 
         _targets.Remove(damageable);
         damageable.Died -= OnDied;

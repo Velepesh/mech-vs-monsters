@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a7841ef091ced4049a2e0552f9226464, type: 3}
   m_Name: KneeGunRight
   m_EditorClassIdentifier: 
-  _label: KneeGun
-  _price: 20
-  _level: 2
+  _label: KneeGunRight
+  _price: 500
+  _level: 5
   _icon: {fileID: 21300000, guid: 4dd39b76afd06ef4aa3b3067913d7fce, type: 3}
   _isBuyed: 0

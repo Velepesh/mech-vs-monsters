@@ -7,6 +7,9 @@ public class EnemyCollider : MonoBehaviour, IDamageable, ITarget
     [SerializeField] private Enemy _enemy;
     [SerializeField] private Vector3 _offset;
 
+    private readonly int _award = 0;
+    public int Award => _award;
+
     public event UnityAction<IDamageable> Died;
     public event UnityAction<int> HealthChanged;
     public Vector3 Position => transform.position + _offset;

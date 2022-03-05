@@ -159,6 +159,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _health: 75
+  _award: 5
   _offsetX: 1.2
 --- !u!114 &5400029033010140918
 MonoBehaviour:
