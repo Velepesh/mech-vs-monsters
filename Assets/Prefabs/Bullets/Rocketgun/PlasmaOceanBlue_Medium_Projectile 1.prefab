@@ -9692,7 +9692,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5131aa2ebbae62643bc21a43ae3fc216, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _damage: 30
+  _damage: 27
   _radius: 1.5
   _explosionForce: 8
   _rocketExplosion: {fileID: 1879272669879180, guid: de2268cd4e59e91419b7bacfeeb05ee2, type: 3}

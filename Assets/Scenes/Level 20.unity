@@ -40855,11 +40855,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 105043580673251541, guid: 4dbf26e3024e50c4ca996ae6a4d8f118, type: 3}
       propertyPath: _damage
-      value: 12
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 105043580673251541, guid: 4dbf26e3024e50c4ca996ae6a4d8f118, type: 3}
       propertyPath: _cooldownTime
-      value: 0.15
+      value: 0.9
       objectReference: {fileID: 0}
     - target: {fileID: 504273319238269443, guid: 4dbf26e3024e50c4ca996ae6a4d8f118, type: 3}
       propertyPath: m_LocalPosition.z
@@ -42278,7 +42278,7 @@ PrefabInstance:
       objectReference: {fileID: 1952765202}
     - target: {fileID: 7189913924357812303, guid: 9cc040cecc15b534c8dd4055a2d4c70b, type: 3}
       propertyPath: _damage
-      value: 275
+      value: 550
       objectReference: {fileID: 0}
     - target: {fileID: 7318534114722673522, guid: 9cc040cecc15b534c8dd4055a2d4c70b, type: 3}
       propertyPath: m_SceneBindings.Array.data[2].value
@@ -42306,7 +42306,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7454191481910524664, guid: 9cc040cecc15b534c8dd4055a2d4c70b, type: 3}
       propertyPath: _damage
-      value: 275
+      value: 550
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9cc040cecc15b534c8dd4055a2d4c70b, type: 3}

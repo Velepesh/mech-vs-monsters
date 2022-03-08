@@ -1578,7 +1578,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a7e117cb603569348ae0dd3583c5ed1e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _cooldownTime: 1.2
+  _cooldownTime: 1.1
 --- !u!114 &1834157163
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1637,10 +1637,10 @@ CapsuleCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  m_Radius: 0.81956613
-  m_Height: 2.6012254
+  m_Radius: 0.9468495
+  m_Height: 2.8365903
   m_Direction: 1
-  m_Center: {x: 0.000004014699, y: 0.24284379, z: 0.000004133133}
+  m_Center: {x: 0.000004311441, y: 0.36052653, z: 0.0000010388451}
 --- !u!54 &3585252250847315450
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -4342,6 +4342,14 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5972582295882603676, guid: 45e2ced0f44fb0a4c97cb0f377bb4094, type: 3}
+      propertyPath: _lookSpeed
+      value: 180
+      objectReference: {fileID: 0}
+    - target: {fileID: 5972582295882603676, guid: 45e2ced0f44fb0a4c97cb0f377bb4094, type: 3}
+      propertyPath: _cooldownTime
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 45e2ced0f44fb0a4c97cb0f377bb4094, type: 3}
 --- !u!114 &6307544674270187022 stripped
@@ -4419,6 +4427,14 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5972582295882603676, guid: 45e2ced0f44fb0a4c97cb0f377bb4094, type: 3}
+      propertyPath: _lookSpeed
+      value: 180
+      objectReference: {fileID: 0}
+    - target: {fileID: 5972582295882603676, guid: 45e2ced0f44fb0a4c97cb0f377bb4094, type: 3}
+      propertyPath: _cooldownTime
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 45e2ced0f44fb0a4c97cb0f377bb4094, type: 3}
 --- !u!4 &5480220907805644090 stripped
@@ -4444,6 +4460,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 7632472142337899052}
     m_Modifications:
+    - target: {fileID: 3427122218716015740, guid: 84e18976213fe874590506d34eab3812, type: 3}
+      propertyPath: _lookSpeed
+      value: 180
+      objectReference: {fileID: 0}
     - target: {fileID: 4714971371761254662, guid: 84e18976213fe874590506d34eab3812, type: 3}
       propertyPath: m_RootOrder
       value: 2
@@ -4521,6 +4541,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 7632472142337899052}
     m_Modifications:
+    - target: {fileID: 958773911311038340, guid: 08dce8d5e1282b04fa0b45136759efe5, type: 3}
+      propertyPath: _lookSpeed
+      value: 180
+      objectReference: {fileID: 0}
+    - target: {fileID: 1031313558338986548, guid: 08dce8d5e1282b04fa0b45136759efe5, type: 3}
+      propertyPath: _lookSpeed
+      value: 180
+      objectReference: {fileID: 0}
     - target: {fileID: 3492888207451628002, guid: 08dce8d5e1282b04fa0b45136759efe5, type: 3}
       propertyPath: m_RootOrder
       value: 4
@@ -4609,6 +4637,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 7632472142337899052}
     m_Modifications:
+    - target: {fileID: 408045252025092404, guid: 57e8c599c83d91646a768ec0785c30c7, type: 3}
+      propertyPath: _lookSpeed
+      value: 180
+      objectReference: {fileID: 0}
     - target: {fileID: 7145403886672989737, guid: 57e8c599c83d91646a768ec0785c30c7, type: 3}
       propertyPath: m_Name
       value: Mini-Drone-Right
@@ -4688,7 +4720,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 279692355630729505, guid: a8ba132685f95fb4e9596a5102adc342, type: 3}
       propertyPath: _lookSpeed
-      value: 100
+      value: 180
       objectReference: {fileID: 0}
     - target: {fileID: 279692355630729505, guid: a8ba132685f95fb4e9596a5102adc342, type: 3}
       propertyPath: _shootDistance
@@ -4795,6 +4827,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 7632472142337899052}
     m_Modifications:
+    - target: {fileID: 3427122218716015740, guid: 84e18976213fe874590506d34eab3812, type: 3}
+      propertyPath: _lookSpeed
+      value: 180
+      objectReference: {fileID: 0}
     - target: {fileID: 4714971371761254662, guid: 84e18976213fe874590506d34eab3812, type: 3}
       propertyPath: m_RootOrder
       value: 3
@@ -5893,7 +5929,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 279692355630729505, guid: a8ba132685f95fb4e9596a5102adc342, type: 3}
       propertyPath: _lookSpeed
-      value: 100
+      value: 180
       objectReference: {fileID: 0}
     - target: {fileID: 279692355630729505, guid: a8ba132685f95fb4e9596a5102adc342, type: 3}
       propertyPath: _shootDistance
@@ -6129,6 +6165,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 7632472142337899052}
     m_Modifications:
+    - target: {fileID: 408045252025092404, guid: 57e8c599c83d91646a768ec0785c30c7, type: 3}
+      propertyPath: _lookSpeed
+      value: 180
+      objectReference: {fileID: 0}
     - target: {fileID: 7145403886672989737, guid: 57e8c599c83d91646a768ec0785c30c7, type: 3}
       propertyPath: m_Name
       value: Mini-Drone-Left

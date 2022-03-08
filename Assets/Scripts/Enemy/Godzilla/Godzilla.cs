@@ -11,6 +11,7 @@ public class Godzilla : Enemy, IDamageable, IDieingPolicy, ITarget
     public int StartHealth => _startHealth;
 
     public event UnityAction Won;
+    public event UnityAction AttackStarted;
     public event UnityAction Attacked;
     public event UnityAction AttackStopped;
 
@@ -28,7 +29,7 @@ public class Godzilla : Enemy, IDamageable, IDieingPolicy, ITarget
     public void Fight()
     {
         EnableModel();
-        Attacked?.Invoke();
+        AttackStarted?.Invoke();
     }
 
     public void Attack()

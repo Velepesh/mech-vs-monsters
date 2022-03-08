@@ -10,6 +10,7 @@ public class Fight : MonoBehaviour
     [SerializeField] private float _delayTime;
 
     private Player _player;
+
     private void OnEnable()
     {
         _godzilla.Died += OnGodzillaDied;
@@ -48,8 +49,12 @@ public class Fight : MonoBehaviour
 
     private void OnGodzillaDied(IDamageable damageable)
     {
-        _player.StartMove();
-        _game.WinInBattle();
+        if (_player.IsDied == false)
+        {
+            _player.StartMove();
+            _game.WinInBattle();
+        }
+
         damageable.Died -= OnGodzillaDied;
         Destroy(gameObject);
     }

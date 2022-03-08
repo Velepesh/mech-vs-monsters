@@ -41114,7 +41114,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 105043580673251541, guid: 4dbf26e3024e50c4ca996ae6a4d8f118, type: 3}
       propertyPath: _damage
-      value: 8
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 105043580673251541, guid: 4dbf26e3024e50c4ca996ae6a4d8f118, type: 3}
+      propertyPath: _cooldownTime
+      value: 1.1
       objectReference: {fileID: 0}
     - target: {fileID: 987512375019511991, guid: 4dbf26e3024e50c4ca996ae6a4d8f118, type: 3}
       propertyPath: _award
@@ -42166,7 +42170,7 @@ PrefabInstance:
       objectReference: {fileID: 1952765202}
     - target: {fileID: 7189913924357812303, guid: 9cc040cecc15b534c8dd4055a2d4c70b, type: 3}
       propertyPath: _damage
-      value: 150
+      value: 265
       objectReference: {fileID: 0}
     - target: {fileID: 7318534114722673522, guid: 9cc040cecc15b534c8dd4055a2d4c70b, type: 3}
       propertyPath: m_SceneBindings.Array.data[2].value
@@ -42218,7 +42222,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7454191481910524664, guid: 9cc040cecc15b534c8dd4055a2d4c70b, type: 3}
       propertyPath: _damage
-      value: 150
+      value: 275
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9cc040cecc15b534c8dd4055a2d4c70b, type: 3}

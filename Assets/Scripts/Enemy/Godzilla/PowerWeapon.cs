@@ -11,7 +11,6 @@ public class PowerWeapon : Weapon, IShooteable
     [SerializeField] private float _cooldownTime;
     
     private Collider _attackZone;
-    private ITarget _target;
 
     public override event UnityAction Shooted;
 
@@ -37,11 +36,6 @@ public class PowerWeapon : Weapon, IShooteable
         _godzilla.AttackStopped -= OnAttackStopped;
     }
 
-    public new void SetTarget(ITarget target, ITarget thisITarget)
-    {
-        _target = target;
-    }
-
     public new void Shoot()
     {
         _fireEffect.Play();
@@ -52,7 +46,6 @@ public class PowerWeapon : Weapon, IShooteable
 
     private void OnAttacked()
     {
-        _fireEffect.Play();
         Shoot();
     }
 
@@ -70,10 +63,11 @@ public class PowerWeapon : Weapon, IShooteable
 
     private IEnumerator Reload(float time, Player player)
     {
-        _attackZone.enabled = false;
-        yield return new WaitForSeconds(time);
-
         _attackZone.enabled = true;
         player.TakeDamage(_damage);
+
+        yield return new WaitForSeconds(time);
+        
+        _attackZone.enabled = false;
     }
 }

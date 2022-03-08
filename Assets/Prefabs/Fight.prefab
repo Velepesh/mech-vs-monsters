@@ -93,7 +93,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1e6409904ac888e408e220d3de4e981c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _speed: 100
+  _speed: 200
   _startDelayTime: 2
   _game: {fileID: 0}
   _playerSlider: {fileID: 0}
@@ -171,7 +171,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1695280644216018404, guid: 3a2abee4218de8745b5c6ced8df9497a, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0.10000001
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1695280644216018404, guid: 3a2abee4218de8745b5c6ced8df9497a, type: 3}
       propertyPath: m_LocalPosition.y

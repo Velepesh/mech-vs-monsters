@@ -17,14 +17,14 @@ public class GodzillaAnimations : MonoBehaviour
     {
         _godzilla.Died += OnDied;
         _godzilla.Won += OnWon;
-        _godzilla.Attacked += OnAttacked;
+        _godzilla.AttackStarted += OnAttackStarted;
     }
 
     private void OnDisable()
     {
         _godzilla.Died -= OnDied;
         _godzilla.Won -= OnWon;
-        _godzilla.Attacked -= OnAttacked;
+        _godzilla.AttackStarted -= OnAttackStarted;
     }
 
     private void OnDied(IDamageable damageable)
@@ -38,7 +38,7 @@ public class GodzillaAnimations : MonoBehaviour
         _animator.SetTrigger(AnimatorGodzillaController.States.Win);
     }
 
-    private void OnAttacked()
+    private void OnAttackStarted()
     {
         _animator.SetBool(AnimatorGodzillaController.States.IsAttack, true);
     }

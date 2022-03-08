@@ -51,6 +51,35 @@ public class ResetDataDELETE : MonoBehaviour
         PlayerPrefs.SetInt("BodyID", -1);
         PlayerPrefs.SetInt("LegID", -1);
         PlayerPrefs.SetInt("Tutorial", 1);
+        PlayerPrefs.SetInt("BigDrone", 0);
+        PlayerPrefs.SetInt("KneeGunLeft", 0);
+        PlayerPrefs.SetInt("KneeGunRight", 0);
+        PlayerPrefs.SetInt("MiniDroneLeft", 0);
+        PlayerPrefs.SetInt("MiniDroneLeft", 0);
+        PlayerPrefs.SetInt("MinigunLeft", 0);
+        PlayerPrefs.SetInt("MinigunRight", 0);
+        PlayerPrefs.SetInt("RocketgunLeft", 0);
+        PlayerPrefs.SetInt("RocketgunRight", 0);
+        PlayerPrefs.SetInt("Arm_1", 0);
+        PlayerPrefs.SetInt("Arm_2", 0);
+        PlayerPrefs.SetInt("Arm_3", 0);
+        PlayerPrefs.SetInt("Arm_4", 0);
+        PlayerPrefs.SetInt("Arm_5", 0);
+        PlayerPrefs.SetInt("Body_1", 0);
+        PlayerPrefs.SetInt("Body_2", 0);
+        PlayerPrefs.SetInt("Body_3", 0);
+        PlayerPrefs.SetInt("Body_4", 0);
+        PlayerPrefs.SetInt("Body_5", 0);
+        PlayerPrefs.SetInt("Head_1", 0);
+        PlayerPrefs.SetInt("Head_2", 0);
+        PlayerPrefs.SetInt("Head_3", 0);
+        PlayerPrefs.SetInt("Head_4", 0);
+        PlayerPrefs.SetInt("Head_5", 0);
+        PlayerPrefs.SetInt("Leg_1", 0);
+        PlayerPrefs.SetInt("Leg_2", 0);
+        PlayerPrefs.SetInt("Leg_3", 0);
+        PlayerPrefs.SetInt("Leg_4", 0);
+        PlayerPrefs.SetInt("Leg_5", 0);
     }
 
     private void IncreaseMoney()
