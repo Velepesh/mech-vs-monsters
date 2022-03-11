@@ -6,13 +6,11 @@ using TMPro;
 public class WeaponView : MonoBehaviour
 {
     [SerializeField] private TMP_Text _price;
-    [SerializeField] private TMP_Text _level;
     [SerializeField] private Image _icon;
     [SerializeField] private Button _sellButton;
-    [SerializeField] private GameObject _lockedByLevelView;
+    [SerializeField] private GameObject _view;
     [SerializeField] private GameObject _lockedByMoneyView;
 
-    private readonly string _levelText = "Lvl";
 
     public event UnityAction<WeaponView> WeaponButtonClick;
 
@@ -26,50 +24,50 @@ public class WeaponView : MonoBehaviour
         _sellButton.onClick.RemoveListener(OnButtonClick);
     }
 
-    private void TryLockItem(AdditionalWeapon weapon, int level)
+    private void TryLockItem(AdditionalWeapon weapon, PlayerAdditionalWeapon playerAdditionalWeapon)
     {
-        if(level >= weapon.Level)
+        if(playerAdditionalWeapon.IsVisible)
         {
-            UnlockByLevel();
-
+            Debug.Log("IsVisible");
             if (weapon.IsBuyed)
-                Unlock();
+            {
+                Debug.Log("IsBuyed");
+                Hide();
+            }
             else
+            {
                 LockByMoney();
+            }
         }
         else
         {
-            LockByLevel();
+            Hide();
         }
     }
 
-    public void Render(AdditionalWeapon weapon, int level)
+    public void Render(AdditionalWeapon weapon, PlayerAdditionalWeapon playerAdditionalWeapon)
     {
-        TryLockItem(weapon, level);
+        TryLockItem(weapon, playerAdditionalWeapon);
 
         _price.text = weapon.Price.ToString();
-        _level.text = _levelText + " " + weapon.Level.ToString();
         _icon.sprite = weapon.Icon;
     }
 
-    public void Unlock()
+    public void Hide()
     {
-        gameObject.SetActive(false);
+        _view.SetActive(false);
+    }
+
+    public void Show()
+    {
+        _view.SetActive(true);
     }
 
     private void LockByMoney()
     {
+        Debug.Log("Show");
+        Show();
         _lockedByMoneyView.SetActive(true);
-    }
-
-    private void LockByLevel()
-    {
-        gameObject.SetActive(false);
-    }
-
-    private void UnlockByLevel()
-    {
-        _lockedByLevelView.SetActive(false);
     }
 
     private void OnButtonClick()

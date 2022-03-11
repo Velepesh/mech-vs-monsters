@@ -73,7 +73,7 @@ public class LimbShop : MonoBehaviour
             
             ChangePlayerHealth(limb);
 
-            _robotBuilder.SelectLimb(limb.Type, GetLimbIndex(limb));
+            _robotBuilder.SelectLimb(limb, GetLimbIndex(limb));
             LimbSelected?.Invoke();
         }
     }
@@ -81,7 +81,6 @@ public class LimbShop : MonoBehaviour
     private void ChangePlayerHealth(Limb limb)
     {  
         _currentLimb = limb;
-        _currentLimb.Selecte();
         _player.AddHealth(_currentLimb.Health);
     }
 

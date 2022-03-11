@@ -7,16 +7,16 @@ public class AdditionalWeapon : ScriptableObject
     [SerializeField] private int _price;
     [SerializeField] private int _level;
     [SerializeField] private Sprite _icon;
-    [SerializeField] private bool _isBuyed = false;
 
+    private int _isBuiedInt => PlayerPrefs.GetInt(Label, 0);
     public string Label => _label;
     public int Price => _price;
     public int Level => _level;
     public Sprite Icon => _icon;
-    public bool IsBuyed => _isBuyed;
+    public bool IsBuyed => _isBuiedInt == 1;
 
     public void Buy()
     {
-        _isBuyed = true;
+        PlayerPrefs.SetInt(Label, 1);
     }
 }

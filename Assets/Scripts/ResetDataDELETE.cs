@@ -85,26 +85,47 @@ public class ResetDataDELETE : MonoBehaviour
         PlayerPrefs.SetInt("Arm_3", 0);
         PlayerPrefs.SetInt("Arm_4", 0);
         PlayerPrefs.SetInt("Arm_5", 0);
-        PlayerPrefs.SetInt("Body_1", 0);
-        PlayerPrefs.SetInt("Body_2", 0);
-        PlayerPrefs.SetInt("Body_3", 0);
-        PlayerPrefs.SetInt("Body_4", 0);
-        PlayerPrefs.SetInt("Body_5", 0);
-        PlayerPrefs.SetInt("Head_1", 0);
-        PlayerPrefs.SetInt("Head_2", 0);
-        PlayerPrefs.SetInt("Head_3", 0);
-        PlayerPrefs.SetInt("Head_4", 0);
-        PlayerPrefs.SetInt("Head_5", 0);
-        PlayerPrefs.SetInt("Leg_1", 0);
-        PlayerPrefs.SetInt("Leg_2", 0);
-        PlayerPrefs.SetInt("Leg_3", 0);
-        PlayerPrefs.SetInt("Leg_4", 0);
-        PlayerPrefs.SetInt("Leg_5", 0);
+        PlayerPrefs.SetInt("Body_1", 1);
+        PlayerPrefs.SetInt("Body_2", -1);
+        PlayerPrefs.SetInt("Body_3", -1);
+        PlayerPrefs.SetInt("Body_4", -1);
+        PlayerPrefs.SetInt("Body_5", -1);
+        PlayerPrefs.SetInt("Head_1", -1);
+        PlayerPrefs.SetInt("Head_2", -1);
+        PlayerPrefs.SetInt("Head_3", -1);
+        PlayerPrefs.SetInt("Head_4", -1);
+        PlayerPrefs.SetInt("Head_5", -1);
+        PlayerPrefs.SetInt("Leg_1", 1);
+        PlayerPrefs.SetInt("Leg_2", -1);
+        PlayerPrefs.SetInt("Leg_3", -1);
+        PlayerPrefs.SetInt("Leg_4", -1);
+        PlayerPrefs.SetInt("Leg_5", -1);
+        PlayerPrefs.SetInt("Arm_1Select", -1);
+        PlayerPrefs.SetInt("Arm_2Select", -1);
+        PlayerPrefs.SetInt("Arm_3Select", -1);
+        PlayerPrefs.SetInt("Arm_4Select", -1);
+        PlayerPrefs.SetInt("Arm_5Select", -1);
+        PlayerPrefs.SetInt("Body_1Select", -1);
+        PlayerPrefs.SetInt("Body_2Select", -1);
+        PlayerPrefs.SetInt("Body_3Select", -1);
+        PlayerPrefs.SetInt("Body_4Select", -1);
+        PlayerPrefs.SetInt("Body_5Select", -1);
+        PlayerPrefs.SetInt("Head_1Select", -1);
+        PlayerPrefs.SetInt("Head_2Select", -1);
+        PlayerPrefs.SetInt("Head_3Select", -1);
+        PlayerPrefs.SetInt("Head_4Select", -1);
+        PlayerPrefs.SetInt("Head_5Select", -1);
+        PlayerPrefs.SetInt("Leg_1Select", -1);
+        PlayerPrefs.SetInt("Leg_2Select", -1);
+        PlayerPrefs.SetInt("Leg_3Select", -1);
+        PlayerPrefs.SetInt("Leg_4Select", -1);
+        PlayerPrefs.SetInt("Leg_5Select", -1);
+        ResetMoney();
     }
 
     private void IncreaseMoney()
     {
-        PlayerPrefs.SetInt("Balance", 300);
+        PlayerPrefs.SetInt("Balance", 30000);
     }
 
     private void ResetMoney()

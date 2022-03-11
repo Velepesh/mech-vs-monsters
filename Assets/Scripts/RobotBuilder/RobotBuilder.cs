@@ -44,15 +44,17 @@ public class RobotBuilder : MonoBehaviour
             _limbButtons[i].LimbSelected -= OnLimbSelected;
     }
 
-    public void SelectLimb(LimbType type, int index)
+    public void SelectLimb(Limb limb, int index)
     {
-        if (type == LimbType.HEAD)
+        limb.Selecte();
+
+        if (limb.Type == LimbType.HEAD)
             ChangeCurrentLimb(HEAD_ID, index, _heads);
-        else if (type == LimbType.ARM)
+        else if (limb.Type == LimbType.ARM)
             ChangeCurrentLimb(ARM_ID, index, _arms);
-        else if (type == LimbType.BODY)
+        else if (limb.Type == LimbType.BODY)
             ChangeCurrentLimb(BODY_ID, index, _bodies);
-        else if (type == LimbType.LEG)
+        else if (limb.Type == LimbType.LEG)
             ChangeCurrentLimb(LEG_ID, index, _legs);
     }
 
@@ -100,8 +102,12 @@ public class RobotBuilder : MonoBehaviour
 
     private void LoadLimb(PlayerLimb limb)
     {
-        ApplyNewLimb(limb);
-        LoadHealth(limb);
+        if (limb.Limb.IsSelect)
+        {
+            Debug.Log("limb.Limb.IsSelect");
+            ApplyNewLimb(limb);
+            LoadHealth(limb);
+        }
     }
 
     private void ChangeCurrentLimb(string name, int index, IReadOnlyList<PlayerLimb> playerLimbs)
@@ -128,7 +134,7 @@ public class RobotBuilder : MonoBehaviour
         if (limb is Head head)
             head.EnableHead();
 
-        limb.Limb.Selecte();
+        limb.MakeVisible();
         limb.gameObject.SetActive(true);
     }
 

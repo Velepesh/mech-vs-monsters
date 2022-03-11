@@ -9,45 +9,43 @@ public class WeaponShop : MonoBehaviour
     [SerializeField] private Wallet _wallet;
     [SerializeField] private WeaponView _weaponView;
 
-    private readonly int _buyedIndex = 1;
-    private string LABEL => _weapon.Label;
-    private int _isBuiedInt => PlayerPrefs.GetInt(LABEL, 0);
-
     private void Start()
     {
-        if (_isBuiedInt == _buyedIndex)
+        if (_weapon.IsBuyed)
             TakeWeapon();
 
-        AddItem(_weapon, _game.CurrentLevel);
+        AddItem(_weapon, _additionalWeapon);
     }
 
     private void TakeWeapon()
     {
         _robotBuilder.TakeAdditionalWeapon(_additionalWeapon);
-        _weaponView.Unlock();
+        _additionalWeapon.Show();
+        _weaponView.Hide();
     }
 
     private void OnEnable()
     {
+        _additionalWeapon.ViewEnabled += OnViewEnabled;
         _weaponView.WeaponButtonClick += OnWeaponButtonClick;
     }
     private void OnDisable()
     {
+        _additionalWeapon.ViewEnabled -= OnViewEnabled;
         _weaponView.WeaponButtonClick -= OnWeaponButtonClick;
     }
 
-    private void AddItem(AdditionalWeapon weapon, int level)
+    private void AddItem(AdditionalWeapon weapon, PlayerAdditionalWeapon playerAdditionalWeapon)
     {
-        _weaponView.Render(weapon, level);
+        _weaponView.Render(weapon, playerAdditionalWeapon);
     }
 
     private void OnWeaponButtonClick(WeaponView view)
     {
-        if (_game.CurrentLevel >= _weapon.Level)
-        {
-            if (_weapon.IsBuyed == false)
-                TrySellWeapon(_weapon, view);
-        }
+
+        if (_weapon.IsBuyed == false)
+           TrySellWeapon(_weapon, view);
+
 
         if (_weapon.IsBuyed)
             TakeWeapon();
@@ -59,13 +57,14 @@ public class WeaponShop : MonoBehaviour
         {
             _wallet.BuyWeapon(weapon, weapon.Price);
             weapon.Buy();
-            view.Unlock();
-            SaveWeapon();
+            _additionalWeapon.Show();
+            view.Hide();
         }
     }
 
-    private void SaveWeapon()
+    private void OnViewEnabled()
     {
-        PlayerPrefs.SetInt(LABEL, 1);
-    }
+                Debug.Log("BecameVisible");
+        AddItem(_weapon, _additionalWeapon);
+    } 
 }
