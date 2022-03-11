@@ -104,7 +104,6 @@ public class RobotBuilder : MonoBehaviour
     {
         if (limb.Limb.IsSelect)
         {
-            Debug.Log("limb.Limb.IsSelect");
             ApplyNewLimb(limb);
             LoadHealth(limb);
         }

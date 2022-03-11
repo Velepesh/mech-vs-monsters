@@ -28,16 +28,10 @@ public class WeaponView : MonoBehaviour
     {
         if(playerAdditionalWeapon.IsVisible)
         {
-            Debug.Log("IsVisible");
             if (weapon.IsBuyed)
-            {
-                Debug.Log("IsBuyed");
                 Hide();
-            }
             else
-            {
                 LockByMoney();
-            }
         }
         else
         {
@@ -65,7 +59,6 @@ public class WeaponView : MonoBehaviour
 
     private void LockByMoney()
     {
-        Debug.Log("Show");
         Show();
         _lockedByMoneyView.SetActive(true);
     }

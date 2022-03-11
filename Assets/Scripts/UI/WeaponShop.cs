@@ -64,7 +64,6 @@ public class WeaponShop : MonoBehaviour
 
     private void OnViewEnabled()
     {
-                Debug.Log("BecameVisible");
         AddItem(_weapon, _additionalWeapon);
     } 
 }
