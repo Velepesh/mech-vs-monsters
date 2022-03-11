@@ -39891,6 +39891,10 @@ PrefabInstance:
       propertyPath: _additionalWeapon
       value: 
       objectReference: {fileID: 7318534115578550131}
+    - target: {fileID: 2027625529261817635, guid: 54dfa9b28cb51d04f80b7b168bf27623, type: 3}
+      propertyPath: _rocketLauncher
+      value: 
+      objectReference: {fileID: 8398664578934175546}
     - target: {fileID: 2909362064110511929, guid: 54dfa9b28cb51d04f80b7b168bf27623, type: 3}
       propertyPath: _game
       value: 
@@ -39975,6 +39979,10 @@ PrefabInstance:
       propertyPath: _additionalWeapon
       value: 
       objectReference: {fileID: 1190135809}
+    - target: {fileID: 6183259524572025578, guid: 54dfa9b28cb51d04f80b7b168bf27623, type: 3}
+      propertyPath: _rocketLauncher
+      value: 
+      objectReference: {fileID: 8398664578934175546}
     - target: {fileID: 7047241245416366586, guid: 54dfa9b28cb51d04f80b7b168bf27623, type: 3}
       propertyPath: _player
       value: 

@@ -1088,7 +1088,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _damage: 100
-  _cooldownTime: 1
+  _cooldownTime: 1.1
 --- !u!114 &3577334191999205076
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1670,7 +1670,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _damage: 100
-  _cooldownTime: 1
+  _cooldownTime: 1.1
 --- !u!114 &7658636428650817939
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4343,8 +4343,16 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5972582295882603676, guid: 45e2ced0f44fb0a4c97cb0f377bb4094, type: 3}
+      propertyPath: _maxSpeed
+      value: 2300
+      objectReference: {fileID: 0}
+    - target: {fileID: 5972582295882603676, guid: 45e2ced0f44fb0a4c97cb0f377bb4094, type: 3}
+      propertyPath: _minSpeed
+      value: 2200
+      objectReference: {fileID: 0}
+    - target: {fileID: 5972582295882603676, guid: 45e2ced0f44fb0a4c97cb0f377bb4094, type: 3}
       propertyPath: _lookSpeed
-      value: 180
+      value: 200
       objectReference: {fileID: 0}
     - target: {fileID: 5972582295882603676, guid: 45e2ced0f44fb0a4c97cb0f377bb4094, type: 3}
       propertyPath: _cooldownTime
@@ -4428,8 +4436,16 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5972582295882603676, guid: 45e2ced0f44fb0a4c97cb0f377bb4094, type: 3}
+      propertyPath: _maxSpeed
+      value: 2300
+      objectReference: {fileID: 0}
+    - target: {fileID: 5972582295882603676, guid: 45e2ced0f44fb0a4c97cb0f377bb4094, type: 3}
+      propertyPath: _minSpeed
+      value: 2200
+      objectReference: {fileID: 0}
+    - target: {fileID: 5972582295882603676, guid: 45e2ced0f44fb0a4c97cb0f377bb4094, type: 3}
       propertyPath: _lookSpeed
-      value: 180
+      value: 200
       objectReference: {fileID: 0}
     - target: {fileID: 5972582295882603676, guid: 45e2ced0f44fb0a4c97cb0f377bb4094, type: 3}
       propertyPath: _cooldownTime
@@ -4462,7 +4478,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 3427122218716015740, guid: 84e18976213fe874590506d34eab3812, type: 3}
       propertyPath: _lookSpeed
-      value: 180
+      value: 200
       objectReference: {fileID: 0}
     - target: {fileID: 4714971371761254662, guid: 84e18976213fe874590506d34eab3812, type: 3}
       propertyPath: m_RootOrder
@@ -4543,11 +4559,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 958773911311038340, guid: 08dce8d5e1282b04fa0b45136759efe5, type: 3}
       propertyPath: _lookSpeed
-      value: 180
+      value: 200
       objectReference: {fileID: 0}
     - target: {fileID: 1031313558338986548, guid: 08dce8d5e1282b04fa0b45136759efe5, type: 3}
       propertyPath: _lookSpeed
-      value: 180
+      value: 200
       objectReference: {fileID: 0}
     - target: {fileID: 3492888207451628002, guid: 08dce8d5e1282b04fa0b45136759efe5, type: 3}
       propertyPath: m_RootOrder
@@ -4639,7 +4655,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 408045252025092404, guid: 57e8c599c83d91646a768ec0785c30c7, type: 3}
       propertyPath: _lookSpeed
-      value: 180
+      value: 200
       objectReference: {fileID: 0}
     - target: {fileID: 7145403886672989737, guid: 57e8c599c83d91646a768ec0785c30c7, type: 3}
       propertyPath: m_Name
@@ -4720,7 +4736,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 279692355630729505, guid: a8ba132685f95fb4e9596a5102adc342, type: 3}
       propertyPath: _lookSpeed
-      value: 180
+      value: 200
       objectReference: {fileID: 0}
     - target: {fileID: 279692355630729505, guid: a8ba132685f95fb4e9596a5102adc342, type: 3}
       propertyPath: _shootDistance
@@ -4829,7 +4845,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 3427122218716015740, guid: 84e18976213fe874590506d34eab3812, type: 3}
       propertyPath: _lookSpeed
-      value: 180
+      value: 200
       objectReference: {fileID: 0}
     - target: {fileID: 4714971371761254662, guid: 84e18976213fe874590506d34eab3812, type: 3}
       propertyPath: m_RootOrder
@@ -5929,7 +5945,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 279692355630729505, guid: a8ba132685f95fb4e9596a5102adc342, type: 3}
       propertyPath: _lookSpeed
-      value: 180
+      value: 200
       objectReference: {fileID: 0}
     - target: {fileID: 279692355630729505, guid: a8ba132685f95fb4e9596a5102adc342, type: 3}
       propertyPath: _shootDistance
@@ -6167,7 +6183,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 408045252025092404, guid: 57e8c599c83d91646a768ec0785c30c7, type: 3}
       propertyPath: _lookSpeed
-      value: 180
+      value: 200
       objectReference: {fileID: 0}
     - target: {fileID: 7145403886672989737, guid: 57e8c599c83d91646a768ec0785c30c7, type: 3}
       propertyPath: m_Name

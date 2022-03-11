@@ -159,7 +159,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _health: 30
-  _award: 5
+  _award: 3
   _offsetX: 1.2
 --- !u!65 &3488531724301988865
 BoxCollider:

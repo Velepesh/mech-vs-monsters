@@ -16,12 +16,16 @@ public class Limb : ScriptableObject
     public string Label => _label;
     public int Price => _price;
     public Sprite Icon => _icon;
-    public bool IsBuyed => _isBuyed;
+    public bool IsBuyed => _isBuiedInt == 1;
     public bool IsSelect => _isSelect;
     public LimbType Type => _type;
     public int Health => _health;
 
-    public void Load()
+    private void OnEnable()
+    {
+        Load();
+    }
+    private void Load()
     {
         if (_isBuiedInt == 1)
             _isBuyed = true;

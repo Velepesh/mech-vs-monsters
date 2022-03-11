@@ -1,9 +1,10 @@
 using UnityEngine;
+using UnityEngine.UI;
 
 public class FightPanel : MonoBehaviour
 {
     [SerializeField] private Game _game;
-    [SerializeField] private RocketLauncherButton _rocketLauncherButton;
+    [SerializeField] private Button _rocketLauncherButton;
     [SerializeField] private GameObject _tutorialPanel;
 
     private void Start()

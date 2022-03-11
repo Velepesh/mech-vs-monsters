@@ -42,8 +42,6 @@ public class LimbShop : MonoBehaviour
 
     private void AddItem(Limb limb)
     {
-        limb.Load();
-
         LimbView view = Instantiate(_template, _itemContainer.transform);
         _limbViews.Add(view);
         view.Render(limb);

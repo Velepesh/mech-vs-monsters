@@ -20,7 +20,7 @@ public class ResetDataDELETE : MonoBehaviour
         }
 
 
-        if (Input.GetKeyDown(KeyCode.K))
+        if (Input.GetKeyDown(KeyCode.T))
         {
             PlayerPrefs.SetInt("CurrentLevelID", 1);
             Debug.Log("Level " + PlayerPrefs.GetInt("CurrentLevelID"));
@@ -42,6 +42,26 @@ public class ResetDataDELETE : MonoBehaviour
             ResetMoney();
             Debug.Log("ResetMoney");
         }
+
+        if (Input.GetKeyDown(KeyCode.Y))
+        {
+            PlayerPrefs.SetInt("CurrentLevelID", 5);
+        }
+
+        if (Input.GetKeyDown(KeyCode.U))
+        {
+            PlayerPrefs.SetInt("CurrentLevelID", 10);
+        }
+
+        if (Input.GetKeyDown(KeyCode.I))
+        {
+            PlayerPrefs.SetInt("CurrentLevelID", 15);
+        }
+
+        if (Input.GetKeyDown(KeyCode.O))
+        {
+            PlayerPrefs.SetInt("CurrentLevelID", 20);
+        }
     }
 
     private void SaveCurrentTemplateIndex()
@@ -55,7 +75,7 @@ public class ResetDataDELETE : MonoBehaviour
         PlayerPrefs.SetInt("KneeGunLeft", 0);
         PlayerPrefs.SetInt("KneeGunRight", 0);
         PlayerPrefs.SetInt("MiniDroneLeft", 0);
-        PlayerPrefs.SetInt("MiniDroneLeft", 0);
+        PlayerPrefs.SetInt("MiniDroneRight", 0);
         PlayerPrefs.SetInt("MinigunLeft", 0);
         PlayerPrefs.SetInt("MinigunRight", 0);
         PlayerPrefs.SetInt("RocketgunLeft", 0);

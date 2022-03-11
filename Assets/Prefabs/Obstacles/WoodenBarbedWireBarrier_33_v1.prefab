@@ -140,7 +140,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: afb9bfee6e441a34ab84dbbdc0dbe7c2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _health: 50
+  _health: 15
   _award: 1
   _offsetX: 1
 --- !u!114 &3151326308011501659
