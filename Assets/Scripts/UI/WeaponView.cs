@@ -57,11 +57,6 @@ public class WeaponView : MonoBehaviour
         gameObject.SetActive(false);
     }
 
-    private void UnlockByMoney()
-    {
-        _lockedByMoneyView.SetActive(false);
-    }
-
     private void LockByMoney()
     {
         _lockedByMoneyView.SetActive(true);
@@ -70,8 +65,6 @@ public class WeaponView : MonoBehaviour
     private void LockByLevel()
     {
         gameObject.SetActive(false);
-        //_lockedByMoneyView.SetActive(true);
-        //UnlockByMoney();
     }
 
     private void UnlockByLevel()
