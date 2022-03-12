@@ -9,9 +9,10 @@ public class Limb : ScriptableObject
     [SerializeField] private Sprite _icon;
     [SerializeField] private LimbType _type;
     [SerializeField] private int _health;
+    [SerializeField] private int _defaultValue;
 
     private readonly string _selectText = "Select";
-    private int _isBuiedInt => PlayerPrefs.GetInt(_label, 0);
+    private int _isBuiedInt => PlayerPrefs.GetInt(_label, _defaultValue);
     private int _isSelectInt => PlayerPrefs.GetInt(_label + _selectText, 0);
 
     public string Label => _label;

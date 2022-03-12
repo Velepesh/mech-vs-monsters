@@ -9,7 +9,7 @@ public class Wallet : MonoBehaviour
     private int _money;
     private Player _player;
 
-    public int Money => PlayerPrefs.GetInt(BALANCE, 300);
+    public int Money => PlayerPrefs.GetInt(BALANCE, 0);
 
     public event UnityAction<int> MoneyChanged;
     public event UnityAction<string, string, int> Bought;
