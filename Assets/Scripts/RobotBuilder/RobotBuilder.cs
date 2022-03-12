@@ -74,6 +74,16 @@ public class RobotBuilder : MonoBehaviour
         _player.AddHealth(limb.Health);
     }
 
+    private void LoadAttackForce(PlayerLimb limb)
+    {
+        _player.AddAttackForce(limb.Limb.SpecificationValue);
+    }
+
+    private void LoadSpeed(PlayerLimb limb)
+    {
+        _player.LoadSpeed(limb.Limb.SpecificationValue);
+    }
+
     private void TryWear()
     {
         if (_currentHeadIndex > _defaultIndex)
@@ -96,6 +106,7 @@ public class RobotBuilder : MonoBehaviour
         {
             LoadLimb(_legs[_currentLegIndex]);
             UnlockButton<BodyButton>();
+
             LegSelected?.Invoke();
         }
     }
@@ -106,6 +117,12 @@ public class RobotBuilder : MonoBehaviour
         {
             ApplyNewLimb(limb);
             LoadHealth(limb);
+
+
+            if (limb is Leg)
+                LoadSpeed(limb);
+            else
+                LoadAttackForce(limb);
         }
     }
 
@@ -132,6 +149,12 @@ public class RobotBuilder : MonoBehaviour
         
         if (limb is Head head)
             head.EnableHead();
+
+        if (limb is Body body)
+            body.EnebleGuns();
+
+        if (limb is Leg leg)
+            _player.ChangeLeg(leg);
 
         limb.MakeVisible();
         limb.gameObject.SetActive(true);

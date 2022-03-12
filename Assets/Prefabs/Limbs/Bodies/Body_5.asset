@@ -14,8 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _label: Body_5
   _price: 4000
+  _specificationValue: 18
   _icon: {fileID: 21300000, guid: f2744a1a981af2d428977a3f658a7ab8, type: 3}
-  _isBuyed: 0
   _type: 2
   _health: 300
-  _isSelect: 0

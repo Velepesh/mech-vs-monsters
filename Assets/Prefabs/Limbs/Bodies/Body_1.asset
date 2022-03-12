@@ -14,6 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _label: Body_1
   _price: 0
+  _specificationValue: 5
   _icon: {fileID: 21300000, guid: 406a4ea81f7e09949976d97a9d44af34, type: 3}
   _type: 2
   _health: 100

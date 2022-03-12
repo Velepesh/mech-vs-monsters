@@ -6,13 +6,13 @@ public class MenuHealthView : MonoBehaviour
     [SerializeField] private Player _player;
     [SerializeField] private TMP_Text _healthText;
 
-    private int _currentMoney;
+    private int _currentHealth;
 
     private void OnEnable()
     {
-        _currentMoney = _player.Health;
+        _currentHealth = _player.Health;
 
-        _healthText.text = _currentMoney.ToString();
+        _healthText.text = _currentHealth.ToString();
 
         _player.HealthChanged += OnHealthChanged;
     }

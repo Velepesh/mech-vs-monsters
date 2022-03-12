@@ -6,7 +6,8 @@ using TMPro;
 public class LimbView : MonoBehaviour
 {
     [SerializeField] private TMP_Text _price;
-    [SerializeField] private TMP_Text _health;
+    [SerializeField] private TMP_Text _healthText;
+    [SerializeField] private TMP_Text _specificationText;
     [SerializeField] private Image _icon;
     [SerializeField] private Button _sellButton;
     [SerializeField] private GameObject _lockedView;
@@ -31,7 +32,8 @@ public class LimbView : MonoBehaviour
         TryLockItem(limb);
 
         _price.text = limb.Price.ToString();
-        _health.text = limb.Health.ToString();
+        _healthText.text = limb.Health.ToString();
+        _specificationText.text = limb.SpecificationValue.ToString();
         _icon.sprite = limb.Icon;
     }
 

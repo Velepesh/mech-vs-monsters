@@ -6,6 +6,8 @@ public class Player : MonoBehaviour, IDamageable, ITarget, IDieingPolicy
     private readonly int _award = 0;
     
     private int _health;
+    private int _speed;
+    private int _attackForce;
     private int _startHealth;
     public Vector3 Position => transform.position + new Vector3(0f, 1f, 0f);
 
@@ -15,13 +17,18 @@ public class Player : MonoBehaviour, IDamageable, ITarget, IDieingPolicy
     public event UnityAction<IDamageable> Died;
     public event UnityAction<int> MoneyAdded;
     public event UnityAction<int> HealthChanged;
+    public event UnityAction<int> SpeedChanged;
+    public event UnityAction<int> AttackForceChanged;
     public event UnityAction Standed;
     public event UnityAction Attacked;
     public event UnityAction Won;
+    public event UnityAction<Leg> LegChanged;
     public event UnityAction<Godzilla> Fought;
     public event UnityAction<Transform, Godzilla> Prepeared;
 
     public int Health => _health;
+    public int AttackForce => _attackForce; 
+    public int Speed => _speed;
     public int Award => _award;
     public int StartHealth => _startHealth;
     public bool IsDied => _health <= 0;
@@ -31,6 +38,11 @@ public class Player : MonoBehaviour, IDamageable, ITarget, IDieingPolicy
         _startHealth = _health;
         StartMove();
         LevelStarted?.Invoke();
+    } 
+    
+    public void ChangeLeg(Leg leg)
+    {
+        LegChanged?.Invoke(leg);
     }
 
     public void StartMove()
@@ -65,6 +77,21 @@ public class Player : MonoBehaviour, IDamageable, ITarget, IDieingPolicy
         HealthChanged?.Invoke(_health);
     }
 
+    public void AddAttackForce(int attackForce)
+    {
+        _attackForce += attackForce;
+        AttackForceChanged?.Invoke(_attackForce);
+    }
+
+    public void RemoveAttackForce(int attackForce)
+    {
+        if (attackForce > _attackForce)
+            _attackForce = 0;
+        else
+            _attackForce -= attackForce;
+
+        AttackForceChanged?.Invoke(_attackForce);
+    }
     public void AddMoney(int money)
     {
         MoneyAdded?.Invoke(money);
@@ -111,4 +138,12 @@ public class Player : MonoBehaviour, IDamageable, ITarget, IDieingPolicy
         StopMoving();
         Died?.Invoke(this);
     }
+
+    public void LoadSpeed(int speed)
+    {
+        _speed = speed;
+
+        SpeedChanged?.Invoke(speed);
+    }
+
 }

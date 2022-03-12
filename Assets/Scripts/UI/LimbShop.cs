@@ -69,19 +69,38 @@ public class LimbShop : MonoBehaviour
             {
                 _player.RemoveHealth(_currentLimb.Health);
                 _currentLimb.Unselecte();
+
+                if(_currentLimb.Type != LimbType.LEG)
+                    _player.RemoveAttackForce(_currentLimb.SpecificationValue);
             }
-            
+           
             ChangePlayerHealth(limb);
+
+            if (limb.Type == LimbType.LEG)
+                ChangeMoveSpeed(limb);
+            else
+                ChangeAttackForce(limb);
 
             _robotBuilder.SelectLimb(limb, GetLimbIndex(limb));
             LimbSelected?.Invoke();
+
+            _currentLimb = limb;
         }
     }
 
     private void ChangePlayerHealth(Limb limb)
     {  
-        _currentLimb = limb;
-        _player.AddHealth(_currentLimb.Health);
+        _player.AddHealth(limb.Health);
+    }
+
+    private void ChangeAttackForce(Limb limb)
+    {
+        _player.AddAttackForce(limb.SpecificationValue);
+    }
+
+    private void ChangeMoveSpeed(Limb limb)
+    {
+        _player.LoadSpeed(limb.SpecificationValue);
     }
 
     private void TrySellLimb(Limb limb, LimbView view)

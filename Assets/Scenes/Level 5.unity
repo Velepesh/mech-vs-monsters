@@ -39730,6 +39730,10 @@ PrefabInstance:
       propertyPath: _robotBuilder
       value: 
       objectReference: {fileID: 1457658913}
+    - target: {fileID: 1333363642384575072, guid: 54dfa9b28cb51d04f80b7b168bf27623, type: 3}
+      propertyPath: _player
+      value: 
+      objectReference: {fileID: 6391152800824965803}
     - target: {fileID: 1764818585300548576, guid: 54dfa9b28cb51d04f80b7b168bf27623, type: 3}
       propertyPath: _game
       value: 
@@ -39770,6 +39774,10 @@ PrefabInstance:
       propertyPath: _game
       value: 
       objectReference: {fileID: 1952765202}
+    - target: {fileID: 3164794463630459758, guid: 54dfa9b28cb51d04f80b7b168bf27623, type: 3}
+      propertyPath: _player
+      value: 
+      objectReference: {fileID: 6391152800824965803}
     - target: {fileID: 3934488478934852396, guid: 54dfa9b28cb51d04f80b7b168bf27623, type: 3}
       propertyPath: _game
       value: 

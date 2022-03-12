@@ -5,6 +5,7 @@ public class Limb : ScriptableObject
 {
     [SerializeField] private string _label;
     [SerializeField] private int _price;
+    [SerializeField] private int _specificationValue;
     [SerializeField] private Sprite _icon;
     [SerializeField] private LimbType _type;
     [SerializeField] private int _health;
@@ -15,6 +16,7 @@ public class Limb : ScriptableObject
 
     public string Label => _label;
     public int Price => _price;
+    public int SpecificationValue => _specificationValue;
     public Sprite Icon => _icon;
     public bool IsBuyed => _isBuiedInt == 1;
     public bool IsSelect => _isSelectInt == 1;

@@ -13,19 +13,6 @@ public class ResetDataDELETE : MonoBehaviour
             Debug.Log("Template Reset");
         }
 
-        if (Input.GetKeyDown(KeyCode.L))
-        {
-            PlayerPrefs.SetInt("CurrentLevelID", 20);
-            Debug.Log("Level " + PlayerPrefs.GetInt("CurrentLevelID"));
-        }
-
-
-        if (Input.GetKeyDown(KeyCode.T))
-        {
-            PlayerPrefs.SetInt("CurrentLevelID", 1);
-            Debug.Log("Level " + PlayerPrefs.GetInt("CurrentLevelID"));
-        }
-
         if (Input.GetKeyDown(KeyCode.Space))
         {
             SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
@@ -35,32 +22,6 @@ public class ResetDataDELETE : MonoBehaviour
         {
             IncreaseMoney();
             Debug.Log("IncreaseMoney");
-        }
-
-        if (Input.GetKeyDown(KeyCode.W))
-        {
-            ResetMoney();
-            Debug.Log("ResetMoney");
-        }
-
-        if (Input.GetKeyDown(KeyCode.Y))
-        {
-            PlayerPrefs.SetInt("CurrentLevelID", 5);
-        }
-
-        if (Input.GetKeyDown(KeyCode.U))
-        {
-            PlayerPrefs.SetInt("CurrentLevelID", 10);
-        }
-
-        if (Input.GetKeyDown(KeyCode.I))
-        {
-            PlayerPrefs.SetInt("CurrentLevelID", 15);
-        }
-
-        if (Input.GetKeyDown(KeyCode.O))
-        {
-            PlayerPrefs.SetInt("CurrentLevelID", 20);
         }
     }
 
@@ -121,11 +82,12 @@ public class ResetDataDELETE : MonoBehaviour
         PlayerPrefs.SetInt("Leg_4Select", -1);
         PlayerPrefs.SetInt("Leg_5Select", -1);
         ResetMoney();
+        PlayerPrefs.SetInt("CurrentLevelID", 1);
     }
 
     private void IncreaseMoney()
     {
-        PlayerPrefs.SetInt("Balance", 30000);
+        PlayerPrefs.SetInt("Balance", 100000);
     }
 
     private void ResetMoney()
