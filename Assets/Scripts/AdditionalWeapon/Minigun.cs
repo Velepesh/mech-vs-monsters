@@ -5,7 +5,7 @@ public class Minigun : PlayerAdditionalWeapon
     [SerializeField] private Animator _animator;
     [SerializeField] private Machinegun _machinegun;
 
-    private void OnEnable()
+    private void Awake()
     {
         _machinegun.Shooted += OnShooted;
         _machinegun.LostTarget += OnLostTarget;
