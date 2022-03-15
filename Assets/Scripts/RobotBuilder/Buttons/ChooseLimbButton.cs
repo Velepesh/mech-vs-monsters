@@ -9,7 +9,9 @@ public abstract class ChooseLimbButton : MonoBehaviour
     [SerializeField] protected GameObject LockPanel;
 
     public event UnityAction<ChooseLimbButton> LimbSelected;
-    public abstract event UnityAction<LimbShop> Opened;
+    public abstract event UnityAction<LimbShop, ChooseLimbButton> Opened;
+
+    public LimbShop LimbShop => Shop;
 
     private void OnEnable()
     {
@@ -27,9 +29,9 @@ public abstract class ChooseLimbButton : MonoBehaviour
 
     public abstract void Unlock();
 
+    public abstract void Open();
+    
     protected abstract void OnButtonClick();
-
-    protected abstract void Open();
 
     protected abstract void Close();
 

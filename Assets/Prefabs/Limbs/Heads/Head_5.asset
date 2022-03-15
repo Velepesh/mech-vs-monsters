@@ -13,8 +13,9 @@ MonoBehaviour:
   m_Name: Head_5
   m_EditorClassIdentifier: 
   _label: Head_5
-  _price: 2100
+  _price: 2500
   _specificationValue: 16
   _icon: {fileID: 21300000, guid: 9cbe1cc95158da340b13f147b40f7171, type: 3}
   _type: 0
   _health: 90
+  _defaultValue: 0

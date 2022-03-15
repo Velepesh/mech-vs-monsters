@@ -7,13 +7,23 @@ public class LimbShopsHolder : MonoBehaviour
     [SerializeField] private Button _emptySpaceButton;
     [SerializeField] private List<ChooseLimbButton> _chooseLimbButtons;
 
+    private const string LAST_OPENED_SHOP_ID = "LastOpenedShopID";
+    private readonly int _defaultIndex = -1;
+
     private LimbShop _openedShop;
     private bool _isSpaceButtonActive;
+    private int _currentShopID => PlayerPrefs.GetInt(LAST_OPENED_SHOP_ID, _defaultIndex);
 
     private void Start()
     {
         _isSpaceButtonActive = true;
         DisableEmptySpaceButton();
+
+        if (_currentShopID > _defaultIndex)
+        {
+            _openedShop = _chooseLimbButtons[_currentShopID].LimbShop;
+            _chooseLimbButtons[_currentShopID].Open();
+        }
     }
 
     public void TurnOffEmptySpaceButton()
@@ -43,7 +53,7 @@ public class LimbShopsHolder : MonoBehaviour
         DisableEmptySpaceButton();
     }
 
-    private void OnOpened(LimbShop shop)
+    private void OnOpened(LimbShop shop, ChooseLimbButton chooseLimbButton)
     {
         if (_openedShop != shop)
         {
@@ -52,6 +62,7 @@ public class LimbShopsHolder : MonoBehaviour
             _openedShop = shop;
         }
 
+        SaveLastOpenedShop(chooseLimbButton);
         EnableEmptySpaceButton();
     }
 
@@ -70,5 +81,17 @@ public class LimbShopsHolder : MonoBehaviour
     private void DisableEmptySpaceButton()
     {
         _emptySpaceButton.interactable = false;
+    }
+
+    private void SaveLastOpenedShop(ChooseLimbButton chooseLimbButton)
+    {
+        for (int i = 0; i < _chooseLimbButtons.Count; i++)
+        {
+            if (_chooseLimbButtons[i] == chooseLimbButton)
+            {
+                PlayerPrefs.SetInt(LAST_OPENED_SHOP_ID, i);
+                return;
+            }
+        }
     }
 }

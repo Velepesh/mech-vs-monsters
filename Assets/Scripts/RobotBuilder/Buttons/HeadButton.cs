@@ -2,7 +2,7 @@ using UnityEngine.Events;
 
 public class HeadButton : ChooseLimbButton
 {
-    public override event UnityAction<LimbShop> Opened;
+    public override event UnityAction<LimbShop, ChooseLimbButton> Opened;
     public override void Lock()
     {
         LockPanel.SetActive(true);
@@ -15,15 +15,15 @@ public class HeadButton : ChooseLimbButton
         Button.interactable = true;
     }
 
+    public override void Open()
+    {
+        Opened?.Invoke(Shop, this);
+        Shop.gameObject.SetActive(true);
+    }
+
     protected override void Close()
     {
         Shop.gameObject.SetActive(false);
-    }
-
-    protected override void Open()
-    {
-        Opened?.Invoke(Shop);
-        Shop.gameObject.SetActive(true);
     }
 
     protected override void OnButtonClick()

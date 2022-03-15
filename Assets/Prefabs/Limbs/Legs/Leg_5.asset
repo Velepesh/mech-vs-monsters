@@ -13,8 +13,9 @@ MonoBehaviour:
   m_Name: Leg_5
   m_EditorClassIdentifier: 
   _label: Leg_5
-  _price: 2500
+  _price: 3000
   _specificationValue: 27
   _icon: {fileID: 21300000, guid: adaf75f82c9c2644f9490ea30610db6c, type: 3}
   _type: 3
   _health: 200
+  _defaultValue: 0

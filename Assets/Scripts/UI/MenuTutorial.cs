@@ -82,7 +82,7 @@ public class MenuTutorial : MonoBehaviour
             _scrollRects[i].enabled = false;
     }
 
-    private void OnOpened(LimbShop shop)
+    private void OnOpened(LimbShop shop, ChooseLimbButton chooseLimbButton)
     {
         _animator.SetTrigger(AnimatorMenuTutorialController.States.SelectLimb);
 

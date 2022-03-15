@@ -83,6 +83,7 @@ public class ResetDataDELETE : MonoBehaviour
         PlayerPrefs.SetInt("Leg_5Select", -1);
         ResetMoney();
         PlayerPrefs.SetInt("CurrentLevelID", 1);
+        PlayerPrefs.SetInt("LastOpenedShopID", -1);
     }
 
     private void IncreaseMoney()
