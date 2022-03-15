@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class RocketLauncher : Weapon, IShooteable
 {
+    [SerializeField] private TargetDetector _targetDetector;
     [SerializeField] private GameObject _muzzleflare;
     [SerializeField] private Transform _shootPoint;
     [SerializeField] private GameObject _bullet;
@@ -11,6 +12,7 @@ public class RocketLauncher : Weapon, IShooteable
     [SerializeField] private float _speed;
 
     private bool _canShoot = true;
+    private Quaternion _startRotation;
 
     public override event UnityAction Shooted;
     public event UnityAction<float> Reloaded;
@@ -18,6 +20,11 @@ public class RocketLauncher : Weapon, IShooteable
     private void OnValidate()
     {
         _reloadingTime = Mathf.Clamp(_reloadingTime, 0, float.MaxValue);
+    }
+
+    private void Start()
+    {
+        _startRotation = transform.rotation;
     }
 
     public void TryShoot()
@@ -28,8 +35,14 @@ public class RocketLauncher : Weapon, IShooteable
 
     public new void Shoot()
     {
-        Instantiate(_muzzleflare, _shootPoint.position, _shootPoint.rotation);
+        ITarget target = _targetDetector.GetTargetForRocketLauncher(transform.position);
 
+        if (target != null)
+            TurnToTarget(target.Position);
+        else
+            transform.rotation = _startRotation;
+
+        Instantiate(_muzzleflare, _shootPoint.position, _shootPoint.rotation);
 
         Rigidbody rocketInstance = Instantiate(_bullet.GetComponent<Rigidbody>(), _shootPoint.position, _shootPoint.rotation) as Rigidbody;
 
@@ -47,5 +60,14 @@ public class RocketLauncher : Weapon, IShooteable
         yield return new WaitForSeconds(_reloadingTime);
 
         _canShoot = true;
+    }
+
+    public new void TurnToTarget(Vector3 target)
+    {
+        Vector3 direction = target - transform.position;
+
+        Quaternion targetRotation = Quaternion.LookRotation(direction);
+
+        transform.rotation = targetRotation;
     }
 }

@@ -53,7 +53,7 @@ public class AttackMover : MonoBehaviour
                             _player.Stand();
                         }
 
-                         _attacker.Attack();
+                         _attacker.Attack(false);
 
                         if (_target == null)
                             _attacker.Reload();

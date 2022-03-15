@@ -2,13 +2,17 @@ using UnityEngine;
 
 public class RocketProjectile : DamageCollider
 {
+    [SerializeField] private int _damageOnHouse = 1000;
+    [SerializeField] private int _damageOnBarricade = 150;
     [SerializeField] private float _radius = 1;
     [SerializeField] private float _explosionForce = 1;
     [SerializeField] private GameObject _rocketExplosion;
     [SerializeField] private ParticleSystem _disableOnHit;
+    [SerializeField] private LayerMask _layerMask;
 
     private void OnValidate()
     {
+        _damageOnHouse = Mathf.Clamp(_damageOnHouse, 0, int.MaxValue);
         _radius = Mathf.Clamp(_radius, 0, float.MaxValue);
         _explosionForce = Mathf.Clamp(_explosionForce, 0, float.MaxValue);
     }
@@ -24,13 +28,17 @@ public class RocketProjectile : DamageCollider
 
     private void Explode()
     {
-        Collider[] colliders = Physics.OverlapSphere(transform.position, _radius);
+        Collider[] colliders = Physics.OverlapSphere(transform.position, _radius, _layerMask);
 
         foreach (Collider collider in colliders)
         {
             if (collider.gameObject.TryGetComponent(out IDamageable damageable))
             {
-                if(damageable is Player == false && damageable is PlayerCollider == false && damageable is PlayerAttackCollider == false && damageable is EnemyCollider == false)
+                if (damageable is House)
+                    DoDamage(damageable, _damageOnHouse);
+                else if(damageable is Barricade)
+                    DoDamage(damageable, _damageOnBarricade);
+                else if(damageable is EnemyCollider == false)
                     DoDamage(damageable);
 
                 if (collider.TryGetComponent(out Rigidbody rigidbody))

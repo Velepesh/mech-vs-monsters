@@ -44,7 +44,7 @@ public class PlayerInput : MonoBehaviour
             if (!EventSystem.current.IsPointerOverGameObject())
             {
                 if (_isFight)
-                    _attacker.Attack();
+                    _attacker.Attack(true);
                 else
                     _mousePositionX = Input.mousePosition.x;
             }

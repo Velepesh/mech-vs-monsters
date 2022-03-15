@@ -1,10 +1,10 @@
 using UnityEngine;
+using System.Collections;
 
 [RequireComponent(typeof(Animator))]
 public class PlayerAnimations : MonoBehaviour
 {
     [SerializeField] private Player _player;
-   // [SerializeField] private PlayerInput _input;
     [SerializeField] private Attacker _attacker;
     [SerializeField] private RocketLauncher _rocketLauncher;
     [SerializeField] private RobotBuilder _robotBuilder;
@@ -22,7 +22,6 @@ public class PlayerAnimations : MonoBehaviour
         _player.MovingStarted += OnMovingStarted;
         _player.Won += OnWon;
         _player.Standed += OnStanded;
-        _player.Attacked += OnAttacked;
         _attacker.Attacked += OnAttacked;
         _rocketLauncher.Shooted += OnShooted;
     }
@@ -32,7 +31,6 @@ public class PlayerAnimations : MonoBehaviour
         _player.Won -= OnWon;
         _player.MovingStarted -= OnMovingStarted;
         _player.Standed -= OnStanded;
-        _player.Attacked -= OnAttacked;
         _attacker.Attacked -= OnAttacked;
         _rocketLauncher.Shooted -= OnShooted;
     }
@@ -47,9 +45,11 @@ public class PlayerAnimations : MonoBehaviour
         _animator.SetTrigger(AnimatorPlayerController.States.ShotRocket);
     }
 
-    private void OnAttacked()
+    private void OnAttacked(float speed)
     {
-        if(_robotBuilder.IsArmSelected == false)
+        _animator.speed = speed;
+
+        if (_robotBuilder.IsArmSelected == false)
         {
             AttackByLeg();
         }
@@ -82,5 +82,10 @@ public class PlayerAnimations : MonoBehaviour
     private void OnWon()
     {
         _animator.SetTrigger(AnimatorPlayerController.States.Win);
+    }
+
+    private void EndAttack()
+    {
+        _animator.speed = 1;
     }
 }

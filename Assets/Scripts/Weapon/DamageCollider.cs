@@ -18,4 +18,9 @@ public abstract class DamageCollider : MonoBehaviour
     { 
         damageable.TakeDamage(_damage);
     }
+
+    protected void DoDamage(IDamageable damageable, int damage)
+    {
+        damageable.TakeDamage(damage);
+    }
 }

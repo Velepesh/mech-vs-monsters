@@ -20,7 +20,6 @@ public class Player : MonoBehaviour, IDamageable, ITarget, IDieingPolicy
     public event UnityAction<int> SpeedChanged;
     public event UnityAction<int> AttackForceChanged;
     public event UnityAction Standed;
-    public event UnityAction Attacked;
     public event UnityAction Won;
     public event UnityAction<Leg> LegChanged;
     public event UnityAction<Godzilla> Fought;
@@ -48,11 +47,6 @@ public class Player : MonoBehaviour, IDamageable, ITarget, IDieingPolicy
     public void StartMove()
     {
         MovingStarted?.Invoke();
-    }
-
-    public void Attack()
-    {
-        Attacked.Invoke();
     }
 
     public void Win()

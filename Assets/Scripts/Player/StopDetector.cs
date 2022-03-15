@@ -1,6 +1,5 @@
 using UnityEngine;
 
-//[RequireComponent(typeof(BoxCollider))]
 public class StopDetector : MonoBehaviour
 {
     [SerializeField] private LayerMask _enemyMask;
@@ -8,11 +7,6 @@ public class StopDetector : MonoBehaviour
     [SerializeField] private BoxCollider _searchingEnemycollider;
     [SerializeField] private BoxCollider _searchingObstaclecollider;
 
-    //private void Awake()
-    //{
-    //    _collider = GetComponent<BoxCollider>();
-    //}
-   
     public bool IsNearEnemy(float distance)
     {
         bool isHit = IsHeat(_searchingEnemycollider, _enemyMask, distance);

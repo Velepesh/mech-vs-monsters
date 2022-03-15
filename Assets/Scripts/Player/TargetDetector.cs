@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 public class TargetDetector : MonoBehaviour
@@ -23,6 +24,11 @@ public class TargetDetector : MonoBehaviour
     public ITarget GetClosestTarget(Vector3 weaponPosition)
     {
         return SearchClosest(weaponPosition, _targets);
+    }
+
+    public ITarget GetTargetForRocketLauncher(Vector3 weaponPosition)
+    {
+        return SearchTargetRocketLauncher(weaponPosition, _targets);
     }
 
     private void AddFightTarget(Godzilla godzilla)
@@ -80,12 +86,12 @@ public class TargetDetector : MonoBehaviour
             foreach (Weapon weapon in _playerWeapons.AutomaticWeapons)
             {
                 if (weapon.Target == null || weapon.Target.IsDied)
-                    ApplyClosesTarget(weapon);
+                    ApplyClosestTarget(weapon);
             }
         }
     }
 
-    private void ApplyClosesTarget(Weapon weapon)
+    private void ApplyClosestTarget(Weapon weapon)
     {
         if (weapon != null)
         {
@@ -114,6 +120,36 @@ public class TargetDetector : MonoBehaviour
                 closest = target;
             }
         }
+
+        return closest;
+    }
+
+    private ITarget SearchTargetRocketLauncher<T>(Vector3 weaponPosition, List<T> targets)
+    {
+        ITarget closest = null;
+        float maxHealth = 0f;
+        List<ITarget> otherTargets = new List<ITarget>();
+
+        foreach (ITarget target in targets)
+        {
+            if (target is IDamageable damageable && target is House == false && target is Barricade == false)
+            {
+                float health = damageable.Health;
+
+                if (maxHealth < health)
+                {
+                    maxHealth = health;
+                    closest = target;
+                }
+            }
+            else
+            {
+                otherTargets.Add(target);
+            }
+        }
+
+        if (closest == null)
+            closest = SearchClosest(weaponPosition, otherTargets);
 
         return closest;
     }

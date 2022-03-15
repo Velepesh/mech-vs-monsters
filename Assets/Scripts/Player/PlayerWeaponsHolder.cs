@@ -5,10 +5,12 @@ using UnityEngine;
 public class PlayerWeaponsHolder : MonoBehaviour
 {
     [SerializeField] private List<Weapon> _automaticWeapons;
+    [SerializeField] private RocketLauncher _rocketLauncher;
 
     private Player _player;
     public int Count => _automaticWeapons.Count;
     public IReadOnlyList<Weapon> AutomaticWeapons => _automaticWeapons;
+    public RocketLauncher RocketLauncher => _rocketLauncher;
 
     private void Awake()
     {

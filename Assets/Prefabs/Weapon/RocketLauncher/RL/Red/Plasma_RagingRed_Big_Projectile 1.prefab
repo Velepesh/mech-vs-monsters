@@ -9723,11 +9723,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5131aa2ebbae62643bc21a43ae3fc216, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _damage: 70
-  _radius: 5
+  _damage: 100
+  _damageOnHouse: 1000
+  _damageOnBarricade: 150
+  _radius: 4
   _explosionForce: 20
   _rocketExplosion: {fileID: 1228869523896316, guid: e6cf72797c8570d428c9c658a88b9942, type: 3}
   _disableOnHit: {fileID: 198420552104652666}
+  _layerMask:
+    serializedVersion: 2
+    m_Bits: 12800
 --- !u!1 &1331927736720676
 GameObject:
   m_ObjectHideFlags: 0

@@ -39,7 +39,7 @@ public class AmplitudeAnalytics : MonoBehaviour
 
         _amplitude = Amplitude.Instance;
         _amplitude.logging = true;
-        _amplitude.init("536453992e2f35a8d6b06b46e735c571");
+        _amplitude.init("5d108945897a5f3f541cfa47fb6e58be");
     }
 
     private void OnEnable()
@@ -73,7 +73,6 @@ public class AmplitudeAnalytics : MonoBehaviour
         }
 
         SetBasicProperty();
-        SettingUserProperties();
 
         FireEvent("game_start", "count", _sessionCount);
     }
@@ -143,11 +142,5 @@ public class AmplitudeAnalytics : MonoBehaviour
         Dictionary<string, object> eventProps = new Dictionary<string, object>();
         eventProps.Add(properties, type);
         _amplitude.logEvent(eventName, eventProps);
-    }
-
-    private void SettingUserProperties()
-    {
-        int lastLevel = _game.CurrentLevel;
-        _amplitude.setUserProperty("last_level", lastLevel);
     }
 }
