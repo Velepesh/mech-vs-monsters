@@ -28,6 +28,7 @@ public class FightPanel : MonoBehaviour
     {
         EnableFightPanel();
     }
+
     private void OnBattleWon()
     {
         DisableFightPanel();
@@ -41,7 +42,6 @@ public class FightPanel : MonoBehaviour
 
     private void DisableFightPanel()
     {
-        _rocketLauncherButton.gameObject.SetActive(true);
         _tutorialPanel.gameObject.SetActive(false);
     }
 }

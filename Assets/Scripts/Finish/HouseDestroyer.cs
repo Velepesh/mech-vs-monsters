@@ -9,6 +9,7 @@ public class HouseDestroyer : MonoBehaviour
     [SerializeField] private float _time;
     [SerializeField] private Slider _slider;
     [SerializeField] private Game _game;
+    [SerializeField] private Button _rocketLauncherButton;
 
     private bool _isTimer;
     private float _timeLeft;
@@ -55,6 +56,7 @@ public class HouseDestroyer : MonoBehaviour
         {
             _player = player;
             StartTimer();
+            _rocketLauncherButton.gameObject.SetActive(true);
         }
     }
 

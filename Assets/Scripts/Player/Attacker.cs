@@ -3,7 +3,7 @@ using UnityEngine.Events;
 
 public class Attacker : MonoBehaviour
 {
-    [SerializeField] private float _defaulttAnimatorSpeed = 1.5f;
+    [SerializeField] private float _defaulttAnimatorSpeed = 1.15f;
     [SerializeField] private float _fightAnimatorSpeed = 1f;
     [SerializeField] private float _cooldownTime;
 
