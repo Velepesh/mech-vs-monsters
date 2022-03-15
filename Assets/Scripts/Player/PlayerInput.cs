@@ -37,6 +37,7 @@ public class PlayerInput : MonoBehaviour
         _player.Fought -= OnFought;
     }
 
+  
     private void Update()
     {
         if (Input.GetMouseButtonDown(0))

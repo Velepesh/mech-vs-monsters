@@ -40,6 +40,13 @@ public class TargetDetector : MonoBehaviour
 
     private void OnFought(Godzilla godzilla)
     {
+        for (int i = 0; i < _targets.Count; i++)
+        {
+            if (_targets[i] is Enemy enemy)
+                enemy.LoseTarget();
+        }
+
+        _targets.Clear();
         AddFightTarget(godzilla);
     }
 
