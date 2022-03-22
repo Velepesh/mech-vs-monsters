@@ -78,7 +78,7 @@ Material:
     - _DstBlendTCP2: 10
     - _FoamSmooth: 0
     - _FoamSpread: 0.01
-    - _FoamStrength: 0.6
+    - _FoamStrength: 0.514
     - _GlossMapScale: 1
     - _Glossiness: 0.5
     - _GlossyReflections: 1
@@ -109,12 +109,12 @@ Material:
     - __dummy__: 0
     m_Colors:
     - _BumpSpeed: {r: 1, g: 1, b: 0.2, a: -0.2}
-    - _Color: {r: 0.23741543, g: 0.46547148, b: 0.509434, a: 0.8627451}
+    - _Color: {r: 0.1909798, g: 0.45938373, b: 0.511, a: 0.8627451}
     - _DepthColor: {r: 0.066733986, g: 0.29797322, b: 0.547, a: 1}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
-    - _FoamColor: {r: 1, g: 1, b: 1, a: 1}
+    - _FoamColor: {r: 0.24717773, g: 0.6103777, b: 0.681, a: 0.8627451}
     - _FoamSpeed: {r: -1.43, g: 1, b: 0.01, a: -0.1}
-    - _HColor: {r: 0.27998504, g: 0.24072622, b: 0.8679245, a: 1}
+    - _HColor: {r: 0.2196334, g: 0.1954432, b: 0.6792453, a: 1}
     - _RimColor: {r: 0.30147058, g: 0.2948205, b: 0.2948205, a: 1}
     - _SColor: {r: 0.37020501, g: 0.109647535, b: 0.754717, a: 1}
     - _SpecColor: {r: 0.1297578, g: 0.14705884, b: 0.14013842, a: 1}
