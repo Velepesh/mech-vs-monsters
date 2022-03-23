@@ -1,9 +1,13 @@
+using System.Collections;
 using UnityEngine;
 using UnityEngine.Events;
 
 public class Player : MonoBehaviour, IDamageable, ITarget, IDieingPolicy
 {
+    [SerializeField] private float _deadAfterFellTime;
+
     private readonly int _award = 0;
+    private readonly int _damageToShakeCamera = 30;
     
     private int _health;
     private int _speed;
@@ -12,7 +16,9 @@ public class Player : MonoBehaviour, IDamageable, ITarget, IDieingPolicy
     public Vector3 Position => transform.position + new Vector3(0f, 1f, 0f);
 
     public event UnityAction LevelStarted;
-    public event UnityAction MovingStarted;
+    public event UnityAction DamageTook;
+    public event UnityAction Fell;
+    public event UnityAction Moved;
     public event UnityAction MovingStopped;
     public event UnityAction<IDamageable> Died;
     public event UnityAction<int> MoneyAdded;
@@ -37,8 +43,15 @@ public class Player : MonoBehaviour, IDamageable, ITarget, IDieingPolicy
         _startHealth = _health;
         StartMove();
         LevelStarted?.Invoke();
-    } 
-    
+    }
+
+    public void Fall()
+    {
+        Fell?.Invoke();
+
+        StartCoroutine(DeadAfterFell(_deadAfterFellTime));
+    }
+
     public void ChangeLeg(Leg leg)
     {
         LegChanged?.Invoke(leg);
@@ -46,7 +59,7 @@ public class Player : MonoBehaviour, IDamageable, ITarget, IDieingPolicy
 
     public void StartMove()
     {
-        MovingStarted?.Invoke();
+        Moved?.Invoke();
     }
 
     public void Win()
@@ -116,6 +129,9 @@ public class Player : MonoBehaviour, IDamageable, ITarget, IDieingPolicy
 
     public void TakeDamage(int damage)
     {
+        if (_damageToShakeCamera <= damage)
+            DamageTook?.Invoke();
+
         _health -= damage;
 
         if (_health <= 0)
@@ -129,7 +145,6 @@ public class Player : MonoBehaviour, IDamageable, ITarget, IDieingPolicy
 
     public void Die()
     {
-        StopMoving();
         Died?.Invoke(this);
     }
 
@@ -140,4 +155,10 @@ public class Player : MonoBehaviour, IDamageable, ITarget, IDieingPolicy
         SpeedChanged?.Invoke(speed);
     }
 
+    private IEnumerator DeadAfterFell(float time)
+    {
+        yield return new WaitForSeconds(time);
+
+        Die();
+    }
 }

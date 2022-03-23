@@ -6,6 +6,7 @@ public class PlayerAnimations : MonoBehaviour
 {
     [SerializeField] private Player _player;
     [SerializeField] private Attacker _attacker;
+    [SerializeField] private DownMover _downMover;
     [SerializeField] private RocketLauncher _rocketLauncher;
     [SerializeField] private RobotBuilder _robotBuilder;
 
@@ -19,7 +20,8 @@ public class PlayerAnimations : MonoBehaviour
 
     private void OnEnable()
     {
-        _player.MovingStarted += OnMovingStarted;
+        _player.Moved += OnMoved;
+        _downMover.Moved += OnMoved;
         _player.Won += OnWon;
         _player.Standed += OnStanded;
         _attacker.Attacked += OnAttacked;
@@ -29,13 +31,14 @@ public class PlayerAnimations : MonoBehaviour
     private void OnDisable()
     {
         _player.Won -= OnWon;
-        _player.MovingStarted -= OnMovingStarted;
+        _player.Moved -= OnMoved;
+        _downMover.Moved -= OnMoved;
         _player.Standed -= OnStanded;
         _attacker.Attacked -= OnAttacked;
         _rocketLauncher.Shooted -= OnShooted;
     }
 
-    private void OnMovingStarted()
+    private void OnMoved()
     {
         _animator.SetTrigger(AnimatorPlayerController.States.Move);
     }

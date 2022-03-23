@@ -28,7 +28,7 @@ public class Attacker : MonoBehaviour
         if (_shootingTimer >= _cooldownTime)
         {
             if(isFight)
-                Attacked?.Invoke(1f);
+                Attacked?.Invoke(_fightAnimatorSpeed);
             else
                 Attacked?.Invoke(_defaulttAnimatorSpeed);
 

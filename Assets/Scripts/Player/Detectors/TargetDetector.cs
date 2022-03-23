@@ -12,12 +12,14 @@ public class TargetDetector : MonoBehaviour
     private void OnEnable()
     {
         _player.Fought += OnFought;
+        _player.Fell += OnFell;
         _player.Died += OnPlayerDied;
     }
 
     private void OnDisable()
     {
         _player.Fought -= OnFought;
+        _player.Fell -= OnFell;
         _player.Died -= OnPlayerDied;
     }
 
@@ -46,8 +48,18 @@ public class TargetDetector : MonoBehaviour
                 enemy.LoseTarget();
         }
 
-        _targets.Clear();
+        ClearTargets();
         AddFightTarget(godzilla);
+    }
+
+    private void ClearTargets()
+    {
+        _targets.Clear();
+    }
+
+    private void OnFell()
+    {
+        ClearTargets();
     }
 
     private void OnTriggerEnter(Collider other)
