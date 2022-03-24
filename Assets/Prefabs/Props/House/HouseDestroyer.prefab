@@ -69,6 +69,7 @@ MonoBehaviour:
   _time: 12
   _slider: {fileID: 0}
   _game: {fileID: 0}
+  _rocketLauncherButton: {fileID: 0}
 --- !u!65 &8947890342466799015
 BoxCollider:
   m_ObjectHideFlags: 0
