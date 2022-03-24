@@ -20,7 +20,7 @@ public class PlayerMover : State, IMover
 
     private void Update()
     {
-        if (_moverOptions.IsNearEnemy == false && _moverOptions.IsNearObstacle == false)
+       // if (_moverOptions.IsNearEnemy == false && _moverOptions.IsNearObstacle == false)
             Move();
     }
 

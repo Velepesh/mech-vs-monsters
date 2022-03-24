@@ -158,7 +158,6 @@ public class Player : MonoBehaviour, IDamageable, ITarget, IDieingPolicy
     private IEnumerator DeadAfterFell(float time)
     {
         yield return new WaitForSeconds(time);
-
-        Die();
+        TakeDamage(_health);
     }
 }

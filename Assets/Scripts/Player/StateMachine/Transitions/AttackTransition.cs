@@ -7,6 +7,7 @@ public class AttackTransition : Transition
 
     private void Awake()
     {
+        NeedTransit = false;
         _moverOptions = GetComponent<MoverOptions>();
     }
 

@@ -1,5 +1,4 @@
 using System.Collections.Generic;
-using System.Linq;
 using UnityEngine;
 
 public class TargetDetector : MonoBehaviour
@@ -8,6 +7,7 @@ public class TargetDetector : MonoBehaviour
     [SerializeField] private PlayerWeaponsHolder _playerWeapons;
 
     private List<IDamageable> _targets = new List<IDamageable>();
+    private bool _canDetect = true;
 
     private void OnEnable()
     {
@@ -42,11 +42,7 @@ public class TargetDetector : MonoBehaviour
 
     private void OnFought(Godzilla godzilla)
     {
-        for (int i = 0; i < _targets.Count; i++)
-        {
-            if (_targets[i] is Enemy enemy)
-                enemy.LoseTarget();
-        }
+        LoseTargetForEnemy();
 
         ClearTargets();
         AddFightTarget(godzilla);
@@ -64,13 +60,13 @@ public class TargetDetector : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.TryGetComponent(out IDamageable damageable))
+        if (other.TryGetComponent(out IDamageable damageable) && _canDetect)
         {
             if (damageable is ITarget target)
             {
                 _targets.Add(damageable);
                 damageable.Died += OnDied;
-
+                
                 if (damageable is Enemy enemy)
                     enemy.Init(_player);
 
@@ -90,6 +86,12 @@ public class TargetDetector : MonoBehaviour
     }
 
     private void OnPlayerDied(IDamageable damageable)
+    {
+        LoseTargetForEnemy();
+    }
+
+
+    private void LoseTargetForEnemy()
     {
         for (int i = 0; i < _targets.Count; i++)
         {

@@ -14,6 +14,7 @@ public class AttackMover : State, IMover
     private ITarget _target;
 
     public event UnityAction Moved;
+
     private void Awake()
     {
         _player = GetComponent<Player>();
@@ -22,42 +23,43 @@ public class AttackMover : State, IMover
 
     private void Update()
     {
-        _target = _targetDetector.GetClosestTarget(transform.position);
-
-        if (_target != null && _player.IsDied == false)
+        if ((_moverOptions.IsNearEnemy || _moverOptions.IsNearObstacle) && _player.IsDied == false)
         {
-            Debug.Log("_target != null && _player.IsDied == false");
-            LookAtTarget(_target.Position);
-
-            if (Vector3.Distance(_target.Position, transform.position) > _moverOptions.AttackDistance)
+            _target = _targetDetector.GetClosestTarget(transform.position);
+           
+            if (_target != null)
             {
-                Move();
-                Debug.Log("Move");
+                LookAtTarget(_target.Position);
+
+                if (Vector3.Distance(_target.Position, transform.position) > GetAttackDistance())
+                {
+                    Move();
+                }
+                else
+                {
+                    if (_isMoving)
+                    {
+                        _isMoving = false;
+                        _player.Stand();
+                    }
+
+                    if (_target is Mine == false)
+                        _attacker.Attack(false);
+
+                    if (_target == null)
+                    {
+                        _attacker.Reload();
+                        StartMove();
+                    }
+                }
             }
             else
             {
-                if (_isMoving)
-                {
-                    _isMoving = false;
-                    _player.Stand();
-                }
-
-                if (_target is Mine == false)
-                {
-                    Debug.Log("ATTACK");
-                }
-                    _attacker.Attack(false);
-
-                if (_target == null)
-                {
-                    _attacker.Reload();
-                    StartMove();
-                }
+                StartMove();
             }
         }
         else
         {
-            Debug.Log("ELSE");
             StartMove();
         }
     }
@@ -66,17 +68,18 @@ public class AttackMover : State, IMover
     {
         Vector3 targetPosition = new Vector3(_target.Position.x, transform.position.y, _target.Position.z);
         transform.position = Vector3.MoveTowards(transform.position, targetPosition, _moverOptions.MoveSpeed * Time.deltaTime);
+        
+        float attackDistance = _moverOptions.AttackDistance;
+        if (_target is Vehicle)
+            attackDistance *= 2f;
 
-        if (Vector3.Distance(_target.Position, transform.position) <= _moverOptions.AttackDistance) 
+        if (Vector3.Distance(_target.Position, transform.position) <= GetAttackDistance())
         {
             _attacker.Reload();
             _player.Stand();
             _isMoving = false;
         }
-        else 
-        {
-            StartMove();
-        }
+
     }
 
     public void LookAtTarget(Vector3 target)
@@ -92,14 +95,17 @@ public class AttackMover : State, IMover
 
     private void StartMove()
     {
-        if (_isMoving == false)
-            _isMoving = true;
-            Debug.Log("StartMove");
+        _player.StartMove();
+        _isMoving = true;
+    }
 
-        if (_target == null)
-        {
-            Moved?.Invoke();
-            _player.StartMove();
-        }
+    private float GetAttackDistance()
+    {
+        float attackDistance = _moverOptions.AttackDistance;
+
+        if (_target is Vehicle)
+            attackDistance *= 2f;
+
+        return attackDistance;
     }
 }
