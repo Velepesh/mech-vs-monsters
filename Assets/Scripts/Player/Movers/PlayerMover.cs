@@ -1,5 +1,4 @@
 using UnityEngine;
-using UnityEngine.Events;
 
 [RequireComponent(typeof(PlayerInput))]
 [RequireComponent(typeof(MoverOptions))]
@@ -10,8 +9,6 @@ public class PlayerMover : State, IMover
     private MoverOptions _moverOptions;
     private PlayerInput _input;
 
-    public event UnityAction<float> MoveSpeedChanged;
-
     private void Awake()
     {
         _input = GetComponent<PlayerInput>();
@@ -20,8 +17,7 @@ public class PlayerMover : State, IMover
 
     private void Update()
     {
-       // if (_moverOptions.IsNearEnemy == false && _moverOptions.IsNearObstacle == false)
-            Move();
+        Move();
     }
 
     public void Move()

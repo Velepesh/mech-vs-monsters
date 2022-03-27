@@ -1,12 +1,10 @@
 using UnityEngine;
-using System.Collections;
 
 [RequireComponent(typeof(Animator))]
 public class PlayerAnimations : MonoBehaviour
 {
     [SerializeField] private Player _player;
     [SerializeField] private Attacker _attacker;
-    [SerializeField] private DownMover _downMover;
     [SerializeField] private RocketLauncher _rocketLauncher;
     [SerializeField] private RobotBuilder _robotBuilder;
 
@@ -21,7 +19,6 @@ public class PlayerAnimations : MonoBehaviour
     private void OnEnable()
     {
         _player.Moved += OnMoved;
-        _downMover.Moved += OnMoved;
         _player.Won += OnWon;
         _player.Standed += OnStanded;
         _attacker.Attacked += OnAttacked;
@@ -32,7 +29,6 @@ public class PlayerAnimations : MonoBehaviour
     {
         _player.Won -= OnWon;
         _player.Moved -= OnMoved;
-        _downMover.Moved -= OnMoved;
         _player.Standed -= OnStanded;
         _attacker.Attacked -= OnAttacked;
         _rocketLauncher.Shooted -= OnShooted;
@@ -60,7 +56,7 @@ public class PlayerAnimations : MonoBehaviour
         {
             _randomAttack = Random.Range(0, 2);
 
-            if(_randomAttack == 0)
+            if (_randomAttack == 0)
                 AttackByArm();
             else
                 AttackByLeg();

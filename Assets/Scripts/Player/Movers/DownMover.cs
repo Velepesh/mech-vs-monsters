@@ -6,7 +6,6 @@ public class DownMover : State, IMover
     [SerializeField] private GroundDetector _groundDetector;
     [SerializeField] private float _speed;
 
-    public event UnityAction Moved;
     public event UnityAction Landed;
 
     private void OnValidate()

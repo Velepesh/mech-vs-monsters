@@ -1,5 +1,4 @@
 using UnityEngine;
-using UnityEngine.Events;
 using UnityEngine.EventSystems;
 
 [RequireComponent(typeof(Player))]
@@ -18,8 +17,6 @@ public class PlayerInput : MonoBehaviour
 
     public float MoveFactorX => _moveFactorX;
     public float Sensitivity => _sensitivity;
-
-    public event UnityAction Attacked;
 
     private void Awake()
     {

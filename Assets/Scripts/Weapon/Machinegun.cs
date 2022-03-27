@@ -23,6 +23,7 @@ public class Machinegun : Weapon, IShooteable
 
     private void Start()
     {
+        _shootingTimer = _cooldownTime;
         _offsetRotation = Quaternion.Euler(_offsetRotationX, 0f, 0f);
     }
 
@@ -38,7 +39,7 @@ public class Machinegun : Weapon, IShooteable
             {
                 TurnToTarget(_target.Position + _offset);
 
-                if (_shootingTimer > _cooldownTime)
+                if (_shootingTimer >= _cooldownTime)
                 {
                     Shoot();
                     _shootingTimer = 0;

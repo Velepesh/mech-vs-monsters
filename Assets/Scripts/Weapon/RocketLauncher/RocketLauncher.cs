@@ -35,7 +35,7 @@ public class RocketLauncher : Weapon, IShooteable
 
     public new void Shoot()
     {
-        ITarget target = _targetDetector.GetTargetForRocketLauncher(transform.position);
+        ITarget target = _targetDetector.GetMaxHealthTarget(transform.position);
 
         if (target != null)
             TurnToTarget(target.Position);

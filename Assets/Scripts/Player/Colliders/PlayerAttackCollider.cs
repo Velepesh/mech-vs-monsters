@@ -3,23 +3,26 @@ using UnityEngine.Events;
 
 public class PlayerAttackCollider : DamageCollider
 {
-    [SerializeField] private float _cooldownTime;
+    [SerializeField] private Attacker _attacker;
 
-    private float _attackTimer;
 
     public event UnityAction<Vector3, Quaternion> Damaged;
 
     private bool _isAttack;
 
-    private void Update()
+    private void OnEnable()
     {
-        if (_attackTimer > _cooldownTime)
-        {
-            _isAttack = true;
-            _attackTimer = 0;
-        }
+        _attacker.Attacked += OnAttacked;
+    }
 
-        _attackTimer += Time.deltaTime;
+    private void OnDisable()
+    {
+        _attacker.Attacked -= OnAttacked;
+    }
+
+    private void OnAttacked(float speed)
+    {
+        _isAttack = true;
     }
 
     protected override void OnCollisionEnter(Collision collision)

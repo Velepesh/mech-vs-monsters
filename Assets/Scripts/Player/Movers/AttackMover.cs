@@ -1,5 +1,4 @@
 using UnityEngine;
-using UnityEngine.Events;
 
 [RequireComponent(typeof(Player))]
 [RequireComponent(typeof(MoverOptions))]
@@ -13,8 +12,6 @@ public class AttackMover : State, IMover
     private bool _isMoving = true;
     private ITarget _target;
 
-    public event UnityAction Moved;
-
     private void Awake()
     {
         _player = GetComponent<Player>();
@@ -23,44 +20,25 @@ public class AttackMover : State, IMover
 
     private void Update()
     {
-        if ((_moverOptions.IsNearEnemy || _moverOptions.IsNearObstacle) && _player.IsDied == false)
+        if (_moverOptions.IsNearEnemy || _moverOptions.IsNearObstacle)
         {
-            _target = _targetDetector.GetClosestTarget(transform.position);
-           
+            if (_target == null || _target.IsDied)
+                _target = _targetDetector.GetMaxHealthTarget(transform.position);
+
             if (_target != null)
             {
+
                 LookAtTarget(_target.Position);
 
-                if (Vector3.Distance(_target.Position, transform.position) > GetAttackDistance())
-                {
+                if (Vector3.Distance(_target.Position, transform.position) > _moverOptions.AttackDistance)
                     Move();
-                }
                 else
-                {
-                    if (_isMoving)
-                    {
-                        _isMoving = false;
-                        _player.Stand();
-                    }
-
-                    if (_target is Mine == false)
-                        _attacker.Attack(false);
-
-                    if (_target == null)
-                    {
-                        _attacker.Reload();
-                        StartMove();
-                    }
-                }
-            }
-            else
-            {
-                StartMove();
+                    Attack();
             }
         }
         else
         {
-            StartMove();
+            StartMoving();
         }
     }
 
@@ -68,18 +46,16 @@ public class AttackMover : State, IMover
     {
         Vector3 targetPosition = new Vector3(_target.Position.x, transform.position.y, _target.Position.z);
         transform.position = Vector3.MoveTowards(transform.position, targetPosition, _moverOptions.MoveSpeed * Time.deltaTime);
-        
-        float attackDistance = _moverOptions.AttackDistance;
-        if (_target is Vehicle)
-            attackDistance *= 2f;
 
-        if (Vector3.Distance(_target.Position, transform.position) <= GetAttackDistance())
+        if (Vector3.Distance(_target.Position, transform.position) <= _moverOptions.AttackDistance)
         {
-            _attacker.Reload();
-            _player.Stand();
-            _isMoving = false;
+            StopMoving();
         }
-
+        else
+        {
+            if(_isMoving == false)
+                StartMoving();
+        }
     }
 
     public void LookAtTarget(Vector3 target)
@@ -93,19 +69,29 @@ public class AttackMover : State, IMover
         _moverOptions.RotateModel(lookAt);
     }
 
-    private void StartMove()
+    private void Attack()
+    {
+        if (_isMoving)
+            StopMoving();
+
+        _attacker.Attack(false);
+
+        if (_target == null)
+        {
+            _attacker.Reload();
+            StartMoving();
+        }
+    }
+
+    private void StartMoving()
     {
         _player.StartMove();
         _isMoving = true;
     }
 
-    private float GetAttackDistance()
+    private void StopMoving()
     {
-        float attackDistance = _moverOptions.AttackDistance;
-
-        if (_target is Vehicle)
-            attackDistance *= 2f;
-
-        return attackDistance;
+        _player.Stand();
+        _isMoving = false;
     }
 }

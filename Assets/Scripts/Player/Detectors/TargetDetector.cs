@@ -28,9 +28,9 @@ public class TargetDetector : MonoBehaviour
         return SearchClosest(weaponPosition, _targets);
     }
 
-    public ITarget GetTargetForRocketLauncher(Vector3 weaponPosition)
+    public ITarget GetMaxHealthTarget(Vector3 weaponPosition)
     {
-        return SearchTargetRocketLauncher(weaponPosition, _targets);
+        return SearchMaxHealthTarget(weaponPosition, _targets);
     }
 
     private void AddFightTarget(Godzilla godzilla)
@@ -66,11 +66,13 @@ public class TargetDetector : MonoBehaviour
             {
                 _targets.Add(damageable);
                 damageable.Died += OnDied;
-                
+
                 if (damageable is Enemy enemy)
                     enemy.Init(_player);
+                else if (damageable is EnemyCollider enemyCollider)
+                    enemyCollider.Enemy.Init(_player);
 
-                UpdateGunsTarget();
+                    UpdateGunsTarget();
             }
         }
     }
@@ -145,7 +147,7 @@ public class TargetDetector : MonoBehaviour
         return closest;
     }
 
-    private ITarget SearchTargetRocketLauncher<T>(Vector3 weaponPosition, List<T> targets)
+    private ITarget SearchMaxHealthTarget<T>(Vector3 weaponPosition, List<T> targets)
     {
         ITarget closest = null;
         float maxHealth = 0f;
