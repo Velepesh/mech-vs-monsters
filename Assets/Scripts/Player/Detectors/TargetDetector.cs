@@ -33,6 +33,11 @@ public class TargetDetector : MonoBehaviour
         return SearchMaxHealthTarget(weaponPosition, _targets);
     }
 
+    public ITarget GetClosetEnemy(Vector3 weaponPosition)
+    {
+        return SearchEnemyTarget(weaponPosition, _targets);
+    }
+
     private void AddFightTarget(Godzilla godzilla)
     {
         godzilla.Died += OnDied;
@@ -172,6 +177,36 @@ public class TargetDetector : MonoBehaviour
         }
 
         if (closest == null)
+            closest = SearchClosest(weaponPosition, otherTargets);
+
+        return closest;
+    }
+
+    private ITarget SearchEnemyTarget<T>(Vector3 weaponPosition, List<T> targets)
+    {
+        ITarget closest = null;
+        List<ITarget> vehicales = new List<ITarget>();
+        List<ITarget> soldiers = new List<ITarget>();
+        List<ITarget> otherTargets = new List<ITarget>();
+
+        foreach (ITarget target in targets)
+        {
+            if(target is IDamageable)
+            {
+                if (target is Vehicle vehicle)
+                    vehicales.Add(vehicle);
+                else if (target is Soldier soldier)
+                    soldiers.Add(soldier);
+                else
+                    otherTargets.Add(target);
+            }
+        }
+
+        if(vehicales.Count > 0)
+            closest = SearchClosest(weaponPosition, vehicales);
+        else if (soldiers.Count > 0)
+            closest = SearchClosest(weaponPosition, soldiers);
+        else
             closest = SearchClosest(weaponPosition, otherTargets);
 
         return closest;

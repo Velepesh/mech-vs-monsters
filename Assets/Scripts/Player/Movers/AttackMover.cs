@@ -23,11 +23,11 @@ public class AttackMover : State, IMover
         if (_moverOptions.IsNearEnemy || _moverOptions.IsNearObstacle)
         {
             if (_target == null || _target.IsDied)
-                _target = _targetDetector.GetMaxHealthTarget(transform.position);
-
-            if (_target != null)
             {
-
+                _target = _targetDetector.GetClosetEnemy(transform.position);
+            }
+            else if (_target.IsDied == false)
+            {
                 LookAtTarget(_target.Position);
 
                 if (Vector3.Distance(_target.Position, transform.position) > _moverOptions.AttackDistance)
