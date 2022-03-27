@@ -921,7 +921,7 @@ MonoBehaviour:
   _bullet: {fileID: 8794249899869472003, guid: 7a2faf82456af04468e7e69df3f8448e, type: 3}
   _offsetRotationX: 0
   _offset: {x: 0, y: 0, z: 0}
-  _shootDistance: 30
+  _shootDistance: 40
 --- !u!1 &6625723747232945464
 GameObject:
   m_ObjectHideFlags: 0
