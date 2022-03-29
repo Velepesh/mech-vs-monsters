@@ -7,7 +7,7 @@ public class Attacker : MonoBehaviour
     [SerializeField] private float _fightAnimatorSpeed = 1f;
     [SerializeField] private float _cooldownTime;
 
-    private float _shootingTimer;
+    private float _attackTimer;
 
     public event UnityAction<float> Attacked;
 
@@ -20,24 +20,24 @@ public class Attacker : MonoBehaviour
     
     private void Update()
     {
-        _shootingTimer += Time.deltaTime;
+        _attackTimer += Time.deltaTime;
     }
 
     public void Attack(bool isFight)
     {
-        if (_shootingTimer >= _cooldownTime)
+        if (_attackTimer >= _cooldownTime)
         {
             if(isFight)
-                Attacked?.Invoke(1f);
+                Attacked?.Invoke(_fightAnimatorSpeed);
             else
                 Attacked?.Invoke(_defaulttAnimatorSpeed);
 
-            _shootingTimer = 0;
+            _attackTimer = 0;
         }
     }
 
     public void Reload()
     {
-        _shootingTimer = _cooldownTime;
+        _attackTimer = _cooldownTime;
     }
 }

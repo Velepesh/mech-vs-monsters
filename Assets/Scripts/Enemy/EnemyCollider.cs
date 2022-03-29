@@ -15,13 +15,14 @@ public class EnemyCollider : MonoBehaviour, IDamageable, ITarget
     public Vector3 Position => transform.position + _offset;
     public int Health => _enemy.Health;
     public bool IsDied => _enemy.Health <= 0;
+    public Enemy Enemy => _enemy;
 
     public void TakeDamage(int damage)
     {
-        if(_enemy.Health - damage <= 0)
-            Died?.Invoke(this);
-
-        HealthChanged?.Invoke(_enemy.Health);
         _enemy.TakeDamage(damage);
+        HealthChanged?.Invoke(_enemy.Health);
+
+        if (_enemy.IsDied)
+            Died?.Invoke(this);
     }
 }

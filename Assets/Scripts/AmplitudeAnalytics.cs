@@ -73,6 +73,7 @@ public class AmplitudeAnalytics : MonoBehaviour
         }
 
         SetBasicProperty();
+        SettingUserProperties();
 
         FireEvent("game_start", "count", _sessionCount);
     }
@@ -142,5 +143,11 @@ public class AmplitudeAnalytics : MonoBehaviour
         Dictionary<string, object> eventProps = new Dictionary<string, object>();
         eventProps.Add(properties, type);
         _amplitude.logEvent(eventName, eventProps);
+    }
+
+    private void SettingUserProperties()
+    {
+        int currentMoney = _wallet.Money;
+        _amplitude.setUserProperty("current_soft", currentMoney);
     }
 }

@@ -5,6 +5,7 @@ using System.Collections;
 
 public class CinemachineShake : MonoBehaviour 
 {
+    [SerializeField] private Player _player;
     [SerializeField] private CinemachineVirtualCamera _cinemachineVirtualCamera;
     [SerializeField] private DownMover _downMover;
     [SerializeField] private PlayerWeaponsHolder _playerWeapons;
@@ -49,6 +50,7 @@ public class CinemachineShake : MonoBehaviour
         }
 
         _rocketLauncher.Shooted += OnRocketLauncherShooted;
+        _player.DamageTook += OnDamageTook;
     }
 
     private void OnDisable()
@@ -58,11 +60,23 @@ public class CinemachineShake : MonoBehaviour
 
         for (int i = 0; i < _weapons.Count; i++)
             _weapons[i].Shooted -= OnShooted;
+
+        _player.DamageTook -= OnDamageTook;
+    }
+
+    private void OnDamageTook()
+    {
+        ShakeHightIntencity();
     }
 
     private void OnRocketLauncherShooted()
     {
         _isRocket = true;
+        ShakeHightIntencity();
+    }
+
+    private void ShakeHightIntencity()
+    {
         ShakeCamera(_highIntensity, _longTime);
         StartCoroutine(WaitRocketLauncherShaking(_longTime));
     }

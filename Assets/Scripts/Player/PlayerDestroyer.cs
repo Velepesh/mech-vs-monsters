@@ -1,28 +1,10 @@
 using UnityEngine;
 
-[RequireComponent(typeof(Player))]
-public class PlayerDestroyer : MonoBehaviour
+public class PlayerDestroyer : State
 {
     [SerializeField] private GameObject _model;
 
-    private Player _player;
-
-    private void Awake()
-    {
-        _player = GetComponent<Player>();
-    }
-
-    private void OnEnable()
-    {
-        _player.Died += OnDied;
-    }
-
-    private void OnDisable()
-    {
-        _player.Died -= OnDied;
-    }
-
-    private void OnDied(IDamageable damageable)
+    private void Start()
     {
         _model.SetActive(false);
     }

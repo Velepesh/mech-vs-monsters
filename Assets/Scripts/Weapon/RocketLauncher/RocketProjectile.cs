@@ -36,9 +36,9 @@ public class RocketProjectile : DamageCollider
             {
                 if (damageable is House)
                     DoDamage(damageable, _damageOnHouse);
-                else if(damageable is Barricade)
+                else if (damageable is Barricade)
                     DoDamage(damageable, _damageOnBarricade);
-                else if(damageable is EnemyCollider == false)
+                else
                     DoDamage(damageable);
 
                 if (collider.TryGetComponent(out Rigidbody rigidbody))

@@ -41,9 +41,7 @@ public class Game : MonoBehaviour
     private void Update()
     {
         if (_isPlaying)
-        {
             _spentTime += Time.deltaTime;
-        }
     }
 
     public void Fight()

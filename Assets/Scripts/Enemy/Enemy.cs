@@ -14,7 +14,7 @@ public class Enemy : MonoBehaviour, IDamageable, ITarget, IDieingPolicy
 
     public event UnityAction<IDamageable> Died;
     public event UnityAction<int> HealthChanged;
-    public event UnityAction TargetInited;
+    public event UnityAction Shooted;
     public event UnityAction TargetLost;
 
     public IShooteable Weapon => _weapon;
@@ -40,7 +40,6 @@ public class Enemy : MonoBehaviour, IDamageable, ITarget, IDieingPolicy
         _target = target;
 
         InitTargetForWeapon();
-        TargetInited?.Invoke();
     }
 
     public void LoseTarget()
@@ -51,7 +50,7 @@ public class Enemy : MonoBehaviour, IDamageable, ITarget, IDieingPolicy
 
     private void OnShooted()
     {
-        TargetInited?.Invoke();
+        Shooted?.Invoke();
     }
 
     private void InitTargetForWeapon()

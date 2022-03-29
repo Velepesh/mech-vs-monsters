@@ -1,5 +1,4 @@
 using UnityEngine;
-using System.Collections;
 
 [RequireComponent(typeof(Animator))]
 public class PlayerAnimations : MonoBehaviour
@@ -19,7 +18,7 @@ public class PlayerAnimations : MonoBehaviour
 
     private void OnEnable()
     {
-        _player.MovingStarted += OnMovingStarted;
+        _player.Moved += OnMoved;
         _player.Won += OnWon;
         _player.Standed += OnStanded;
         _attacker.Attacked += OnAttacked;
@@ -29,13 +28,13 @@ public class PlayerAnimations : MonoBehaviour
     private void OnDisable()
     {
         _player.Won -= OnWon;
-        _player.MovingStarted -= OnMovingStarted;
+        _player.Moved -= OnMoved;
         _player.Standed -= OnStanded;
         _attacker.Attacked -= OnAttacked;
         _rocketLauncher.Shooted -= OnShooted;
     }
 
-    private void OnMovingStarted()
+    private void OnMoved()
     {
         _animator.SetTrigger(AnimatorPlayerController.States.Move);
     }
@@ -57,7 +56,7 @@ public class PlayerAnimations : MonoBehaviour
         {
             _randomAttack = Random.Range(0, 2);
 
-            if(_randomAttack == 0)
+            if (_randomAttack == 0)
                 AttackByArm();
             else
                 AttackByLeg();
