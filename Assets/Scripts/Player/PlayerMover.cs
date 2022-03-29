@@ -74,7 +74,7 @@ public class PlayerMover : MonoBehaviour
 
     private void Move()
     {
-        transform.Translate(Vector3.forward * _currentLeg.MoveSpeed * Time.deltaTime);
+        transform.Translate(Vector3.forward * _currentLeg.MoveSpeed * Time.deltaTime * 2.5f);
 
         Swipe();
     }

@@ -255,9 +255,9 @@ MonoBehaviour:
   m_Transition: 1
   m_Colors:
     m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
-    m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
-    m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
-    m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_HighlightedColor: {r: 1, g: 1, b: 1, a: 1}
+    m_PressedColor: {r: 1, g: 1, b: 1, a: 1}
+    m_SelectedColor: {r: 1, g: 1, b: 1, a: 1}
     m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
     m_ColorMultiplier: 1
     m_FadeDuration: 0.1
@@ -290,7 +290,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _price: {fileID: 8735576779974693066}
-  _health: {fileID: 3448100227466381955}
+  _healthText: {fileID: 0}
+  _specificationText: {fileID: 0}
   _icon: {fileID: 2127179062989772240}
   _sellButton: {fileID: 7420890831080024366}
   _lockedView: {fileID: 3303884374399334598}
@@ -307,10 +308,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _price: {fileID: 8735576779974693066}
-  _level: {fileID: 0}
   _icon: {fileID: 2127179062989772240}
   _sellButton: {fileID: 7420890831080024366}
-  _lockedByLevelView: {fileID: 0}
+  _view: {fileID: 0}
   _lockedByMoneyView: {fileID: 0}
 --- !u!1 &3303884374399334598
 GameObject:

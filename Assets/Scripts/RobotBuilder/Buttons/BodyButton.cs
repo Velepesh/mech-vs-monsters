@@ -1,3 +1,5 @@
+using System.Collections;
+using UnityEngine;
 using UnityEngine.Events;
 
 public class BodyButton : ChooseLimbButton
@@ -22,6 +24,13 @@ public class BodyButton : ChooseLimbButton
         Shop.gameObject.SetActive(true);
     }
 
+    private IEnumerator StartOpen()
+    {
+        yield return new WaitForSeconds(0.3f);
+
+        Open();
+    }
+
     protected override void Close()
     {
         Shop.gameObject.SetActive(false);
@@ -29,6 +38,6 @@ public class BodyButton : ChooseLimbButton
 
     protected override void OnButtonClick()
     {
-        Open();
+        StartCoroutine(StartOpen());
     }
 }

@@ -9692,11 +9692,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5131aa2ebbae62643bc21a43ae3fc216, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _damage: 27
+  _damage: 150
+  _damageOnHouse: 1000
+  _damageOnBarricade: 150
   _radius: 1.5
   _explosionForce: 8
   _rocketExplosion: {fileID: 1879272669879180, guid: de2268cd4e59e91419b7bacfeeb05ee2, type: 3}
   _disableOnHit: {fileID: 198916498872082188}
+  _layerMask:
+    serializedVersion: 2
+    m_Bits: 0
 --- !u!114 &1118737121681860812
 MonoBehaviour:
   m_ObjectHideFlags: 0

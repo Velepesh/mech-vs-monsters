@@ -1,5 +1,7 @@
 using UnityEngine;
 using System.Collections;
+using Cinemachine;
+using AnimatedUI;
 
 [RequireComponent(typeof(Collider))]
 public class Fight : MonoBehaviour
@@ -8,6 +10,9 @@ public class Fight : MonoBehaviour
     [SerializeField] private Game _game;
     [SerializeField] private Transform _targetPlayerPosition;
     [SerializeField] private float _delayTime;
+    [SerializeField] private CinemachineVirtualCamera _camera;
+    [SerializeField] private GameObject _fightPanel;
+    [SerializeField] private CanvasFade _winPanel;
 
     private Player _player;
 
@@ -51,8 +56,12 @@ public class Fight : MonoBehaviour
     {
         if (_player.IsDied == false)
         {
-            _player.StartMove();
-            _game.WinInBattle();
+            _camera.m_Priority = 10;
+            _winPanel.Show();
+            _fightPanel.SetActive(false);
+
+            _player.Win();
+           // _game.WinInBattle();
         }
 
         damageable.Died -= OnGodzillaDied;

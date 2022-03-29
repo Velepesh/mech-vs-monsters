@@ -13,7 +13,6 @@ MonoBehaviour:
   m_Name: BigDrone
   m_EditorClassIdentifier: 
   _label: BigDrone
-  _price: 2000
+  _price: 0
   _level: 20
   _icon: {fileID: 21300000, guid: 17ac3aabe245c2943aa05e579ef8d0ba, type: 3}
-  _isBuyed: 0

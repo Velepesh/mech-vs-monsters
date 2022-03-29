@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -5,6 +6,7 @@ public class Game : MonoBehaviour
 {
     [SerializeField] private SceneChanger _sceneChanger;
     [SerializeField] private Player _player;
+    [SerializeField] private GameObject _hand;
     
     private const string CURRENT_LEVEL_ID = "CurrentLevelID";
 
@@ -72,6 +74,14 @@ public class Game : MonoBehaviour
 
     public void StartLevel()
     {
+        StartCoroutine(StartLevelTime());
+    }
+
+    private IEnumerator StartLevelTime()
+    {
+        yield return new WaitForSeconds(0.2f);
+
+        _hand.SetActive(false);
         _isPlaying = true;
         _player.StartLevel();
 

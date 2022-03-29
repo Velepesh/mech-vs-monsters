@@ -14637,7 +14637,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 09a1fd7f901314b42b3166e3855ae0fe, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _damage: 9
+  _damage: 50
   _impactPrefab: {fileID: 1879272669879180, guid: bacfb8534562cef419ddce1b03cf13e4, type: 3}
   _explosionPrefab: {fileID: 0}
   _lookRotation: 1

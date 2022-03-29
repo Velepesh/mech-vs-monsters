@@ -2,6 +2,7 @@ using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.UI;
 using TMPro;
+using System.Collections;
 
 public class WeaponView : MonoBehaviour
 {
@@ -65,6 +66,13 @@ public class WeaponView : MonoBehaviour
 
     private void OnButtonClick()
     {
+        StartCoroutine(ClickTap());
+    }
+
+    private IEnumerator ClickTap()
+    {
+        yield return new WaitForSeconds(0.3f);
+
         WeaponButtonClick?.Invoke(this);
     }
 }

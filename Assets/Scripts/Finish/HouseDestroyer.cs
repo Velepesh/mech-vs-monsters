@@ -70,8 +70,8 @@ public class HouseDestroyer : MonoBehaviour
     private void StartTimer()
     {
         _isTimer = true;
-        _slider.gameObject.SetActive(true);
-        _slider.value = _time;
+        //_slider.gameObject.SetActive(true);
+        //_slider.value = _time;
         _timeLeft = _time;
 
         EnableNextHouseCollider();
@@ -98,7 +98,7 @@ public class HouseDestroyer : MonoBehaviour
         _player.Win();
         _game.WinGame();
         _isTimer = false;
-        _slider.gameObject.SetActive(false);
+        //_slider.gameObject.SetActive(false);
     }
 
     private House GetClosestTarget(Vector3 weaponPosition, List<House> damageables)

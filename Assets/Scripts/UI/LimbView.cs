@@ -2,6 +2,7 @@ using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.UI;
 using TMPro;
+using System.Collections;
 
 public class LimbView : MonoBehaviour
 {
@@ -56,8 +57,15 @@ public class LimbView : MonoBehaviour
         _lockedView.SetActive(false);
     }
 
+    private IEnumerator StartOpen()
+    {
+        yield return new WaitForSeconds(0.3f);
+
+        LimbButtonClick?.Invoke(_limb, this);
+    }
+
     private void OnButtonClick()
     {
-        LimbButtonClick?.Invoke(_limb, this);
+        StartCoroutine(StartOpen());
     }
 }

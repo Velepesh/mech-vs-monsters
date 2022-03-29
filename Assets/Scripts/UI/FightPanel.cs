@@ -36,7 +36,7 @@ public class FightPanel : MonoBehaviour
 
     private void EnableFightPanel()
     {
-        _rocketLauncherButton.gameObject.SetActive(false);
+        //_rocketLauncherButton.gameObject.SetActive(false);
         _tutorialPanel.gameObject.SetActive(true);
     }
 

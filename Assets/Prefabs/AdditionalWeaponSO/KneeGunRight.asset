@@ -13,7 +13,6 @@ MonoBehaviour:
   m_Name: KneeGunRight
   m_EditorClassIdentifier: 
   _label: KneeGunRight
-  _price: 500
+  _price: 0
   _level: 5
   _icon: {fileID: 21300000, guid: 4dd39b76afd06ef4aa3b3067913d7fce, type: 3}
-  _isBuyed: 0

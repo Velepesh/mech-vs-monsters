@@ -13,8 +13,9 @@ MonoBehaviour:
   m_Name: Arm_1
   m_EditorClassIdentifier: 
   _label: Arm_1
-  _price: 600
+  _price: 0
   _specificationValue: 8
   _icon: {fileID: 21300000, guid: ae91b3268b7c6dd4f99739c0e3a872ef, type: 3}
   _type: 1
   _health: 50
+  _defaultValue: 0
