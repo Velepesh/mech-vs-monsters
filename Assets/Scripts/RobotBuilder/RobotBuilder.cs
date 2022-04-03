@@ -71,7 +71,7 @@ public class RobotBuilder : MonoBehaviour
 
     private void LoadHealth(PlayerLimb limb)
     {
-        _player.AddHealth(limb.Health);
+        _player.Health.AddHealth(limb.Health);
     }
 
     private void LoadAttackForce(PlayerLimb limb)
@@ -117,7 +117,6 @@ public class RobotBuilder : MonoBehaviour
         {
             ApplyNewLimb(limb);
             LoadHealth(limb);
-
 
             if (limb is Leg)
                 LoadSpeed(limb);

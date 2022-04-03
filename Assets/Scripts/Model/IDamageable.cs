@@ -2,9 +2,8 @@ using UnityEngine.Events;
 
 public interface IDamageable
 { 
-    int Health { get; }
-    int Award { get; }
-    void TakeDamage(int damage);
+    Health Health{ get; }
     event UnityAction<IDamageable> Died;
-    event UnityAction<int> HealthChanged;
+    void TakeDamage(int damage);
+    void Die();
 }

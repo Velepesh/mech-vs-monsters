@@ -1,9 +1,9 @@
 using UnityEngine;
 using UnityEngine.Events;
 
-public class Enemy : MonoBehaviour, IDamageable, ITarget, IDieingPolicy
+public class Enemy : MonoBehaviour, IDamageable, ITarget, IAward
 {
-    [SerializeField] private int _health;
+    [SerializeField] private Health _health;
     [SerializeField] private Weapon _weapon;
     [SerializeField] private int _award;
     [SerializeField] private float _lookSpeed;
@@ -13,16 +13,15 @@ public class Enemy : MonoBehaviour, IDamageable, ITarget, IDieingPolicy
     private ITarget _target;
 
     public event UnityAction<IDamageable> Died;
-    public event UnityAction<int> HealthChanged;
     public event UnityAction Shooted;
     public event UnityAction TargetLost;
 
     public IShooteable Weapon => _weapon;
     public ITarget Target => _target;
-    public int Health => _health;
+    public Health Health => _health;
     public int Award => _award;
     public float LookSpeed => _lookSpeed;
-    public bool IsDied => _health <= 0;
+    public bool IsDied => _health.Value <= 0;
     public Vector3 Position => transform.position + _offset;
 
     private void OnEnable()
@@ -77,14 +76,9 @@ public class Enemy : MonoBehaviour, IDamageable, ITarget, IDieingPolicy
 
     public void TakeDamage(int damage)
     {
-        _health -= damage;
+        _health.TakeDamage(damage);
 
-        if (_health <= 0)
-            _health = 0;
-
-        HealthChanged?.Invoke(_health);
-
-        if (_health == 0)
+        if (IsDied)
             Die();
     }
 

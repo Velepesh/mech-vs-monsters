@@ -306,6 +306,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _damage: 100
   _explosionEffect: {fileID: 6541324304217663941, guid: 2be80a508c87dd9458988c9537a8f652, type: 3}
-  _health: 100
+  _health:
+    _health: 100
   _award: 3
   _offsetX: 0

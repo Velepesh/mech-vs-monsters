@@ -1,14 +1,10 @@
 using UnityEngine;
 using UnityEngine.Events;
 
-public class Godzilla : Enemy, IDamageable, IDieingPolicy, ITarget
+public class Godzilla : Enemy, IDamageable, ITarget
 {
     [SerializeField] private float _attackTime;
     [SerializeField] private GameObject _model;
-
-    private int _startHealth;
-
-    public int StartHealth => _startHealth;
 
     public event UnityAction Won;
     public event UnityAction AttackStarted;
@@ -22,7 +18,7 @@ public class Godzilla : Enemy, IDamageable, IDieingPolicy, ITarget
 
     private void Start()
     {
-        _startHealth = Health;
+        Health.RecordHealth();
         DisableModel();;
     }
 

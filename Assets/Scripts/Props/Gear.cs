@@ -17,10 +17,10 @@ public class Gear : MonoBehaviour
 
         if (other.TryGetComponent(out Player player))
         {
-            if(player.Health + _health <= player.StartHealth)
-                player.AddHealth(_health);
+            if(player.Health.Value + _health <= player.Health.StartValue)
+                player.Health.AddHealth(_health);
             else
-                player.AddHealth(player.StartHealth - player.Health);
+                player.Health.AddHealth(player.Health.StartValue - player.Health.Value);
         }
     }
 }

@@ -10,16 +10,16 @@ public class MenuHealthView : MonoBehaviour
 
     private void OnEnable()
     {
-        _currentHealth = _player.Health;
+        _currentHealth = _player.Health.Value;
 
         _healthText.text = _currentHealth.ToString();
 
-        _player.HealthChanged += OnHealthChanged;
+        _player.Health.HealthChanged += OnHealthChanged;
     }
 
     private void OnDisable()
     {
-        _player.HealthChanged -= OnHealthChanged;
+        _player.Health.HealthChanged -= OnHealthChanged;
     }
     
     private void OnHealthChanged(int health)

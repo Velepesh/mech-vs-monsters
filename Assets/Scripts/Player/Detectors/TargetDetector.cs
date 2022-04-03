@@ -7,7 +7,6 @@ public class TargetDetector : MonoBehaviour
     [SerializeField] private PlayerWeaponsHolder _playerWeapons;
 
     private List<IDamageable> _targets = new List<IDamageable>();
-    private bool _canDetect = true;
 
     private void OnEnable()
     {
@@ -65,7 +64,7 @@ public class TargetDetector : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.TryGetComponent(out IDamageable damageable) && _canDetect)
+        if (other.TryGetComponent(out IDamageable damageable))
         {
             if (damageable is ITarget target)
             {
@@ -77,14 +76,15 @@ public class TargetDetector : MonoBehaviour
                 else if (damageable is EnemyCollider enemyCollider)
                     enemyCollider.Enemy.Init(_player);
 
-                    UpdateGunsTarget();
+                UpdateGunsTarget();
             }
         }
     }
 
     private void OnDied(IDamageable damageable)
     {
-        _player.AddMoney(damageable.Award);
+        if(damageable is IAward award)
+            _player.AddMoney(award.Award);
 
         _targets.Remove(damageable);
         damageable.Died -= OnDied;
@@ -162,7 +162,7 @@ public class TargetDetector : MonoBehaviour
         {
             if (target is IDamageable damageable && target is House == false && target is Barricade == false)
             {
-                float health = damageable.Health;
+                float health = damageable.Health.Value;
 
                 if (maxHealth < health)
                 {
@@ -184,7 +184,6 @@ public class TargetDetector : MonoBehaviour
 
     private ITarget SearchEnemyTarget<T>(Vector3 weaponPosition, List<T> targets)
     {
-        ITarget closest = null;
         List<ITarget> vehicales = new List<ITarget>();
         List<ITarget> soldiers = new List<ITarget>();
         List<ITarget> otherTargets = new List<ITarget>();
@@ -203,12 +202,10 @@ public class TargetDetector : MonoBehaviour
         }
 
         if(vehicales.Count > 0)
-            closest = SearchClosest(weaponPosition, vehicales);
+            return SearchClosest(weaponPosition, vehicales);
         else if (soldiers.Count > 0)
-            closest = SearchClosest(weaponPosition, soldiers);
+            return SearchClosest(weaponPosition, soldiers);
         else
-            closest = SearchClosest(weaponPosition, otherTargets);
-
-        return closest;
+            return SearchClosest(weaponPosition, otherTargets);
     }
 }

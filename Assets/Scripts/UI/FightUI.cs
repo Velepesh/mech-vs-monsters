@@ -22,24 +22,24 @@ public class FightUI : MonoBehaviour
 
     private void OnEnable()
     {
-        _player.HealthChanged += OnPlayerHealthChanged;
-        _godzilla.HealthChanged += OnGodzillaHealthChanged;
+        _player.Health.HealthChanged += OnPlayerHealthChanged;
+        _godzilla.Health.HealthChanged += OnGodzillaHealthChanged;
         _game.Fought += OnFought;
         _game.FoughtWon += OnFoughtWon;
     }
 
     private void OnDisable()
     {
-        _player.HealthChanged -= OnPlayerHealthChanged;
-        _godzilla.HealthChanged -= OnGodzillaHealthChanged;
+        _player.Health.HealthChanged -= OnPlayerHealthChanged;
+        _godzilla.Health.HealthChanged -= OnGodzillaHealthChanged;
         _game.Fought -= OnFought;
         _game.FoughtWon -= OnFoughtWon;
     }
 
     private void OnFought()
     {
-        InitSliderValues(_playerSlider, _player.StartHealth, out _currentPlayerHealth);
-        InitSliderValues(_godzillaSlider, _godzilla.StartHealth, out _currentGodzillaHealth);
+        InitSliderValues(_playerSlider, _player.Health.StartValue, out _currentPlayerHealth);
+        InitSliderValues(_godzillaSlider, _godzilla.Health.StartValue, out _currentGodzillaHealth);
 
         StartCoroutine(EnableAllSliders(_startDelayTime));
     }

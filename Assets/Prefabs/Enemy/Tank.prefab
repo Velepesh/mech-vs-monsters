@@ -33,7 +33,7 @@ RectTransform:
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 1, y: 1}
+  m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: -5.41, y: -4.93}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -227,13 +227,13 @@ MonoBehaviour:
   _shootPoint: {fileID: 354206475102216747}
   _muzzleflare: {fileID: 1584403288528622, guid: a7f7e53efb9c16141af1c5631e25cbb8, type: 3}
   _lookSpeed: 0
-  _cooldownTime: 1
-  _minSpeed: 3100
+  _cooldownTime: 1.5
+  _minSpeed: 3200
   _maxSpeed: 3300
   _bullet: {fileID: -8238685944364814985, guid: d414b898c12e9b241917fe056bed92c7, type: 3}
   _offsetRotationX: 0
   _offset: {x: 0, y: 5, z: 0}
-  _shootDistance: 40
+  _shootDistance: 42
 --- !u!1 &354206475925008059
 GameObject:
   m_ObjectHideFlags: 0
@@ -341,7 +341,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &354206476385382296
 RectTransform:
   m_ObjectHideFlags: 0
@@ -641,7 +641,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dc1f3422549354048bafd05e40aecff6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _health: 150
+  _health:
+    _health: 150
   _weapon: {fileID: 354206475865612546}
   _award: 50
   _lookSpeed: 70

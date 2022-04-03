@@ -67,7 +67,7 @@ public class LimbShop : MonoBehaviour
         {
             if (_currentLimb != null)
             {
-                _player.RemoveHealth(_currentLimb.Health);
+                _player.Health.RemoveHealth(_currentLimb.Health);
                 _currentLimb.Unselecte();
 
                 if(_currentLimb.Type != LimbType.LEG)
@@ -90,7 +90,7 @@ public class LimbShop : MonoBehaviour
 
     private void ChangePlayerHealth(Limb limb)
     {  
-        _player.AddHealth(limb.Health);
+        _player.Health.AddHealth(limb.Health);
     }
 
     private void ChangeAttackForce(Limb limb)

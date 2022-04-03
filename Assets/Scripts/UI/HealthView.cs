@@ -1,5 +1,4 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -23,20 +22,20 @@ public class HealthView : MonoBehaviour
 
     private void OnEnable()
     {
-        _damageable.HealthChanged += OnHealthChanged;
+        _damageable.Health.HealthChanged += OnHealthChanged;
         _game.LevelStarted += OnLevelStarted;
     }
 
     private void OnDisable()
     {
-        _damageable.HealthChanged -= OnHealthChanged;
+        _damageable.Health.HealthChanged -= OnHealthChanged;
         _game.LevelStarted -= OnLevelStarted;
     }
 
     private void OnLevelStarted()
     {
-        _maxHealth = _damageable.Health;
-        _currentHealth = _damageable.Health;
+        _maxHealth = _damageable.Health.Value;
+        _currentHealth = _damageable.Health.Value;
         _slider.maxValue = _maxHealth;
         _slider.value = _maxHealth;
 

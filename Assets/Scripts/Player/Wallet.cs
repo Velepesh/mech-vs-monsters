@@ -5,6 +5,8 @@ using UnityEngine.Events;
 public class Wallet : MonoBehaviour
 {
     readonly private string BALANCE = "Balance";
+    readonly private string SHOP = "Shop";
+    readonly private string WEAPON = "Weapon";
 
     private int _money;
     private Player _player;
@@ -32,13 +34,13 @@ public class Wallet : MonoBehaviour
 
     public void BuyLimb(Limb limb, int price)
     {
-        Bought?.Invoke("Shop", limb.name, price);
+        Bought?.Invoke(SHOP, limb.name, price);
         RemoveMoney(price);
     }
 
     public void BuyWeapon(AdditionalWeapon weapon, int price)
     {
-        Bought?.Invoke("Weapon", weapon.name, price);
+        Bought?.Invoke(WEAPON, weapon.name, price);
         RemoveMoney(price);
     }
 
