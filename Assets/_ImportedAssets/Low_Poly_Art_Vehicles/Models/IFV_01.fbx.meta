@@ -1,89 +1,239 @@
 fileFormatVersion: 2
 guid: 697a39816f2c8d8449aee070e51b4ee3
-timeCreated: 1572026088
-licenseType: Store
 ModelImporter:
-  serializedVersion: 21
-  fileIDToRecycleName:
-    100000: //RootNode
-    100002: IFV_01_Barrel
-    100004: IFV_01_Turret
-    100006: IFV_01_Wheel_01
-    100008: IFV_01_Wheel_02
-    100010: IFV_01_Wheel_03
-    100012: IFV_01_Wheel_04
-    100014: IFV_01_Wheel_05
-    100016: IFV_01_Wheel_06
-    100018: IFV_01_Wheel_07
-    100020: IFV_01_Wheel_08
-    100022: IFV_01_Wheel_09
-    100024: IFV_01_Wheel_10
-    100026: IFV_01_Wheel_11
-    100028: IFV_01_Wheel_12
-    400000: //RootNode
-    400002: IFV_01_Barrel
-    400004: IFV_01_Turret
-    400006: IFV_01_Wheel_01
-    400008: IFV_01_Wheel_02
-    400010: IFV_01_Wheel_03
-    400012: IFV_01_Wheel_04
-    400014: IFV_01_Wheel_05
-    400016: IFV_01_Wheel_06
-    400018: IFV_01_Wheel_07
-    400020: IFV_01_Wheel_08
-    400022: IFV_01_Wheel_09
-    400024: IFV_01_Wheel_10
-    400026: IFV_01_Wheel_11
-    400028: IFV_01_Wheel_12
-    2300000: //RootNode
-    2300002: IFV_01_Barrel
-    2300004: IFV_01_Turret
-    2300006: IFV_01_Wheel_01
-    2300008: IFV_01_Wheel_02
-    2300010: IFV_01_Wheel_03
-    2300012: IFV_01_Wheel_04
-    2300014: IFV_01_Wheel_05
-    2300016: IFV_01_Wheel_06
-    2300018: IFV_01_Wheel_07
-    2300020: IFV_01_Wheel_08
-    2300022: IFV_01_Wheel_09
-    2300024: IFV_01_Wheel_10
-    2300026: IFV_01_Wheel_11
-    2300028: IFV_01_Wheel_12
-    3300000: //RootNode
-    3300002: IFV_01_Barrel
-    3300004: IFV_01_Turret
-    3300006: IFV_01_Wheel_01
-    3300008: IFV_01_Wheel_02
-    3300010: IFV_01_Wheel_03
-    3300012: IFV_01_Wheel_04
-    3300014: IFV_01_Wheel_05
-    3300016: IFV_01_Wheel_06
-    3300018: IFV_01_Wheel_07
-    3300020: IFV_01_Wheel_08
-    3300022: IFV_01_Wheel_09
-    3300024: IFV_01_Wheel_10
-    3300026: IFV_01_Wheel_11
-    3300028: IFV_01_Wheel_12
-    4300000: IFV_01
-    4300002: IFV_01_Turret
-    4300004: IFV_01_Barrel
-    4300006: IFV_01_Wheel_03
-    4300008: IFV_01_Wheel_02
-    4300010: IFV_01_Wheel_08
-    4300012: IFV_01_Wheel_12
-    4300014: IFV_01_Wheel_10
-    4300016: IFV_01_Wheel_06
-    4300018: IFV_01_Wheel_04
-    4300020: IFV_01_Wheel_01
-    4300022: IFV_01_Wheel_07
-    4300024: IFV_01_Wheel_11
-    4300026: IFV_01_Wheel_09
-    4300028: IFV_01_Wheel_05
+  serializedVersion: 20200
+  internalIDToNameTable:
+  - first:
+      1: 100000
+    second: //RootNode
+  - first:
+      1: 100002
+    second: IFV_01_Barrel
+  - first:
+      1: 100004
+    second: IFV_01_Turret
+  - first:
+      1: 100006
+    second: IFV_01_Wheel_01
+  - first:
+      1: 100008
+    second: IFV_01_Wheel_02
+  - first:
+      1: 100010
+    second: IFV_01_Wheel_03
+  - first:
+      1: 100012
+    second: IFV_01_Wheel_04
+  - first:
+      1: 100014
+    second: IFV_01_Wheel_05
+  - first:
+      1: 100016
+    second: IFV_01_Wheel_06
+  - first:
+      1: 100018
+    second: IFV_01_Wheel_07
+  - first:
+      1: 100020
+    second: IFV_01_Wheel_08
+  - first:
+      1: 100022
+    second: IFV_01_Wheel_09
+  - first:
+      1: 100024
+    second: IFV_01_Wheel_10
+  - first:
+      1: 100026
+    second: IFV_01_Wheel_11
+  - first:
+      1: 100028
+    second: IFV_01_Wheel_12
+  - first:
+      4: 400000
+    second: //RootNode
+  - first:
+      4: 400002
+    second: IFV_01_Barrel
+  - first:
+      4: 400004
+    second: IFV_01_Turret
+  - first:
+      4: 400006
+    second: IFV_01_Wheel_01
+  - first:
+      4: 400008
+    second: IFV_01_Wheel_02
+  - first:
+      4: 400010
+    second: IFV_01_Wheel_03
+  - first:
+      4: 400012
+    second: IFV_01_Wheel_04
+  - first:
+      4: 400014
+    second: IFV_01_Wheel_05
+  - first:
+      4: 400016
+    second: IFV_01_Wheel_06
+  - first:
+      4: 400018
+    second: IFV_01_Wheel_07
+  - first:
+      4: 400020
+    second: IFV_01_Wheel_08
+  - first:
+      4: 400022
+    second: IFV_01_Wheel_09
+  - first:
+      4: 400024
+    second: IFV_01_Wheel_10
+  - first:
+      4: 400026
+    second: IFV_01_Wheel_11
+  - first:
+      4: 400028
+    second: IFV_01_Wheel_12
+  - first:
+      23: 2300000
+    second: //RootNode
+  - first:
+      23: 2300002
+    second: IFV_01_Barrel
+  - first:
+      23: 2300004
+    second: IFV_01_Turret
+  - first:
+      23: 2300006
+    second: IFV_01_Wheel_01
+  - first:
+      23: 2300008
+    second: IFV_01_Wheel_02
+  - first:
+      23: 2300010
+    second: IFV_01_Wheel_03
+  - first:
+      23: 2300012
+    second: IFV_01_Wheel_04
+  - first:
+      23: 2300014
+    second: IFV_01_Wheel_05
+  - first:
+      23: 2300016
+    second: IFV_01_Wheel_06
+  - first:
+      23: 2300018
+    second: IFV_01_Wheel_07
+  - first:
+      23: 2300020
+    second: IFV_01_Wheel_08
+  - first:
+      23: 2300022
+    second: IFV_01_Wheel_09
+  - first:
+      23: 2300024
+    second: IFV_01_Wheel_10
+  - first:
+      23: 2300026
+    second: IFV_01_Wheel_11
+  - first:
+      23: 2300028
+    second: IFV_01_Wheel_12
+  - first:
+      33: 3300000
+    second: //RootNode
+  - first:
+      33: 3300002
+    second: IFV_01_Barrel
+  - first:
+      33: 3300004
+    second: IFV_01_Turret
+  - first:
+      33: 3300006
+    second: IFV_01_Wheel_01
+  - first:
+      33: 3300008
+    second: IFV_01_Wheel_02
+  - first:
+      33: 3300010
+    second: IFV_01_Wheel_03
+  - first:
+      33: 3300012
+    second: IFV_01_Wheel_04
+  - first:
+      33: 3300014
+    second: IFV_01_Wheel_05
+  - first:
+      33: 3300016
+    second: IFV_01_Wheel_06
+  - first:
+      33: 3300018
+    second: IFV_01_Wheel_07
+  - first:
+      33: 3300020
+    second: IFV_01_Wheel_08
+  - first:
+      33: 3300022
+    second: IFV_01_Wheel_09
+  - first:
+      33: 3300024
+    second: IFV_01_Wheel_10
+  - first:
+      33: 3300026
+    second: IFV_01_Wheel_11
+  - first:
+      33: 3300028
+    second: IFV_01_Wheel_12
+  - first:
+      43: 4300000
+    second: IFV_01
+  - first:
+      43: 4300002
+    second: IFV_01_Turret
+  - first:
+      43: 4300004
+    second: IFV_01_Barrel
+  - first:
+      43: 4300006
+    second: IFV_01_Wheel_03
+  - first:
+      43: 4300008
+    second: IFV_01_Wheel_02
+  - first:
+      43: 4300010
+    second: IFV_01_Wheel_08
+  - first:
+      43: 4300012
+    second: IFV_01_Wheel_12
+  - first:
+      43: 4300014
+    second: IFV_01_Wheel_10
+  - first:
+      43: 4300016
+    second: IFV_01_Wheel_06
+  - first:
+      43: 4300018
+    second: IFV_01_Wheel_04
+  - first:
+      43: 4300020
+    second: IFV_01_Wheel_01
+  - first:
+      43: 4300022
+    second: IFV_01_Wheel_07
+  - first:
+      43: 4300024
+    second: IFV_01_Wheel_11
+  - first:
+      43: 4300026
+    second: IFV_01_Wheel_09
+  - first:
+      43: 4300028
+    second: IFV_01_Wheel_05
+  externalObjects: {}
   materials:
-    importMaterials: 1
+    materialImportMode: 1
     materialName: 0
     materialSearch: 1
+    materialLocation: 0
   animations:
     legacyGenerateAnimations: 4
     bakeSimulation: 0
@@ -96,6 +246,8 @@ ModelImporter:
     animationImportWarnings: 
     animationRetargetingWarnings: 
     animationDoRetargetingWarnings: 0
+    importAnimatedCustomProperties: 0
+    importConstraints: 0
     animationCompression: 1
     animationRotationError: 0.5
     animationPositionError: 0.5
@@ -109,20 +261,32 @@ ModelImporter:
     lODScreenPercentages: []
     globalScale: 1
     meshCompression: 0
-    addColliders: 0
+    addColliders: 1
+    useSRGBMaterialColor: 1
+    sortHierarchyByName: 1
     importVisibility: 1
     importBlendShapes: 1
     importCameras: 1
     importLights: 1
+    fileIdsGeneration: 1
     swapUVChannels: 0
     generateSecondaryUV: 0
     useFileUnits: 1
-    optimizeMeshForGPU: 1
     keepQuads: 0
     weldVertices: 1
+    bakeAxisConversion: 0
+    preserveHierarchy: 0
+    skinWeightsMode: 0
+    maxBonesPerVertex: 4
+    minBoneWeight: 0.001
+    meshOptimizationFlags: -1
+    indexFormat: 1
     secondaryUVAngleDistortion: 8
     secondaryUVAreaDistortion: 15.000001
     secondaryUVHardAngle: 88
+    secondaryUVMarginMethod: 0
+    secondaryUVMinLightmapResolution: 40
+    secondaryUVMinObjectScale: 1
     secondaryUVPackMargin: 4
     useFileScale: 1
   tangentSpace:
@@ -130,10 +294,13 @@ ModelImporter:
     normalImportMode: 0
     tangentImportMode: 3
     normalCalculationMode: 4
+    legacyComputeAllNormalsFromSmoothingGroupsWhenMeshHasBlendShapes: 1
+    blendShapeNormalImportMode: 1
+    normalSmoothingSource: 0
+  referencedClips: []
   importAnimation: 1
-  copyAvatar: 0
   humanDescription:
-    serializedVersion: 2
+    serializedVersion: 3
     human: []
     skeleton: []
     armTwist: 0.5
@@ -143,14 +310,17 @@ ModelImporter:
     armStretch: 0.05
     legStretch: 0.05
     feetSpacing: 0
+    globalScale: 1
     rootMotionBoneName: 
-    rootMotionBoneRotation: {x: 0, y: 0, z: 0, w: 1}
     hasTranslationDoF: 0
     hasExtraRoot: 0
     skeletonHasParents: 1
   lastHumanDescriptionAvatarSource: {instanceID: 0}
+  autoGenerateAvatarMappingIfUnspecified: 1
   animationType: 0
   humanoidOversampling: 1
+  avatarSetup: 0
+  addHumanoidExtraRootOnlyWhenUsingAvatar: 0
   additionalBone: 0
   userData: 
   assetBundleName: 

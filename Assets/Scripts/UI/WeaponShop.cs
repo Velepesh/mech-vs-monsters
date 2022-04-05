@@ -1,13 +1,15 @@
 using UnityEngine;
+using UnityEngine.Events;
 
 public class WeaponShop : MonoBehaviour
 {
-    [SerializeField] private Game _game;
     [SerializeField] private RobotBuilder _robotBuilder;
     [SerializeField] private PlayerAdditionalWeapon _additionalWeapon;
     [SerializeField] private AdditionalWeapon _weapon;
     [SerializeField] private Wallet _wallet;
     [SerializeField] private WeaponView _weaponView;
+
+    public event UnityAction Buied;
 
     private void Start()
     {
@@ -19,7 +21,7 @@ public class WeaponShop : MonoBehaviour
 
     private void TakeWeapon()
     {
-        _robotBuilder.TakeAdditionalWeapon(_additionalWeapon);
+        _robotBuilder.TakeAdditionalWeapon(_additionalWeapon, _weapon.Damage);
         _additionalWeapon.Show();
         _weaponView.Hide();
     }
@@ -42,10 +44,8 @@ public class WeaponShop : MonoBehaviour
 
     private void OnWeaponButtonClick(WeaponView view)
     {
-
         if (_weapon.IsBuyed == false)
            TrySellWeapon(_weapon, view);
-
 
         if (_weapon.IsBuyed)
             TakeWeapon();
@@ -59,6 +59,8 @@ public class WeaponShop : MonoBehaviour
             weapon.Buy();
             _additionalWeapon.Show();
             view.Hide();
+
+            Buied?.Invoke();
         }
     }
 

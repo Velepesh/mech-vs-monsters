@@ -23,9 +23,11 @@ public class RobotBuilder : MonoBehaviour
     private int _currentLegIndex => PlayerPrefs.GetInt(LEG_ID, _defaultIndex);
 
     public bool IsArmSelected => _currentArmIndex > _defaultIndex;
+    public bool IsHeadSelected => _currentHeadIndex > _defaultIndex;
    
     public event UnityAction BodySelected;
     public event UnityAction LegSelected;
+    public event UnityAction HeadSelected;
 
     private void OnEnable()
     {
@@ -58,9 +60,10 @@ public class RobotBuilder : MonoBehaviour
             ChangeCurrentLimb(LEG_ID, index, _legs);
     }
 
-    public void TakeAdditionalWeapon(PlayerAdditionalWeapon weapon)
+    public void TakeAdditionalWeapon(PlayerAdditionalWeapon weapon, int damage)
     {
         weapon.gameObject.SetActive(true);
+        AddAttackForce(damage);
     }
 
     private void Load()
@@ -74,20 +77,23 @@ public class RobotBuilder : MonoBehaviour
         _player.Health.AddHealth(limb.Health);
     }
 
-    private void LoadAttackForce(PlayerLimb limb)
+    private void AddAttackForce(int value)
     {
-        _player.AddAttackForce(limb.Limb.SpecificationValue);
+        _player.AddAttackForce(value);
     }
 
-    private void LoadSpeed(PlayerLimb limb)
+    private void LoadSpeed(int value)
     {
-        _player.LoadSpeed(limb.Limb.SpecificationValue);
+        _player.LoadSpeed(value);
     }
 
     private void TryWear()
     {
         if (_currentHeadIndex > _defaultIndex)
+        {
             LoadLimb(_heads[_currentHeadIndex]);
+            HeadSelected?.Invoke();
+        }
 
         if (_currentArmIndex > _defaultIndex) 
             LoadLimb(_arms[_currentArmIndex]);
@@ -119,9 +125,9 @@ public class RobotBuilder : MonoBehaviour
             LoadHealth(limb);
 
             if (limb is Leg)
-                LoadSpeed(limb);
+                LoadSpeed(limb.Limb.SpecificationValue);
             else
-                LoadAttackForce(limb);
+                AddAttackForce(limb.Limb.SpecificationValue);
         }
     }
 
@@ -186,6 +192,10 @@ public class RobotBuilder : MonoBehaviour
             UnlockButton<ArmButton>();
 
             BodySelected?.Invoke();
+        }
+        else if (limbButtons is HeadButton)
+        {
+            HeadSelected?.Invoke();
         }
     }
     private void UnlockButton<ChooseLimbButton>()

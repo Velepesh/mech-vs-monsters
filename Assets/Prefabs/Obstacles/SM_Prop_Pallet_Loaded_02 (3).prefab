@@ -158,7 +158,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: afb9bfee6e441a34ab84dbbdc0dbe7c2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _health: 30
+  _health:
+    _health: 50
   _award: 3
   _offsetX: 1.2
 --- !u!65 &3488531724301988865

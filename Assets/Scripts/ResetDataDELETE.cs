@@ -18,6 +18,24 @@ public class ResetDataDELETE : MonoBehaviour
             SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
         }
 
+        if (Input.GetKeyDown(KeyCode.Alpha1))
+        {
+            PlayerPrefs.SetInt("CurrentLevelID", 1);
+            Debug.Log(PlayerPrefs.GetInt("CurrentLevelID"));
+        }
+
+        if (Input.GetKeyDown(KeyCode.Alpha2))
+        {
+            PlayerPrefs.SetInt("CurrentLevelID", 2);
+            Debug.Log(PlayerPrefs.GetInt("CurrentLevelID"));
+        }
+
+        if (Input.GetKeyDown(KeyCode.Alpha3))
+        {
+            PlayerPrefs.SetInt("CurrentLevelID", 3);
+            Debug.Log(PlayerPrefs.GetInt("CurrentLevelID"));
+        }
+
         if (Input.GetKeyDown(KeyCode.E))
         {
             IncreaseMoney();

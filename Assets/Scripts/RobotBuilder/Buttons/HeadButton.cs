@@ -3,6 +3,7 @@ using UnityEngine.Events;
 public class HeadButton : ChooseLimbButton
 {
     public override event UnityAction<LimbShop, ChooseLimbButton> Opened;
+
     public override void Lock()
     {
         LockPanel.SetActive(true);

@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 7114566053666338734}
   - component: {fileID: 7114566053666338735}
   - component: {fileID: 7114566053666338736}
-  - component: {fileID: 5327729530422085601}
+  - component: {fileID: 1412725847353758163}
   m_Layer: 13
   m_Name: SandBarrier_28_v1
   m_TagString: Untagged
@@ -29,9 +29,9 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7114566053666338737}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 3.587289, y: 1.0174475, z: 13.88}
-  m_LocalScale: {x: 0.85, y: 0.85, z: 0.85}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 7243622665661651215}
   m_Father: {fileID: 0}
@@ -114,7 +114,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: afb9bfee6e441a34ab84dbbdc0dbe7c2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _health: 10
+  _health:
+    _health: 20
   _award: 1
   _offsetX: 1.2
 --- !u!114 &7114566053666338736
@@ -131,7 +132,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _dieEffect: {fileID: 6088724330369110986, guid: dfdc974ff3d430e4ba7ea2dfa9b5f82f, type: 3}
   _point: {fileID: 7243622665661651215}
---- !u!65 &5327729530422085601
+--- !u!65 &1412725847353758163
 BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -142,8 +143,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1.368947, y: 2.2022002, z: 1.368506}
-  m_Center: {x: 0.000043964388, y: 1.0836517, z: -0.00022654534}
+  m_Size: {x: 1.6427364, y: 2.0822659, z: 1.6422071}
+  m_Center: {x: 0.00005272031, y: 1.0201948, z: -0.00027182698}
 --- !u!1 &7243622665661651216
 GameObject:
   m_ObjectHideFlags: 0

@@ -14,5 +14,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _label: RocketgunRight
   _price: 2500
+  _damage: 100
   _level: 15
   _icon: {fileID: 21300000, guid: b59d8a1f41f758f4094866d8cb961c45, type: 3}

@@ -6,6 +6,7 @@ using TMPro;
 public class WeaponView : MonoBehaviour
 {
     [SerializeField] private TMP_Text _price;
+    [SerializeField] private TMP_Text _damageText;
     [SerializeField] private Image _icon;
     [SerializeField] private Button _sellButton;
     [SerializeField] private GameObject _view;
@@ -44,6 +45,7 @@ public class WeaponView : MonoBehaviour
         TryLockItem(weapon, playerAdditionalWeapon);
 
         _price.text = weapon.Price.ToString();
+        _damageText.text = weapon.Damage.ToString();
         _icon.sprite = weapon.Icon;
     }
 

@@ -15,6 +15,9 @@ public class LimbShop : MonoBehaviour
     private List<LimbView> _limbViews = new List<LimbView>();
     private Limb _currentLimb;
 
+    public bool IsHeadSelected => _robotBuilder.IsHeadSelected;
+    public bool IsArmSelected => _robotBuilder.IsArmSelected;
+
     public event UnityAction LimbSelected;
 
     private void Awake()
@@ -44,7 +47,7 @@ public class LimbShop : MonoBehaviour
     {
         LimbView view = Instantiate(_template, _itemContainer.transform);
         _limbViews.Add(view);
-        view.Render(limb);
+        view.Render(limb, _wallet.Money);
     }
 
     private void OnDisable()
@@ -81,7 +84,7 @@ public class LimbShop : MonoBehaviour
             else
                 ChangeAttackForce(limb);
 
-            _robotBuilder.SelectLimb(limb, GetLimbIndex(limb));
+            _robotBuilder.SelectLimb(limb, GetLimbIndex(limb));///////////
             LimbSelected?.Invoke();
 
             _currentLimb = limb;

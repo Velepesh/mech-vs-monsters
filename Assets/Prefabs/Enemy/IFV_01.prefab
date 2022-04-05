@@ -820,7 +820,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dc1f3422549354048bafd05e40aecff6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _health: 600
+  _health:
+    _health: 100
   _weapon: {fileID: 7097448762279348734}
   _award: 20
   _lookSpeed: 0

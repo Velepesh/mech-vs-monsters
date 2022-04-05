@@ -14,6 +14,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _label: MinigunLeft
   _price: 1000
+  _damage: 68
   _level: 10
   _icon: {fileID: 21300000, guid: 3358a8c73061de24d986c3172410048c, type: 3}
-  _isBuyed: 0

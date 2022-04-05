@@ -1,56 +1,43 @@
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
 
 public class LimbShopsHolder : MonoBehaviour
 {
-    [SerializeField] private Button _emptySpaceButton;
     [SerializeField] private List<ChooseLimbButton> _chooseLimbButtons;
+    [SerializeField] private HeadButton _headButton;
+    [SerializeField] private ArmButton _armButton;
+    [SerializeField] private Game _game;
 
     private const string LAST_OPENED_SHOP_ID = "LastOpenedShopID";
     private readonly int _defaultIndex = -1;
+    private readonly int _secondLevel = 2;
+    private readonly int _thirdLevel = 3;
 
     private LimbShop _openedShop;
-    private bool _isSpaceButtonActive;
     private int _currentShopID => PlayerPrefs.GetInt(LAST_OPENED_SHOP_ID, _defaultIndex);
 
-    private void Start()
+    private void Awake()
     {
-        _isSpaceButtonActive = true;
-        DisableEmptySpaceButton();
+        if(_game.CurrentLevel == _secondLevel && _headButton.LimbShop.IsHeadSelected == false)
+            OpenShopByType(_headButton);
+        else if (_game.CurrentLevel == _thirdLevel && _headButton.LimbShop.IsArmSelected == false)
+            OpenShopByType(_armButton);
+        else if (_currentShopID > _defaultIndex)
+            OpenLastShop();
 
-        if (_currentShopID > _defaultIndex)
-        {
-            _openedShop = _chooseLimbButtons[_currentShopID].LimbShop;
-            _chooseLimbButtons[_currentShopID].Open();
-        }
-    }
-
-    public void TurnOffEmptySpaceButton()
-    {
-        _isSpaceButtonActive = false;
+        Debug.Log(_game.CurrentLevel + " _game.CurrentLevel");
     }
 
     private void OnEnable()
     {
-        _emptySpaceButton.onClick.AddListener(OnEmptySpaceButtonClick);
-
         for (int i = 0; i < _chooseLimbButtons.Count; i++)
             _chooseLimbButtons[i].Opened += OnOpened;
     }
 
     private void OnDisable()
     {
-        _emptySpaceButton.onClick.RemoveListener(OnEmptySpaceButtonClick);
-
         for (int i = 0; i < _chooseLimbButtons.Count; i++)
             _chooseLimbButtons[i].Opened -= OnOpened;
-    }
-
-    private void OnEmptySpaceButtonClick()
-    {
-        CloseOpenedShop();
-        DisableEmptySpaceButton();
     }
 
     private void OnOpened(LimbShop shop, ChooseLimbButton chooseLimbButton)
@@ -63,24 +50,24 @@ public class LimbShopsHolder : MonoBehaviour
         }
 
         SaveLastOpenedShop(chooseLimbButton);
-        EnableEmptySpaceButton();
+    }
+
+
+    private void OpenShopByType(ChooseLimbButton chooseLimb)
+    {
+        chooseLimb.Open();
+    }
+
+    private void OpenLastShop()
+    {
+        _openedShop = _chooseLimbButtons[_currentShopID].LimbShop;
+        _chooseLimbButtons[_currentShopID].Open();
     }
 
     private void CloseOpenedShop()
     {
         if (_openedShop != null)
             _openedShop.CloseShop();
-    }
-
-    private void EnableEmptySpaceButton()
-    {
-        if (_isSpaceButtonActive)
-            _emptySpaceButton.interactable = true;
-    }
-
-    private void DisableEmptySpaceButton()
-    {
-        _emptySpaceButton.interactable = false;
     }
 
     private void SaveLastOpenedShop(ChooseLimbButton chooseLimbButton)

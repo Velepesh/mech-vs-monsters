@@ -160,9 +160,9 @@ public class TargetDetector : MonoBehaviour
 
         foreach (ITarget target in targets)
         {
-            if (target is IDamageable damageable && target is House == false && target is Barricade == false)
+            if (target is Enemy enemy)
             {
-                float health = damageable.Health.Value;
+                float health = enemy.Health.Value;
 
                 if (maxHealth < health)
                 {

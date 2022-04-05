@@ -11,7 +11,13 @@ public class Player : MonoBehaviour, IDamageable, ITarget
     private Health _health = new Health();
     private int _speed;
     private int _attackForce;
+
     public Vector3 Position => transform.position + new Vector3(0f, 1f, 0f);
+    public Health Health => _health;
+    public int AttackForce => _attackForce;
+    public int Speed => _speed;
+    public bool IsDied => _health.Value <= 0;
+
 
     public event UnityAction LevelStarted;
     public event UnityAction DamageTook;
@@ -27,11 +33,6 @@ public class Player : MonoBehaviour, IDamageable, ITarget
     public event UnityAction<Leg> LegChanged;
     public event UnityAction<Godzilla> Fought;
     public event UnityAction<Transform, Godzilla> Prepeared;
-
-    public Health Health => _health;
-    public int AttackForce => _attackForce; 
-    public int Speed => _speed;
-    public bool IsDied => _health.Value <= 0;
 
     public void StartLevel()
     {

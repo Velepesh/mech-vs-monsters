@@ -5,6 +5,7 @@ public class AdditionalWeapon : ScriptableObject
 {
     [SerializeField] private string _label;
     [SerializeField] private int _price;
+    [SerializeField] private int _damage;
     [SerializeField] private int _level;
     [SerializeField] private Sprite _icon;
 
@@ -14,6 +15,7 @@ public class AdditionalWeapon : ScriptableObject
     public int Level => _level;
     public Sprite Icon => _icon;
     public bool IsBuyed => _isBuiedInt == 1;
+    public int Damage => _damage;
 
     public void Buy()
     {

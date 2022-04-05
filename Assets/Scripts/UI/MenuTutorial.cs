@@ -1,6 +1,7 @@
 using UnityEngine;
 using UnityEngine.UI;
 using System.Collections.Generic;
+
 public class MenuTutorial : MonoBehaviour
 {
     [SerializeField] private Animator _animator;
@@ -10,11 +11,10 @@ public class MenuTutorial : MonoBehaviour
     [SerializeField] private RobotBuilder _robotBuilder;
     [SerializeField] private LegButton _legButton;
     [SerializeField] private BodyButton _bodyButton;
-    [SerializeField] private LimbShopsHolder _limbShopsHolder;
     [SerializeField] private List<ChooseLimbButton> _otherButtons;
-    [SerializeField] private List<ScrollRect> _scrollRects;
 
     readonly private string TUTORIAL = "Tutorial";
+
     private readonly int _tutorialValue = 1;
     private readonly int _withoutTutorialValue = 0;
     private int _tutorial => PlayerPrefs.GetInt(TUTORIAL, 1);
@@ -77,9 +77,6 @@ public class MenuTutorial : MonoBehaviour
         _animator.enabled = true;
         _menuTutorial.SetActive(true);
         _blackPanel.gameObject.SetActive(true);
-
-        for (int i = 0; i < _scrollRects.Count; i++)
-            _scrollRects[i].enabled = false;
     }
 
     private void OnOpened(LimbShop shop, ChooseLimbButton chooseLimbButton)
@@ -87,7 +84,6 @@ public class MenuTutorial : MonoBehaviour
         _animator.SetTrigger(AnimatorMenuTutorialController.States.SelectLimb);
 
         BlockOtherButton();
-        _limbShopsHolder.TurnOffEmptySpaceButton();
     }
 
     private void DisableMenuTutorial()
@@ -96,7 +92,7 @@ public class MenuTutorial : MonoBehaviour
         _menuTutorial.SetActive(false);
         _blackPanel.gameObject.SetActive(false);
         _animator.enabled = false;
-        this.enabled = false;
+        enabled = false;
     }
 
     private void DisableAllButtouns()
