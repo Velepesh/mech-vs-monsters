@@ -5,6 +5,8 @@ public class TargetDetector : MonoBehaviour
 {
     [SerializeField] private Player _player;
     [SerializeField] private PlayerWeaponsHolder _playerWeapons;
+    [SerializeField] private LayerMask _obstacleLayerMask;
+    [SerializeField] private MoverOptions _moverOptions;
 
     private List<IDamageable> _targets = new List<IDamageable>();
 
@@ -184,6 +186,7 @@ public class TargetDetector : MonoBehaviour
 
     private ITarget SearchEnemyTarget<T>(Vector3 weaponPosition, List<T> targets)
     {
+        ITarget enemy = null;
         List<ITarget> vehicales = new List<ITarget>();
         List<ITarget> soldiers = new List<ITarget>();
         List<ITarget> otherTargets = new List<ITarget>();
@@ -201,11 +204,18 @@ public class TargetDetector : MonoBehaviour
             }
         }
 
-        if(vehicales.Count > 0)
-            return SearchClosest(weaponPosition, vehicales);
-        else if (soldiers.Count > 0)
-            return SearchClosest(weaponPosition, soldiers);
+        if (vehicales.Count > 0 && _moverOptions.IsNearEnemy)
+        {
+            enemy = SearchClosest(weaponPosition, vehicales);
+            
+            if (_moverOptions.IsNearObstacle)
+                enemy = SearchClosest(weaponPosition, otherTargets);
+        }
+        else if (soldiers.Count > 0 && _moverOptions.IsNearEnemy)
+            enemy = SearchClosest(weaponPosition, soldiers);
         else
-            return SearchClosest(weaponPosition, otherTargets);
+            enemy = SearchClosest(weaponPosition, otherTargets);
+
+        return enemy;
     }
 }

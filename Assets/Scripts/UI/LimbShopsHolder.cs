@@ -24,8 +24,6 @@ public class LimbShopsHolder : MonoBehaviour
             OpenShopByType(_armButton);
         else if (_currentShopID > _defaultIndex)
             OpenLastShop();
-
-        Debug.Log(_game.CurrentLevel + " _game.CurrentLevel");
     }
 
     private void OnEnable()

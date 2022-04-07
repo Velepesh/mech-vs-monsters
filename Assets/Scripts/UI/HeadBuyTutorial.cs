@@ -31,7 +31,6 @@ public class HeadBuyTutorial : MonoBehaviour
         _menuTutorial.SetActive(true);
         _blackPanel.gameObject.SetActive(true);
         _animator.SetTrigger(AnimatorMenuTutorialController.States.SelectLimb);
-        Debug.Log("Totor");
         BlockOtherButton();
     }
 

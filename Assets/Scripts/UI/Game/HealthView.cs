@@ -5,7 +5,7 @@ using UnityEngine.UI;
 [RequireComponent(typeof(IDamageable))]
 public class HealthView : MonoBehaviour
 {
-    [SerializeField] private float _duration;
+   [SerializeField] private float _duration;
     [SerializeField] private float _startDelayTime;
     [SerializeField] private Game _game;
     [SerializeField] private Slider _slider;
@@ -20,15 +20,6 @@ public class HealthView : MonoBehaviour
         _slider.gameObject.SetActive(false);
     }
 
-    private void Start()
-    {
-        _maxHealth = _damageable.Health.Value;
-        _currentHealth = _damageable.Health.Value;
-        _slider.maxValue = _maxHealth;
-        _slider.value = _maxHealth;
-
-        StartCoroutine(EnableSlider(_startDelayTime));
-    }
     private void OnEnable()
     {
         _damageable.Health.HealthChanged += OnHealthChanged;

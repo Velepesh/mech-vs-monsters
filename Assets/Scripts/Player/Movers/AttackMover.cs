@@ -24,7 +24,7 @@ public class AttackMover : State, IMover
         {
             if (_target == null || _target.IsDied)
             {
-                _target = _targetDetector.GetClosestTarget(transform.position);
+                _target = _targetDetector.GetClosetEnemy(transform.position);
             }
             else if (_target.IsDied == false)
             {
