@@ -5,9 +5,11 @@ using UnityEngine;
 public class PlayerMover : State, IMover
 {
     readonly private float _rotationAngle = 45f;
+    readonly private float _tutorialMoveSpeed = 0f;
 
     private MoverOptions _moverOptions;
     private PlayerInput _input;
+    private bool _isTutorial;
 
     private void Awake()
     {
@@ -17,7 +19,10 @@ public class PlayerMover : State, IMover
 
     private void Update()
     {
-        Move();
+        if (_isTutorial)
+            MoveInSpace();
+        else
+            Move();
     }
 
     public void Move()
@@ -27,11 +32,25 @@ public class PlayerMover : State, IMover
         Swipe();
     }
 
+    public void StartTutorialMove()
+    {
+        _isTutorial = true;
+    }
+
+    public void EndTutorialMove()
+    {
+        _isTutorial = false;
+    }
+
     public void LookAtTarget(Vector3 target)
     {
         throw new System.NotImplementedException();
     }
 
+    private void MoveInSpace()
+    {
+        transform.Translate(Vector3.forward * _tutorialMoveSpeed * Time.deltaTime);
+    }
     private void Swipe()
     {
         float swerveAmount = Time.deltaTime * _input.Sensitivity * Mathf.Clamp(_input.MoveFactorX, -1f, 1);

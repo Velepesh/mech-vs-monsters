@@ -39,19 +39,19 @@ public class TargetDetector : MonoBehaviour
         return SearchEnemyTarget(weaponPosition, _targets);
     }
 
-    private void AddFightTarget(Godzilla godzilla)
+    private void AddFightTarget(Monster monster)
     {
-        godzilla.Died += OnDied;
-        _targets.Add(godzilla);
+        monster.Died += OnDied;
+        _targets.Add(monster);
         UpdateGunsTarget();
     }
 
-    private void OnFought(Godzilla godzilla)
+    private void OnFought(Monster monster)
     {
         LoseTargetForEnemy();
 
         ClearTargets();
-        AddFightTarget(godzilla);
+        AddFightTarget(monster);
     }
 
     private void ClearTargets()
@@ -75,8 +75,8 @@ public class TargetDetector : MonoBehaviour
 
                 if (damageable is Enemy enemy)
                     enemy.Init(_player);
-                else if (damageable is EnemyCollider enemyCollider)
-                    enemyCollider.Enemy.Init(_player);
+                //else if (damageable is MonsterCollider enemyCollider)
+                //    enemyCollider.Monster.Init(_player);
 
                 UpdateGunsTarget();
             }

@@ -8,9 +8,9 @@ public class FightUI : MonoBehaviour
     [SerializeField] private float _startDelayTime;
     [SerializeField] private Game _game;
     [SerializeField] private Slider _playerSlider;
-    [SerializeField] private Slider _godzillaSlider;
+    [SerializeField] private Slider _monsterSlider;
     [SerializeField] private Player _player;
-    [SerializeField] private Godzilla _godzilla;
+    [SerializeField] private Monster _monster;
 
     private int _currentPlayerHealth;
     private int _currentGodzillaHealth;
@@ -23,7 +23,7 @@ public class FightUI : MonoBehaviour
     private void OnEnable()
     {
         _player.Health.HealthChanged += OnPlayerHealthChanged;
-        _godzilla.Health.HealthChanged += OnGodzillaHealthChanged;
+        _monster.Health.HealthChanged += OnGodzillaHealthChanged;
         _game.Fought += OnFought;
         _game.FoughtWon += OnFoughtWon;
     }
@@ -31,7 +31,7 @@ public class FightUI : MonoBehaviour
     private void OnDisable()
     {
         _player.Health.HealthChanged -= OnPlayerHealthChanged;
-        _godzilla.Health.HealthChanged -= OnGodzillaHealthChanged;
+        _monster.Health.HealthChanged -= OnGodzillaHealthChanged;
         _game.Fought -= OnFought;
         _game.FoughtWon -= OnFoughtWon;
     }
@@ -39,7 +39,7 @@ public class FightUI : MonoBehaviour
     private void OnFought()
     {
         InitSliderValues(_playerSlider, _player.Health.StartValue, out _currentPlayerHealth);
-        InitSliderValues(_godzillaSlider, _godzilla.Health.StartValue, out _currentGodzillaHealth);
+        InitSliderValues(_monsterSlider, _monster.Health.StartValue, out _currentGodzillaHealth);
 
         StartCoroutine(EnableAllSliders(_startDelayTime));
     }
@@ -71,7 +71,7 @@ public class FightUI : MonoBehaviour
     {
         TryToChangeSliderValue(_playerSlider, _currentPlayerHealth);
         
-        TryToChangeSliderValue(_godzillaSlider, _currentGodzillaHealth);
+        TryToChangeSliderValue(_monsterSlider, _currentGodzillaHealth);
 
         if (_currentPlayerHealth == 0 || _currentGodzillaHealth == 0)
             DisableAllSliders();
@@ -87,7 +87,7 @@ public class FightUI : MonoBehaviour
     {
         yield return new WaitForSeconds(duration);
         EnableSlider(_playerSlider);
-        EnableSlider(_godzillaSlider);
+        EnableSlider(_monsterSlider);
     }
 
     private void EnableSlider(Slider slider)
@@ -98,7 +98,7 @@ public class FightUI : MonoBehaviour
     private void DisableAllSliders()
     {
         DisableSlider(_playerSlider);
-        DisableSlider(_godzillaSlider);
+        DisableSlider(_monsterSlider);
     }
 
     private void DisableSlider(Slider slider)

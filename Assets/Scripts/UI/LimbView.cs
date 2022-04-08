@@ -28,8 +28,8 @@ public class LimbView : MonoBehaviour
     {
         _sellButton.onClick.AddListener(OnButtonClick);
 
-        if (_limb != null)
-            TryFlicker(_limb, _money);
+        //if (_limb != null)
+        //    TryFlicker(_limb, _money);
     }
 
     private void OnDisable()
@@ -37,32 +37,34 @@ public class LimbView : MonoBehaviour
         _sellButton.onClick.RemoveListener(OnButtonClick);
     }
 
-    public void Render(Limb limb, int money)
+    public void Flicker()
+    {
+        _animator.SetTrigger(AnimatorFlickerController.States.Flicker);
+    }
+
+    public void Render(Limb limb)
     {
         _limb = limb;
-        TryLockItem(limb, money);
+        TryLockItem(limb);
 
-        _money = money;
         _price.text = limb.Price.ToString();
         _healthText.text = limb.Health.ToString();
         _specificationText.text = limb.SpecificationValue.ToString();
         _icon.sprite = limb.Icon;
     }
 
-    private void TryLockItem(Limb limb, int money)
+    private void TryLockItem(Limb limb)
     {
         if (limb.IsBuyed)
             Unlock();
         else
-            Lock(limb, money);
+            Lock();
     }
 
 
-    public void Lock(Limb limb, int money)
+    public void Lock()
     {
         _lockedView.SetActive(true);
-
-        TryFlicker(limb, money);
     }
 
     public void Unlock()
@@ -73,11 +75,5 @@ public class LimbView : MonoBehaviour
     private void OnButtonClick()
     {
         LimbButtonClick?.Invoke(_limb, this);
-    }
-
-    private void TryFlicker(Limb limb, int money)
-    {
-        if (money >= limb.Price)
-            _animator.SetBool(AnimatorLimbViewController.States.Flicker, true);
     }
 }

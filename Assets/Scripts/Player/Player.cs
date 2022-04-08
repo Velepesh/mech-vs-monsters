@@ -23,7 +23,6 @@ public class Player : MonoBehaviour, IDamageable, ITarget
     public event UnityAction DamageTook;
     public event UnityAction Fell;
     public event UnityAction Moved;
-    public event UnityAction MovingStopped;
     public event UnityAction<IDamageable> Died;
     public event UnityAction<int> MoneyAdded;
     public event UnityAction<int> SpeedChanged;
@@ -31,8 +30,8 @@ public class Player : MonoBehaviour, IDamageable, ITarget
     public event UnityAction Standed;
     public event UnityAction Won;
     public event UnityAction<Leg> LegChanged;
-    public event UnityAction<Godzilla> Fought;
-    public event UnityAction<Transform, Godzilla> Prepeared;
+    public event UnityAction<Monster> Fought;
+    public event UnityAction<Transform, Monster> Prepeared;
 
     public void StartLevel()
     {
@@ -61,7 +60,6 @@ public class Player : MonoBehaviour, IDamageable, ITarget
 
     public void Win()
     {
-        StopMoving();
         Won?.Invoke();
     }
 
@@ -86,26 +84,19 @@ public class Player : MonoBehaviour, IDamageable, ITarget
         MoneyAdded?.Invoke(money);
     }
 
-    public void StopMoving()
-    {
-        MovingStopped?.Invoke();
-    }
-
-    public void Fight(Godzilla godzilla)
+    public void Fight(Monster monster)
     {
         _health.RestoreHealth();
-        Fought?.Invoke(godzilla);
+        Fought?.Invoke(monster);
     }
     
-    public void PrepearedForFight(Transform targetPoint, Godzilla godzilla)
+    public void PrepearedForFight(Transform targetPoint, Monster monster)
     {
-        StopMoving();
-        Prepeared?.Invoke(targetPoint, godzilla);
+        Prepeared?.Invoke(targetPoint, monster);
     }
 
     public void Stand()
     {
-        StopMoving();
         Standed?.Invoke();
     }
 

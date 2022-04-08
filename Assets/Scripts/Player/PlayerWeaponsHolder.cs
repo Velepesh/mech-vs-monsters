@@ -27,6 +27,17 @@ public class PlayerWeaponsHolder : MonoBehaviour
         _player.Won -= OnWon;
     }
 
+    public void StopShooting()
+    {
+        foreach (Weapon weapon in _automaticWeapons)
+            weapon.StopShooting();
+    }
+
+    public void StartShooting()
+    {
+        foreach (Weapon weapon in _automaticWeapons)
+            weapon.StartShooting();
+    }
     public Weapon GetWeapon(int index)
     {
         return _automaticWeapons[index];
@@ -34,7 +45,6 @@ public class PlayerWeaponsHolder : MonoBehaviour
 
     private void OnWon()
     {
-        foreach (Weapon weapon in _automaticWeapons)
-            weapon.StopShooting();
+        StopShooting();
     }
 }

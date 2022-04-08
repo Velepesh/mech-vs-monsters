@@ -20,6 +20,8 @@ public class Game : MonoBehaviour
     public event UnityAction LevelMainMenu;
     public event UnityAction Fought;
     public event UnityAction FoughtWon;
+    public event UnityAction RocketTutorialStarted;
+    public event UnityAction RocketTutorialEnded;
 
     private void OnEnable()
     {
@@ -93,4 +95,17 @@ public class Game : MonoBehaviour
     {
         LoseGame();
     }
+
+    public void StartTutorial()
+    {
+        Time.timeScale = 0.5f;
+        RocketTutorialStarted?.Invoke();
+    }
+
+    public void EndTutorial()
+    {
+        Time.timeScale = 1f;
+        RocketTutorialEnded?.Invoke();
+    }
+
 }

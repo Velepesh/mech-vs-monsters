@@ -35,7 +35,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 400, y: 400}
+  m_SizeDelta: {x: 500, y: 500}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &7304504180033951596
 CanvasRenderer:
@@ -305,7 +305,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _damage: 100
-  _explosionEffect: {fileID: 6541324304217663941, guid: 2be80a508c87dd9458988c9537a8f652, type: 3}
+  _explosionEffect: {fileID: 198717222519016466, guid: 9eb3b1a11c610cd418079f132e291197, type: 3}
   _health:
     _health: 100
   _award: 3

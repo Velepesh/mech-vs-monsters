@@ -1,4 +1,3 @@
-using System.Collections;
 using UnityEngine;
 
 public class CanvasDisabler : MonoBehaviour
@@ -16,7 +15,7 @@ public class CanvasDisabler : MonoBehaviour
         _player.Prepeared -= OnPrepeared;
     }
 
-    private void OnPrepeared(Transform transform, Godzilla godzilla)
+    private void OnPrepeared(Transform transform, Monster monster)
     {
         _canvas.SetActive(false);
     }

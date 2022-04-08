@@ -28,9 +28,9 @@ public class FightTransition : Transition
         NeedTransit = true;
     }
 
-    private void OnPrepeared(Transform transform, Godzilla godzilla)
+    private void OnPrepeared(Transform transform, Monster monster)
     {
         Transit();
-        _fighterMover.Init(transform, godzilla);
+        _fighterMover.Init(transform, monster);
     }
 }

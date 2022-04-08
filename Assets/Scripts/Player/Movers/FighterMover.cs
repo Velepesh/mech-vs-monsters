@@ -30,9 +30,9 @@ public class FighterMover : State, IMover
             LookAtTarget(_godzillaPosition);
     }
 
-    public void Init(Transform targetPoint, Godzilla godzilla)
+    public void Init(Transform targetPoint, Monster monster)
     {
-        _godzillaPosition = godzilla.Position;
+        _godzillaPosition = monster.Position;
         _targetFightPosition = targetPoint.position;
         _targetFightPosition.y = transform.position.y;
 

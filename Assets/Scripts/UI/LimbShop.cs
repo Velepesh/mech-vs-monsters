@@ -14,6 +14,8 @@ public class LimbShop : MonoBehaviour
 
     private List<LimbView> _limbViews = new List<LimbView>();
     private Limb _currentLimb;
+    private Limb _mostEpensiveLimbAvailable;
+    private LimbView _flickerView;
 
     public bool IsHeadSelected => _robotBuilder.IsHeadSelected;
     public bool IsArmSelected => _robotBuilder.IsArmSelected;
@@ -29,6 +31,9 @@ public class LimbShop : MonoBehaviour
     {
         for (int i = 0; i < _limbViews.Count; i++)
             _limbViews[i].LimbButtonClick += OnLimbButtonClick;
+
+        if (_flickerView != null)
+            _flickerView.Flicker();
     }
 
     private void InitItems()
@@ -41,13 +46,25 @@ public class LimbShop : MonoBehaviour
             if (limb.IsSelect)
                 _currentLimb = limb;
         }
+
+        if (_flickerView != null)
+            _flickerView.Flicker();
     }
 
     private void AddItem(Limb limb)
     {
         LimbView view = Instantiate(_template, _itemContainer.transform);
         _limbViews.Add(view);
-        view.Render(limb, _wallet.Money);
+        view.Render(limb);
+
+        if (limb.Price <= _wallet.Money)
+        {
+            if (_mostEpensiveLimbAvailable == null)
+                SetFlickerView(limb, view);
+            else if(_mostEpensiveLimbAvailable.Price <= limb.Price)
+                SetFlickerView(limb, view);
+
+        }
     }
 
     private void OnDisable()
@@ -61,6 +78,11 @@ public class LimbShop : MonoBehaviour
         gameObject.SetActive(false);
     }
 
+    private void SetFlickerView(Limb limb, LimbView view)
+    {
+        _mostEpensiveLimbAvailable = limb;
+        _flickerView = view;
+    }
     private void OnLimbButtonClick(Limb limb, LimbView view)
     {
         if(limb.IsBuyed == false)  
@@ -84,7 +106,7 @@ public class LimbShop : MonoBehaviour
             else
                 ChangeAttackForce(limb);
 
-            _robotBuilder.SelectLimb(limb, GetLimbIndex(limb));///////////
+            _robotBuilder.SelectLimb(limb, GetLimbIndex(limb));
             LimbSelected?.Invoke();
 
             _currentLimb = limb;

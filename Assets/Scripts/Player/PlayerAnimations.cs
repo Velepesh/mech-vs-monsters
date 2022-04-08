@@ -75,6 +75,9 @@ public class PlayerAnimations : MonoBehaviour
 
     private void OnStanded()
     {
+        _animator.ResetTrigger(AnimatorPlayerController.States.LegAttack);
+        _animator.ResetTrigger(AnimatorPlayerController.States.ArmAttack);
+
         _animator.SetTrigger(AnimatorPlayerController.States.Stand);
     }
 

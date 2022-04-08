@@ -11,7 +11,7 @@ public class HouseDestroyer : MonoBehaviour
     [SerializeField] private Game _game;
     [SerializeField] private Button _rocketLauncherButton;
 
-    readonly private int _firstLevel = 1;
+    readonly private int _secondLevel = 2;
 
     private bool _isTimer;
     private float _timeLeft;
@@ -59,7 +59,7 @@ public class HouseDestroyer : MonoBehaviour
             _player = player;
             StartTimer();
 
-            if(_game.CurrentLevel != _firstLevel)
+            if(_game.CurrentLevel > _secondLevel)
                 _rocketLauncherButton.gameObject.SetActive(true);
         }
     }

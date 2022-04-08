@@ -39,7 +39,7 @@ public class WeaponShop : MonoBehaviour
 
     private void AddItem(AdditionalWeapon weapon, PlayerAdditionalWeapon playerAdditionalWeapon)
     {
-        _weaponView.Render(weapon, playerAdditionalWeapon);
+        _weaponView.Render(weapon, playerAdditionalWeapon, _wallet.Money);
     }
 
     private void OnWeaponButtonClick(WeaponView view)

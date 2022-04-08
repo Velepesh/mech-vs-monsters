@@ -1,0 +1,73 @@
+using UnityEngine;
+using UnityEngine.Events;
+
+public class Monster : MonoBehaviour, IDamageable, ITarget, IAward
+{
+    [SerializeField] private Health _health;
+    [SerializeField] private int _award;
+    [SerializeField] private GameObject _model;
+    [SerializeField] private float _offsetY;
+    private Vector3 _offset => new Vector3(0f, _offsetY, 0f);
+
+    public int Award => _award;
+    public Health Health => _health;
+    public bool IsDied => _health.Value <= 0;
+    public Vector3 Position => transform.position + _offset;
+
+    public event UnityAction Won;
+    public event UnityAction AttackStarted;
+    public event UnityAction Attacked;
+    public event UnityAction AttackStopped;
+    public event UnityAction<IDamageable> Died;
+
+    private void Start()
+    {
+        Health.RecordHealth();
+        DisableModel();
+    }
+
+    public void Fight()
+    {
+        EnableModel();
+        AttackStarted?.Invoke();
+    }
+
+    public void Attack()
+    {
+        Attacked?.Invoke();
+    }
+
+    public void Win()
+    {
+        Won?.Invoke();
+    }
+
+    public void StopAttack()
+    {
+        AttackStopped?.Invoke();
+    }
+
+    private void EnableModel()
+    {
+        _model.SetActive(true);
+    }
+
+    private void DisableModel()
+    {
+        _model.SetActive(false);
+    }
+
+    public void TakeDamage(int damage)
+    {
+        _health.TakeDamage(damage);
+
+        if (IsDied)
+            Die();
+    }
+
+    public void Die()
+    {
+        Died?.Invoke(this);
+        gameObject.SetActive(false);
+    }
+}
