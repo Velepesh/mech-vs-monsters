@@ -4,6 +4,6 @@ public class AnimatorFlickerController : MonoBehaviour
 {
     public static class States
     {
-        public const string Flicker = nameof(Flicker);
+        public const string IsFlicker = nameof(IsFlicker);
     }
 }

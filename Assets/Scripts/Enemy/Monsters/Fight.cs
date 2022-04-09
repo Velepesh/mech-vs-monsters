@@ -13,12 +13,12 @@ public class Fight : MonoBehaviour
 
     private void OnEnable()
     {
-        _monster.Died += OnGodzillaDied;
+        _monster.Disabled += OnMonsterDisabled;
     }
 
     private void OnDisable()
     {
-        _monster.Died -= OnGodzillaDied;
+        _monster.Disabled -= OnMonsterDisabled;
     }
 
     private void OnTriggerEnter(Collider other)
@@ -47,7 +47,7 @@ public class Fight : MonoBehaviour
         player.Died += OnPlayerDied;
     }
 
-    private void OnGodzillaDied(IDamageable damageable)
+    private void OnMonsterDisabled()
     {
         if (_player.IsDied == false)
         {
@@ -55,7 +55,7 @@ public class Fight : MonoBehaviour
             _game.WinInBattle();
         }
 
-        damageable.Died -= OnGodzillaDied;
-        Destroy(gameObject);
+       // damageable.Died -= OnMonsterDied;
+      //  Destroy(gameObject);
     }
 }

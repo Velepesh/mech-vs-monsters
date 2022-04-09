@@ -15,14 +15,21 @@ public class MonsterAnimations : MonoBehaviour
 
     private void OnEnable()
     {
+        _monster.Disabled += OnDisabled;
         _monster.Won += OnWon;
         _monster.AttackStarted += OnAttackStarted;
     }
 
     private void OnDisable()
     {
+        _monster.Disabled -= OnDisabled;
         _monster.Won -= OnWon;
         _monster.AttackStarted -= OnAttackStarted;
+    }
+
+    private void OnDisabled()
+    {
+        _animator.SetTrigger(AnimatorMonsterController.States.Death);
     }
 
     private void OnWon()

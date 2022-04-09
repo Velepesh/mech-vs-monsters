@@ -16,6 +16,7 @@ public class WeaponShop : MonoBehaviour
         if (_weapon.IsBuyed)
             TakeWeapon();
 
+        UpdateFlicker();
         AddItem(_weapon, _additionalWeapon);
     }
 
@@ -28,11 +29,13 @@ public class WeaponShop : MonoBehaviour
 
     private void OnEnable()
     {
+        _wallet.MoneyChanged += OnMoneyChanged;
         _additionalWeapon.ViewEnabled += OnViewEnabled;
         _weaponView.WeaponButtonClick += OnWeaponButtonClick;
     }
     private void OnDisable()
     {
+        _wallet.MoneyChanged -= OnMoneyChanged;
         _additionalWeapon.ViewEnabled -= OnViewEnabled;
         _weaponView.WeaponButtonClick -= OnWeaponButtonClick;
     }
@@ -67,5 +70,18 @@ public class WeaponShop : MonoBehaviour
     private void OnViewEnabled()
     {
         AddItem(_weapon, _additionalWeapon);
-    } 
+    }
+
+    private void OnMoneyChanged(int money)
+    {
+        UpdateFlicker();
+    }
+
+    private void UpdateFlicker()
+    {
+        if (_weapon.Price <= _wallet.Money)
+            _weaponView.StartFlicker();
+        else
+            _weaponView.StopFlicker();
+    }
 }

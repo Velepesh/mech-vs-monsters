@@ -14,8 +14,6 @@ public class LimbShop : MonoBehaviour
 
     private List<LimbView> _limbViews = new List<LimbView>();
     private Limb _currentLimb;
-    private Limb _mostEpensiveLimbAvailable;
-    private LimbView _flickerView;
 
     public bool IsHeadSelected => _robotBuilder.IsHeadSelected;
     public bool IsArmSelected => _robotBuilder.IsArmSelected;
@@ -29,11 +27,20 @@ public class LimbShop : MonoBehaviour
 
     private void OnEnable()
     {
+        _wallet.MoneyChanged += OnMoneyChanged;
+
         for (int i = 0; i < _limbViews.Count; i++)
             _limbViews[i].LimbButtonClick += OnLimbButtonClick;
 
-        if (_flickerView != null)
-            _flickerView.Flicker();
+        UpdateFlicker();
+    }
+
+    private void OnDisable()
+    {
+        _wallet.MoneyChanged -= OnMoneyChanged;
+
+        for (int i = 0; i < _limbViews.Count; i++)
+            _limbViews[i].LimbButtonClick -= OnLimbButtonClick;
     }
 
     private void InitItems()
@@ -46,9 +53,6 @@ public class LimbShop : MonoBehaviour
             if (limb.IsSelect)
                 _currentLimb = limb;
         }
-
-        if (_flickerView != null)
-            _flickerView.Flicker();
     }
 
     private void AddItem(Limb limb)
@@ -56,21 +60,6 @@ public class LimbShop : MonoBehaviour
         LimbView view = Instantiate(_template, _itemContainer.transform);
         _limbViews.Add(view);
         view.Render(limb);
-
-        if (limb.Price <= _wallet.Money)
-        {
-            if (_mostEpensiveLimbAvailable == null)
-                SetFlickerView(limb, view);
-            else if(_mostEpensiveLimbAvailable.Price <= limb.Price)
-                SetFlickerView(limb, view);
-
-        }
-    }
-
-    private void OnDisable()
-    {
-        for (int i = 0; i < _limbViews.Count; i++)
-            _limbViews[i].LimbButtonClick -= OnLimbButtonClick;
     }
 
     public void CloseShop()
@@ -78,11 +67,6 @@ public class LimbShop : MonoBehaviour
         gameObject.SetActive(false);
     }
 
-    private void SetFlickerView(Limb limb, LimbView view)
-    {
-        _mostEpensiveLimbAvailable = limb;
-        _flickerView = view;
-    }
     private void OnLimbButtonClick(Limb limb, LimbView view)
     {
         if(limb.IsBuyed == false)  
@@ -110,6 +94,36 @@ public class LimbShop : MonoBehaviour
             LimbSelected?.Invoke();
 
             _currentLimb = limb;
+        }
+
+        UpdateFlicker();
+    }
+
+    private void OnMoneyChanged(int money)
+    {
+        UpdateFlicker();
+    }
+
+    private void UpdateFlicker()
+    {
+        for (int i = _limbs.Count - 1; i >= 0; i--)
+        {
+            Limb limb = _limbs[i];
+
+            if (limb.IsBuyed)
+            {
+                for (int j = 0; j < i; j++)
+                    _limbViews[j].StopFlicker();
+
+                return;
+            }
+            else
+            {
+                if (limb.Price <= _wallet.Money)
+                    _limbViews[i].Flicker();
+                else
+                    _limbViews[i].StopFlicker();
+            }
         }
     }
 

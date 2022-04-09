@@ -10,6 +10,7 @@ public class RocketButtonTutorial : MonoBehaviour
     [SerializeField] private PlayerWeaponsHolder _playerWeaponsHolder;
     [SerializeField] private Machinegun _tankGun;
 
+    private Player _player;
     private void OnEnable()
     {
         _rocketLauncher.Shooted += OnShooted;
@@ -24,6 +25,8 @@ public class RocketButtonTutorial : MonoBehaviour
     {
         if(other.TryGetComponent(out Player player))
         {
+            _player = player;
+            _player.StopAnimation();
             _game.StartTutorial();
             _playerMover.StartTutorialMove();
             _playerWeaponsHolder.StopShooting();
@@ -35,6 +38,7 @@ public class RocketButtonTutorial : MonoBehaviour
 
     private void OnShooted()
     {
+        _player.StartAnimation();
         _game.EndTutorial();
         _playerMover.EndTutorialMove();
         _playerWeaponsHolder.StartShooting();

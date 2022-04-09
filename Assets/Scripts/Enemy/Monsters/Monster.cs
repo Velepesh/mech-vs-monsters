@@ -19,6 +19,7 @@ public class Monster : MonoBehaviour, IDamageable, ITarget, IAward
     public event UnityAction Attacked;
     public event UnityAction AttackStopped;
     public event UnityAction<IDamageable> Died;
+    public event UnityAction Disabled;
 
     private void Start()
     {
@@ -66,6 +67,12 @@ public class Monster : MonoBehaviour, IDamageable, ITarget, IAward
     }
 
     public void Die()
+    {
+        DisableModel();
+        Disabled?.Invoke();
+    }
+
+    public void DsableMonster()
     {
         Died?.Invoke(this);
         gameObject.SetActive(false);

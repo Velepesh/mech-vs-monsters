@@ -166,6 +166,7 @@ GameObject:
   - component: {fileID: 7420890831080024366}
   - component: {fileID: 7232209989684763536}
   - component: {fileID: 7444062638437581909}
+  - component: {fileID: 1469492259199961090}
   m_Layer: 5
   m_Name: WeaponViewTemplate
   m_TagString: Untagged
@@ -290,7 +291,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _price: {fileID: 8735576779974693066}
-  _health: {fileID: 3448100227466381955}
+  _healthText: {fileID: 0}
+  _specificationText: {fileID: 0}
   _icon: {fileID: 2127179062989772240}
   _sellButton: {fileID: 7420890831080024366}
   _lockedView: {fileID: 3303884374399334598}
@@ -307,11 +309,30 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _price: {fileID: 8735576779974693066}
-  _level: {fileID: 0}
+  _damageText: {fileID: 0}
   _icon: {fileID: 2127179062989772240}
   _sellButton: {fileID: 7420890831080024366}
-  _lockedByLevelView: {fileID: 0}
+  _view: {fileID: 0}
   _lockedByMoneyView: {fileID: 0}
+--- !u!95 &1469492259199961090
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2354724143154118257}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 491c97f1894f17a4bb48c4f5e608a970, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &3303884374399334598
 GameObject:
   m_ObjectHideFlags: 0

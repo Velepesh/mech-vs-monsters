@@ -15,7 +15,6 @@ public class LimbView : MonoBehaviour
 
     private Animator _animator;
     private Limb _limb;
-    private int _money;
 
     public event UnityAction<Limb, LimbView> LimbButtonClick;
 
@@ -27,9 +26,6 @@ public class LimbView : MonoBehaviour
     private void OnEnable()
     {
         _sellButton.onClick.AddListener(OnButtonClick);
-
-        //if (_limb != null)
-        //    TryFlicker(_limb, _money);
     }
 
     private void OnDisable()
@@ -39,7 +35,12 @@ public class LimbView : MonoBehaviour
 
     public void Flicker()
     {
-        _animator.SetTrigger(AnimatorFlickerController.States.Flicker);
+        _animator.SetBool(AnimatorFlickerController.States.IsFlicker, true);
+    }
+
+    public void StopFlicker()
+    {
+        _animator.SetBool(AnimatorFlickerController.States.IsFlicker, false);
     }
 
     public void Render(Limb limb)

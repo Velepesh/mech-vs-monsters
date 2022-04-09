@@ -31,14 +31,14 @@ public class WeaponView : MonoBehaviour
         _sellButton.onClick.RemoveListener(OnButtonClick);
     }
 
-    private void TryLockItem(AdditionalWeapon weapon, PlayerAdditionalWeapon playerAdditionalWeapon, int money)
+    private void TryLockItem(AdditionalWeapon weapon, PlayerAdditionalWeapon playerAdditionalWeapon)
     {
         if(playerAdditionalWeapon.IsVisible)
         {
             if (weapon.IsBuyed)
                 Hide();
             else
-                LockByMoney(weapon, money);
+                LockByMoney();
         }
         else
         {
@@ -48,7 +48,7 @@ public class WeaponView : MonoBehaviour
 
     public void Render(AdditionalWeapon weapon, PlayerAdditionalWeapon playerAdditionalWeapon, int money)
     {
-        TryLockItem(weapon, playerAdditionalWeapon, money);
+        TryLockItem(weapon, playerAdditionalWeapon);
 
         _price.text = weapon.Price.ToString();
         _damageText.text = weapon.Damage.ToString();
@@ -65,17 +65,20 @@ public class WeaponView : MonoBehaviour
         _view.SetActive(true);
     }
 
-    private void LockByMoney(AdditionalWeapon weapon, int money)
+    public void StartFlicker()
     {
-        Show();
-        TryFlicker(weapon, money);
-        _lockedByMoneyView.SetActive(true);
+        _animator.SetBool(AnimatorFlickerController.States.IsFlicker, true);
     }
 
-    private void TryFlicker(AdditionalWeapon weapon, int money)
+    public void StopFlicker()
     {
-        if (money >= weapon.Price)
-            _animator.SetTrigger(AnimatorFlickerController.States.Flicker);
+        _animator.SetBool(AnimatorFlickerController.States.IsFlicker, false);
+    }
+
+    private void LockByMoney()
+    {
+        Show();
+        _lockedByMoneyView.SetActive(true);
     }
 
     private void OnButtonClick()

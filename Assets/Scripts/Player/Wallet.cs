@@ -47,17 +47,17 @@ public class Wallet : MonoBehaviour
     private void AddMoney(int money)
     {
         _money += money;
-        MoneyChanged?.Invoke(_money);
-        
         SaveBalance();
+        
+        MoneyChanged?.Invoke(_money);
     }
 
     private void RemoveMoney(int money)
     {
         _money -= money;
-        MoneyChanged?.Invoke(_money);
-
         SaveBalance();
+        
+        MoneyChanged?.Invoke(_money);
     }
 
     private void OnMoneyAdded(int money)

@@ -2,8 +2,7 @@ using UnityEngine;
 
 public class RocketProjectile : DamageCollider
 {
-    [SerializeField] private int _damageOnHouse = 1000;
-    [SerializeField] private int _damageOnBarricade = 150;
+    [SerializeField] private int _maxDamage = 500;
     [SerializeField] private float _radius = 1;
     [SerializeField] private float _explosionForce = 1;
     [SerializeField] private GameObject _rocketExplosion;
@@ -12,7 +11,7 @@ public class RocketProjectile : DamageCollider
 
     private void OnValidate()
     {
-        _damageOnHouse = Mathf.Clamp(_damageOnHouse, 0, int.MaxValue);
+        _maxDamage = Mathf.Clamp(_maxDamage, 0, int.MaxValue);
         _radius = Mathf.Clamp(_radius, 0, float.MaxValue);
         _explosionForce = Mathf.Clamp(_explosionForce, 0, float.MaxValue);
     }
@@ -34,10 +33,8 @@ public class RocketProjectile : DamageCollider
         {
             if (collider.gameObject.TryGetComponent(out IDamageable damageable))
             {
-                if (damageable is House)
-                    DoDamage(damageable, _damageOnHouse);
-                else if (damageable is Barricade)
-                    DoDamage(damageable, _damageOnBarricade);
+                if (damageable is Vehicle == false)
+                    DoDamage(damageable, _maxDamage);
                 else
                     DoDamage(damageable);
 

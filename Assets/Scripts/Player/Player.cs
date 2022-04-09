@@ -32,6 +32,8 @@ public class Player : MonoBehaviour, IDamageable, ITarget
     public event UnityAction<Leg> LegChanged;
     public event UnityAction<Monster> Fought;
     public event UnityAction<Transform, Monster> Prepeared;
+    public event UnityAction AnimatorStopped;
+    public event UnityAction AnimatorStarted;
 
     public void StartLevel()
     {
@@ -46,6 +48,16 @@ public class Player : MonoBehaviour, IDamageable, ITarget
         Fell?.Invoke();
 
         StartCoroutine(DeadAfterFell(_deadAfterFellTime));
+    }
+
+    public void StartAnimation()
+    {
+        AnimatorStarted?.Invoke();
+    }
+
+    public void StopAnimation()
+    {
+        AnimatorStopped?.Invoke();
     }
 
     public void ChangeLeg(Leg leg)

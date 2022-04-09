@@ -21,6 +21,8 @@ public class PlayerAnimations : MonoBehaviour
         _player.Moved += OnMoved;
         _player.Won += OnWon;
         _player.Standed += OnStanded;
+        _player.AnimatorStopped += OnAnimatorStopped;
+        _player.AnimatorStarted += OnAnimatorStarted;
         _attacker.Attacked += OnAttacked;
         _rocketLauncher.Shooted += OnShooted;
     }
@@ -30,6 +32,8 @@ public class PlayerAnimations : MonoBehaviour
         _player.Won -= OnWon;
         _player.Moved -= OnMoved;
         _player.Standed -= OnStanded;
+        _player.AnimatorStopped -= OnAnimatorStopped;
+        _player.AnimatorStarted -= OnAnimatorStarted;
         _attacker.Attacked -= OnAttacked;
         _rocketLauncher.Shooted -= OnShooted;
     }
@@ -37,6 +41,16 @@ public class PlayerAnimations : MonoBehaviour
     private void OnMoved()
     {
         _animator.SetTrigger(AnimatorPlayerController.States.Move);
+    }
+
+    private void OnAnimatorStopped()
+    {
+        _animator.enabled = false;
+    }
+
+    private void OnAnimatorStarted()
+    {
+        _animator.enabled = true;
     }
 
     private void OnShooted()
