@@ -8,6 +8,7 @@ public class PlayerInput : MonoBehaviour
     [SerializeField] private PlayerWeaponsHolder _playerWeaponsHolder;
     [SerializeField] private AimShooting _aimShooting;
     [SerializeField] private float _sensitivity;
+    [SerializeField] private bool _isMobileInput;
 
     private readonly float _minMouseMove = 3f;
 
@@ -36,56 +37,74 @@ public class PlayerInput : MonoBehaviour
         _player.Fought -= OnFought;
     }
 
-    //private void Update()
-    //{
-    //    if (Input.touchCount == 1)
-    //    {
-    //        Touch touch = Input.GetTouch(0);
-    //        if (touch.phase == TouchPhase.Ended)
-    //        {
-    //            _moveFactorX = 0f;
-    //            _previousMoveFactorX = _moveFactorX;
-
-    //        }
-
-    //        if (touch.phase == TouchPhase.Moved)
-    //        {
-    //            if (!EventSystem.current.IsPointerOverGameObject())
-    //            {
-    //                float position = Input.mousePosition.x;
-    //                _moveFactorX = position - _mousePositionX;
-
-    //                ApplyMoveFactorX();
-
-    //                _previousMoveFactorX = Mathf.Clamp(_moveFactorX, -1f, 1f);
-    //                _mousePositionX = position;
-    //            }
-    //        }
-
-    //        if (touch.phase == TouchPhase.Began)
-    //        {
-    //            if (!EventSystem.current.IsPointerOverGameObject())
-    //            {
-    //                if (_isFight)
-    //                    _attacker.Attack(true);
-    //                else
-    //                    _mousePositionX = Input.mousePosition.x;
-    //            }
-    //        }
-    //    }
-    //}
-
     private void Update()
+    {
+        if (_isMobileInput)
+            MobileControl();
+        else
+            MouseControl();
+    }
+
+    private void MobileControl()
+    {
+        if (Input.touchCount == 1)
+        {
+            Touch touch = Input.GetTouch(0);
+            if (touch.phase == TouchPhase.Began)
+            {
+                if (!EventSystem.current.IsPointerOverGameObject())
+                {
+                    if (!EventSystem.current.IsPointerOverGameObject())
+                    {
+                        if (_isFight)
+                            if (_player.IsAiming == false)
+                                _attacker.Attack(true);
+                            else
+                                _mousePositionX = Input.mousePosition.x;
+                    }
+                }
+            }
+
+            if (touch.phase == TouchPhase.Moved)
+            {
+                if (_player.IsAiming)
+                    _aimShooting.Shoot();
+
+                if (!EventSystem.current.IsPointerOverGameObject())
+                {
+                    float position = Input.mousePosition.x;
+                    _moveFactorX = position - _mousePositionX;
+
+                    ApplyMoveFactorX();
+
+                    _previousMoveFactorX = Mathf.Clamp(_moveFactorX, -1f, 1f);
+                    _mousePositionX = position;
+                }
+            }
+
+            if (touch.phase == TouchPhase.Ended)
+            {
+                _moveFactorX = 0f;
+                _previousMoveFactorX = _moveFactorX;
+
+                if (_player.IsAiming)
+                    _playerWeaponsHolder.StopShooting();
+
+            }
+        }
+    }
+
+    private void MouseControl()
     {
         if (Input.GetMouseButtonDown(0))
         {
             if (!EventSystem.current.IsPointerOverGameObject())
             {
                 if (_isFight)
-                    if(_player.IsAiming == false)
+                    if (_player.IsAiming == false)
                         _attacker.Attack(true);
-                else
-                    _mousePositionX = Input.mousePosition.x;
+                    else
+                        _mousePositionX = Input.mousePosition.x;
             }
         }
         else if (Input.GetMouseButton(0))
@@ -109,11 +128,10 @@ public class PlayerInput : MonoBehaviour
             _moveFactorX = 0f;
             _previousMoveFactorX = _moveFactorX;
 
-            if(_player.IsAiming)
+            if (_player.IsAiming)
                 _playerWeaponsHolder.StopShooting();
         }
     }
-
     private void ApplyMoveFactorX()
     {
         if (_previousMoveFactorX < 0f && _moveFactorX < 0f)

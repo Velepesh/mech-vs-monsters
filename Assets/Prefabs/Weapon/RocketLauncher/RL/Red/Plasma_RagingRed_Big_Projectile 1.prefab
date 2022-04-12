@@ -4700,6 +4700,7 @@ GameObject:
   - component: {fileID: 54453457801900860}
   - component: {fileID: 2833222370507169072}
   - component: {fileID: 3078312639872941891}
+  - component: {fileID: 2127031902301772153}
   m_Layer: 7
   m_Name: Plasma_RagingRed_Big_Projectile 1
   m_TagString: FX
@@ -9725,14 +9726,27 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _damage: 100
   _maxDamage: 500
-  _radius: 5
+  _monsterDamage: 150
+  _radius: 4.5
   _speed: 30
   _explosionForce: 25
   _rocketExplosion: {fileID: 1228869523896316, guid: e6cf72797c8570d428c9c658a88b9942, type: 3}
-  _disableOnHit: {fileID: 198420552104652666}
   _layerMask:
     serializedVersion: 2
     m_Bits: 45568
+--- !u!114 &2127031902301772153
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1238843893459588}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1a895231490da6545890b1e1794f8704, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  deathtimer: 5
 --- !u!1 &1331927736720676
 GameObject:
   m_ObjectHideFlags: 0

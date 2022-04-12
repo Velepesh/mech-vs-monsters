@@ -61,9 +61,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1dd7503c51e1449489999820411a94d7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _totalLevels: 7
-  _minCircledLevel: 1
-  _maxCircledLevel: 7
+  _totalLevels: 20
+  _minCircledLevel: 10
+  _maxCircledLevel: 20
 --- !u!114 &1457658913
 MonoBehaviour:
   m_ObjectHideFlags: 0

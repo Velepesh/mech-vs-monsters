@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 6120500137465899883}
   - component: {fileID: 6120500137447550507}
   - component: {fileID: 6120500137447643019}
-  m_Layer: 12
+  m_Layer: 2
   m_Name: CoinBlastGold(Mobile)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4739,7 +4739,7 @@ GameObject:
   - component: {fileID: 6120500137465899885}
   - component: {fileID: 6120500137447550509}
   - component: {fileID: 6120500137447643021}
-  m_Layer: 12
+  m_Layer: 2
   m_Name: CoinShine
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -9501,7 +9501,7 @@ GameObject:
   - component: {fileID: 6120500137465899887}
   - component: {fileID: 6120500137447550511}
   - component: {fileID: 6120500137447643023}
-  m_Layer: 12
+  m_Layer: 2
   m_Name: CoinTrailSparkly
   m_TagString: Untagged
   m_Icon: {fileID: 0}

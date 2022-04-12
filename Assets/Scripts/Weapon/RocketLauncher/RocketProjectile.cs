@@ -6,9 +6,7 @@ public class RocketProjectile : DamageCollider, IMover
     [SerializeField] private int _monsterDamage = 150;
     [SerializeField] private float _radius = 1;
     [SerializeField] private float _speed;
-    [SerializeField] private float _explosionForce = 1;
     [SerializeField] private GameObject _rocketExplosion;
-    [SerializeField] private ParticleSystem _disableOnHit;
     [SerializeField] private LayerMask _layerMask;
 
     private ITarget _target;
@@ -19,7 +17,6 @@ public class RocketProjectile : DamageCollider, IMover
         _maxDamage = Mathf.Clamp(_maxDamage, 0, int.MaxValue);
         _speed = Mathf.Clamp(_speed, 0, float.MaxValue);
         _radius = Mathf.Clamp(_radius, 0, float.MaxValue);
-        _explosionForce = Mathf.Clamp(_explosionForce, 0, float.MaxValue);
     }
 
     public void Init(ITarget target)
@@ -41,8 +38,11 @@ public class RocketProjectile : DamageCollider, IMover
                 transform.position = Vector3.MoveTowards(transform.position, _target.Position, _speed * Time.deltaTime);
                 _lastPosition = (_target.Position - transform.position).normalized;
             }
-            else
+            else if (_target.IsDied)
             {
+                if (_lastPosition == Vector3.zero)
+                    _lastPosition = Vector3.forward;
+
                 transform.Translate(_lastPosition * _speed * Time.deltaTime);
             }
         }
@@ -55,10 +55,6 @@ public class RocketProjectile : DamageCollider, IMover
     protected override void OnCollisionEnter(Collision collision)
     {
         Explode();
-
-        _disableOnHit.Stop();
-
-        Destroy(gameObject);
     }
 
     private void Explode()
@@ -75,13 +71,12 @@ public class RocketProjectile : DamageCollider, IMover
                     DoDamage(damageable, _maxDamage);
                 else
                     DoDamage(damageable);
-
-                if (collider.TryGetComponent(out Rigidbody rigidbody))
-                    rigidbody.AddExplosionForce(_explosionForce, transform.position, _radius, 1f, ForceMode.Impulse);
+                Debug.Log(collider.gameObject.name);
             }
         }
-
         GameObject explosion = Instantiate(_rocketExplosion, transform.position, _rocketExplosion.transform.rotation, null);
+       
+        Destroy(gameObject);
     }
 
     public void LookAtTarget(Vector3 target)
