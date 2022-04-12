@@ -5,6 +5,7 @@ using UnityEngine.Events;
 public class Player : MonoBehaviour, IDamageable, ITarget
 {
     [SerializeField] private float _deadAfterFellTime;
+    [SerializeField] private bool _isAiming;
 
     private readonly int _damageToShakeCamera = 30;
     
@@ -17,6 +18,7 @@ public class Player : MonoBehaviour, IDamageable, ITarget
     public int AttackForce => _attackForce;
     public int Speed => _speed;
     public bool IsDied => _health.Value <= 0;
+    public bool IsAiming => _isAiming;
 
 
     public event UnityAction LevelStarted;
@@ -31,7 +33,7 @@ public class Player : MonoBehaviour, IDamageable, ITarget
     public event UnityAction Won;
     public event UnityAction<Leg> LegChanged;
     public event UnityAction<Monster> Fought;
-    public event UnityAction<Transform, Monster> Prepeared;
+    public event UnityAction<Transform, Monster, bool> Prepeared;
     public event UnityAction AnimatorStopped;
     public event UnityAction AnimatorStarted;
 
@@ -104,7 +106,7 @@ public class Player : MonoBehaviour, IDamageable, ITarget
     
     public void PrepearedForFight(Transform targetPoint, Monster monster)
     {
-        Prepeared?.Invoke(targetPoint, monster);
+        Prepeared?.Invoke(targetPoint, monster, _isAiming);
     }
 
     public void Stand()

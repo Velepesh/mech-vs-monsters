@@ -40,6 +40,7 @@ public class MonsterAnimations : MonoBehaviour
 
     private void OnAttackStarted()
     {
-        _animator.SetBool(AnimatorMonsterController.States.IsAttack, true);
+        if(_monster is Ahriman == false)
+            _animator.SetBool(AnimatorMonsterController.States.IsAttack, true);
     }
 }

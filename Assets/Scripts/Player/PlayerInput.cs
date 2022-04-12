@@ -5,6 +5,8 @@ using UnityEngine.EventSystems;
 public class PlayerInput : MonoBehaviour
 {
     [SerializeField] private Attacker _attacker;
+    [SerializeField] private PlayerWeaponsHolder _playerWeaponsHolder;
+    [SerializeField] private AimShooting _aimShooting;
     [SerializeField] private float _sensitivity;
 
     private readonly float _minMouseMove = 3f;
@@ -80,13 +82,17 @@ public class PlayerInput : MonoBehaviour
             if (!EventSystem.current.IsPointerOverGameObject())
             {
                 if (_isFight)
-                    _attacker.Attack(true);
+                    if(_player.IsAiming == false)
+                        _attacker.Attack(true);
                 else
                     _mousePositionX = Input.mousePosition.x;
             }
         }
         else if (Input.GetMouseButton(0))
         {
+            if (_player.IsAiming)
+                _aimShooting.Shoot();
+
             if (!EventSystem.current.IsPointerOverGameObject())
             {
                 float position = Input.mousePosition.x;
@@ -102,6 +108,9 @@ public class PlayerInput : MonoBehaviour
         {
             _moveFactorX = 0f;
             _previousMoveFactorX = _moveFactorX;
+
+            if(_player.IsAiming)
+                _playerWeaponsHolder.StopShooting();
         }
     }
 

@@ -14636,11 +14636,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _damage: 25
   _impactPrefab: {fileID: 1879272669879180, guid: 65d207844531bd747bd343017f098bb5, type: 3}
-  _explosionPrefab: {fileID: 0}
-  _lookRotation: 1
-  _ignorePrevRotation: 0
-  _explodeOnTimer: 0
-  _explosionTimer: 0
   _destroyTime: 1.2
 --- !u!1 &1924905033165216
 GameObject:

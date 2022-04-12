@@ -1,18 +1,23 @@
 using UnityEngine;
 
+[RequireComponent(typeof(Player))]
 [RequireComponent(typeof(PlayerInput))]
 [RequireComponent(typeof(MoverOptions))]
 public class PlayerMover : State, IMover
 {
+    [SerializeField] private bool _canMoveSideways = true;
+
     readonly private float _rotationAngle = 45f;
     readonly private float _tutorialMoveSpeed = 0f;
 
     private MoverOptions _moverOptions;
+    private Player _player;
     private PlayerInput _input;
     private bool _isTutorial;
 
     private void Awake()
     {
+        _player = GetComponent<Player>();
         _input = GetComponent<PlayerInput>();
         _moverOptions = GetComponent<MoverOptions>();
     }
@@ -28,8 +33,11 @@ public class PlayerMover : State, IMover
     public void Move()
     {
         transform.Translate(Vector3.forward * _moverOptions.MoveSpeed * Time.deltaTime);
-
-        Swipe();
+        
+        if (_player.IsAiming)
+            Rotate(0f);
+        else if(_canMoveSideways)
+            Swipe();
     }
 
     public void StartTutorialMove()

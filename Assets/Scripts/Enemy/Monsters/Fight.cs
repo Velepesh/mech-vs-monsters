@@ -8,6 +8,7 @@ public class Fight : MonoBehaviour
     [SerializeField] private Game _game;
     [SerializeField] private Transform _targetPlayerPosition;
     [SerializeField] private float _delayTime;
+    [SerializeField] private bool _isFlyMonster = false;
 
     private Player _player;
 
@@ -26,7 +27,7 @@ public class Fight : MonoBehaviour
         if (other.TryGetComponent(out Player player))
         {
             _player = player;
-            _game.Fight();
+            _game.Fight(_isFlyMonster);
             StartCoroutine(StartFight(player, _delayTime));
         }
     }
@@ -40,9 +41,16 @@ public class Fight : MonoBehaviour
     private IEnumerator StartFight(Player player, float delayTime)
     {
         player.PrepearedForFight(_targetPlayerPosition, _monster);
+        if (_monster is Ahriman ahriman)
+            ahriman.PrepearedForFight();
+
         yield return new WaitForSeconds(delayTime);
 
-        _monster.Fight();
+        if (_monster is Ahriman monster)
+            monster.Fight(player);
+        else
+            _monster.Fight(player);
+        
         player.Fight(_monster);
         player.Died += OnPlayerDied;
     }
@@ -54,8 +62,5 @@ public class Fight : MonoBehaviour
             _player.StartMove();
             _game.WinInBattle();
         }
-
-       // damageable.Died -= OnMonsterDied;
-      //  Destroy(gameObject);
     }
 }

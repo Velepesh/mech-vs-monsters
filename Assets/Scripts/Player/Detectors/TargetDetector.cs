@@ -5,7 +5,6 @@ public class TargetDetector : MonoBehaviour
 {
     [SerializeField] private Player _player;
     [SerializeField] private PlayerWeaponsHolder _playerWeapons;
-    [SerializeField] private LayerMask _obstacleLayerMask;
     [SerializeField] private MoverOptions _moverOptions;
 
     private List<IDamageable> _targets = new List<IDamageable>();
@@ -43,7 +42,9 @@ public class TargetDetector : MonoBehaviour
     {
         monster.Died += OnDied;
         _targets.Add(monster);
-        UpdateGunsTarget();
+
+        if(_player.IsAiming == false)
+            UpdateGunsTarget();
     }
 
     private void OnFought(Monster monster)
@@ -75,10 +76,9 @@ public class TargetDetector : MonoBehaviour
 
                 if (damageable is Enemy enemy)
                     enemy.Init(_player);
-                //else if (damageable is MonsterCollider enemyCollider)
-                //    enemyCollider.Monster.Init(_player);
 
-                UpdateGunsTarget();
+                if(_player.IsAiming == false)
+                    UpdateGunsTarget();
             }
         }
     }
@@ -91,14 +91,14 @@ public class TargetDetector : MonoBehaviour
         _targets.Remove(damageable);
         damageable.Died -= OnDied;
 
-        UpdateGunsTarget();
+        if (_player.IsAiming == false)
+            UpdateGunsTarget();
     }
 
     private void OnPlayerDied(IDamageable damageable)
     {
         LoseTargetForEnemy();
     }
-
 
     private void LoseTargetForEnemy()
     {
@@ -204,17 +204,20 @@ public class TargetDetector : MonoBehaviour
             }
         }
 
-        if (vehicales.Count > 0 && _moverOptions.IsNearEnemy)
+        if (_moverOptions.IsNearEnemy)
         {
-            enemy = SearchClosest(weaponPosition, vehicales);
-            
-            if (_moverOptions.IsNearObstacle)
+            if (vehicales.Count > 0)
+                enemy = SearchClosest(weaponPosition, vehicales);
+            else if (soldiers.Count > 0)
+                enemy = SearchClosest(weaponPosition, soldiers);
+            else
                 enemy = SearchClosest(weaponPosition, otherTargets);
         }
-        else if (soldiers.Count > 0 && _moverOptions.IsNearEnemy)
-            enemy = SearchClosest(weaponPosition, soldiers);
         else
+        {
             enemy = SearchClosest(weaponPosition, otherTargets);
+            Debug.Log("NearObstacle");
+        }
 
         return enemy;
     }

@@ -4699,8 +4699,7 @@ GameObject:
   - component: {fileID: 54453457801900860}
   - component: {fileID: 114226090229346282}
   - component: {fileID: 483792212723969614}
-  - component: {fileID: -1186912914590230109}
-  - component: {fileID: 1118737121681860812}
+  - component: {fileID: -7496192400291841118}
   m_Layer: 7
   m_Name: PlasmaOceanBlue_Medium_Projectile 1
   m_TagString: FX
@@ -9680,7 +9679,7 @@ SphereCollider:
   serializedVersion: 2
   m_Radius: 0.2654499
   m_Center: {x: 0, y: 0, z: 0.6463751}
---- !u!114 &-1186912914590230109
+--- !u!114 &-7496192400291841118
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -9689,27 +9688,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 1238843893459588}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5131aa2ebbae62643bc21a43ae3fc216, type: 3}
+  m_Script: {fileID: 11500000, guid: 09a1fd7f901314b42b3166e3855ae0fe, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   _damage: 27
-  _radius: 1.5
-  _explosionForce: 8
-  _rocketExplosion: {fileID: 1879272669879180, guid: de2268cd4e59e91419b7bacfeeb05ee2, type: 3}
-  _disableOnHit: {fileID: 198916498872082188}
---- !u!114 &1118737121681860812
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1238843893459588}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1a895231490da6545890b1e1794f8704, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  deathtimer: 1.25
+  _impactPrefab: {fileID: 1879272669879180, guid: de2268cd4e59e91419b7bacfeeb05ee2, type: 3}
+  _destroyTime: 1.2
 --- !u!1 &1477706141410116
 GameObject:
   m_ObjectHideFlags: 0

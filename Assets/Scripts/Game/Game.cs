@@ -18,10 +18,14 @@ public class Game : MonoBehaviour
     public event UnityAction LevelLost;
     public event UnityAction LevelRestart;
     public event UnityAction LevelMainMenu;
-    public event UnityAction Fought;
+    public event UnityAction<bool> Fought;
     public event UnityAction FoughtWon;
     public event UnityAction RocketTutorialStarted;
     public event UnityAction RocketTutorialEnded;
+    public event UnityAction GrenadeTutorialStarted;
+    public event UnityAction GrenadeTutorialEnded;
+    public event UnityAction AimTutorialStarted;
+    public event UnityAction AimTutorialEnded;
 
     private void OnEnable()
     {
@@ -44,9 +48,9 @@ public class Game : MonoBehaviour
             _spentTime += Time.deltaTime;
     }
 
-    public void Fight()
+    public void Fight(bool isFlyMonster)
     {
-        Fought?.Invoke();
+        Fought?.Invoke(isFlyMonster);
     }
 
     public void WinInBattle()
@@ -96,16 +100,37 @@ public class Game : MonoBehaviour
         LoseGame();
     }
 
-    public void StartTutorial()
+    public void StartRocketTutorial()
     {
         Time.timeScale = 0.5f;
         RocketTutorialStarted?.Invoke();
     }
 
-    public void EndTutorial()
+    public void EndRocketTutorial()
     {
         Time.timeScale = 1f;
         RocketTutorialEnded?.Invoke();
     }
 
+    public void StartGrenadeTutorial()
+    {
+        Time.timeScale = 0.5f;
+        GrenadeTutorialStarted?.Invoke();
+    }
+
+    public void EndGrenadeTutorial()
+    {
+        Time.timeScale = 1f;
+        GrenadeTutorialEnded?.Invoke();
+    }
+
+    public void StartAimTutorial()
+    {
+        AimTutorialStarted?.Invoke();
+    }
+
+    public void EndAimTutorial()
+    {
+        AimTutorialEnded?.Invoke();
+    }
 }

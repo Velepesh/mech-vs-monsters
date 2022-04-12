@@ -15,7 +15,6 @@ public class Rocketgun : Weapon, IShooteable
     [SerializeField] private float _offsetRotationX;
     [SerializeField] private float _shootDistance = 25;
 
-    private float _rapidFireDelay;
     private float _shootingTimer;
     private ITarget _target;
     private ITarget _thisITarget;
@@ -29,25 +28,30 @@ public class Rocketgun : Weapon, IShooteable
     }
     private void Update()
     {
-        if (IsShooting && _thisITarget.IsDied == false)
+        if (IsShooting)
         {
-            if (_target.IsDied)
+            if (IsAiming)
             {
-                StopShooting();
+                LookAtTarget(TargetPosition);
+
+                Reload();
+
+                _shootingTimer += Time.deltaTime;
             }
-            else
+            else if (_thisITarget.IsDied == false)
             {
-                if (Vector3.Distance(transform.position, _target.Position) <= _shootDistance)
+                if (_target.IsDied)
                 {
-                    TurnToTarget(_target.Position);
-
-                    if (_shootingTimer > _cooldownTime + _rapidFireDelay)
+                    StopShooting();
+                }
+                else
+                {
+                    if (Vector3.Distance(transform.position, _target.Position) <= _shootDistance)
                     {
-                        Shoot();
-                        _shootingTimer = 0;
-                    }
+                        TurnToTarget(_target.Position);
 
-                    _shootingTimer += Time.deltaTime;
+                        Reload();
+                    }
                 }
             }
         }
@@ -69,9 +73,12 @@ public class Rocketgun : Weapon, IShooteable
 
             Instantiate(_muzzleflare, shootPoint.position, shootPoint.rotation);
 
-            Rigidbody rocketInstance = Instantiate(_bullet.GetComponent<Rigidbody>(), shootPoint.position, shootPoint.rotation) as Rigidbody;
-
-            rocketInstance.AddForce(shootPoint.forward * Random.Range(_minSpeed, _maxSpeed));
+            Rigidbody bullet = Instantiate(_bullet.GetComponent<Rigidbody>(), shootPoint.position, shootPoint.rotation) as Rigidbody;
+            
+            if(_target != null)
+                bullet.GetComponent<RocketProjectile>().Init(_target);
+            else
+                bullet.AddForce(shootPoint.forward * Random.Range(_minSpeed, _maxSpeed));
         }
 
         Shooted?.Invoke();
@@ -85,5 +92,24 @@ public class Rocketgun : Weapon, IShooteable
         Quaternion lookAt = Quaternion.RotateTowards(transform.rotation, targetRotation *= _offsetRotation, Time.deltaTime * _lookSpeed);
 
         transform.rotation = lookAt;
+    }
+
+    private void LookAtTarget(Vector3 target)
+    {
+        Vector3 direction = TargetPosition - transform.position;
+        Quaternion targetRotation = Quaternion.LookRotation(direction);
+        targetRotation *= _offsetRotation;
+        transform.rotation = targetRotation;
+    }
+
+    private void Reload()
+    {
+        if (_shootingTimer >= _cooldownTime)
+        {
+            Shoot();
+            _shootingTimer = 0;
+        }
+
+        _shootingTimer += Time.deltaTime;
     }
 }

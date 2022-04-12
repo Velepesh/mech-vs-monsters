@@ -45,7 +45,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &2597048473853397596
 Transform:
   m_ObjectHideFlags: 0
@@ -116,7 +116,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5626333782192687574}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -1.15, y: 0.09099995, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -136,7 +136,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 02a71fdb2b3468a4da356e403cd51931, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _playerLimbs: []
+  _playerLimbs:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
   _weapon: {fileID: 2610234953297700558}
 --- !u!1 &6140148319472970729
 GameObject:
@@ -207,7 +210,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2467984497461526723}
-  - component: {fileID: 5972582295882603676}
+  - component: {fileID: 550147720193950558}
   m_Layer: 0
   m_Name: Bone.Tracking
   m_TagString: Untagged
@@ -233,7 +236,7 @@ Transform:
   m_Father: {fileID: 2597048473853397596}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &5972582295882603676
+--- !u!114 &550147720193950558
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -242,22 +245,19 @@ MonoBehaviour:
   m_GameObject: {fileID: 6640270664760018021}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 00efcd9cf4f92ec4b8bad23bfb3445a6, type: 3}
+  m_Script: {fileID: 11500000, guid: 83882deb8a9e7c0429a1afb6461c6bb9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _shootPoints:
-  - {fileID: 8227520463732621587}
-  - {fileID: 3647475649516546700}
-  - {fileID: 3123258521661790828}
-  - {fileID: 8109640455742068754}
+  _shootPoint: {fileID: 8227520463732621587}
   _muzzleflare: {fileID: 1000012903210382, guid: a4574c52907fcde44a58fc89f66d60a7, type: 3}
-  _lookSpeed: 120
-  _cooldownTime: 1.25
-  _minSpeed: 2000
-  _maxSpeed: 2100
-  _bullet: {fileID: -1186912914590230109, guid: c16bbc42f0e3ac047addad0fb5e13df1, type: 3}
+  _lookSpeed: 200
+  _cooldownTime: 0.5
+  _minSpeed: 2200
+  _maxSpeed: 2300
+  _bullet: {fileID: -7496192400291841118, guid: c16bbc42f0e3ac047addad0fb5e13df1, type: 3}
   _offsetRotationX: 90
-  _shootDistance: 30
+  _offset: {x: 0, y: 0, z: 0}
+  _shootDistance: 32
 --- !u!1 &8444847583020852689
 GameObject:
   m_ObjectHideFlags: 0

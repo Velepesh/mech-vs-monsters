@@ -15,8 +15,9 @@ public class CanvasDisabler : MonoBehaviour
         _player.Prepeared -= OnPrepeared;
     }
 
-    private void OnPrepeared(Transform transform, Monster monster)
+    private void OnPrepeared(Transform transform, Monster monster, bool isAiming)
     {
-        _canvas.SetActive(false);
+        if(isAiming == false)
+            _canvas.SetActive(false);
     }
 }

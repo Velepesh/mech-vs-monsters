@@ -28,7 +28,7 @@ public class FightTransition : Transition
         NeedTransit = true;
     }
 
-    private void OnPrepeared(Transform transform, Monster monster)
+    private void OnPrepeared(Transform transform, Monster monster, bool isAimnig)
     {
         Transit();
         _fighterMover.Init(transform, monster);

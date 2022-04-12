@@ -7,24 +7,17 @@ public class RocketLauncher : Weapon, IShooteable
     [SerializeField] private TargetDetector _targetDetector;
     [SerializeField] private GameObject _muzzleflare;
     [SerializeField] private Transform _shootPoint;
-    [SerializeField] private GameObject _bullet;
-    [SerializeField] private float _reloadingTime = 0.5f;
-    [SerializeField] private float _speed;
+    [SerializeField] private RocketProjectile _bullet;
+    [SerializeField] private float _cooldownTime = 4f;
 
     private bool _canShoot = true;
-    private Quaternion _startRotation;
 
     public override event UnityAction Shooted;
     public event UnityAction<float> Reloaded;
 
     private void OnValidate()
     {
-        _reloadingTime = Mathf.Clamp(_reloadingTime, 0, float.MaxValue);
-    }
-
-    private void Start()
-    {
-        _startRotation = transform.rotation;
+        _cooldownTime = Mathf.Clamp(_cooldownTime, 0, float.MaxValue);
     }
 
     public void TryShoot()
@@ -37,16 +30,10 @@ public class RocketLauncher : Weapon, IShooteable
     {
         ITarget target = _targetDetector.GetMaxHealthTarget(transform.position);
 
-        if (target != null)
-            TurnToTarget(target.Position);
-        else
-            transform.rotation = _startRotation;
-
         Instantiate(_muzzleflare, _shootPoint.position, _shootPoint.rotation);
 
-        Rigidbody rocketInstance = Instantiate(_bullet.GetComponent<Rigidbody>(), _shootPoint.position, _shootPoint.rotation) as Rigidbody;
-
-        rocketInstance.AddForce(_shootPoint.forward * _speed);
+        GameObject bullet = Instantiate(_bullet.gameObject, _shootPoint.position, _shootPoint.rotation);
+        bullet.GetComponent<RocketProjectile>().Init(target);
 
         Shooted?.Invoke();
         StartCoroutine(Reload());
@@ -55,9 +42,9 @@ public class RocketLauncher : Weapon, IShooteable
     private IEnumerator Reload()
     {
         _canShoot = false;
-        Reloaded?.Invoke(_reloadingTime);
+        Reloaded?.Invoke(_cooldownTime);
 
-        yield return new WaitForSeconds(_reloadingTime);
+        yield return new WaitForSeconds(_cooldownTime);
 
         _canShoot = true;
     }

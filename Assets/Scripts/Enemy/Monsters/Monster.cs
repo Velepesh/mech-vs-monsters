@@ -27,7 +27,7 @@ public class Monster : MonoBehaviour, IDamageable, ITarget, IAward
         DisableModel();
     }
 
-    public void Fight()
+    public void Fight(Player player)
     {
         EnableModel();
         AttackStarted?.Invoke();
@@ -48,7 +48,7 @@ public class Monster : MonoBehaviour, IDamageable, ITarget, IAward
         AttackStopped?.Invoke();
     }
 
-    private void EnableModel()
+    public void EnableModel()
     {
         _model.SetActive(true);
     }

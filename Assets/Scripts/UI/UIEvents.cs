@@ -10,6 +10,10 @@ public class UIEvents : MonoBehaviour
     [SerializeField] private UnityEvent _onGameLost;
     [SerializeField] private UnityEvent _onRocketTutorialStarted;
     [SerializeField] private UnityEvent _onRocketTutorialEnded;
+    [SerializeField] private UnityEvent _onGrenadeTutorialStarted;
+    [SerializeField] private UnityEvent _onGrenadeTutorialEnded;
+    [SerializeField] private UnityEvent _onAimTutorialStarted;
+    [SerializeField] private UnityEvent _onAimTutorialEnded;
     [SerializeField] private float _delayTimeBeforeWinPanel;
 
     private void OnValidate()
@@ -24,6 +28,10 @@ public class UIEvents : MonoBehaviour
         _game.LevelLost += () => _onGameLost?.Invoke();
         _game.RocketTutorialStarted += () => _onRocketTutorialStarted?.Invoke();
         _game.RocketTutorialEnded += () => _onRocketTutorialEnded?.Invoke();
+        _game.GrenadeTutorialStarted += () => _onGrenadeTutorialStarted?.Invoke();
+        _game.GrenadeTutorialEnded += () => _onGrenadeTutorialEnded?.Invoke();
+        _game.AimTutorialStarted += () => _onAimTutorialStarted?.Invoke();
+        _game.AimTutorialEnded += () => _onAimTutorialEnded?.Invoke();
 
         _game.MainMenu();
     }
@@ -35,6 +43,8 @@ public class UIEvents : MonoBehaviour
         _game.LevelLost -= () => _onGameLost?.Invoke();
         _game.RocketTutorialStarted -= () => _onRocketTutorialStarted?.Invoke();
         _game.RocketTutorialEnded -= () => _onRocketTutorialEnded?.Invoke();
+        _game.GrenadeTutorialStarted -= () => _onGrenadeTutorialStarted?.Invoke();
+        _game.GrenadeTutorialEnded -= () => _onGrenadeTutorialEnded?.Invoke();
     }
 
     private void OnLevelWon()

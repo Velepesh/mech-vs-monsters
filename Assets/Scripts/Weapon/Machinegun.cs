@@ -29,23 +29,26 @@ public class Machinegun : Weapon, IShooteable
 
     private void Update()
     {
-        if (IsShooting && _thisITarget.IsDied == false)
+        if (IsShooting)
         {
-            if (_target.IsDied)
+            if (IsAiming)
             {
-               StopShooting();
+                LookAtTarget(TargetPosition);
+
+                Reload();
             }
-            else if (Vector3.Distance(transform.position, _target.Position) <= _shootDistance)
+            else if (_thisITarget.IsDied == false)
             {
-                TurnToTarget(_target.Position + _offset);
-
-                if (_shootingTimer >= _cooldownTime)
+                if (_target.IsDied)
                 {
-                    Shoot();
-                    _shootingTimer = 0;
+                    StopShooting();
                 }
+                else if (Vector3.Distance(transform.position, _target.Position) <= _shootDistance)
+                {
+                    TurnToTarget(_target.Position + _offset);
 
-                _shootingTimer += Time.deltaTime;
+                    Reload();
+                }
             }
         }
     }
@@ -76,5 +79,24 @@ public class Machinegun : Weapon, IShooteable
         Quaternion lookAt = Quaternion.RotateTowards(transform.rotation, targetRotation *= _offsetRotation, Time.deltaTime * _lookSpeed);
         
         transform.rotation = lookAt;
+    }
+
+    private void LookAtTarget(Vector3 target)
+    {
+        Vector3 direction = TargetPosition - transform.position;
+        Quaternion targetRotation = Quaternion.LookRotation(direction);
+        targetRotation *= _offsetRotation;
+        transform.rotation = targetRotation;
+    }
+
+    private void Reload()
+    {
+        if (_shootingTimer >= _cooldownTime)
+        {
+            Shoot();
+            _shootingTimer = 0;
+        }
+
+        _shootingTimer += Time.deltaTime;
     }
 }

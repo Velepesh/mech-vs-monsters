@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 198737689383679476}
   - component: {fileID: 8323585306712658406}
   - component: {fileID: -3759441236917300632}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Bullet_GoldFire_Small_Projectile_Template 1
   m_TagString: FX
   m_Icon: {fileID: 0}
@@ -4979,11 +4979,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _damage: 2
   _impactPrefab: {fileID: 1879272669879180, guid: a26c82cc6ed5b9d458c661d27183b555, type: 3}
-  _explosionPrefab: {fileID: 0}
-  _lookRotation: 1
-  _ignorePrevRotation: 0
-  _explodeOnTimer: 0
-  _explosionTimer: 0
   _destroyTime: 1.2
 --- !u!1 &1540588367011230
 GameObject:
@@ -4996,7 +4991,7 @@ GameObject:
   - component: {fileID: 4521043017447906}
   - component: {fileID: 198319394701706832}
   - component: {fileID: 199044534075849594}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: flarespikes_thin
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -9799,7 +9794,7 @@ GameObject:
   - component: {fileID: 4749193282715014}
   - component: {fileID: 198861545429755246}
   - component: {fileID: 199353229655422934}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: bullet
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -14656,7 +14651,7 @@ GameObject:
   - component: {fileID: 4259899786885656}
   - component: {fileID: 198956546110359946}
   - component: {fileID: 199041641609785352}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: glow
   m_TagString: Untagged
   m_Icon: {fileID: 0}

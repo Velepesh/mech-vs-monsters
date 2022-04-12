@@ -53,11 +53,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b61214da40c74654ea80efb0b70f86f9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _muzzleflare: {fileID: 0}
-  _shootPoint: {fileID: 0}
-  _bullet: {fileID: 0}
-  _reloadingTime: 1
-  _speed: 0
+  _targetDetector: {fileID: 0}
+  _muzzleflare: {fileID: 1000012903210382, guid: 0e50ff038d7298145864fd8cdbec5eed, type: 3}
+  _shootPoint: {fileID: 6764951853869271034}
+  _bullet: {fileID: 1238843893459588, guid: 67cd6528b3a472444a95eeaed80f86d9, type: 3}
+  _cooldownTime: 4
+  _speed: 1500
 --- !u!1 &6764951853869271035
 GameObject:
   m_ObjectHideFlags: 0

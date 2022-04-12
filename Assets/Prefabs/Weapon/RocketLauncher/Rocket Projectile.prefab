@@ -128,13 +128,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5131aa2ebbae62643bc21a43ae3fc216, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Damage: 100
-  _speed: 12
+  _damage: 0
+  _maxDamage: 500
   _radius: 5
   _explosionForce: 100
   _rocketExplosion: {fileID: 1764654978243476, guid: a98b15aa948478849b54661e4d9a317e, type: 3}
-  _projectileMesh: {fileID: 7375337548765109680}
   _disableOnHit: {fileID: 4361980691020798282}
+  _layerMask:
+    serializedVersion: 2
+    m_Bits: 0
 --- !u!54 &91128310120046435
 Rigidbody:
   m_ObjectHideFlags: 0

@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 4000012572821648}
   - component: {fileID: 198000011708101332}
   - component: {fileID: 199000010259268804}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: flarespikes_wide
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4762,7 +4762,7 @@ GameObject:
   - component: {fileID: 114222439198206992}
   - component: {fileID: 199809398230833828}
   - component: {fileID: 198879403692676820}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Bullet_GoldFire_Small_MuzzleFlare_Template 1
   m_TagString: FX
   m_Icon: {fileID: 0}
@@ -9707,7 +9707,7 @@ GameObject:
   - component: {fileID: 4545407075813880}
   - component: {fileID: 198764458523837618}
   - component: {fileID: 199671105658853138}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: glow
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -14510,7 +14510,7 @@ GameObject:
   - component: {fileID: 4548502971608438}
   - component: {fileID: 198348001457635502}
   - component: {fileID: 199422977892658642}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: muzzleflare_Flash
   m_TagString: Untagged
   m_Icon: {fileID: 0}

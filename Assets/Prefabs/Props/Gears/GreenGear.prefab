@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 2816727285068217228}
   - component: {fileID: 2816727285068217229}
   - component: {fileID: 2816727285068217234}
-  m_Layer: 0
+  m_Layer: 18
   m_Name: Gear
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -93,7 +93,7 @@ GameObject:
   - component: {fileID: 2816727285945555313}
   - component: {fileID: 678717952139961364}
   - component: {fileID: 3034063952367382102}
-  m_Layer: 0
+  m_Layer: 18
   m_Name: GreenGear
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -172,6 +172,18 @@ PrefabInstance:
     - target: {fileID: 111332, guid: d92d5f49a69eca04ca2836ee6ec67555, type: 3}
       propertyPath: m_Name
       value: HealStream3 (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 111332, guid: d92d5f49a69eca04ca2836ee6ec67555, type: 3}
+      propertyPath: m_Layer
+      value: 18
+      objectReference: {fileID: 0}
+    - target: {fileID: 158922, guid: d92d5f49a69eca04ca2836ee6ec67555, type: 3}
+      propertyPath: m_Layer
+      value: 18
+      objectReference: {fileID: 0}
+    - target: {fileID: 185580, guid: d92d5f49a69eca04ca2836ee6ec67555, type: 3}
+      propertyPath: m_Layer
+      value: 18
       objectReference: {fileID: 0}
     - target: {fileID: 407344, guid: d92d5f49a69eca04ca2836ee6ec67555, type: 3}
       propertyPath: m_RootOrder

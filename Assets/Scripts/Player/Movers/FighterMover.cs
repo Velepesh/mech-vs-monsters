@@ -9,7 +9,7 @@ public class FighterMover : State, IMover
 
     private Player _player;
     private MoverOptions _moverOptions;
-    private Vector3 _godzillaPosition;
+    private Vector3 _monsterPosition;
     private Vector3 _targetFightPosition;
 
     private void OnValidate()
@@ -26,13 +26,13 @@ public class FighterMover : State, IMover
 
     private void Update()
     {
-        if(_godzillaPosition != null)
-            LookAtTarget(_godzillaPosition);
+        if(_monsterPosition != null)
+            LookAtTarget(_monsterPosition);
     }
 
     public void Init(Transform targetPoint, Monster monster)
     {
-        _godzillaPosition = monster.Position;
+        _monsterPosition = monster.Position;
         _targetFightPosition = targetPoint.position;
         _targetFightPosition.y = transform.position.y;
 

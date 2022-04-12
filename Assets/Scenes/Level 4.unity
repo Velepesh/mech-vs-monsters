@@ -36041,6 +36041,11 @@ PrefabInstance:
       objectReference: {fileID: 3920358256524766063}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d13fe80a08b15f947a12237defff569e, type: 3}
+--- !u!20 &1712226089622860398 stripped
+Camera:
+  m_CorrespondingSourceObject: {fileID: 1712226090548289310, guid: d13fe80a08b15f947a12237defff569e, type: 3}
+  m_PrefabInstance: {fileID: 1712226089622860397}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &2719331756556860161
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -36211,6 +36216,26 @@ PrefabInstance:
       propertyPath: _wallet
       value: 
       objectReference: {fileID: 6391152800824965805}
+    - target: {fileID: 841010643, guid: 54dfa9b28cb51d04f80b7b168bf27623, type: 3}
+      propertyPath: _game
+      value: 
+      objectReference: {fileID: 1952765202}
+    - target: {fileID: 841010643, guid: 54dfa9b28cb51d04f80b7b168bf27623, type: 3}
+      propertyPath: _camera
+      value: 
+      objectReference: {fileID: 1712226089622860398}
+    - target: {fileID: 841010643, guid: 54dfa9b28cb51d04f80b7b168bf27623, type: 3}
+      propertyPath: _player
+      value: 
+      objectReference: {fileID: 6391152800824965803}
+    - target: {fileID: 841010643, guid: 54dfa9b28cb51d04f80b7b168bf27623, type: 3}
+      propertyPath: _downMover
+      value: 
+      objectReference: {fileID: 7318534115578550132}
+    - target: {fileID: 841010643, guid: 54dfa9b28cb51d04f80b7b168bf27623, type: 3}
+      propertyPath: _playerInput
+      value: 
+      objectReference: {fileID: 7318534115578550133}
     - target: {fileID: 868826228, guid: 54dfa9b28cb51d04f80b7b168bf27623, type: 3}
       propertyPath: _robotBuilder
       value: 
@@ -36560,6 +36585,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &7047241245416366585 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 841010643, guid: 54dfa9b28cb51d04f80b7b168bf27623, type: 3}
+  m_PrefabInstance: {fileID: 7047241245416366583}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 28ed32b111e814340b0ebed94944c5c1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &7318534115578550110
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -36643,6 +36679,14 @@ PrefabInstance:
       propertyPath: _game
       value: 
       objectReference: {fileID: 1952765202}
+    - target: {fileID: 6183188562789032122, guid: 9cc040cecc15b534c8dd4055a2d4c70b, type: 3}
+      propertyPath: _aim
+      value: 
+      objectReference: {fileID: 7047241245416366585}
+    - target: {fileID: 6183188562789032122, guid: 9cc040cecc15b534c8dd4055a2d4c70b, type: 3}
+      propertyPath: _camera
+      value: 
+      objectReference: {fileID: 1712226089622860398}
     - target: {fileID: 7189913924357812303, guid: 9cc040cecc15b534c8dd4055a2d4c70b, type: 3}
       propertyPath: _damage
       value: 120
@@ -36914,6 +36958,28 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 6d661272c4cee4d4a8c176bd9ac7f365, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &7318534115578550132 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 785501451, guid: 9cc040cecc15b534c8dd4055a2d4c70b, type: 3}
+  m_PrefabInstance: {fileID: 7318534115578550110}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a1194ca2c60c0d3428132864bd42c94e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &7318534115578550133 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4404880650009128433, guid: 9cc040cecc15b534c8dd4055a2d4c70b, type: 3}
+  m_PrefabInstance: {fileID: 7318534115578550110}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: abfd096bf02ecdd47a35c3cd12cdb400, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!114 &8398664578934175546 stripped

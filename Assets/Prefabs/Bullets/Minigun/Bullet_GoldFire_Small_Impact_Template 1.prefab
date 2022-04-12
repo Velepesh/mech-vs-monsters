@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 4263620968064308}
   - component: {fileID: 198160945960651690}
   - component: {fileID: 199454426018572110}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: decal_heatedStrike
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4760,7 +4760,7 @@ GameObject:
   - component: {fileID: 4060515698031734}
   - component: {fileID: 198452342326603458}
   - component: {fileID: 199316653113114562}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: decals_component
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -9579,7 +9579,7 @@ GameObject:
   - component: {fileID: 4122842123755644}
   - component: {fileID: 198657689533374026}
   - component: {fileID: 199136316677300890}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: glow
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -14382,7 +14382,7 @@ GameObject:
   - component: {fileID: 4844291515055092}
   - component: {fileID: 198684288590568938}
   - component: {fileID: 199308648780220028}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: flarespikes_Thin
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -19131,7 +19131,7 @@ GameObject:
   - component: {fileID: 4761476650304818}
   - component: {fileID: 198664724161334508}
   - component: {fileID: 199856956508844976}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: decal
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -23880,7 +23880,7 @@ GameObject:
   - component: {fileID: 4659616700009460}
   - component: {fileID: 198716003155920944}
   - component: {fileID: 199313710700940440}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: smokePuff
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -28548,7 +28548,7 @@ GameObject:
   - component: {fileID: 4202549611881306}
   - component: {fileID: 198183221796487404}
   - component: {fileID: 199672697417068944}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: impactSparks
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -33326,7 +33326,7 @@ GameObject:
   - component: {fileID: 114355610240550960}
   - component: {fileID: 199972528942600042}
   - component: {fileID: 198344661946723368}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Bullet_GoldFire_Small_Impact_Template 1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -38370,7 +38370,7 @@ GameObject:
   - component: {fileID: 4479510142115316}
   - component: {fileID: 198953783189206274}
   - component: {fileID: 199012140504858130}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: flarespikes_wide
   m_TagString: Untagged
   m_Icon: {fileID: 0}

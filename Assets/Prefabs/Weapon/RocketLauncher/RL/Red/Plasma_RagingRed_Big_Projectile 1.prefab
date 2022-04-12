@@ -9726,12 +9726,13 @@ MonoBehaviour:
   _damage: 100
   _maxDamage: 500
   _radius: 5
+  _speed: 30
   _explosionForce: 25
   _rocketExplosion: {fileID: 1228869523896316, guid: e6cf72797c8570d428c9c658a88b9942, type: 3}
   _disableOnHit: {fileID: 198420552104652666}
   _layerMask:
     serializedVersion: 2
-    m_Bits: 12800
+    m_Bits: 45568
 --- !u!1 &1331927736720676
 GameObject:
   m_ObjectHideFlags: 0
