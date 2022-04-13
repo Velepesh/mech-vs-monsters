@@ -39172,6 +39172,10 @@ PrefabInstance:
       propertyPath: _delayTime
       value: 1.5
       objectReference: {fileID: 0}
+    - target: {fileID: 6992749729472660749, guid: 819e4a66923321c4fa6f3bee56099f99, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 9027bb5c1cf70d24ca872bc13a83f6f0, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 819e4a66923321c4fa6f3bee56099f99, type: 3}
 --- !u!114 &6391152800824965803 stripped

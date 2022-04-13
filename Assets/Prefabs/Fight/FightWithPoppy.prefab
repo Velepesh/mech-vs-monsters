@@ -81,6 +81,7 @@ MonoBehaviour:
   _game: {fileID: 0}
   _targetPlayerPosition: {fileID: 5504625062217177617}
   _delayTime: 2
+  _isFlyMonster: 0
 --- !u!114 &7638505561191223695
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -227,6 +228,26 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 15
       objectReference: {fileID: 0}
+    - target: {fileID: -8053648740470184098, guid: 6319198faa48f3a4bb94310e9db33f1d, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 18dec9c44e00f4a4ba4527457d28948b, type: 2}
+    - target: {fileID: -8053648740470184098, guid: 6319198faa48f3a4bb94310e9db33f1d, type: 3}
+      propertyPath: m_Materials.Array.data[1]
+      value: 
+      objectReference: {fileID: 2100000, guid: 18dec9c44e00f4a4ba4527457d28948b, type: 2}
+    - target: {fileID: -8053648740470184098, guid: 6319198faa48f3a4bb94310e9db33f1d, type: 3}
+      propertyPath: m_Materials.Array.data[2]
+      value: 
+      objectReference: {fileID: 2100000, guid: 18dec9c44e00f4a4ba4527457d28948b, type: 2}
+    - target: {fileID: -8053648740470184098, guid: 6319198faa48f3a4bb94310e9db33f1d, type: 3}
+      propertyPath: m_Materials.Array.data[3]
+      value: 
+      objectReference: {fileID: 2100000, guid: 18dec9c44e00f4a4ba4527457d28948b, type: 2}
+    - target: {fileID: -8053648740470184098, guid: 6319198faa48f3a4bb94310e9db33f1d, type: 3}
+      propertyPath: m_Materials.Array.data[4]
+      value: 
+      objectReference: {fileID: 2100000, guid: 18dec9c44e00f4a4ba4527457d28948b, type: 2}
     - target: {fileID: -7774620517717459388, guid: 6319198faa48f3a4bb94310e9db33f1d, type: 3}
       propertyPath: m_Layer
       value: 15
