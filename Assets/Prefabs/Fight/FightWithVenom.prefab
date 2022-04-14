@@ -93,6 +93,7 @@ Transform:
   m_Children:
   - {fileID: 543450651955693391}
   - {fileID: 1544328433408799923}
+  - {fileID: 4339709348345009292}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -161,6 +162,36 @@ MonoBehaviour:
   _monsterSlider: {fileID: 0}
   _player: {fileID: 0}
   _monster: {fileID: 1194645989}
+--- !u!1 &5545179945383462556
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4339709348345009292}
+  m_Layer: 0
+  m_Name: TargetDiePosition (1)
+  m_TagString: Untagged
+  m_Icon: {fileID: 5132851093641282708, guid: 0000000000000000d000000000000000, type: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4339709348345009292
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5545179945383462556}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -2.5, y: 1, z: 22}
+  m_LocalScale: {x: 3, y: 5, z: 2}
+  m_Children: []
+  m_Father: {fileID: 1544328434654278360}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1752916132
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -592,6 +623,10 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 15
       objectReference: {fileID: 0}
+    - target: {fileID: 8967159527197717133, guid: d901521a432b33d43af13fef7d35d5bb, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: a33bd87ecc417a443b7bbd3d537babc3, type: 2}
     - target: {fileID: 9088872756827976528, guid: d901521a432b33d43af13fef7d35d5bb, type: 3}
       propertyPath: m_Layer
       value: 15
@@ -645,6 +680,32 @@ MonoBehaviour:
   _award: 750
   _model: {fileID: 7036213050132307355}
   _offsetY: 3.5
+  _moveToDiePointTime: 0.25
+  _moveAnimation:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 2
+      outSlope: 2
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    - serializedVersion: 3
+      time: 1
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  _targetDiePoint: {fileID: 4339709348345009292}
 --- !u!114 &1194645991
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -697,10 +758,10 @@ CapsuleCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  m_Radius: 0.025738448
-  m_Height: 0.05147688
+  m_Radius: 0.01624394
+  m_Height: 0.048061766
   m_Direction: 1
-  m_Center: {x: 0.0000000023453635, y: -0.0011631268, z: -0.0064087077}
+  m_Center: {x: -0.006141371, y: -0.002870689, z: -0.0030555357}
 --- !u!114 &284928296982114869
 MonoBehaviour:
   m_ObjectHideFlags: 0

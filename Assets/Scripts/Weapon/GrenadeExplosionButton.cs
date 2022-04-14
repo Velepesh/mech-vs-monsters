@@ -6,15 +6,19 @@ public class GrenadeExplosionButton : MonoBehaviour
     [SerializeField] private GrenadeBullet _grenadeBullet;
     [SerializeField] private Button _button;
 
+    private bool _isShow;
+
     private void OnEnable()
     {
         _button.onClick.AddListener(OnButtonClick);
+        _grenadeBullet.TutorialShowed += OnTutorialShowed;
         _grenadeBullet.ButtonShowed += OnButtonShowed;
     }
 
     private void OnDisable()
     {
         _button.onClick.RemoveListener(OnButtonClick);
+        _grenadeBullet.TutorialShowed -= OnTutorialShowed;
         _grenadeBullet.ButtonShowed -= OnButtonShowed;
     }
 
@@ -28,17 +32,29 @@ public class GrenadeExplosionButton : MonoBehaviour
         _grenadeBullet.Explosion();
 
         if (_grenadeBullet.IsTutorial)
-            _grenadeBullet.StartGrenade();
+            _grenadeBullet.EndTutorial();
     }
 
     private void OnButtonShowed()
     {
-        ShowButton();
+        if (_isShow == false)
+        {
+            ShowButton();
+            _isShow = true;
+        }
+    }
+    
+    private void OnTutorialShowed()
+    {
+        _button.interactable = true;
     }
 
     private void ShowButton()
     {
         _button.gameObject.SetActive(true);
+
+        if (_grenadeBullet.IsTutorial)
+            _button.interactable = false;
     }
 
     private void DisableButton()

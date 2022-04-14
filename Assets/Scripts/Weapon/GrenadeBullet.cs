@@ -13,9 +13,9 @@ public class GrenadeBullet : DamageCollider
 
     private readonly float _stopSpeed = 0f;
     
-    private float _startSpeed;
     private Player _player;
     private bool _isTutorial;
+    private bool _isStopped;
 
     public bool IsTutorial => _isTutorial;
 
@@ -26,11 +26,6 @@ public class GrenadeBullet : DamageCollider
     private void OnValidate()
     {
         _speed = Mathf.Clamp(_speed, 0f, float.MaxValue);
-    }
-
-    private void Start()
-    {
-        _startSpeed = _speed;
     }
 
     private void Update()
@@ -60,9 +55,9 @@ public class GrenadeBullet : DamageCollider
         Destroy();
     }
 
-    public void StartGrenade()
+    public void EndTutorial()
     {
-        _speed = _startSpeed;
+        _isTutorial = false;
         TutorialEnded?.Invoke();
     }
 
@@ -96,11 +91,8 @@ public class GrenadeBullet : DamageCollider
         if (distance >= _stopButtonRotationDistance)
             transform.LookAt(_player.Position);
 
-        if (distance <= _tutorialDistance && _isTutorial)
-        {
-            TutorialShowed?.Invoke();
+        if (distance <= _tutorialDistance && _isTutorial && _isStopped == false)
             StopGrenade();
-        }
             
         transform.position = Vector3.MoveTowards(transform.position, _player.Position + _offset, _speed * Time.deltaTime);
     }
@@ -137,6 +129,7 @@ public class GrenadeBullet : DamageCollider
     private void StopGrenade()
     {
         _speed = _stopSpeed;
+        _isStopped = true;
 
         TutorialShowed?.Invoke();
     }

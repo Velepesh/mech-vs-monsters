@@ -71,9 +71,9 @@ public class RocketProjectile : DamageCollider, IMover
                     DoDamage(damageable, _maxDamage);
                 else
                     DoDamage(damageable);
-                Debug.Log(collider.gameObject.name);
             }
         }
+
         GameObject explosion = Instantiate(_rocketExplosion, transform.position, _rocketExplosion.transform.rotation, null);
        
         Destroy(gameObject);

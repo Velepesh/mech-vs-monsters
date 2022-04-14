@@ -35,6 +35,11 @@ public class TargetDetector : MonoBehaviour
 
     public ITarget GetClosetEnemy(Vector3 weaponPosition)
     {
+        return SearchClosestEnemy(weaponPosition, _targets);
+    } 
+    
+    public ITarget GetEnemyTarget(Vector3 weaponPosition)
+    {
         return SearchEnemyTarget(weaponPosition, _targets);
     }
 
@@ -186,7 +191,6 @@ public class TargetDetector : MonoBehaviour
 
     private ITarget SearchEnemyTarget<T>(Vector3 weaponPosition, List<T> targets)
     {
-        ITarget enemy = null;
         List<ITarget> vehicales = new List<ITarget>();
         List<ITarget> soldiers = new List<ITarget>();
         List<ITarget> otherTargets = new List<ITarget>();
@@ -207,18 +211,42 @@ public class TargetDetector : MonoBehaviour
         if (_moverOptions.IsNearEnemy)
         {
             if (vehicales.Count > 0)
-                enemy = SearchClosest(weaponPosition, vehicales);
+                return SearchClosest(weaponPosition, vehicales);
             else if (soldiers.Count > 0)
-                enemy = SearchClosest(weaponPosition, soldiers);
+                return SearchClosest(weaponPosition, soldiers);
             else
-                enemy = SearchClosest(weaponPosition, otherTargets);
+                return SearchClosest(weaponPosition, otherTargets);
         }
         else
         {
-            enemy = SearchClosest(weaponPosition, otherTargets);
-            Debug.Log("NearObstacle");
+            return SearchClosest(weaponPosition, otherTargets);
+        }
+    }
+
+    private ITarget SearchClosestEnemy<T>(Vector3 weaponPosition, List<T> targets)
+    {
+        List<ITarget> vehicales = new List<ITarget>();
+        List<ITarget> soldiers = new List<ITarget>();
+        List<ITarget> otherTargets = new List<ITarget>();
+
+        foreach (ITarget target in targets)
+        {
+            if (target is IDamageable)
+            {
+                if (target is Vehicle vehicle)
+                    vehicales.Add(vehicle);
+                else if (target is Soldier soldier)
+                    soldiers.Add(soldier);
+                else
+                    otherTargets.Add(target);
+            }
         }
 
-        return enemy;
+        if (vehicales.Count > 0)
+            return SearchClosest(weaponPosition, vehicales);
+        else if (soldiers.Count > 0)
+            return SearchClosest(weaponPosition, soldiers);
+        else
+            return SearchClosest(weaponPosition, otherTargets);
     }
 }

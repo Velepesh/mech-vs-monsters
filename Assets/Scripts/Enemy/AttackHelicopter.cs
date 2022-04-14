@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class AttackHelicopter : Vehicle, IDamageable, IMover
+public class AttackHelicopter : Vehicle, IDamageable, IMover, ITarget
 {
     [SerializeField] private float _distanceToPlayer;
     [SerializeField] private float _speed;
@@ -9,10 +9,6 @@ public class AttackHelicopter : Vehicle, IDamageable, IMover
 
     private float _startPositionX;
     private Vector3 _targetPosition;
-    private void Start()
-    {
-        //_startPositionX = transform.position.x;
-    }
 
     private void OnValidate()
     {
@@ -55,6 +51,5 @@ public class AttackHelicopter : Vehicle, IDamageable, IMover
     private void StopSideway()
     {
         _startPositionX = transform.position.x;
-        //_animator.SetBool(AnimatorAttackHelicopterController.States.IsSideway, false);
     }
 }

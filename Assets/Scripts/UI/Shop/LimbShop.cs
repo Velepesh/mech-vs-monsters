@@ -91,9 +91,12 @@ public class LimbShop : MonoBehaviour
                 ChangeAttackForce(limb);
 
             _robotBuilder.SelectLimb(limb, GetLimbIndex(limb));
-            LimbSelected?.Invoke();
 
-            _currentLimb = limb;
+            if (_currentLimb != limb)
+            {
+                _currentLimb = limb;
+                LimbSelected?.Invoke();
+            }
         }
 
         UpdateFlicker();

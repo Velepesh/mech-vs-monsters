@@ -22,15 +22,17 @@ public class GranadeTutorial : MonoBehaviour
 
     private void OnTutorialShowed()
     {
+        Debug.Log("GranadeTutorial");
         _tapGrenadeTutorialTarget.SetTarget(_launchGrenadeGun.TutorialBullet.transform);
         _player.StopAnimation();
+        _playerWeaponsHolder.StopShooting();
         _launchGrenadeGun.Game.StartGrenadeTutorial();
         _playerMover.StartTutorialMove();
-        _playerWeaponsHolder.StopShooting();
     }
 
     private void OnTutorialEnded()
     {
+        Debug.Log("Ebded");
         _player.StartAnimation();
         _launchGrenadeGun.Game.EndGrenadeTutorial();
         _playerMover.EndTutorialMove();

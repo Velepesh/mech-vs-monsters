@@ -63,6 +63,7 @@ Transform:
   m_Children:
   - {fileID: 6109422369401137762}
   - {fileID: 5924079244537356495}
+  - {fileID: 7784320664277617648}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -160,6 +161,36 @@ Transform:
   m_Children: []
   m_Father: {fileID: 7936972580810968809}
   m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &9102691643618040249
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7784320664277617648}
+  m_Layer: 0
+  m_Name: DierPosition
+  m_TagString: Untagged
+  m_Icon: {fileID: 5132851093641282708, guid: 0000000000000000d000000000000000, type: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &7784320664277617648
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9102691643618040249}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -6, y: 1, z: 19.7}
+  m_LocalScale: {x: 3, y: 5, z: 2}
+  m_Children: []
+  m_Father: {fileID: 5924079245649143460}
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &5999848292962766217
 PrefabInstance:
@@ -392,6 +423,10 @@ PrefabInstance:
       propertyPath: m_Controller
       value: 
       objectReference: {fileID: 9100000, guid: ff7ac120f3c4cb34fac6906d95b867ec, type: 2}
+    - target: {fileID: 6047314724630471098, guid: 507ea5a7184360c44b1bc15519bbcad7, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 4595f6858ce5e3845a9c0f90c044991c, type: 2}
     - target: {fileID: 6074570734321088744, guid: 507ea5a7184360c44b1bc15519bbcad7, type: 3}
       propertyPath: m_Layer
       value: 15
@@ -593,6 +628,32 @@ MonoBehaviour:
   _award: 750
   _model: {fileID: 7146809841333625645}
   _offsetY: 3.5
+  _moveToDiePointTime: 0.5
+  _moveAnimation:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 2
+      outSlope: 2
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    - serializedVersion: 3
+      time: 1
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  _targetDiePoint: {fileID: 7784320664277617648}
 --- !u!114 &5999848292962766222
 MonoBehaviour:
   m_ObjectHideFlags: 0

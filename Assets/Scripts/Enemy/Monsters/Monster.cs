@@ -1,4 +1,5 @@
 using UnityEngine;
+using System.Collections;
 using UnityEngine.Events;
 
 public class Monster : MonoBehaviour, IDamageable, ITarget, IAward
@@ -7,6 +8,10 @@ public class Monster : MonoBehaviour, IDamageable, ITarget, IAward
     [SerializeField] private int _award;
     [SerializeField] private GameObject _model;
     [SerializeField] private float _offsetY;
+    [SerializeField] private float _moveToDiePointTime = 0.25f;
+    [SerializeField] private AnimationCurve _moveAnimation;
+    [SerializeField] private Transform _targetDiePoint;
+   // [SerializeField] private Rigidbody _rigidbody;
     private Vector3 _offset => new Vector3(0f, _offsetY, 0f);
 
     public int Award => _award;
@@ -68,8 +73,22 @@ public class Monster : MonoBehaviour, IDamageable, ITarget, IAward
 
     public void Die()
     {
+        //_rigidbody.AddForce(Vector3.back * _kickbackForce, ForceMode.Impulse);
+        StartCoroutine(MoveToDiePoint(_moveToDiePointTime));
         DisableModel();
         Disabled?.Invoke();
+    }
+    private IEnumerator MoveToDiePoint(float duration)
+    {
+        Vector3 startingPos = transform.position;
+        float elapsedTime = 0;
+
+        while (elapsedTime < duration)
+        {
+            transform.position = Vector3.Lerp(startingPos, _targetDiePoint.position, _moveAnimation.Evaluate(elapsedTime / duration));
+            elapsedTime += Time.deltaTime;
+            yield return null;
+        }
     }
 
     public void DsableMonster()
