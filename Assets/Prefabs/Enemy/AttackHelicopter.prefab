@@ -309,7 +309,7 @@ MonoBehaviour:
   _distanceToPlayer: 15
   _speed: 8
   _sidewaySpeed: 2
-  _moveOffsetX: 5
+  _moveOffsetX: 2
 --- !u!114 &6033133238143306283
 MonoBehaviour:
   m_ObjectHideFlags: 0
