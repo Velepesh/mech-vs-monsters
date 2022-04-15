@@ -24463,6 +24463,14 @@ PrefabInstance:
       propertyPath: _game
       value: 
       objectReference: {fileID: 1952765202}
+    - target: {fileID: 8764497404607325251, guid: 0068a023ae575f54fad1b27efea72f84, type: 3}
+      propertyPath: _fastWaterMat
+      value: 
+      objectReference: {fileID: 2100000, guid: 005fb9db0445ed14b9f46067ac1ee765, type: 2}
+    - target: {fileID: 8764497404607325251, guid: 0068a023ae575f54fad1b27efea72f84, type: 3}
+      propertyPath: _slowWaterMat
+      value: 
+      objectReference: {fileID: 2100000, guid: 9b592e842f2893e4a83fa5d888641370, type: 2}
     - target: {fileID: 8764497404607329400, guid: 0068a023ae575f54fad1b27efea72f84, type: 3}
       propertyPath: m_Mesh
       value: 
@@ -26871,15 +26879,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7318534116304157593, guid: 9cc040cecc15b534c8dd4055a2d4c70b, type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0.32519045
+      value: 0.32519042
       objectReference: {fileID: 0}
     - target: {fileID: 7318534116304157593, guid: 9cc040cecc15b534c8dd4055a2d4c70b, type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0.00000003028409
+      value: -0.000000011084746
       objectReference: {fileID: 0}
     - target: {fileID: 7318534116304157593, guid: 9cc040cecc15b534c8dd4055a2d4c70b, type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0.00000001041412
+      value: 0.0000000038118317
       objectReference: {fileID: 0}
     - target: {fileID: 7454191481910524664, guid: 9cc040cecc15b534c8dd4055a2d4c70b, type: 3}
       propertyPath: _damage
