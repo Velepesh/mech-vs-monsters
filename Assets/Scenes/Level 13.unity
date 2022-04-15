@@ -1258,6 +1258,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6033133238143306276, guid: d34aad92db391e54f86c02007adebee8, type: 3}
+      propertyPath: _health._health
+      value: 300
+      objectReference: {fileID: 0}
     - target: {fileID: 6033133238143306278, guid: d34aad92db391e54f86c02007adebee8, type: 3}
       propertyPath: m_Name
       value: AttackHelicopter
@@ -1661,7 +1665,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6625723747664291551, guid: 934c6f6cfc433a04dae6ab57cd1d26e1, type: 3}
       propertyPath: _health._health
-      value: 45
+      value: 50
       objectReference: {fileID: 0}
     - target: {fileID: 6625723747845432866, guid: 934c6f6cfc433a04dae6ab57cd1d26e1, type: 3}
       propertyPath: m_Materials.Array.data[0]
@@ -5574,7 +5578,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6625723747664291551, guid: 934c6f6cfc433a04dae6ab57cd1d26e1, type: 3}
       propertyPath: _health._health
-      value: 45
+      value: 50
       objectReference: {fileID: 0}
     - target: {fileID: 6625723747845432866, guid: 934c6f6cfc433a04dae6ab57cd1d26e1, type: 3}
       propertyPath: m_Materials.Array.data[0]
@@ -11871,7 +11875,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6625723747664291551, guid: 934c6f6cfc433a04dae6ab57cd1d26e1, type: 3}
       propertyPath: _health._health
-      value: 45
+      value: 50
       objectReference: {fileID: 0}
     - target: {fileID: 6625723747845432866, guid: 934c6f6cfc433a04dae6ab57cd1d26e1, type: 3}
       propertyPath: m_Materials.Array.data[0]
@@ -12509,7 +12513,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6625723747664291551, guid: 934c6f6cfc433a04dae6ab57cd1d26e1, type: 3}
       propertyPath: _health._health
-      value: 45
+      value: 50
       objectReference: {fileID: 0}
     - target: {fileID: 6625723747845432866, guid: 934c6f6cfc433a04dae6ab57cd1d26e1, type: 3}
       propertyPath: m_Materials.Array.data[0]
@@ -15456,6 +15460,10 @@ PrefabInstance:
       propertyPath: m_AnchorMax.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 354206475865612546, guid: 0c6554394ecb5fe4182c8f28b4d39481, type: 3}
+      propertyPath: _cooldownTime
+      value: 1.2
+      objectReference: {fileID: 0}
     - target: {fileID: 1500945771907563851, guid: 0c6554394ecb5fe4182c8f28b4d39481, type: 3}
       propertyPath: _game
       value: 
@@ -15514,7 +15522,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5223670660190740928, guid: 0c6554394ecb5fe4182c8f28b4d39481, type: 3}
       propertyPath: _health._health
-      value: 270
+      value: 350
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0c6554394ecb5fe4182c8f28b4d39481, type: 3}
@@ -17318,7 +17326,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6625723747664291551, guid: 934c6f6cfc433a04dae6ab57cd1d26e1, type: 3}
       propertyPath: _health._health
-      value: 45
+      value: 50
       objectReference: {fileID: 0}
     - target: {fileID: 6625723747845432866, guid: 934c6f6cfc433a04dae6ab57cd1d26e1, type: 3}
       propertyPath: m_Materials.Array.data[0]
@@ -17453,7 +17461,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6625723747664291551, guid: 934c6f6cfc433a04dae6ab57cd1d26e1, type: 3}
       propertyPath: _health._health
-      value: 45
+      value: 50
       objectReference: {fileID: 0}
     - target: {fileID: 6625723747845432866, guid: 934c6f6cfc433a04dae6ab57cd1d26e1, type: 3}
       propertyPath: m_Materials.Array.data[0]
@@ -22970,7 +22978,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6625723747664291551, guid: 934c6f6cfc433a04dae6ab57cd1d26e1, type: 3}
       propertyPath: _health._health
-      value: 45
+      value: 50
       objectReference: {fileID: 0}
     - target: {fileID: 6625723747845432866, guid: 934c6f6cfc433a04dae6ab57cd1d26e1, type: 3}
       propertyPath: m_Materials.Array.data[0]
@@ -23353,7 +23361,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6625723747664291551, guid: 934c6f6cfc433a04dae6ab57cd1d26e1, type: 3}
       propertyPath: _health._health
-      value: 45
+      value: 50
       objectReference: {fileID: 0}
     - target: {fileID: 6625723747845432866, guid: 934c6f6cfc433a04dae6ab57cd1d26e1, type: 3}
       propertyPath: m_Materials.Array.data[0]
@@ -23654,11 +23662,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1194645989, guid: 7a3ed39cea8f79443b2ad45bac256463, type: 3}
       propertyPath: _health._health
-      value: 1100
+      value: 1200
       objectReference: {fileID: 0}
     - target: {fileID: 284928296982114869, guid: 7a3ed39cea8f79443b2ad45bac256463, type: 3}
       propertyPath: _damage
-      value: 200
+      value: 210
       objectReference: {fileID: 0}
     - target: {fileID: 1544328434654278360, guid: 7a3ed39cea8f79443b2ad45bac256463, type: 3}
       propertyPath: m_RootOrder

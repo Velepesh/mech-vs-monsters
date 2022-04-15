@@ -15900,6 +15900,10 @@ PrefabInstance:
       propertyPath: m_AnchorMax.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 354206475865612546, guid: 0c6554394ecb5fe4182c8f28b4d39481, type: 3}
+      propertyPath: _cooldownTime
+      value: 1.2
+      objectReference: {fileID: 0}
     - target: {fileID: 1500945771907563851, guid: 0c6554394ecb5fe4182c8f28b4d39481, type: 3}
       propertyPath: _game
       value: 
@@ -15954,7 +15958,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5223670660190740928, guid: 0c6554394ecb5fe4182c8f28b4d39481, type: 3}
       propertyPath: _health._health
-      value: 250
+      value: 320
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0c6554394ecb5fe4182c8f28b4d39481, type: 3}
@@ -23948,6 +23952,10 @@ PrefabInstance:
       propertyPath: m_AnchorMax.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 354206475865612546, guid: 0c6554394ecb5fe4182c8f28b4d39481, type: 3}
+      propertyPath: _cooldownTime
+      value: 1.2
+      objectReference: {fileID: 0}
     - target: {fileID: 1500945771907563851, guid: 0c6554394ecb5fe4182c8f28b4d39481, type: 3}
       propertyPath: _game
       value: 
@@ -24002,7 +24010,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5223670660190740928, guid: 0c6554394ecb5fe4182c8f28b4d39481, type: 3}
       propertyPath: _health._health
-      value: 250
+      value: 320
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0c6554394ecb5fe4182c8f28b4d39481, type: 3}

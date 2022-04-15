@@ -33,8 +33,7 @@ public class FighterMover : State, IMover
     public void Init(Transform targetPoint, Monster monster)
     {
         _monsterPosition = monster.Position;
-        _targetFightPosition = targetPoint.position;
-        _targetFightPosition.y = transform.position.y;
+        _targetFightPosition = new Vector3(targetPoint.position.x, transform.position.y, targetPoint.position.z);
 
         Move();
     }
@@ -62,7 +61,8 @@ public class FighterMover : State, IMover
 
         while (elapsedTime < duration)
         {
-            transform.position = Vector3.Lerp(startingPos, _targetFightPosition, (elapsedTime / duration));
+            float time = elapsedTime / duration;
+            transform.position = Vector3.Lerp(startingPos, _targetFightPosition, time);
             elapsedTime += Time.deltaTime;
             yield return null;
         }

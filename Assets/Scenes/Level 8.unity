@@ -6491,6 +6491,10 @@ PrefabInstance:
       propertyPath: m_AnchorMax.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 354206475865612546, guid: 0c6554394ecb5fe4182c8f28b4d39481, type: 3}
+      propertyPath: _cooldownTime
+      value: 1.25
+      objectReference: {fileID: 0}
     - target: {fileID: 1500945771907563851, guid: 0c6554394ecb5fe4182c8f28b4d39481, type: 3}
       propertyPath: _game
       value: 
@@ -6542,6 +6546,10 @@ PrefabInstance:
     - target: {fileID: 4588209683310199986, guid: 0c6554394ecb5fe4182c8f28b4d39481, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5223670660190740928, guid: 0c6554394ecb5fe4182c8f28b4d39481, type: 3}
+      propertyPath: _health._health
+      value: 270
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0c6554394ecb5fe4182c8f28b4d39481, type: 3}
@@ -23847,7 +23855,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 354206475865612546, guid: 0c6554394ecb5fe4182c8f28b4d39481, type: 3}
       propertyPath: _cooldownTime
-      value: 2.2
+      value: 1.25
       objectReference: {fileID: 0}
     - target: {fileID: 354206475865612546, guid: 0c6554394ecb5fe4182c8f28b4d39481, type: 3}
       propertyPath: _shootDistance
@@ -23907,7 +23915,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5223670660190740928, guid: 0c6554394ecb5fe4182c8f28b4d39481, type: 3}
       propertyPath: _health._health
-      value: 120
+      value: 270
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0c6554394ecb5fe4182c8f28b4d39481, type: 3}

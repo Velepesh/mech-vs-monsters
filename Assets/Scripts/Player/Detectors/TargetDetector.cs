@@ -197,7 +197,9 @@ public class TargetDetector : MonoBehaviour
 
         foreach (ITarget target in targets)
         {
-            if(target is IDamageable)
+            float distance = Vector3.Distance(target.Position, weaponPosition);
+
+            if (target is IDamageable && distance <= _moverOptions.AttackDistance);
             {
                 if (target is Vehicle vehicle)
                     vehicales.Add(vehicle);
