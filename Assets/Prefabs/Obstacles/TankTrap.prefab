@@ -93,7 +93,7 @@ GameObject:
   - component: {fileID: 7028422037115442122}
   - component: {fileID: 7060488281896725168}
   - component: {fileID: 7060488281896725169}
-  - component: {fileID: 789903698174777787}
+  - component: {fileID: 5084716642230700406}
   m_Layer: 13
   m_Name: TankTrap
   m_TagString: Untagged
@@ -155,8 +155,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _dieEffect: {fileID: 6088724330369110986, guid: 66028d0f9160e2e429b8027dec1d496b, type: 3}
   _point: {fileID: 8805598886745668050}
---- !u!64 &789903698174777787
-MeshCollider:
+--- !u!65 &5084716642230700406
+BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -165,10 +165,9 @@ MeshCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  serializedVersion: 4
-  m_Convex: 1
-  m_CookingOptions: 30
-  m_Mesh: {fileID: 4300000, guid: e874fcb166c47a845bfa3ed051d68bb7, type: 3}
+  serializedVersion: 2
+  m_Size: {x: 5.758983, y: 5.070969, z: 4.431411}
+  m_Center: {x: -0.15073991, y: 2.0354846, z: 0}
 --- !u!1 &8805598886745668051
 GameObject:
   m_ObjectHideFlags: 0

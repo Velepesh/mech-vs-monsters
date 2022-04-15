@@ -3150,8 +3150,12 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 354206475865612546, guid: 0c6554394ecb5fe4182c8f28b4d39481, type: 3}
+      propertyPath: _bullet
+      value: 
+      objectReference: {fileID: -8238685944364814985, guid: 384a426e70d11ed42904fc3a93f48759, type: 3}
+    - target: {fileID: 354206475865612546, guid: 0c6554394ecb5fe4182c8f28b4d39481, type: 3}
       propertyPath: _cooldownTime
-      value: 1
+      value: 1.5
       objectReference: {fileID: 0}
     - target: {fileID: 1500945771907563851, guid: 0c6554394ecb5fe4182c8f28b4d39481, type: 3}
       propertyPath: _game
@@ -3211,7 +3215,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5223670660190740928, guid: 0c6554394ecb5fe4182c8f28b4d39481, type: 3}
       propertyPath: _health._health
-      value: 300
+      value: 400
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0c6554394ecb5fe4182c8f28b4d39481, type: 3}
@@ -7841,8 +7845,12 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 354206475865612546, guid: 0c6554394ecb5fe4182c8f28b4d39481, type: 3}
+      propertyPath: _bullet
+      value: 
+      objectReference: {fileID: -8238685944364814985, guid: 384a426e70d11ed42904fc3a93f48759, type: 3}
+    - target: {fileID: 354206475865612546, guid: 0c6554394ecb5fe4182c8f28b4d39481, type: 3}
       propertyPath: _cooldownTime
-      value: 1
+      value: 1.5
       objectReference: {fileID: 0}
     - target: {fileID: 1500945771907563851, guid: 0c6554394ecb5fe4182c8f28b4d39481, type: 3}
       propertyPath: _game
@@ -7902,7 +7910,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5223670660190740928, guid: 0c6554394ecb5fe4182c8f28b4d39481, type: 3}
       propertyPath: _health._health
-      value: 300
+      value: 400
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0c6554394ecb5fe4182c8f28b4d39481, type: 3}
@@ -9996,7 +10004,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6033133238143306276, guid: d34aad92db391e54f86c02007adebee8, type: 3}
       propertyPath: _health._health
-      value: 200
+      value: 300
       objectReference: {fileID: 0}
     - target: {fileID: 6033133238143306278, guid: d34aad92db391e54f86c02007adebee8, type: 3}
       propertyPath: m_Name
@@ -16420,8 +16428,12 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 354206475865612546, guid: 0c6554394ecb5fe4182c8f28b4d39481, type: 3}
+      propertyPath: _bullet
+      value: 
+      objectReference: {fileID: -8238685944364814985, guid: 384a426e70d11ed42904fc3a93f48759, type: 3}
+    - target: {fileID: 354206475865612546, guid: 0c6554394ecb5fe4182c8f28b4d39481, type: 3}
       propertyPath: _cooldownTime
-      value: 1
+      value: 1.5
       objectReference: {fileID: 0}
     - target: {fileID: 354206475865612546, guid: 0c6554394ecb5fe4182c8f28b4d39481, type: 3}
       propertyPath: _shootDistance
@@ -16485,7 +16497,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5223670660190740928, guid: 0c6554394ecb5fe4182c8f28b4d39481, type: 3}
       propertyPath: _health._health
-      value: 300
+      value: 400
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0c6554394ecb5fe4182c8f28b4d39481, type: 3}

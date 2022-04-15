@@ -41,10 +41,10 @@ GameObject:
   - component: {fileID: 8650098805246385399}
   - component: {fileID: 8650098803341463045}
   - component: {fileID: 8650098803341463044}
-  - component: {fileID: 2011280156609974285}
   - component: {fileID: 5231283744201044171}
   - component: {fileID: 4398069640726437767}
   - component: {fileID: 5400029033010140918}
+  - component: {fileID: 9199793758921051094}
   m_Layer: 13
   m_Name: ConcreteBarrier_39_v2
   m_TagString: Untagged
@@ -116,20 +116,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!64 &2011280156609974285
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8650098803341463047}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 4
-  m_Convex: 1
-  m_CookingOptions: 30
-  m_Mesh: {fileID: -4765060750685527311, guid: 753390768a582b245a75ac71dcc16ab6, type: 3}
 --- !u!54 &5231283744201044171
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -176,3 +162,16 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _dieEffect: {fileID: 6088724330369110986, guid: 318a880606b97e54cb55f6985ac33032, type: 3}
   _point: {fileID: 2201397639957389436}
+--- !u!65 &9199793758921051094
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8650098803341463047}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 4.5, y: 6.0000005, z: 1.3915119}
+  m_Center: {x: 0, y: 2.9402282, z: 0}
