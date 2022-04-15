@@ -41,6 +41,7 @@ public class Fight : MonoBehaviour
     private IEnumerator StartFight(Player player, float delayTime)
     {
         player.PrepearedForFight(_targetPlayerPosition, _monster);
+
         if (_monster is Ahriman ahriman)
             ahriman.PrepearedForFight();
 

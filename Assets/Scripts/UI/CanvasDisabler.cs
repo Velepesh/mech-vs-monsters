@@ -8,16 +8,23 @@ public class CanvasDisabler : MonoBehaviour
     private void OnEnable()
     {
         _player.Prepeared += OnPrepeared;
+        _player.Fought += OnFought;
     }
 
     private void OnDisable()
     {
         _player.Prepeared -= OnPrepeared;
+        _player.Fought -= OnFought;
     }
 
     private void OnPrepeared(Transform transform, Monster monster, bool isAiming)
     {
-        if(isAiming == false)
-            _canvas.SetActive(false);
+        _canvas.SetActive(false);
+    }
+
+    private void OnFought(Monster monster)
+    {
+        if (monster is Ahriman)
+            _canvas.SetActive(true);
     }
 }

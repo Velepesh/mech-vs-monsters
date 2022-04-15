@@ -203,7 +203,7 @@ public class TargetDetector : MonoBehaviour
                     vehicales.Add(vehicle);
                 else if (target is Soldier soldier)
                     soldiers.Add(soldier);
-                else
+                else if (target.Position.z >= transform.position.z)
                     otherTargets.Add(target);
             }
         }
@@ -231,7 +231,7 @@ public class TargetDetector : MonoBehaviour
 
         foreach (ITarget target in targets)
         {
-            if (target is IDamageable)
+            if (target is IDamageable && target.Position.z >= transform.position.z)
             {
                 if (target is Vehicle vehicle)
                     vehicales.Add(vehicle);

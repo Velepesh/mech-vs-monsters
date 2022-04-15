@@ -24,12 +24,23 @@ public class HealthView : MonoBehaviour
     {
         _damageable.Health.HealthChanged += OnHealthChanged;
         _game.LevelStarted += OnLevelStarted;
+
+        if(_damageable is Player player)
+            player.Fought += OnFought;
     }
 
     private void OnDisable()
     {
         _damageable.Health.HealthChanged -= OnHealthChanged;
         _game.LevelStarted -= OnLevelStarted;
+
+        if (_damageable is Player player)
+            player.Fought -= OnFought;
+    }
+
+    private void OnFought(Monster monster)
+    {
+        OnLevelStarted();
     }
 
     private void OnLevelStarted()
@@ -59,6 +70,7 @@ public class HealthView : MonoBehaviour
     private IEnumerator EnableSlider(float duration)
     {
         yield return new WaitForSeconds(duration);
+
         _slider.gameObject.SetActive(true);
     }
 
