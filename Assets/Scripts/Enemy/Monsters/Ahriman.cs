@@ -1,14 +1,14 @@
-using System.Collections.Generic;
 using System.Collections;
 using UnityEngine;
 using UnityEngine.Events;
 
 public class Ahriman : Monster, IDamageable, ITarget, IAward
 {
-    [SerializeField] private List<Machinegun> _machineguns;
+    [SerializeField] private Machinegun _machinegun;
     [SerializeField] private MonsterCollider _monsterCollider;
     [SerializeField] private float _moveToTargetPointTime;
     [SerializeField] private Transform _targetFightPoint;
+    [SerializeField] private float _delayBeforeShooting;
 
     private Player _player;
 
@@ -16,6 +16,11 @@ public class Ahriman : Monster, IDamageable, ITarget, IAward
 
     public new event UnityAction AttackStarted;
 
+    private void OnValidate()
+    {
+        _moveToTargetPointTime = Mathf.Clamp(_moveToTargetPointTime, 0f, float.MaxValue);
+        _delayBeforeShooting = Mathf.Clamp(_delayBeforeShooting, 0f, float.MaxValue);
+    }
     public new void Fight(Player player)
     {
         _player = player;
@@ -49,7 +54,13 @@ public class Ahriman : Monster, IDamageable, ITarget, IAward
 
     private void SetWeaponsTarget()
     {
-        for (int i = 0; i < _machineguns.Count; i++)
-            _machineguns[i].SetTarget(_player, this);
+        StartCoroutine(StartShooting(_delayBeforeShooting));
+    }
+
+    private IEnumerator StartShooting(float duration)
+    {
+        yield return new WaitForSeconds(duration);
+
+        _machinegun.SetTarget(_player, this);
     }
 }
