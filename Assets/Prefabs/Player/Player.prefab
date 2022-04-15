@@ -8104,10 +8104,6 @@ PrefabInstance:
       propertyPath: m_Priority
       value: 10
       objectReference: {fileID: 0}
-    - target: {fileID: 3895173847764065701, guid: c509e4f12cbba03438a2e7930f2c46a1, type: 3}
-      propertyPath: m_Lens.FieldOfView
-      value: 86.64868
-      objectReference: {fileID: 0}
     - target: {fileID: 3895173847764065702, guid: c509e4f12cbba03438a2e7930f2c46a1, type: 3}
       propertyPath: _widthOrHeight
       value: 0.5

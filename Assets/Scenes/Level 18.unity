@@ -10067,6 +10067,14 @@ PrefabInstance:
       propertyPath: _game
       value: 
       objectReference: {fileID: 1952765202}
+    - target: {fileID: 8764497404607325251, guid: 0068a023ae575f54fad1b27efea72f84, type: 3}
+      propertyPath: _fastWaterMat
+      value: 
+      objectReference: {fileID: 2100000, guid: 9b592e842f2893e4a83fa5d888641370, type: 2}
+    - target: {fileID: 8764497404607325251, guid: 0068a023ae575f54fad1b27efea72f84, type: 3}
+      propertyPath: _slowWaterMat
+      value: 
+      objectReference: {fileID: 2100000, guid: 005fb9db0445ed14b9f46067ac1ee765, type: 2}
     - target: {fileID: 8764497404607329400, guid: 0068a023ae575f54fad1b27efea72f84, type: 3}
       propertyPath: m_Mesh
       value: 

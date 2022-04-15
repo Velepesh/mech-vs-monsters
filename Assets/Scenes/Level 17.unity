@@ -15,7 +15,7 @@ RenderSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 9
   m_Fog: 1
-  m_FogColor: {r: 0.4745098, g: 0.9411765, b: 0.972549, a: 1}
+  m_FogColor: {r: 0.47843137, g: 0.92941177, b: 1, a: 1}
   m_FogMode: 1
   m_FogDensity: 0.004
   m_LinearFogStart: 100
@@ -22812,6 +22812,14 @@ PrefabInstance:
       propertyPath: _game
       value: 
       objectReference: {fileID: 1952765202}
+    - target: {fileID: 8764497404607325251, guid: 0068a023ae575f54fad1b27efea72f84, type: 3}
+      propertyPath: _fastWaterMat
+      value: 
+      objectReference: {fileID: 2100000, guid: 9b592e842f2893e4a83fa5d888641370, type: 2}
+    - target: {fileID: 8764497404607325251, guid: 0068a023ae575f54fad1b27efea72f84, type: 3}
+      propertyPath: _slowWaterMat
+      value: 
+      objectReference: {fileID: 2100000, guid: 005fb9db0445ed14b9f46067ac1ee765, type: 2}
     - target: {fileID: 8764497404607329400, guid: 0068a023ae575f54fad1b27efea72f84, type: 3}
       propertyPath: m_Mesh
       value: 
