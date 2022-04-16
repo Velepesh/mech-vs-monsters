@@ -9723,7 +9723,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 09a1fd7f901314b42b3166e3855ae0fe, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _damage: 90
+  _damage: 80
   _impactPrefab: {fileID: 1228869523896316, guid: 2bad0cbc29bb6a148b2f9852e20a5828, type: 3}
   _destroyTime: 1.2
 --- !u!1 &1331927736720676

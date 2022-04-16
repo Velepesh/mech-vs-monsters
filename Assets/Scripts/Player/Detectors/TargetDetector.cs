@@ -201,7 +201,7 @@ public class TargetDetector : MonoBehaviour
 
             if (target is IDamageable && distance <= _moverOptions.AttackDistance);
             {
-                if (target is Vehicle vehicle)
+                if (target is Vehicle vehicle && target is AttackHelicopter == false)
                     vehicales.Add(vehicle);
                 else if (target is Soldier soldier)
                     soldiers.Add(soldier);

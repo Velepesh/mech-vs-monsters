@@ -67,7 +67,7 @@ public class RocketProjectile : DamageCollider, IMover
             {
                 if (damageable is MonsterCollider)
                     DoDamage(damageable, _monsterDamage);
-                else if(damageable is Vehicle == false)
+                else if(damageable is Vehicle == false && collider.enabled == true)
                     DoDamage(damageable, _maxDamage);
                 else
                     DoDamage(damageable);

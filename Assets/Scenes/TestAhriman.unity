@@ -25968,6 +25968,10 @@ PrefabInstance:
       propertyPath: _rocketLauncher
       value: 
       objectReference: {fileID: 8398664578934175546}
+    - target: {fileID: 485683980, guid: 54dfa9b28cb51d04f80b7b168bf27623, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 662470912, guid: 54dfa9b28cb51d04f80b7b168bf27623, type: 3}
       propertyPath: _game
       value: 
@@ -26005,6 +26009,14 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1145026390, guid: 54dfa9b28cb51d04f80b7b168bf27623, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1265012065, guid: 54dfa9b28cb51d04f80b7b168bf27623, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1265012065, guid: 54dfa9b28cb51d04f80b7b168bf27623, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
       objectReference: {fileID: 0}
@@ -26188,6 +26200,10 @@ PrefabInstance:
       propertyPath: _robotBuilder
       value: 
       objectReference: {fileID: 1457658913}
+    - target: {fileID: 7047241245455284049, guid: 54dfa9b28cb51d04f80b7b168bf27623, type: 3}
+      propertyPath: m_Alpha
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7047241246507470244, guid: 54dfa9b28cb51d04f80b7b168bf27623, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
@@ -26439,15 +26455,15 @@ PrefabInstance:
       objectReference: {fileID: 963194229}
     - target: {fileID: 7318534116304157593, guid: 9cc040cecc15b534c8dd4055a2d4c70b, type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0.32519045
+      value: 0.32519042
       objectReference: {fileID: 0}
     - target: {fileID: 7318534116304157593, guid: 9cc040cecc15b534c8dd4055a2d4c70b, type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0.00000003028409
+      value: -0.000000011084746
       objectReference: {fileID: 0}
     - target: {fileID: 7318534116304157593, guid: 9cc040cecc15b534c8dd4055a2d4c70b, type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0.00000001041412
+      value: 0.0000000038118317
       objectReference: {fileID: 0}
     - target: {fileID: 7454191481910524664, guid: 9cc040cecc15b534c8dd4055a2d4c70b, type: 3}
       propertyPath: _damage

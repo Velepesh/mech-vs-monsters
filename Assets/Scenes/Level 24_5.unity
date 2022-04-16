@@ -43970,6 +43970,18 @@ PrefabInstance:
       propertyPath: m_Name
       value: Game
       objectReference: {fileID: 0}
+    - target: {fileID: 597186044223634791, guid: d50d63704e117e84896a91ef1df77394, type: 3}
+      propertyPath: _totalLevels
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 597186044223634791, guid: d50d63704e117e84896a91ef1df77394, type: 3}
+      propertyPath: _maxCircledLevel
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 597186044223634791, guid: d50d63704e117e84896a91ef1df77394, type: 3}
+      propertyPath: _minCircledLevel
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 2773451001478785860, guid: d50d63704e117e84896a91ef1df77394, type: 3}
       propertyPath: _wallet
       value: 

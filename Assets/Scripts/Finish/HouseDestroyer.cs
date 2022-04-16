@@ -22,7 +22,7 @@ public class HouseDestroyer : MonoBehaviour
         for (int i = 0; i < _houses.Count; i++)
         {
             _houses[i].Died += OnDied;
-            _houses[i].GetComponent<Collider>().enabled = false;
+            _houses[i].gameObject.SetActive(false);
         }
     }
 
@@ -87,7 +87,7 @@ public class HouseDestroyer : MonoBehaviour
         {
             House house = GetClosestTarget(_player.Position, _houses);
 
-            house.GetComponent<Collider>().enabled = true;
+            house.gameObject.SetActive(true);
         }
     }
 
@@ -96,7 +96,7 @@ public class HouseDestroyer : MonoBehaviour
         for (int i = 0; i < _houses.Count; i++)
         {
             _houses[i].Died -= OnDied;
-            _houses[i].GetComponent<Collider>().enabled = false;
+            _houses[i].gameObject.SetActive(false);
         }
 
         _player.Win();

@@ -6,6 +6,7 @@ public class House : MonoBehaviour, IDamageable, ITarget, IAward
     [SerializeField] private Health _health;
     [SerializeField] private int _award;
     [SerializeField] private GameObject _brokenHouse;
+    [SerializeField] private GameObject _model;
     [SerializeField] private float _offsetX = 1.2f;
 
     public Health Health => _health;
@@ -33,6 +34,6 @@ public class House : MonoBehaviour, IDamageable, ITarget, IAward
         Died?.Invoke(this);
 
         Instantiate(_brokenHouse, transform.position, Quaternion.identity);
-        gameObject.SetActive(false);
+        _model.SetActive(false);
     }
 }

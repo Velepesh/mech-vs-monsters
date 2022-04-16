@@ -4,6 +4,7 @@ using UnityEngine.Events;
 [RequireComponent(typeof(Player))]
 [RequireComponent(typeof(PlayerWeaponsHolder))]
 [RequireComponent(typeof(DownMover))]
+[RequireComponent(typeof(PlayerInput))]
 public class AimShooting : MonoBehaviour
 {
     [SerializeField] private Camera _camera;
@@ -13,6 +14,7 @@ public class AimShooting : MonoBehaviour
     private Player _player;
     private DownMover _downMover;
     private PlayerWeaponsHolder _playerWeaponsHolder;
+    private PlayerInput _input;
     private bool _canShoot;
 
     public Player Player => _player;
@@ -23,6 +25,7 @@ public class AimShooting : MonoBehaviour
         _player = GetComponent<Player>();
         _downMover = GetComponent<DownMover>();
         _playerWeaponsHolder = GetComponent<PlayerWeaponsHolder>();
+        _input = GetComponent<PlayerInput>();
     }
 
     private void OnEnable()
@@ -35,12 +38,15 @@ public class AimShooting : MonoBehaviour
         _downMover.Landed -= OnLanded;
     }
 
-    public void Shoot()
+
+    public void Shoot(Vector3 direction, Vector3 position)
     {
         if (_canShoot)
         {
+            _aim.MoveAim(direction, position);
+
             RaycastHit hit;
-            Ray ray = _camera.ScreenPointToRay(Input.mousePosition);
+            Ray ray = _camera.ScreenPointToRay(_aim.Position);
 
             if (Physics.Raycast(ray, out hit, float.MaxValue, _layerMask))
             {
@@ -50,8 +56,6 @@ public class AimShooting : MonoBehaviour
                     weapon.SetTarget(hit.point);
                 }
             }
-
-            _aim.MoveAim(Input.mousePosition);
 
             Shooted?.Invoke();
         }

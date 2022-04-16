@@ -2,6 +2,7 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 
 [RequireComponent(typeof(Player))]
+[RequireComponent(typeof(DownMover))]
 public class PlayerInput : MonoBehaviour
 {
     [SerializeField] private Attacker _attacker;
@@ -12,9 +13,14 @@ public class PlayerInput : MonoBehaviour
 
     private readonly float _minMouseMove = 3f;
 
-    private float _mousePositionX;
+    private Vector3 _mousePosition;
+    private Vector3 _mousePositionAim;
+    private Vector3 _aimPosition;
+    private Vector3 _startPosition;
     private float _moveFactorX;
+
     private float _previousMoveFactorX;
+
     private bool _isFight;
     private Player _player;
 
@@ -54,43 +60,53 @@ public class PlayerInput : MonoBehaviour
             {
                 if (!EventSystem.current.IsPointerOverGameObject())
                 {
-                    if (!EventSystem.current.IsPointerOverGameObject())
-                    {
-                        if (_isFight)
-                            if (_player.IsAiming == false)
-                                _attacker.Attack(true);
-                            else
-                                _mousePositionX = Input.mousePosition.x;
-                    }
+                    if (_isFight)
+                        if (_player.IsAiming == false)
+                            _attacker.Attack(true);
+                        else
+                            _mousePosition = Input.mousePosition;
+
+                    _startPosition = Input.mousePosition;
+                    _mousePositionAim = Input.mousePosition;
                 }
             }
 
             if (touch.phase == TouchPhase.Moved)
             {
-                if (_player.IsAiming)
-                    _aimShooting.Shoot();
-
+                Vector2 direction = Vector3.zero;
                 if (!EventSystem.current.IsPointerOverGameObject())
                 {
-                    float position = Input.mousePosition.x;
-                    _moveFactorX = position - _mousePositionX;
+                    Vector3 position = Input.mousePosition;
+
+                    _moveFactorX = position.x - _mousePosition.x;
+                    Vector2 offset = position - _startPosition;
+                    _aimPosition = position - _mousePositionAim;
+                    direction = Vector2.ClampMagnitude(offset, 1f);
 
                     ApplyMoveFactorX();
 
                     _previousMoveFactorX = Mathf.Clamp(_moveFactorX, -1f, 1f);
-                    _mousePositionX = position;
+
+                    _mousePosition = position;
+                    _mousePositionAim = position;
                 }
+
+                _aimShooting.Shoot(direction, _aimPosition);
             }
 
             if (touch.phase == TouchPhase.Ended)
             {
                 _moveFactorX = 0f;
+
                 _previousMoveFactorX = _moveFactorX;
 
                 if (_player.IsAiming)
                     _playerWeaponsHolder.StopShooting();
-
             }
+        }
+        else
+        {
+            _mousePositionAim = Input.mousePosition;
         }
     }
 
@@ -104,32 +120,41 @@ public class PlayerInput : MonoBehaviour
                     if (_player.IsAiming == false)
                         _attacker.Attack(true);
                     else
-                        _mousePositionX = Input.mousePosition.x;
+                        _mousePosition = Input.mousePosition;
             }
+
+            _startPosition = Input.mousePosition;
+            _mousePositionAim = Input.mousePosition;
         }
         else if (Input.GetMouseButton(0))
         {
-            if (_player.IsAiming)
-                _aimShooting.Shoot();
+            Vector3 position = Input.mousePosition;
 
-            if (!EventSystem.current.IsPointerOverGameObject())
-            {
-                float position = Input.mousePosition.x;
-                _moveFactorX = position - _mousePositionX;
+            _moveFactorX = position.x - _mousePosition.x;
+            Vector2 offset = position - _startPosition;
+            _aimPosition = position - _mousePositionAim;
+            Vector2 direction = Vector2.ClampMagnitude(offset, 1f);
+            _aimShooting.Shoot(direction, _aimPosition);
 
-                ApplyMoveFactorX();
+            ApplyMoveFactorX();
+           
+            _previousMoveFactorX = Mathf.Clamp(_moveFactorX, -1f, 1f);
 
-                _previousMoveFactorX = Mathf.Clamp(_moveFactorX, -1f, 1f);
-                _mousePositionX = position;
-            }
+            _mousePosition = position;
+            _mousePositionAim = position;
         }
         else if (Input.GetMouseButtonUp(0))
         {
             _moveFactorX = 0f;
+
             _previousMoveFactorX = _moveFactorX;
 
             if (_player.IsAiming)
                 _playerWeaponsHolder.StopShooting();
+        }
+        else
+        {
+            _mousePositionAim = Input.mousePosition;
         }
     }
     private void ApplyMoveFactorX()
@@ -138,10 +163,11 @@ public class PlayerInput : MonoBehaviour
             _moveFactorX = -1f;
         else if (_previousMoveFactorX > 0f && _moveFactorX > 0f)
             _moveFactorX = 1f;
-
+        
         if (_moveFactorX == 0 || Mathf.Abs(_moveFactorX) < _minMouseMove)
             _moveFactorX = _previousMoveFactorX;
     }
+
 
     private void OnFought(Monster monster)
     {
