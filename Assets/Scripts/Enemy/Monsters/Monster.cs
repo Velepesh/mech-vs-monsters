@@ -73,7 +73,6 @@ public class Monster : MonoBehaviour, IDamageable, ITarget, IAward
 
     public void Die()
     {
-        //_rigidbody.AddForce(Vector3.back * _kickbackForce, ForceMode.Impulse);
         StartCoroutine(MoveToDiePoint(_moveToDiePointTime));
         DisableModel();
         Disabled?.Invoke();

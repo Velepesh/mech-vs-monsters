@@ -5,10 +5,13 @@ public class PlayerAttackCollider : DamageCollider
 {
     [SerializeField] private Attacker _attacker;
 
+    private readonly float _cooldownTime = 0.5f;
+
+    private float _shootingTimer;
+    private bool _isAttack;
+    private bool _canAttack;
 
     public event UnityAction<Vector3, Quaternion> Damaged;
-
-    private bool _isAttack;
 
     private void OnEnable()
     {
@@ -27,7 +30,7 @@ public class PlayerAttackCollider : DamageCollider
 
     protected override void OnCollisionEnter(Collision collision)
     {
-        if (_isAttack)
+        if (_isAttack && _canAttack)
         {
             if (collision.gameObject.TryGetComponent(out IDamageable damageable))
             {
@@ -40,5 +43,16 @@ public class PlayerAttackCollider : DamageCollider
                 _isAttack = false;
             }
         }
+    }
+
+    private void Update()
+    {
+        if (_shootingTimer >= _cooldownTime)
+        {
+            _canAttack = true;
+            _shootingTimer = 0;
+        }
+
+        _shootingTimer += Time.deltaTime;
     }
 }

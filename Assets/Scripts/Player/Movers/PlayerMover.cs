@@ -5,8 +5,6 @@ using UnityEngine;
 [RequireComponent(typeof(MoverOptions))]
 public class PlayerMover : State, IMover
 {
-    [SerializeField] private bool _canMoveSideways = true;
-
     readonly private float _rotationAngle = 45f;
     readonly private float _tutorialMoveSpeed = 0f;
 
@@ -36,7 +34,7 @@ public class PlayerMover : State, IMover
         
         if (_player.IsAiming)
             Rotate(0f);
-        else if(_canMoveSideways)
+        else
             Swipe();
     }
 
@@ -59,6 +57,7 @@ public class PlayerMover : State, IMover
     {
         transform.Translate(Vector3.forward * _tutorialMoveSpeed * Time.deltaTime);
     }
+
     private void Swipe()
     {
         float swerveAmount = Time.deltaTime * _input.Sensitivity * Mathf.Clamp(_input.MoveFactorX, -1f, 1);

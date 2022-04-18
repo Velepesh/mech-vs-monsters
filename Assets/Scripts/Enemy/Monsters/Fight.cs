@@ -42,15 +42,12 @@ public class Fight : MonoBehaviour
     {
         player.PrepearedForFight(_targetPlayerPosition, _monster);
 
-        if (_monster is Ahriman ahriman)
-            ahriman.PrepearedForFight();
+        //if (_monster is Ahriman ahriman)
+        //    ahriman.PrepearedForFight();
 
         yield return new WaitForSeconds(delayTime);
 
-        if (_monster is Ahriman monster)
-            monster.Fight(player);
-        else
-            _monster.Fight(player);
+        _monster.Fight(player);
         
         player.Fight(_monster);
         player.Died += OnPlayerDied;

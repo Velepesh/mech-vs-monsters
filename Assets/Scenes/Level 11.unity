@@ -10323,7 +10323,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7462646394947107966, guid: 0cf64d86ee4d97d4292f86d955dfdc1d, type: 3}
       propertyPath: _health._health
-      value: 1100
+      value: 1150
       objectReference: {fileID: 0}
     - target: {fileID: 7733186931370024608, guid: 0cf64d86ee4d97d4292f86d955dfdc1d, type: 3}
       propertyPath: m_RootOrder
@@ -27680,11 +27680,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7318534116304157593, guid: 9cc040cecc15b534c8dd4055a2d4c70b, type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0.000000017728677
+      value: 0.000000016809711
       objectReference: {fileID: 0}
     - target: {fileID: 7318534116304157593, guid: 9cc040cecc15b534c8dd4055a2d4c70b, type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0.0000000052069455
+      value: -0.0000000049370437
       objectReference: {fileID: 0}
     - target: {fileID: 7454191481910524664, guid: 9cc040cecc15b534c8dd4055a2d4c70b, type: 3}
       propertyPath: _damage

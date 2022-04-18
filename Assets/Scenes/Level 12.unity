@@ -22322,6 +22322,10 @@ PrefabInstance:
       propertyPath: _award
       value: 1600
       objectReference: {fileID: 0}
+    - target: {fileID: 943994429679563363, guid: 464e2e81f53b2784e8ad6709f1ba6cbe, type: 3}
+      propertyPath: _health._health
+      value: 1200
+      objectReference: {fileID: 0}
     - target: {fileID: 943994430864874244, guid: 464e2e81f53b2784e8ad6709f1ba6cbe, type: 3}
       propertyPath: _damage
       value: 175
@@ -26304,11 +26308,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7318534116304157593, guid: 9cc040cecc15b534c8dd4055a2d4c70b, type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0.00000001673103
+      value: -0.000000016522897
       objectReference: {fileID: 0}
     - target: {fileID: 7318534116304157593, guid: 9cc040cecc15b534c8dd4055a2d4c70b, type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0.0000000049139355
+      value: 0.0000000048528057
       objectReference: {fileID: 0}
     - target: {fileID: 7454191481910524664, guid: 9cc040cecc15b534c8dd4055a2d4c70b, type: 3}
       propertyPath: _damage

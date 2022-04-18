@@ -5,7 +5,7 @@ public class Aim : MonoBehaviour
 {
     [SerializeField] private Image _aimImage;
     [SerializeField] private float _moveSpeedHold = 400;
-    [SerializeField] private float _moveSpeedTouch = 60;
+    [SerializeField] private float _moveSpeed;
     [SerializeField] private float _border;
     [SerializeField] private bool _isHold;
 
@@ -23,12 +23,12 @@ public class Aim : MonoBehaviour
         if(_isHold)
             _derection = direction * _moveSpeedHold * Time.deltaTime;
         else
-            _derection = mousePosition * _moveSpeedTouch * Time.deltaTime;
+            _derection = mousePosition * _moveSpeed * Time.deltaTime;
 
         TryMoveAxisX(_derection.x);
         TryMoveAxisY(_derection.y);
 
-        _aimImage.transform.Translate(_derection);
+       
     }
 
     public void ShowAim()
@@ -38,19 +38,37 @@ public class Aim : MonoBehaviour
 
     private void TryMoveAxisX(float x)
     {
-        if (x < 0 && Position.x - _border < 0f
-            || x > 0 && Position.x + _border > _screenRect.width)
+        Vector2 position = _aimImage.transform.position;
+
+        if (x < 0 && Position.x - _border < 0f)
         {
-            _derection = Vector3.zero;
+            _aimImage.transform.position = new Vector2(_border, position.y);
+        }
+        else if(x > 0 && Position.x + _border > _screenRect.width)
+        {
+            _aimImage.transform.position = new Vector2(_screenRect.width - _border, position.y);
+        }
+        else
+        {
+            _aimImage.transform.Translate(_derection);
         }
     }
 
     private void TryMoveAxisY(float y)
     {
-        if (y < 0 && Position.y - _border < 0f
-            || y > 0 && Position.y + _border > _screenRect.height)
+        Vector2 position = _aimImage.transform.position;
+
+        if (y < 0 && Position.y - _border < 0f)           
         {
-            _derection = Vector3.zero;
+            _aimImage.transform.position = new Vector2(position.x, _border);
+        }
+        else if (y > 0 && Position.y + _border > _screenRect.height)
+        {
+            _aimImage.transform.position = new Vector2(position.x, _screenRect.height - _border);
+        }
+        else
+        {
+            _aimImage.transform.Translate(_derection);
         }
     }
     private void DisableAim()
