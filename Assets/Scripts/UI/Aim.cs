@@ -5,7 +5,7 @@ public class Aim : MonoBehaviour
 {
     [SerializeField] private Image _aimImage;
     [SerializeField] private float _moveSpeedHold = 400;
-    [SerializeField] private float _moveSpeed;
+    [SerializeField] private float _moveSpeedTouch = 60;
     [SerializeField] private float _border;
     [SerializeField] private bool _isHold;
 
@@ -23,7 +23,7 @@ public class Aim : MonoBehaviour
         if(_isHold)
             _derection = direction * _moveSpeedHold * Time.deltaTime;
         else
-            _derection = mousePosition * _moveSpeed * Time.deltaTime;
+            _derection = mousePosition * _moveSpeedTouch * Time.deltaTime;
 
         TryMoveAxisX(_derection.x);
         TryMoveAxisY(_derection.y);
