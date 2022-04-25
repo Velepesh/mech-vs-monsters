@@ -5,6 +5,7 @@ using UnityEngine.EventSystems;
 [RequireComponent(typeof(DownMover))]
 public class PlayerInput : MonoBehaviour
 {
+    [SerializeField] private Camera _camera;
     [SerializeField] private Attacker _attacker;
     [SerializeField] private PlayerWeaponsHolder _playerWeaponsHolder;
     [SerializeField] private AimShooting _aimShooting;
@@ -14,18 +15,19 @@ public class PlayerInput : MonoBehaviour
     private readonly float _minMouseMove = 3f;
 
     private Vector3 _mousePosition;
-    private Vector3 _mousePositionAim;
-    private Vector3 _aimPosition;
-    private Vector3 _startPosition;
     private float _moveFactorX;
+    private Vector3 _aimPosition;
 
     private float _previousMoveFactorX;
 
     private bool _isFight;
+    private bool _isHold;
     private Player _player;
 
     public float MoveFactorX => _moveFactorX;
+    public Vector3 AimPosition => _aimPosition;
     public float Sensitivity => _sensitivity;
+    public bool IsHold => _isHold;
 
     private void Awake()
     {
@@ -65,33 +67,29 @@ public class PlayerInput : MonoBehaviour
                             _attacker.Attack(true);
                         else
                             _mousePosition = Input.mousePosition;
-
-                    _startPosition = Input.mousePosition;
-                    _mousePositionAim = Input.mousePosition;
                 }
             }
 
             if (touch.phase == TouchPhase.Moved)
             {
-                Vector2 direction = Vector3.zero;
                 if (!EventSystem.current.IsPointerOverGameObject())
                 {
                     Vector3 position = Input.mousePosition;
 
+                    RaycastHit hit;
+                    Ray ray = _camera.ScreenPointToRay(position);
+                    if (Physics.Raycast(ray, out hit, float.MaxValue))
+                        _aimPosition = hit.point - transform.position;
+
                     _moveFactorX = position.x - _mousePosition.x;
-                    Vector2 offset = position - _startPosition;
-                    _aimPosition = position - _mousePositionAim;
-                    direction = Vector2.ClampMagnitude(offset, 1f);
 
                     ApplyMoveFactorX();
 
-                    _previousMoveFactorX = Mathf.Clamp(_moveFactorX, -1f, 1f);
-
                     _mousePosition = position;
-                    _mousePositionAim = position;
                 }
 
-                _aimShooting.Shoot(direction, _aimPosition);
+                _isHold = true;
+                _aimShooting.Shoot(Input.mousePosition);
             }
 
             if (touch.phase == TouchPhase.Ended)
@@ -100,13 +98,11 @@ public class PlayerInput : MonoBehaviour
 
                 _previousMoveFactorX = _moveFactorX;
 
+                _isHold = false;
+
                 if (_player.IsAiming)
                     _playerWeaponsHolder.StopShooting();
             }
-        }
-        else
-        {
-            _mousePositionAim = Input.mousePosition;
         }
     }
 
@@ -126,26 +122,23 @@ public class PlayerInput : MonoBehaviour
                     _mousePosition = Input.mousePosition;
                 }
             }
-
-            _startPosition = Input.mousePosition;
-            _mousePositionAim = Input.mousePosition;
         }
         else if (Input.GetMouseButton(0))
         {
             Vector3 position = Input.mousePosition;
 
+            RaycastHit hit;
+            Ray ray = _camera.ScreenPointToRay(position);
+            if (Physics.Raycast(ray, out hit, float.MaxValue))
+                _aimPosition = hit.point - transform.position;
+
             _moveFactorX = position.x - _mousePosition.x;
-            Vector2 offset = position - _startPosition;
-            _aimPosition = position - _mousePositionAim;
-            Vector2 direction = Vector2.ClampMagnitude(offset, 1f);
-            _aimShooting.Shoot(direction, _aimPosition);
+            _aimShooting.Shoot(position);
 
             ApplyMoveFactorX();
-           
-            _previousMoveFactorX = Mathf.Clamp(_moveFactorX, -1f, 1f);
 
+            _isHold = true;
             _mousePosition = position;
-            _mousePositionAim = position;
         }
         else if (Input.GetMouseButtonUp(0))
         {
@@ -153,12 +146,10 @@ public class PlayerInput : MonoBehaviour
 
             _previousMoveFactorX = _moveFactorX;
 
+            _isHold = false;
+
             if (_player.IsAiming)
                 _playerWeaponsHolder.StopShooting();
-        }
-        else
-        {
-            _mousePositionAim = Input.mousePosition;
         }
     }
     private void ApplyMoveFactorX()
@@ -170,8 +161,9 @@ public class PlayerInput : MonoBehaviour
         
         if (_moveFactorX == 0 || Mathf.Abs(_moveFactorX) < _minMouseMove)
             _moveFactorX = _previousMoveFactorX;
-    }
 
+        _previousMoveFactorX = Mathf.Clamp(_moveFactorX, -1f, 1f);
+    }
 
     private void OnFought(Monster monster)
     {

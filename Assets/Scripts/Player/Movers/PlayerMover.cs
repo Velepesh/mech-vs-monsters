@@ -31,11 +31,18 @@ public class PlayerMover : State, IMover
     public void Move()
     {
         transform.Translate(Vector3.forward * _moverOptions.MoveSpeed * Time.deltaTime);
-        
+
         if (_player.IsAiming)
-            Rotate(0f);
+        {
+            if (_input.IsHold)
+                Swipe(_input.AimPosition);
+            else
+                Rotate(0f);
+        }
         else
+        {
             Swipe();
+        }
     }
 
     public void StartTutorialMove()
@@ -57,6 +64,22 @@ public class PlayerMover : State, IMover
     {
         transform.Translate(Vector3.forward * _tutorialMoveSpeed * Time.deltaTime);
     }
+
+    private void Swipe(Vector3 position)
+    {
+        float positionX = position.x;
+        
+        float swerveAmount = Time.deltaTime * _input.Sensitivity * Mathf.Clamp(positionX, -1f, 1);
+        swerveAmount = Mathf.Clamp(swerveAmount, -_moverOptions.BorderOffset, _moverOptions.BorderOffset);
+
+        if (swerveAmount > 0f)
+            TryMoveRight(swerveAmount, positionX);
+        else if (swerveAmount < 0f)
+            TryMoveLeft(swerveAmount, positionX);
+        else
+            Rotate(0f);
+    }
+
 
     private void Swipe()
     {
@@ -109,5 +132,31 @@ public class PlayerMover : State, IMover
         var targetRotation = Quaternion.Euler(new Vector3(0, directionY * _rotationAngle, 0));
 
         _moverOptions.RotateModel(Quaternion.Lerp(currentRotation, targetRotation, _moverOptions.RotationSpeed * Time.deltaTime));
+    }
+
+    private void TryMoveRight(float swerveAmount, float positionX)
+    {
+        Vector3 position = transform.position;
+
+        if (position.x >= _moverOptions.BorderOffset)
+            ReachBorder(position, _moverOptions.BorderOffset);
+        else
+            MoveSideways(swerveAmount, positionX);
+    }
+
+    private void TryMoveLeft(float swerveAmount, float positionX)
+    {
+        Vector3 position = transform.position;
+
+        if (position.x <= -_moverOptions.BorderOffset)
+            ReachBorder(position, -_moverOptions.BorderOffset);
+        else
+            MoveSideways(swerveAmount, positionX);
+    }
+
+    private void MoveSideways(float swerveAmount, float positionX)
+    {
+        transform.Translate(swerveAmount, 0, 0);
+        Rotate(Mathf.Clamp(positionX, -1f, 1));
     }
 }

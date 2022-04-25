@@ -38,26 +38,16 @@ public class AimShooting : MonoBehaviour
         _downMover.Landed -= OnLanded;
     }
 
-
-    public void Shoot(Vector3 direction, Vector3 position)
+    public void Shoot(Vector3 mousePosition)
     {
         if (_canShoot)
         {
             if (_isFingerAim)
             {
-                Vector3 mousePosition = Input.mousePosition;
                 Ray ray = _camera.ScreenPointToRay(mousePosition);
 
                 SetWeaponsTarget(ray);
                 _aim.MoveAim(mousePosition);
-            }
-            else
-            {
-                _aim.MoveAim(direction, position);
-
-                Ray ray = _camera.ScreenPointToRay(_aim.Position);
-
-                SetWeaponsTarget(ray);
             }
 
             Shooted?.Invoke();
