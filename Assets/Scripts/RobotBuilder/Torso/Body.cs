@@ -6,7 +6,7 @@ public class Body : PlayerLimb
     [SerializeField] private List<Machinegun> _machineguns;
     [SerializeField] private List<Machinegun> _currentMachineguns;
 
-    public void EnebleGuns()
+    public void EnableGuns()
     {
         DisableOtherGuns();
 

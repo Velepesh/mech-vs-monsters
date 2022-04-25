@@ -25890,8 +25890,8 @@ Transform:
   - {fileID: 1068276354}
   - {fileID: 1036744371}
   - {fileID: 673122065}
-  - {fileID: 1420358602}
   - {fileID: 951538698}
+  - {fileID: 1420358602}
   m_Father: {fileID: 0}
   m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -26569,6 +26569,10 @@ PrefabInstance:
       propertyPath: _game
       value: 
       objectReference: {fileID: 1952765202}
+    - target: {fileID: 6771274009971868330, guid: 54dfa9b28cb51d04f80b7b168bf27623, type: 3}
+      propertyPath: _wallet
+      value: 
+      objectReference: {fileID: 6391152800824965805}
     - target: {fileID: 7047241245416366586, guid: 54dfa9b28cb51d04f80b7b168bf27623, type: 3}
       propertyPath: _player
       value: 
@@ -26874,11 +26878,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7318534116304157593, guid: 9cc040cecc15b534c8dd4055a2d4c70b, type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0.000000016510235
+      value: -0.000000016508482
       objectReference: {fileID: 0}
     - target: {fileID: 7318534116304157593, guid: 9cc040cecc15b534c8dd4055a2d4c70b, type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0.0000000048490874
+      value: 0.000000004848572
       objectReference: {fileID: 0}
     - target: {fileID: 7454191481910524664, guid: 9cc040cecc15b534c8dd4055a2d4c70b, type: 3}
       propertyPath: _damage

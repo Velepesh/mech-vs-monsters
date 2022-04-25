@@ -156,7 +156,7 @@ public class RobotBuilder : MonoBehaviour
             head.EnableHead();
 
         if (limb is Body body)
-            body.EnebleGuns();
+            body.EnableGuns();
 
         if (limb is Leg leg)
             _player.ChangeLeg(leg);

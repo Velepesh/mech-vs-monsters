@@ -18,6 +18,12 @@ public class Aim : MonoBehaviour
         _screenRect = new Rect(0, 0, Screen.width, Screen.height);
         DisableAim();
     }
+
+    public void MoveAim(Vector3 mousePosition)
+    {
+        _aimImage.transform.position = mousePosition;
+    }
+
     public void MoveAim(Vector2 direction, Vector2 mousePosition)
     {
         if(_isHold)
@@ -26,9 +32,7 @@ public class Aim : MonoBehaviour
             _derection = mousePosition * _moveSpeed * Time.deltaTime;
 
         TryMoveAxisX(_derection.x);
-        TryMoveAxisY(_derection.y);
-
-       
+        TryMoveAxisY(_derection.y);     
     }
 
     public void ShowAim()

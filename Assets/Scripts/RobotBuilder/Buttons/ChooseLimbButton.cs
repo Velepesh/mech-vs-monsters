@@ -7,6 +7,7 @@ public abstract class ChooseLimbButton : MonoBehaviour
     [SerializeField] protected LimbShop Shop;
     [SerializeField] protected Button Button;
     [SerializeField] protected GameObject LockPanel;
+    [SerializeField] protected Animator Animator;
 
     public event UnityAction<ChooseLimbButton> LimbSelected;
     public abstract event UnityAction<LimbShop, ChooseLimbButton> Opened;
@@ -25,6 +26,25 @@ public abstract class ChooseLimbButton : MonoBehaviour
         Shop.LimbSelected -= OnLimbSelected;
     }
 
+    public void UpdateFlicker(int money)
+    {
+        bool isFlicker = false;
+
+        for (int i = 0; i < Shop.Limbs.Count; i++)
+        {
+            Limb limb = Shop.Limbs[i];
+
+            if (limb.IsBuyed == false && limb.Price <= money)
+            {
+                Flicker();
+                return;
+            }
+        }
+
+        if (isFlicker == false)
+            StopFlicker();
+    }
+
     public abstract void Lock();
 
     public abstract void Unlock();
@@ -38,5 +58,15 @@ public abstract class ChooseLimbButton : MonoBehaviour
     private void OnLimbSelected()
     {
         LimbSelected?.Invoke(this);
+    }
+
+    private void Flicker()
+    {
+        Animator.SetBool(AnimatorFlickerController.States.IsFlicker, true);
+    }
+
+    private void StopFlicker()
+    {
+        Animator.SetBool(AnimatorFlickerController.States.IsFlicker, false);
     }
 }

@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 7304504180033951598}
   - component: {fileID: 7304504180033951596}
   - component: {fileID: 7304504180033951599}
-  m_Layer: 5
+  m_Layer: 16
   m_Name: Border
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -87,7 +87,7 @@ GameObject:
   - component: {fileID: 7304504180723828388}
   - component: {fileID: 7304504180723828391}
   - component: {fileID: 7304504180723828390}
-  m_Layer: 5
+  m_Layer: 16
   m_Name: Canvas
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -189,7 +189,7 @@ GameObject:
   - component: {fileID: 7304504180000477105}
   - component: {fileID: 7304504180000477110}
   - component: {fileID: 4576272228394091391}
-  m_Layer: 0
+  m_Layer: 16
   m_Name: Mine
   m_TagString: Untagged
   m_Icon: {fileID: 0}

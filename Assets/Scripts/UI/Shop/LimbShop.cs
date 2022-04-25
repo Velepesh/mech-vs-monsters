@@ -15,8 +15,10 @@ public class LimbShop : MonoBehaviour
     private List<LimbView> _limbViews = new List<LimbView>();
     private Limb _currentLimb;
 
+    public IReadOnlyList<Limb> Limbs => _limbs;
     public bool IsHeadSelected => _robotBuilder.IsHeadSelected;
     public bool IsArmSelected => _robotBuilder.IsArmSelected;
+    public int Money => _wallet.Money;
 
     public event UnityAction LimbSelected;
 
@@ -117,12 +119,10 @@ public class LimbShop : MonoBehaviour
             {
                 for (int j = 0; j < i; j++)
                     _limbViews[j].StopFlicker();
-
-                return;
             }
             else
             {
-                if (limb.Price <= _wallet.Money)
+                if (limb.Price <= Money)
                     _limbViews[i].Flicker();
                 else
                     _limbViews[i].StopFlicker();
@@ -147,7 +147,7 @@ public class LimbShop : MonoBehaviour
 
     private void TrySellLimb(Limb limb, LimbView view)
     {
-        if (limb.Price <= _wallet.Money)
+        if (limb.Price <= Money)
         {
             _wallet.BuyLimb(limb, limb.Price);
 

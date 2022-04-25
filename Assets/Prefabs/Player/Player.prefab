@@ -1544,7 +1544,7 @@ MonoBehaviour:
   _playerWeaponsHolder: {fileID: 4404880650009128434}
   _aimShooting: {fileID: 6183188562789032122}
   _sensitivity: 4
-  _isMobileInput: 1
+  _isMobileInput: 0
 --- !u!114 &197485165
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1923,7 +1923,8 @@ MonoBehaviour:
   _aim: {fileID: 0}
   _layerMask:
     serializedVersion: 2
-    m_Bits: 768529
+    m_Bits: 178705
+  _isFingerAim: 0
 --- !u!1 &4629429116880475543
 GameObject:
   m_ObjectHideFlags: 0

@@ -10,22 +10,22 @@ public class AimShooting : MonoBehaviour
     [SerializeField] private Camera _camera;
     [SerializeField] private Aim _aim;
     [SerializeField] private LayerMask _layerMask;
+    [SerializeField] private bool _isFingerAim;
 
     private Player _player;
     private DownMover _downMover;
     private PlayerWeaponsHolder _playerWeaponsHolder;
-    private PlayerInput _input;
     private bool _canShoot;
 
     public Player Player => _player;
 
     public event UnityAction Shooted;
+
     private void Awake()
     {
         _player = GetComponent<Player>();
         _downMover = GetComponent<DownMover>();
         _playerWeaponsHolder = GetComponent<PlayerWeaponsHolder>();
-        _input = GetComponent<PlayerInput>();
     }
 
     private void OnEnable()
@@ -43,21 +43,38 @@ public class AimShooting : MonoBehaviour
     {
         if (_canShoot)
         {
-            _aim.MoveAim(direction, position);
-
-            RaycastHit hit;
-            Ray ray = _camera.ScreenPointToRay(_aim.Position);
-
-            if (Physics.Raycast(ray, out hit, float.MaxValue, _layerMask))
+            if (_isFingerAim)
             {
-                for (int i = 0; i < _playerWeaponsHolder.Count; i++)
-                {
-                    Weapon weapon = _playerWeaponsHolder.GetWeapon(i);
-                    weapon.SetTarget(hit.point);
-                }
+                Vector3 mousePosition = Input.mousePosition;
+                Ray ray = _camera.ScreenPointToRay(mousePosition);
+
+                SetWeaponsTarget(ray);
+                _aim.MoveAim(mousePosition);
+            }
+            else
+            {
+                _aim.MoveAim(direction, position);
+
+                Ray ray = _camera.ScreenPointToRay(_aim.Position);
+
+                SetWeaponsTarget(ray);
             }
 
             Shooted?.Invoke();
+        }
+    }
+
+    private void SetWeaponsTarget(Ray ray)
+    {
+        RaycastHit hit;
+
+        if (Physics.Raycast(ray, out hit, float.MaxValue, _layerMask))
+        {
+            for (int i = 0; i < _playerWeaponsHolder.Count; i++)
+            {
+                Weapon weapon = _playerWeaponsHolder.GetWeapon(i);
+                weapon.SetTarget(hit.point);
+            }
         }
     }
 

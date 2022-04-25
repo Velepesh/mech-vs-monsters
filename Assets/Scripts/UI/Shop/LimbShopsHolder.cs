@@ -7,6 +7,7 @@ public class LimbShopsHolder : MonoBehaviour
     [SerializeField] private HeadButton _headButton;
     [SerializeField] private ArmButton _armButton;
     [SerializeField] private Game _game;
+    [SerializeField] private Wallet _wallet;
 
     private const string LAST_OPENED_SHOP_ID = "LastOpenedShopID";
     private readonly int _defaultIndex = -1;
@@ -30,12 +31,18 @@ public class LimbShopsHolder : MonoBehaviour
     {
         for (int i = 0; i < _chooseLimbButtons.Count; i++)
             _chooseLimbButtons[i].Opened += OnOpened;
+
+        _wallet.MoneyChanged += OnMoneyChanged;
+
+        OnMoneyChanged(_wallet.Money);
     }
 
     private void OnDisable()
     {
         for (int i = 0; i < _chooseLimbButtons.Count; i++)
             _chooseLimbButtons[i].Opened -= OnOpened;
+
+        _wallet.MoneyChanged -= OnMoneyChanged;
     }
 
     private void OnOpened(LimbShop shop, ChooseLimbButton chooseLimbButton)
@@ -78,5 +85,11 @@ public class LimbShopsHolder : MonoBehaviour
                 return;
             }
         }
+    }
+
+    private void OnMoneyChanged(int money)
+    {
+        for (int i = 0; i < _chooseLimbButtons.Count; i++)
+            _chooseLimbButtons[i].UpdateFlicker(_wallet.Money);
     }
 }
