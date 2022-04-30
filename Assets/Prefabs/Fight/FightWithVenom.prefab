@@ -73,7 +73,7 @@ GameObject:
   - component: {fileID: 1544328434654278358}
   - component: {fileID: 1544328434654278363}
   - component: {fileID: 3678237502555111213}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: FightWithVenom
   m_TagString: Untagged
   m_Icon: {fileID: 5132851093641282708, guid: 0000000000000000d000000000000000, type: 0}
@@ -142,7 +142,7 @@ MonoBehaviour:
   _game: {fileID: 0}
   _targetPlayerPosition: {fileID: 1544328433408799923}
   _delayTime: 2
-  _isFlyMonster: 0
+  _fightType: 0
 --- !u!114 &3678237502555111213
 MonoBehaviour:
   m_ObjectHideFlags: 0

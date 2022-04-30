@@ -35,7 +35,7 @@ public class DamagedEffect : MonoBehaviour
     {
         if (_health.StartValue > 0)
         {
-            int percent = (health * 100) / _health.StartValue;
+            int percent = GetPersent(health);
 
             if (percent <= _thirdPercent && _previousPercent > _thirdPercent)
                 PlayEffect();
@@ -48,6 +48,11 @@ public class DamagedEffect : MonoBehaviour
 
             _previousPercent = percent;
         }
+    }
+
+    private int GetPersent(int health)
+    {
+        return (health * 100) / _health.StartValue;
     }
 
     private void PlayEffect()

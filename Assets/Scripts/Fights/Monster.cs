@@ -77,6 +77,7 @@ public class Monster : MonoBehaviour, IDamageable, ITarget, IAward
         DisableModel();
         Disabled?.Invoke(this);
     }
+
     private IEnumerator MoveToDiePoint(float duration)
     {
         Vector3 startingPos = transform.position;

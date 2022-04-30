@@ -5,7 +5,7 @@ using UnityEngine.UI;
 [RequireComponent(typeof(IDamageable))]
 public class HealthView : MonoBehaviour
 {
-   [SerializeField] private float _duration;
+    [SerializeField] private float _duration;
     [SerializeField] private float _startDelayTime;
     [SerializeField] private Game _game;
     [SerializeField] private Slider _slider;

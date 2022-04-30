@@ -5,12 +5,13 @@ using UnityEngine.Events;
 
 public class RunningMonster : Monster, IAward
 {
-    [SerializeField] private List<TimerMonsterCollider> _timerMonsterColliders;
+    [SerializeField] private TimerMonsterCollider _timerMonsterCollider;
     [SerializeField] private float _moveToTargetPointTime;
     [SerializeField] private Transform _targetFightPoint;
     [SerializeField] private float _rotationSpeed;
 
     private Player _player;
+    private IEnumerator _moveCoroutine;
 
     public new event UnityAction AttackStarted;
     public new event UnityAction Moved;
@@ -22,14 +23,12 @@ public class RunningMonster : Monster, IAward
 
     private void OnEnable()
     {
-        for (int i = 0; i < _timerMonsterColliders.Count; i++)
-            _timerMonsterColliders[i].TimerEnded += OnTimerEnded;
+        _timerMonsterCollider.TimerEnded += OnTimerEnded;
     }
 
     private void OnDisable()
     {
-        for (int i = 0; i < _timerMonsterColliders.Count; i++)
-            _timerMonsterColliders[i].TimerEnded -= OnTimerEnded;
+        _timerMonsterCollider.TimerEnded -= OnTimerEnded;
     }
 
     private void Update()
@@ -41,7 +40,6 @@ public class RunningMonster : Monster, IAward
     public new void Fight(Player player)
     {
         _player = player;
-        Debug.Log("Fight");
         Move();
         EnableModel();
     }
@@ -49,7 +47,8 @@ public class RunningMonster : Monster, IAward
     public void Move()
     {
         Moved?.Invoke();
-        StartCoroutine(Move(_moveToTargetPointTime));
+        _moveCoroutine = Move(_moveToTargetPointTime);
+        StartCoroutine(_moveCoroutine);
     }
 
     private IEnumerator Move(float duration)
@@ -59,11 +58,12 @@ public class RunningMonster : Monster, IAward
 
         while (elapsedTime < duration)
         {
-            transform.position = Vector3.Lerp(startingPos, _targetFightPoint.position, (elapsedTime / duration));
+            Vector3 targetPosition = new Vector3(_targetFightPoint.position.x, transform.position.y, _targetFightPoint.position.z);
+            transform.position = Vector3.Lerp(startingPos, targetPosition, elapsedTime / duration);
             elapsedTime += Time.deltaTime;
             yield return null;
         }
-        Debug.Log("AttackStarted");
+
         AttackStarted?.Invoke();
     }
     public void LookAtTarget(Vector3 target)
@@ -79,14 +79,7 @@ public class RunningMonster : Monster, IAward
 
     private void OnTimerEnded(TimerMonsterCollider timerMonsterCollider)
     {
-        if (_timerMonsterColliders.Count > 0)
-        {
-            _timerMonsterColliders.Remove(timerMonsterCollider);
-            timerMonsterCollider.gameObject.SetActive(false);
-            timerMonsterCollider.TimerEnded -= OnTimerEnded;
-
-            if (_timerMonsterColliders.Count == 0)
-                Die();
-        }
+        StopCoroutine(_moveCoroutine);
+        Die();
     }
 }

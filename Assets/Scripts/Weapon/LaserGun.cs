@@ -13,6 +13,7 @@ public class LaserGun : Weapon
 
     private TimerMonsterCollider _lastCollider;
 
+    public event UnityAction<Vector3> Hitted;
     public override event UnityAction Shooted;
     
     private void Update()
@@ -30,6 +31,7 @@ public class LaserGun : Weapon
 
         _line.SetPosition(0, _shootPoint.position);
 
+
         if (Physics.Raycast(inputRay, out hit, _maxDistace, _timerMonsterColliderLayerMask))
         {
             _lastCollider = hit.transform.GetComponent<TimerMonsterCollider>();
@@ -37,18 +39,16 @@ public class LaserGun : Weapon
             if (_lastCollider != null)
                 _lastCollider.TakeDamage();
 
-            _line.SetPosition(1, hit.point);
+            SetHittedPoint(hit.point);
         }
         else if (Physics.Raycast(inputRay, out hit, _maxDistace, _hittedLayerMask))
         {
             if (hit.collider)
             {
                 if (_lastCollider != null)
-                {
                     _lastCollider.SwitchToDefaultState();
-                }
 
-                _line.SetPosition(1, hit.point);
+                SetHittedPoint(hit.point);
             }
         }
         else
@@ -59,5 +59,11 @@ public class LaserGun : Weapon
         _line.enabled = true;
 
         Shooted?.Invoke();
+    }
+
+    private void SetHittedPoint(Vector3 hitPoint)
+    {
+        _line.SetPosition(1, hitPoint);
+        Hitted?.Invoke(hitPoint);
     }
 }

@@ -1,4 +1,3 @@
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -8,7 +7,6 @@ public class LookAtIK : MonoBehaviour
     [SerializeField] private List<GameObject> _hands;
     [SerializeField] private RobotBuilder _robotBuilder;
 
-    private Quaternion _offsetRotation;
     private Vector3 _targetPosition;
 
     private void Start()

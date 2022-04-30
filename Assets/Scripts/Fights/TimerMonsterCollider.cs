@@ -1,31 +1,22 @@
 using UnityEngine;
-using UnityEngine.UI;
 using UnityEngine.Events;
 
 public class TimerMonsterCollider : MonoBehaviour
 {
     [SerializeField] private float _timer;
-    //[SerializeField] private Image _targetImage;
-    //[SerializeField] private Color _hittedColor;
-    //[SerializeField] private Color _startColor;
 
     private bool _isTimer;
-   
+
+    public float Timer => _timer;
 
     public event UnityAction<TimerMonsterCollider> TimerEnded;
-
-    private void Start()
-    {
-        //ChangeColor(_startColor);
-    }
+    public event UnityAction DefaultColorSelected;
+    public event UnityAction HittedColorSelected;
 
     private void Update()
     {
         if (_isTimer)
         {
-            //if(_targetImage.color != _hittedColor)
-            //    ChangeColor(_hittedColor);
-
             _timer -= Time.deltaTime;
           
             if (_timer <= 0f)
@@ -35,17 +26,16 @@ public class TimerMonsterCollider : MonoBehaviour
 
     public void TakeDamage()
     {
-        _isTimer = true;
+        if(_isTimer == false)
+        {
+            _isTimer = true;
+            HittedColorSelected?.Invoke();
+        }
     }
 
     public void SwitchToDefaultState()
     {
         _isTimer = false;
-       // ChangeColor(_startColor);
-    }
-
-    private void ChangeColor(Color color)
-    {
-        //_targetImage.color = color;
+        DefaultColorSelected?.Invoke();
     }
 }
