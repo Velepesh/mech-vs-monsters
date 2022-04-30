@@ -9,7 +9,7 @@ public class Machinegun : Weapon, IShooteable
     [SerializeField] private float _cooldownTime;
     [SerializeField] private float _minSpeed;
     [SerializeField] private float _maxSpeed;
-    [SerializeField] private DamageCollider _bullet;
+    [SerializeField] private AttackCollider _bullet;
     [SerializeField] private float _offsetRotationX;
     [SerializeField] private Vector3 _offset;
     [SerializeField] private float _shootDistance = 31;

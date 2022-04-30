@@ -32,17 +32,10 @@ public class PlayerMover : State, IMover
     {
         transform.Translate(Vector3.forward * _moverOptions.MoveSpeed * Time.deltaTime);
 
-        if (_player.IsAiming)
-        {
-            if (_input.IsHold)
-                Swipe(_input.AimPosition);
-            else
-                Rotate(0f);
-        }
+        if (_input.IsHold)
+            Swipe(_input.SwipePosition);
         else
-        {
-            Swipe();
-        }
+            Rotate(0f);
     }
 
     public void StartTutorialMove()

@@ -11,7 +11,6 @@ public class Monster : MonoBehaviour, IDamageable, ITarget, IAward
     [SerializeField] private float _moveToDiePointTime = 0.25f;
     [SerializeField] private AnimationCurve _moveAnimation;
     [SerializeField] private Transform _targetDiePoint;
-   // [SerializeField] private Rigidbody _rigidbody;
     private Vector3 _offset => new Vector3(0f, _offsetY, 0f);
 
     public int Award => _award;
@@ -24,7 +23,8 @@ public class Monster : MonoBehaviour, IDamageable, ITarget, IAward
     public event UnityAction Attacked;
     public event UnityAction AttackStopped;
     public event UnityAction<IDamageable> Died;
-    public event UnityAction Disabled;
+    public event UnityAction<Monster> Disabled;
+    public event UnityAction Moved;
 
     private void Start()
     {
@@ -75,7 +75,7 @@ public class Monster : MonoBehaviour, IDamageable, ITarget, IAward
     {
         StartCoroutine(MoveToDiePoint(_moveToDiePointTime));
         DisableModel();
-        Disabled?.Invoke();
+        Disabled?.Invoke(this);
     }
     private IEnumerator MoveToDiePoint(float duration)
     {

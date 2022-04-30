@@ -2,7 +2,7 @@ using UnityEngine;
 
 [RequireComponent(typeof(Rigidbody))]
 [RequireComponent(typeof(Collider))]
-public class MachinegunBullet : DamageCollider
+public class MachinegunBullet : AttackCollider
 {
     [SerializeField] private GameObject _impactPrefab;
     [SerializeField] private float _destroyTime = 1.2f;
@@ -37,7 +37,7 @@ public class MachinegunBullet : DamageCollider
     protected override void OnCollisionEnter(Collision collision)
     {
         if (collision.gameObject.TryGetComponent(out IDamageable damageable))
-            DoDamage(damageable);
+            Attack(damageable);
 
         ContactPoint contact = collision.contacts[0];
         Quaternion rot = Quaternion.FromToRotation(Vector3.forward, contact.normal);

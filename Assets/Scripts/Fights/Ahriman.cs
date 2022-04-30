@@ -1,4 +1,5 @@
 using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -6,6 +7,7 @@ public class Ahriman : Monster, IDamageable, ITarget, IAward
 {
     [SerializeField] private Machinegun _machinegun;
     [SerializeField] private MonsterCollider _monsterCollider;
+    [SerializeField] private List<TimerMonsterCollider> _timerMonsterColliders;
     [SerializeField] private float _moveToTargetPointTime;
     [SerializeField] private Transform _targetFightPoint;
     [SerializeField] private float _delayBeforeShooting;
@@ -21,6 +23,19 @@ public class Ahriman : Monster, IDamageable, ITarget, IAward
         _moveToTargetPointTime = Mathf.Clamp(_moveToTargetPointTime, 0f, float.MaxValue);
         _delayBeforeShooting = Mathf.Clamp(_delayBeforeShooting, 0f, float.MaxValue);
     }
+
+    private void OnEnable()
+    {
+        for (int i = 0; i < _timerMonsterColliders.Count; i++)
+            _timerMonsterColliders[i].TimerEnded += OnTimerEnded;
+    }
+
+    private void OnDisable()
+    {
+        for (int i = 0; i < _timerMonsterColliders.Count; i++)
+            _timerMonsterColliders[i].TimerEnded -= OnTimerEnded;
+    }
+
     public new void Fight(Player player)
     {
         _player = player;
@@ -62,5 +77,19 @@ public class Ahriman : Monster, IDamageable, ITarget, IAward
         yield return new WaitForSeconds(duration);
 
         _machinegun.SetTarget(_player, this);
+    }
+
+    private void OnTimerEnded(TimerMonsterCollider timerMonsterCollider)
+    {
+        if (_timerMonsterColliders.Count > 0)
+        {
+            _timerMonsterColliders.Remove(timerMonsterCollider);
+            timerMonsterCollider.gameObject.SetActive(false);
+            timerMonsterCollider.TimerEnded -= OnTimerEnded;
+
+            if (_timerMonsterColliders.Count == 0)
+                Die();
+
+        }  
     }
 }

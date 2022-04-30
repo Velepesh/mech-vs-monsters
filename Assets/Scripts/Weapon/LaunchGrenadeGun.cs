@@ -89,7 +89,7 @@ public class LaunchGrenadeGun : Weapon, IShooteable
         StopShooting();
     }
 
-    private void OnPrepeared(Transform transform, Monster monster, bool isAiming)
+    private void OnPrepeared(Transform transform, Monster monster, FightType type)
     {
         StopShooting();
     }

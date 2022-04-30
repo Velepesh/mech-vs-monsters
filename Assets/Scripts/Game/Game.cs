@@ -18,7 +18,7 @@ public class Game : MonoBehaviour
     public event UnityAction LevelLost;
     public event UnityAction LevelRestart;
     public event UnityAction LevelMainMenu;
-    public event UnityAction<bool> Fought;
+    public event UnityAction<FightType> Fought;
     public event UnityAction FoughtWon;
     public event UnityAction RocketTutorialStarted;
     public event UnityAction RocketTutorialEnded;
@@ -48,9 +48,9 @@ public class Game : MonoBehaviour
             _spentTime += Time.deltaTime;
     }
 
-    public void Fight(bool isFlyMonster)
+    public void Fight(FightType type)
     {
-        Fought?.Invoke(isFlyMonster);
+        Fought?.Invoke(type);
     }
 
     public void WinInBattle()

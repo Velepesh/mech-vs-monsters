@@ -12,7 +12,8 @@ public class CameraFollow : MonoBehaviour
     [SerializeField] private PlayableDirector _menuPlayableDirector;
     [SerializeField] private PlayableDirector _fightPlayableDirector;
 
-    private bool _isFlyMonster;
+    private FightType _fightType;
+
     private void OnEnable()
     {
         _game.LevelStarted += OnLevelStarted;
@@ -47,20 +48,20 @@ public class CameraFollow : MonoBehaviour
         StartCoroutine(SwitchCamera(_gameCamera, (float)_menuPlayableDirector.duration));
     }
 
-    private void OnFought(bool isFlyMonster)
+    private void OnFought(FightType type)
     {
-        if (isFlyMonster == false)
+        if (type == FightType.Hands)
         {
             CameraSwitcher.SwitchCamera(_fightCamera);
             _fightCamera.GetCinemachineComponent<CinemachineTrackedDolly>().m_PathPosition = 2;
         }
 
-        _isFlyMonster = isFlyMonster;
+        _fightType = type;
     }
 
     private void OnBattleWon()
     {
-        if (_isFlyMonster == false)
+        if (_fightType == FightType.Hands)
         {
             _fightPlayableDirector.Play();
             StartCoroutine(SwitchCamera(_gameCamera, (float)_fightPlayableDirector.duration));

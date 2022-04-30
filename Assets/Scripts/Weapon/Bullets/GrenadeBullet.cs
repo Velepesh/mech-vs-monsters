@@ -2,7 +2,7 @@ using UnityEngine;
 using UnityEngine.Events;
 
 [RequireComponent(typeof(Collider))]
-public class GrenadeBullet : DamageCollider
+public class GrenadeBullet : AttackCollider
 {
     [SerializeField] private GameObject _impactPrefab;
     [SerializeField] private float _speed;
@@ -64,7 +64,7 @@ public class GrenadeBullet : DamageCollider
     protected override void OnCollisionEnter(Collision collision)
     {
         if (collision.gameObject.TryGetComponent(out IDamageable damageable))
-            DoDamage(damageable);
+            Attack(damageable);
 
         ContactPoint contact = collision.contacts[0];
         Quaternion rot = Quaternion.FromToRotation(Vector3.forward, contact.normal);
@@ -116,7 +116,7 @@ public class GrenadeBullet : DamageCollider
         Explosion();
     }
 
-    private void OnPrepeared(Transform transform, Monster monster, bool isAiming)
+    private void OnPrepeared(Transform transform, Monster monster, FightType type)
     {
         Explosion();
     }

@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class RocketProjectile : DamageCollider, IMover
+public class RocketProjectile : AttackCollider, IMover
 {
     [SerializeField] private int _maxDamage = 500;
     [SerializeField] private int _monsterDamage = 150;
@@ -66,11 +66,11 @@ public class RocketProjectile : DamageCollider, IMover
             if (collider.gameObject.TryGetComponent(out IDamageable damageable))
             {
                 if (damageable is MonsterCollider)
-                    DoDamage(damageable, _monsterDamage);
+                    Attack(damageable, _monsterDamage);
                 else if(damageable is Vehicle == false && collider.enabled == true)
-                    DoDamage(damageable, _maxDamage);
+                    Attack(damageable, _maxDamage);
                 else
-                    DoDamage(damageable);
+                    Attack(damageable);
             }
         }
 

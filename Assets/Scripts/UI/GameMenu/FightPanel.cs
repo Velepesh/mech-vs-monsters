@@ -24,9 +24,9 @@ public class FightPanel : MonoBehaviour
         _game.FoughtWon -= OnBattleWon;
     }
 
-    private void OnFought(bool isFlyMonster)
+    private void OnFought(FightType type)
     {
-        if(isFlyMonster == false)
+        if(type == FightType.Hands)
             EnableFightPanel();
     }
 

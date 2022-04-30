@@ -5,21 +5,20 @@ using UnityEngine.Events;
 public class Player : MonoBehaviour, IDamageable, ITarget
 {
     [SerializeField] private float _deadAfterFellTime;
-    [SerializeField] private bool _isAiming;
 
     private readonly int _damageToShakeCamera = 30;
     
     private Health _health = new Health();
     private int _speed;
     private int _attackForce;
+    private FightType _fightType;
 
     public Vector3 Position => transform.position + new Vector3(0f, 1f, 0f);
     public Health Health => _health;
     public int AttackForce => _attackForce;
     public int Speed => _speed;
+    public FightType FightType => _fightType;
     public bool IsDied => _health.Value <= 0;
-    public bool IsAiming => _isAiming;
-
 
     public event UnityAction LevelStarted;
     public event UnityAction DamageTook;
@@ -31,9 +30,10 @@ public class Player : MonoBehaviour, IDamageable, ITarget
     public event UnityAction<int> AttackForceChanged;
     public event UnityAction Standed;
     public event UnityAction Won;
+    public event UnityAction FightWon;
     public event UnityAction<Leg> LegChanged;
     public event UnityAction<Monster> Fought;
-    public event UnityAction<Transform, Monster, bool> Prepeared;
+    public event UnityAction<Transform, Monster, FightType> Prepeared;
     public event UnityAction AnimatorStopped;
     public event UnityAction AnimatorStarted;
 
@@ -77,6 +77,13 @@ public class Player : MonoBehaviour, IDamageable, ITarget
         Won?.Invoke();
     }
 
+    public void WinInFight()
+    {
+        FightWon?.Invoke();
+
+        StartMove();
+    }
+
     public void AddAttackForce(int attackForce)
     {
         _attackForce += attackForce;
@@ -104,9 +111,10 @@ public class Player : MonoBehaviour, IDamageable, ITarget
         Fought?.Invoke(monster);
     }
     
-    public void PrepearedForFight(Transform targetPoint, Monster monster)
+    public void PrepearedForFight(Transform targetPoint, Monster monster, FightType type)
     {
-        Prepeared?.Invoke(targetPoint, monster, _isAiming);
+        _fightType = type;
+        Prepeared?.Invoke(targetPoint, monster, type);
     }
 
     public void Stand()

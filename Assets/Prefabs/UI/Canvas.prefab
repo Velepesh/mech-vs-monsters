@@ -4580,7 +4580,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 260, y: 260}
+  m_SizeDelta: {x: 200, y: 200}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &1365001932
 CanvasRenderer:
@@ -14459,10 +14459,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _aimImage: {fileID: 1365001931}
-  _moveSpeedHold: 400
-  _moveSpeed: 60
-  _border: 80
-  _isHold: 0
+  _moveSpeedTouch: 65
+  _border: 100
 --- !u!1 &7047241245828024061
 GameObject:
   m_ObjectHideFlags: 0

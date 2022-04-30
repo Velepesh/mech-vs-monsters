@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class EnemyAttackCollider : DamageCollider
+public class EnemyAttackCollider : AttackCollider
 {
     [SerializeField] private ParticleSystem _hitEffect;
     
@@ -20,7 +20,7 @@ public class EnemyAttackCollider : DamageCollider
                 Vector3 position = contact.point;
                 Instantiate(_hitEffect.gameObject, position, rotation);
 
-                DoDamage(damageable);
+                Attack(damageable);
                 _canAttack = false;
             }
         }     

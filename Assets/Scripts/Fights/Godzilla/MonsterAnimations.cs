@@ -18,6 +18,12 @@ public class MonsterAnimations : MonoBehaviour
         _monster.Disabled += OnDisabled;
         _monster.Won += OnWon;
         _monster.AttackStarted += OnAttackStarted;
+
+        if(_monster is RunningMonster running)
+        {
+            running.Moved += OnMoved;
+            running.AttackStarted += OnAttackStarted;
+        }
     }
 
     private void OnDisable()
@@ -25,11 +31,22 @@ public class MonsterAnimations : MonoBehaviour
         _monster.Disabled -= OnDisabled;
         _monster.Won -= OnWon;
         _monster.AttackStarted -= OnAttackStarted;
+
+        if (_monster is RunningMonster running)
+        {
+            running.Moved -= OnMoved;
+            running.AttackStarted += OnAttackStarted;
+        }
     }
 
-    private void OnDisabled()
+    private void OnDisabled(Monster monster)
     {
         _animator.SetTrigger(AnimatorMonsterController.States.Death);
+    }
+
+    private void OnMoved()
+    {
+        _animator.SetBool(AnimatorMonsterController.States.Move, true);
     }
 
     private void OnWon()
@@ -40,7 +57,9 @@ public class MonsterAnimations : MonoBehaviour
 
     private void OnAttackStarted()
     {
-        if(_monster is Ahriman == false)
+        _animator.SetBool(AnimatorMonsterController.States.Move, false);
+
+        if (_monster is Ahriman == false)
             _animator.SetBool(AnimatorMonsterController.States.IsAttack, true);
     }
 }

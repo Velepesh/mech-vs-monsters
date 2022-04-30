@@ -5,11 +5,12 @@ using UnityEngine;
 public class PlayerWeaponsHolder : MonoBehaviour
 {
     [SerializeField] private List<Weapon> _automaticWeapons;
+    [SerializeField] private List<LaserGun> _laserGuns;
     [SerializeField] private RocketLauncher _rocketLauncher;
 
     private Player _player;
-    public int Count => _automaticWeapons.Count;
     public IReadOnlyList<Weapon> AutomaticWeapons => _automaticWeapons;
+    public IReadOnlyList<Weapon> LaserGuns => _laserGuns;
     public RocketLauncher RocketLauncher => _rocketLauncher;
 
     private void Awake()
@@ -20,20 +21,24 @@ public class PlayerWeaponsHolder : MonoBehaviour
     private void OnEnable()
     {
         _player.Won += OnWon;
+        _player.FightWon += OnFightWon;
+        _player.Prepeared += OnPrepeared;
     }
 
     private void OnDisable()
     {
         _player.Won -= OnWon;
+        _player.FightWon -= OnFightWon;
+        _player.Prepeared -= OnPrepeared;
     }
 
-    public void StopShooting()
+    public void StopMainWeaponShooting()
     {
         foreach (Weapon weapon in _automaticWeapons)
             weapon.StopShooting();
     }
 
-    public void StartShooting()
+    public void StartMainWeaponShooting()
     {
         foreach (Weapon weapon in _automaticWeapons)
             weapon.StartShooting();
@@ -45,6 +50,34 @@ public class PlayerWeaponsHolder : MonoBehaviour
 
     private void OnWon()
     {
-        StopShooting();
+        StopMainWeaponShooting();
+        StopLaserGunShooting();
+    }
+
+    private void OnFightWon()
+    {
+        StartMainWeaponShooting();
+        StopLaserGunShooting();
+    }
+
+    private void OnPrepeared(Transform transform, Monster monster, FightType type)
+    {
+        if (type != FightType.Hands)
+        {
+            StartLaserGunShooting();
+            StopMainWeaponShooting();
+        }
+    }
+
+    private void StartLaserGunShooting()
+    {
+        foreach (Weapon weapon in _laserGuns)
+            weapon.StartShooting();
+    }
+
+    private void StopLaserGunShooting()
+    {
+        foreach (Weapon weapon in _laserGuns)
+            weapon.StopShooting();
     }
 }

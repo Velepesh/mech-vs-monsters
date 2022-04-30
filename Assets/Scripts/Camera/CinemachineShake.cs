@@ -41,7 +41,7 @@ public class CinemachineShake : MonoBehaviour
 
     private void InitGuns()
     {
-        for (int i = 0; i < _playerWeapons.Count; i++)
+        for (int i = 0; i < _playerWeapons.AutomaticWeapons.Count; i++)
         {
             Weapon weapon = _playerWeapons.GetWeapon(i);
 

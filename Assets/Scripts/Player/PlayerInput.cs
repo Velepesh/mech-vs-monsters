@@ -16,15 +16,18 @@ public class PlayerInput : MonoBehaviour
 
     private Vector3 _mousePosition;
     private float _moveFactorX;
+    private Vector3 _swipePosition;
     private Vector3 _aimPosition;
 
     private float _previousMoveFactorX;
 
     private bool _isFight;
+    private bool _isHandsFight;
     private bool _isHold;
     private Player _player;
 
     public float MoveFactorX => _moveFactorX;
+    public Vector3 SwipePosition => _swipePosition;
     public Vector3 AimPosition => _aimPosition;
     public float Sensitivity => _sensitivity;
     public bool IsHold => _isHold;
@@ -37,12 +40,14 @@ public class PlayerInput : MonoBehaviour
 
     private void OnEnable()
     {
-        _player.Fought += OnFought;
+        _player.Prepeared += OnPrepeared;
+        _player.FightWon += OnFightWon;
     }
 
     private void OnDisable()
     {
-        _player.Fought -= OnFought;
+        _player.Prepeared -= OnPrepeared;
+        _player.FightWon -= OnFightWon;
     }
 
     private void Update()
@@ -63,25 +68,25 @@ public class PlayerInput : MonoBehaviour
                 if (!EventSystem.current.IsPointerOverGameObject())
                 {
                     if (_isFight)
-                        if (_player.IsAiming == false)
+                    {
+                        if (_isHandsFight)
                             _attacker.Attack(true);
-                        else
-                            _mousePosition = Input.mousePosition;
+                    }
+
+                    _mousePosition = Input.mousePosition;
                 }
             }
-
-            if (touch.phase == TouchPhase.Moved)
+            else if (touch.phase == TouchPhase.Moved)
             {
                 if (!EventSystem.current.IsPointerOverGameObject())
                 {
                     Vector3 position = Input.mousePosition;
+                    _aimPosition = position - _mousePosition;
 
-                    RaycastHit hit;
-                    Ray ray = _camera.ScreenPointToRay(position);
-                    if (Physics.Raycast(ray, out hit, float.MaxValue))
-                        _aimPosition = hit.point - transform.position;
+                    ApplySwipePosition(position);
 
                     _moveFactorX = position.x - _mousePosition.x;
+                    _aimShooting.Shoot(_aimPosition);
 
                     ApplyMoveFactorX();
 
@@ -89,10 +94,8 @@ public class PlayerInput : MonoBehaviour
                 }
 
                 _isHold = true;
-                _aimShooting.Shoot(Input.mousePosition);
             }
-
-            if (touch.phase == TouchPhase.Ended)
+            else if (touch.phase == TouchPhase.Ended)
             {
                 _moveFactorX = 0f;
 
@@ -100,8 +103,12 @@ public class PlayerInput : MonoBehaviour
 
                 _isHold = false;
 
-                if (_player.IsAiming)
-                    _playerWeaponsHolder.StopShooting();
+                if (_isHandsFight == false)
+                    _playerWeaponsHolder.StopMainWeaponShooting();
+            }
+            else
+            {
+                _mousePosition = Input.mousePosition;
             }
         }
     }
@@ -114,26 +121,26 @@ public class PlayerInput : MonoBehaviour
             {
                 if (_isFight)
                 {
-                    if (_player.IsAiming == false)
+                    if (_isHandsFight)
                         _attacker.Attack(true);
                 }
-                else
-                {
-                    _mousePosition = Input.mousePosition;
-                }
+                
+                _mousePosition = Input.mousePosition;
             }
         }
         else if (Input.GetMouseButton(0))
         {
             Vector3 position = Input.mousePosition;
+            _aimPosition = position - _mousePosition;
 
-            RaycastHit hit;
-            Ray ray = _camera.ScreenPointToRay(position);
-            if (Physics.Raycast(ray, out hit, float.MaxValue))
-                _aimPosition = hit.point - transform.position;
+            ApplySwipePosition(position);
 
             _moveFactorX = position.x - _mousePosition.x;
-            _aimShooting.Shoot(position);
+
+            if (_isFight)
+                _aimShooting.SetHandTarget(_aimPosition);
+            else
+                _aimShooting.Shoot(_aimPosition);
 
             ApplyMoveFactorX();
 
@@ -148,10 +155,22 @@ public class PlayerInput : MonoBehaviour
 
             _isHold = false;
 
-            if (_player.IsAiming)
-                _playerWeaponsHolder.StopShooting();
+            if (_isHandsFight == false)
+                _playerWeaponsHolder.StopMainWeaponShooting();
+        }
+        else
+        {
+            _mousePosition = Input.mousePosition;           
         }
     }
+    private void ApplySwipePosition(Vector3 position)
+    {
+        RaycastHit hit;
+        Ray ray = _camera.ScreenPointToRay(position);
+        if (Physics.Raycast(ray, out hit, float.MaxValue))
+            _swipePosition = hit.point - transform.position;
+    }
+
     private void ApplyMoveFactorX()
     {
         if (_previousMoveFactorX < 0f && _moveFactorX < 0f)
@@ -165,8 +184,16 @@ public class PlayerInput : MonoBehaviour
         _previousMoveFactorX = Mathf.Clamp(_moveFactorX, -1f, 1f);
     }
 
-    private void OnFought(Monster monster)
+    private void OnPrepeared(Transform transform, Monster monster, FightType type)
     {
         _isFight = true;
+
+        if (type == FightType.Hands)
+            _isHandsFight = true;
+    }
+
+    private void OnFightWon()
+    {
+        _isFight = false;
     }
 }

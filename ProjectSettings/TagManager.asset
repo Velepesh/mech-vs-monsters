@@ -8,6 +8,7 @@ TagManager:
   - World
   - Target
   - Missile
+  - TimerMonsterCollider
   layers:
   - Default
   - TransparentFX
@@ -28,8 +29,8 @@ TagManager:
   - Mine
   - Decore
   - Gear
-  - 
-  - 
+  - PlayerHand
+  - TimerMonsterCollider
   - 
   - 
   - 

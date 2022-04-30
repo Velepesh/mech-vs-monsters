@@ -47,9 +47,6 @@ public class TargetDetector : MonoBehaviour
     {
         monster.Died += OnDied;
         _targets.Add(monster);
-
-        if(_player.IsAiming == false)
-            UpdateGunsTarget();
     }
 
     private void OnFought(Monster monster)
@@ -58,6 +55,9 @@ public class TargetDetector : MonoBehaviour
 
         ClearTargets();
         AddFightTarget(monster);
+
+        if (_player.FightType == FightType.Hands)
+            UpdateGunsTarget();
     }
 
     private void ClearTargets()
@@ -81,9 +81,6 @@ public class TargetDetector : MonoBehaviour
 
                 if (damageable is Enemy enemy)
                     enemy.Init(_player);
-
-                if(_player.IsAiming == false)
-                    UpdateGunsTarget();
             }
         }
     }
@@ -95,9 +92,6 @@ public class TargetDetector : MonoBehaviour
 
         _targets.Remove(damageable);
         damageable.Died -= OnDied;
-
-        if (_player.IsAiming == false)
-            UpdateGunsTarget();
     }
 
     private void OnPlayerDied(IDamageable damageable)

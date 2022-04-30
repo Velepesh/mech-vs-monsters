@@ -24,7 +24,9 @@ public class RobotBuilder : MonoBehaviour
 
     public bool IsArmSelected => _currentArmIndex > _defaultIndex;
     public bool IsHeadSelected => _currentHeadIndex > _defaultIndex;
-   
+    public int CurrentArmIndex => _currentArmIndex;
+
+
     public event UnityAction BodySelected;
     public event UnityAction LegSelected;
     public event UnityAction HeadSelected;

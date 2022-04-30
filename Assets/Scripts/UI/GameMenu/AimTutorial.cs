@@ -28,7 +28,7 @@ public class AimTutorial : MonoBehaviour
         _game.StartAimTutorial();
         _player.StopAnimation();
         _playerMover.StartTutorialMove();
-        _playerWeaponsHolder.StopShooting();
+        _playerWeaponsHolder.StopMainWeaponShooting();
         _rocketLauncherButton.gameObject.SetActive(false);
     }
 
@@ -37,7 +37,7 @@ public class AimTutorial : MonoBehaviour
         _game.EndAimTutorial();
         _player.StartAnimation();
         _playerMover.EndTutorialMove();
-        _playerWeaponsHolder.StartShooting();
+        _playerWeaponsHolder.StartMainWeaponShooting();
         _rocketLauncherButton.gameObject.SetActive(true);
     }
 }

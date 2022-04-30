@@ -1,7 +1,7 @@
 using UnityEngine;
 using UnityEngine.Events;
 
-public class PlayerAttackCollider : DamageCollider
+public class PlayerAttackCollider : AttackCollider
 {
     [SerializeField] private Attacker _attacker;
 
@@ -39,7 +39,7 @@ public class PlayerAttackCollider : DamageCollider
                 Vector3 position = contact.point;
 
                 Damaged?.Invoke(position, rotation);
-                DoDamage(damageable);
+                Attack(damageable);
                 _isAttack = false;
             }
         }

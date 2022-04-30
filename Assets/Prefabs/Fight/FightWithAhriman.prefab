@@ -892,7 +892,7 @@ MonoBehaviour:
   _game: {fileID: 0}
   _targetPlayerPosition: {fileID: 2442198506501911595}
   _delayTime: 1.5
-  _isFlyMonster: 1
+  _fightType: 2
 --- !u!1 &2464395773557639525
 GameObject:
   m_ObjectHideFlags: 0

@@ -36,7 +36,7 @@ public class FightUI : MonoBehaviour
         _game.FoughtWon -= OnFoughtWon;
     }
 
-    private void OnFought(bool isFlyMonster)
+    private void OnFought(FightType type)
     {
         InitSliderValues(_playerSlider, _player.Health.StartValue, out _currentPlayerHealth);
         InitSliderValues(_monsterSlider, _monster.Health.StartValue, out _currentMonsterHealth);

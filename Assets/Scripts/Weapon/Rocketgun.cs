@@ -11,7 +11,7 @@ public class Rocketgun : Weapon, IShooteable
     [SerializeField] private float _cooldownTime;
     [SerializeField] private float _minSpeed;
     [SerializeField] private float _maxSpeed;
-    [SerializeField] private DamageCollider _bullet;
+    [SerializeField] private AttackCollider _bullet;
     [SerializeField] private float _offsetRotationX;
     [SerializeField] private float _shootDistance = 25;
 

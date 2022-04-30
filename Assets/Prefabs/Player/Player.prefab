@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 712422557}
   - component: {fileID: 712422558}
-  m_Layer: 6
+  m_Layer: 2
   m_Name: StopDetector
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -63,7 +63,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1017374563}
   - component: {fileID: 1017374564}
-  m_Layer: 6
+  m_Layer: 2
   m_Name: ObstacleSearcherCollider
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -107,7 +107,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1538104770}
   - component: {fileID: 1538104771}
-  m_Layer: 6
+  m_Layer: 2
   m_Name: EnemySearcherCollider
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1354,7 +1354,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6574731866778651629}
   - component: {fileID: 1044941580794821367}
-  m_Layer: 6
+  m_Layer: 2
   m_Name: GroundDetector
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1527,7 +1527,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _deadAfterFellTime: 0.5
-  _isAiming: 0
 --- !u!114 &4404880650009128433
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1540,6 +1539,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: abfd096bf02ecdd47a35c3cd12cdb400, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _camera: {fileID: 0}
   _attacker: {fileID: 2016266872}
   _playerWeaponsHolder: {fileID: 4404880650009128434}
   _aimShooting: {fileID: 6183188562789032122}
@@ -1605,6 +1605,7 @@ MonoBehaviour:
   - {fileID: 8377264550578195185}
   - {fileID: 1018091353598350130}
   - {fileID: 4417293208695758322}
+  _laserGuns: []
   _rocketLauncher: {fileID: 1233604694428213348}
 --- !u!114 &1834157163
 MonoBehaviour:
@@ -1919,12 +1920,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5215da2e1cf0db144a7a57445e23e311, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _camera: {fileID: 0}
+  _cameraChanger: {fileID: 0}
   _aim: {fileID: 0}
   _layerMask:
     serializedVersion: 2
     m_Bits: 178705
-  _isFingerAim: 0
 --- !u!1 &4629429116880475543
 GameObject:
   m_ObjectHideFlags: 0
@@ -2177,7 +2177,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6118484764529194303}
-  m_Layer: 6
+  m_Layer: 2
   m_Name: Detectors
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3491,7 +3491,7 @@ GameObject:
   - component: {fileID: 7318534115755212246}
   - component: {fileID: 7318534115755212244}
   - component: {fileID: 7318534115755212247}
-  m_Layer: 6
+  m_Layer: 2
   m_Name: TargetDetector
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -8095,6 +8095,18 @@ PrefabInstance:
     - target: {fileID: 3895173847764065707, guid: c509e4f12cbba03438a2e7930f2c46a1, type: 3}
       propertyPath: m_LocalPosition.y
       value: 18
+      objectReference: {fileID: 0}
+    - target: {fileID: 3895173847764065707, guid: c509e4f12cbba03438a2e7930f2c46a1, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -9
+      objectReference: {fileID: 0}
+    - target: {fileID: 3895173847764065707, guid: c509e4f12cbba03438a2e7930f2c46a1, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0.000000022891253
+      objectReference: {fileID: 0}
+    - target: {fileID: 3895173847764065707, guid: c509e4f12cbba03438a2e7930f2c46a1, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0.0000000067232047
       objectReference: {fileID: 0}
     - target: {fileID: 3895173847816799492, guid: c509e4f12cbba03438a2e7930f2c46a1, type: 3}
       propertyPath: m_Name

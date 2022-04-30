@@ -1,7 +1,7 @@
 using UnityEngine;
 
 [RequireComponent(typeof(Collider))]
-public abstract class DamageCollider : MonoBehaviour
+public abstract class AttackCollider : MonoBehaviour
 {
     [SerializeField] private int _damage;
 
@@ -14,12 +14,12 @@ public abstract class DamageCollider : MonoBehaviour
 
     protected abstract void OnCollisionEnter(Collision collision);
 
-    protected void DoDamage(IDamageable damageable)
+    protected void Attack(IDamageable damageable)
     { 
         damageable.TakeDamage(_damage);
     }
 
-    protected void DoDamage(IDamageable damageable, int damage)
+    protected void Attack(IDamageable damageable, int damage)
     {
         damageable.TakeDamage(damage);
     }
