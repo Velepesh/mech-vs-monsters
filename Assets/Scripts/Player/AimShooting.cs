@@ -9,7 +9,7 @@ public class AimShooting : MonoBehaviour
 {
     [SerializeField] private CameraChanger _cameraChanger;
     [SerializeField] private Aim _aim;
-    [SerializeField] private LookAtIK _lookAt;
+    [SerializeField] private LazerArms _lookAt;
     [SerializeField] private LayerMask _layerMask;
 
     private Player _player;
