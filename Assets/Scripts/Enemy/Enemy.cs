@@ -8,9 +8,13 @@ public class Enemy : MonoBehaviour, IDamageable, ITarget, IAward
     [SerializeField] private int _award;
     [SerializeField] private float _lookSpeed;
     [SerializeField] private float _offsetY;
+    [SerializeField] private float _distanceToPlayer;
+    [SerializeField] private float _speed;
     private Vector3 _offset => new Vector3(0f, _offsetY, 0f);
 
     private ITarget _target;
+    private float _startPosition;
+    private Vector3 _targetPosition;
 
     public event UnityAction<IDamageable> Died;
     public event UnityAction Shooted;
@@ -32,6 +36,35 @@ public class Enemy : MonoBehaviour, IDamageable, ITarget, IAward
     private void OnDisable()
     {
         _weapon.Shooted -= OnShooted;
+    }
+
+    private void Update()
+    {
+        if (_target != null && Target.IsDied == false)
+            Move();
+    }
+
+    private void Start()
+    {
+        _startPosition = transform.position.x;
+    }
+
+    public void Move()
+    {
+        TurnToTarget(Target.Position);
+
+        _targetPosition = new Vector3(transform.position.x, transform.position.y, Target.Position.z + _distanceToPlayer);
+
+        transform.position = Vector3.MoveTowards(transform.position, _targetPosition, _speed * Time.deltaTime);
+    }
+
+    public void LookAtTarget(Vector3 target)
+    {
+        Vector3 direction = target - transform.position;
+        Quaternion targetRotation = Quaternion.LookRotation(direction);
+        Quaternion lookAt = Quaternion.RotateTowards(transform.rotation, targetRotation, Time.deltaTime * LookSpeed);
+
+        transform.rotation = lookAt;
     }
 
     public void Init(ITarget target)
@@ -58,11 +91,6 @@ public class Enemy : MonoBehaviour, IDamageable, ITarget, IAward
             shooteable.SetTarget(Target, this);
     }
 
-    private void Update()
-    {
-        if (_target != null && Target.IsDied == false)
-            TurnToTarget(Target.Position);
-    }
 
     public void TurnToTarget(Vector3 target)
     {

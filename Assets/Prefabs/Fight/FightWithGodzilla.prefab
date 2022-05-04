@@ -58,7 +58,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7733186931370024610}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 13}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 7843992883565405898}
@@ -112,7 +112,7 @@ MonoBehaviour:
   _game: {fileID: 0}
   _targetPlayerPosition: {fileID: 7733186932138006731}
   _delayTime: 2
-  _isFlyMonster: 0
+  _fightType: 0
 --- !u!114 &5563348005358900053
 MonoBehaviour:
   m_ObjectHideFlags: 0
