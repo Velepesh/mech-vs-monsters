@@ -1,21 +1,22 @@
 using UnityEngine;
 
-[RequireComponent(typeof(Player))]
 [RequireComponent(typeof(PlayerInput))]
 [RequireComponent(typeof(MoverOptions))]
 public class PlayerMover : State, IMover
 {
     readonly private float _rotationAngle = 45f;
     readonly private float _tutorialMoveSpeed = 0f;
+    readonly private float _blindAreaX = 8f;
+
 
     private MoverOptions _moverOptions;
-    private Player _player;
     private PlayerInput _input;
     private bool _isTutorial;
+    private float _positionX;
+    private float _previousPositionX;
 
     private void Awake()
     {
-        _player = GetComponent<Player>();
         _input = GetComponent<PlayerInput>();
         _moverOptions = GetComponent<MoverOptions>();
     }
@@ -33,9 +34,14 @@ public class PlayerMover : State, IMover
         transform.Translate(Vector3.forward * _moverOptions.MoveSpeed * Time.deltaTime);
 
         if (_input.IsHold)
+        {
             Swipe(_input.SwipePosition);
+        }
         else
+        {
             Rotate(0f);
+            _previousPositionX = 0;
+        }
     }
 
     public void StartTutorialMove()
@@ -60,63 +66,37 @@ public class PlayerMover : State, IMover
 
     private void Swipe(Vector3 position)
     {
-        float positionX = position.x;
+        _positionX = position.x;
+      
+        ApplySwipePosition();
         
-        float swerveAmount = Time.deltaTime * _input.Sensitivity * Mathf.Clamp(positionX, -1f, 1);
-        swerveAmount = Mathf.Clamp(swerveAmount, -_moverOptions.BorderOffset, _moverOptions.BorderOffset);
+        float swerveAmount = _input.Sensitivity * Mathf.Clamp(_positionX, -1f, 1);
 
         if (swerveAmount > 0f)
-            TryMoveRight(swerveAmount, positionX);
+            TryMoveRight(swerveAmount, _positionX);
         else if (swerveAmount < 0f)
-            TryMoveLeft(swerveAmount, positionX);
+            TryMoveLeft(swerveAmount, _positionX);
         else
             Rotate(0f);
+
     }
 
-
-    private void Swipe()
+    private void ApplySwipePosition()
     {
-        float swerveAmount = Time.deltaTime * _input.Sensitivity * Mathf.Clamp(_input.MoveFactorX, -1f, 1);
-        swerveAmount = Mathf.Clamp(swerveAmount, -_moverOptions.BorderOffset, _moverOptions.BorderOffset);
-         
-        if (swerveAmount > 0f)
-            TryMoveRight(swerveAmount);
-        else if (swerveAmount < 0f)
-            TryMoveLeft(swerveAmount);
-        else
-            Rotate(0f);
-    }
+        if (_previousPositionX < 0f && _positionX <= 0f)
+            _positionX = -1f;
+        else if (_previousPositionX > 0f && _positionX >= 0f)
+            _positionX = 1f;
+        else if (_positionX == 0 || Mathf.Abs(_positionX) < _blindAreaX)
+            _positionX = 0;
 
-    private void TryMoveRight(float swerveAmount)
-    {
-        Vector3 position = transform.position;
-
-        if (position.x >= _moverOptions.BorderOffset)
-            ReachBorder(position, _moverOptions.BorderOffset);
-        else
-            MoveSideways(swerveAmount);
-    }
-
-    private void TryMoveLeft(float swerveAmount)
-    {
-        Vector3 position = transform.position;
-
-        if (position.x <= -_moverOptions.BorderOffset)
-            ReachBorder(position, -_moverOptions.BorderOffset);
-        else
-            MoveSideways(swerveAmount);
+        _previousPositionX = _positionX;
     }
 
     private void ReachBorder(Vector3 position, float border)
     {
         transform.position = new Vector3(border, position.y, position.z);
         Rotate(0f);
-    }
-
-    private void MoveSideways(float swerveAmount)
-    {
-        transform.Translate(swerveAmount, 0, 0);
-        Rotate(Mathf.Clamp(_input.MoveFactorX, -1f, 1));
     }
 
     private void Rotate(float directionY)
@@ -149,7 +129,7 @@ public class PlayerMover : State, IMover
 
     private void MoveSideways(float swerveAmount, float positionX)
     {
-        transform.Translate(swerveAmount, 0, 0);
+        transform.Translate(new Vector3(swerveAmount, 0, 0) * Time.deltaTime);
         Rotate(Mathf.Clamp(positionX, -1f, 1));
     }
 }

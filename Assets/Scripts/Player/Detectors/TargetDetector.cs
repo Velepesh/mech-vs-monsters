@@ -12,6 +12,7 @@ public class TargetDetector : MonoBehaviour
     private void OnEnable()
     {
         _player.Fought += OnFought;
+        _player.FightWon += OnFightWon;
         _player.Fell += OnFell;
         _player.Died += OnPlayerDied;
     }
@@ -19,6 +20,7 @@ public class TargetDetector : MonoBehaviour
     private void OnDisable()
     {
         _player.Fought -= OnFought;
+        _player.FightWon -= OnFightWon;
         _player.Fell -= OnFell;
         _player.Died -= OnPlayerDied;
     }
@@ -54,10 +56,13 @@ public class TargetDetector : MonoBehaviour
         LoseTargetForEnemy();
 
         ClearTargets();
-        AddFightTarget(monster);
 
         if (_player.FightType == FightType.Hands)
-            UpdateGunsTarget();
+        {
+            AddFightTarget(monster);
+            UpdateGunsTarget(_playerWeapons.AutomaticAimWeapons);
+            UpdateGunsTarget(_playerWeapons.DefaultWeapons);
+        }
     }
 
     private void ClearTargets()
@@ -70,17 +75,25 @@ public class TargetDetector : MonoBehaviour
         ClearTargets();
     }
 
+    private void OnFightWon()
+    {
+        ClearTargets();
+    }
+
     private void OnTriggerEnter(Collider other)
     {
         if (other.TryGetComponent(out IDamageable damageable))
         {
             if (damageable is ITarget target)
             {
+                if(target is Mine == false)
                 _targets.Add(damageable);
                 damageable.Died += OnDied;
 
                 if (damageable is Enemy enemy)
                     enemy.Init(_player);
+
+                UpdateGunsTarget(_playerWeapons.AutomaticAimWeapons);
             }
         }
     }
@@ -92,6 +105,8 @@ public class TargetDetector : MonoBehaviour
 
         _targets.Remove(damageable);
         damageable.Died -= OnDied;
+
+        UpdateGunsTarget(_playerWeapons.AutomaticAimWeapons);     
     }
 
     private void OnPlayerDied(IDamageable damageable)
@@ -108,11 +123,11 @@ public class TargetDetector : MonoBehaviour
         }
     }
 
-    private void UpdateGunsTarget()
+    private void UpdateGunsTarget(IReadOnlyList<Weapon> weapons)
     {
         if (_targets.Count > 0)
         {
-            foreach (Weapon weapon in _playerWeapons.AutomaticWeapons)
+            foreach (Weapon weapon in weapons)
             {
                 if (weapon.Target == null || weapon.Target.IsDied)
                     ApplyClosestTarget(weapon);
@@ -125,12 +140,14 @@ public class TargetDetector : MonoBehaviour
         if (weapon != null)
         {
             Vector3 weaponPosition = weapon.transform.position;
-            ITarget target = GetClosestTarget(weaponPosition);
+            ITarget target = GetClosetEnemy(weaponPosition);
 
             if (weapon is Machinegun machinegun)
                 machinegun.SetTarget(target, _player);
             else if (weapon is Rocketgun rocketgun)
                 rocketgun.SetTarget(target, _player);
+            else if (weapon is RocketLauncher rocketLauncher)
+                rocketLauncher.StartShooting();
         }
     }
 
@@ -191,9 +208,7 @@ public class TargetDetector : MonoBehaviour
 
         foreach (ITarget target in targets)
         {
-            float distance = Vector3.Distance(target.Position, weaponPosition);
-
-            if (target is IDamageable && distance <= _moverOptions.AttackDistance);
+            if (target is IDamageable)
             {
                 if (target is Vehicle vehicle && target is AttackHelicopter == false)
                     vehicales.Add(vehicle);
@@ -227,7 +242,7 @@ public class TargetDetector : MonoBehaviour
 
         foreach (ITarget target in targets)
         {
-            if (target is IDamageable && target.Position.z >= transform.position.z)
+            if (target is IDamageable damageable && target.Position.z >= transform.position.z)
             {
                 if (target is Vehicle vehicle)
                     vehicales.Add(vehicle);

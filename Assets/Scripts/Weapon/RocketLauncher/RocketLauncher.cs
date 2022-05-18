@@ -1,4 +1,3 @@
-using System.Collections;
 using UnityEngine.Events;
 using UnityEngine;
 
@@ -10,7 +9,7 @@ public class RocketLauncher : Weapon, IShooteable
     [SerializeField] private RocketProjectile _bullet;
     [SerializeField] private float _cooldownTime = 4f;
 
-    private bool _canShoot = true;
+    private float _shootingTimer;
 
     public override event UnityAction Shooted;
     public event UnityAction<float> Reloaded;
@@ -20,10 +19,12 @@ public class RocketLauncher : Weapon, IShooteable
         _cooldownTime = Mathf.Clamp(_cooldownTime, 0, float.MaxValue);
     }
 
-    public void TryShoot()
+    private void Update()
     {
-        if (_canShoot)
-            Shoot();
+        if (IsShooting)
+        {
+            Reload();
+        }
     }
 
     public new void Shoot()
@@ -36,17 +37,17 @@ public class RocketLauncher : Weapon, IShooteable
         bullet.GetComponent<RocketProjectile>().Init(target);
 
         Shooted?.Invoke();
-        StartCoroutine(Reload());
     }
 
-    private IEnumerator Reload()
+    private void Reload()
     {
-        _canShoot = false;
-        Reloaded?.Invoke(_cooldownTime);
+        if (_shootingTimer >= _cooldownTime)
+        {
+            Shoot();
+            _shootingTimer = 0;
+        }
 
-        yield return new WaitForSeconds(_cooldownTime);
-
-        _canShoot = true;
+        _shootingTimer += Time.deltaTime;
     }
 
     public new void TurnToTarget(Vector3 target)

@@ -1,0 +1,5 @@
+enum EnemySpawnPointType 
+{
+    Ground,
+    Air
+}

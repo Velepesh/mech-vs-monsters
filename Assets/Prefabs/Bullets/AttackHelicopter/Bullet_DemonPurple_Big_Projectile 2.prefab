@@ -9716,8 +9716,8 @@ MonoBehaviour:
     - {fileID: 198474663198814734}
     Gradient_custom:
       serializedVersion: 2
-      key0: {r: 0.9865111, g: 0.8602941, b: 1, a: 0}
-      key1: {r: 1, g: 0.007352948, b: 0.8493913, a: 1}
+      key0: {r: 1, g: 0.42830187, b: 0.43672514, a: 0}
+      key1: {r: 1, g: 0.061114457, b: 0.007843137, a: 1}
       key2: {r: 1, g: 0.003921569, b: 0.003921569, a: 1}
       key3: {r: 0, g: 0, b: 0, a: 0}
       key4: {r: 0, g: 0, b: 0, a: 0}
@@ -9748,9 +9748,9 @@ MonoBehaviour:
     - {fileID: 198248423902307404}
     Gradient_custom:
       serializedVersion: 2
-      key0: {r: 0.8722111, g: 0.07352942, b: 1, a: 0}
-      key1: {r: 0.8722111, g: 0.07352942, b: 1, a: 1}
-      key2: {r: 0, g: 0, b: 0, a: 0}
+      key0: {r: 1, g: 0.26666668, b: 0.07450981, a: 0}
+      key1: {r: 1, g: 0.2660846, b: 0.0745098, a: 1}
+      key2: {r: 0, g: 0, b: 0, a: 1}
       key3: {r: 0, g: 0, b: 0, a: 0}
       key4: {r: 0, g: 0, b: 0, a: 0}
       key5: {r: 0, g: 0, b: 0, a: 0}
@@ -9765,16 +9765,16 @@ MonoBehaviour:
       ctime6: 0
       ctime7: 0
       atime0: 0
-      atime1: 32960
-      atime2: 65535
-      atime3: 0
+      atime1: 15035
+      atime2: 50672
+      atime3: 65535
       atime4: 0
       atime5: 0
       atime6: 0
       atime7: 0
       m_Mode: 0
       m_NumColorKeys: 2
-      m_NumAlphaKeys: 3
+      m_NumAlphaKeys: 4
   - Name: Cone
     colored_ParticleSystem:
     - {fileID: 198782294973209882}
@@ -9807,8 +9807,8 @@ MonoBehaviour:
       m_Mode: 0
       m_NumColorKeys: 3
       m_NumAlphaKeys: 3
-  applyChanges: 0
-  Keep_applyChanges: 0
+  applyChanges: 1
+  Keep_applyChanges: 1
 --- !u!54 &54212628334827884
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -14634,7 +14634,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 09a1fd7f901314b42b3166e3855ae0fe, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _damage: 17
+  _damage: 10
   _impactPrefab: {fileID: 1879272669879180, guid: 339792fd6684f9241bb1bc87b26aa9ce, type: 3}
   _destroyTime: 1.2
 --- !u!1 &1924905033165216

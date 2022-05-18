@@ -1,7 +1,7 @@
 using UnityEngine;
 using UnityEngine.Events;
 
-public class Mine : MonoBehaviour, IDamageable, IAward
+public class Mine : MonoBehaviour, IDamageable, ITarget, IAward
 {
     [SerializeField] private int _damage;
     [SerializeField] private ParticleSystem _explosionEffect;
@@ -9,8 +9,10 @@ public class Mine : MonoBehaviour, IDamageable, IAward
     [SerializeField] private int _award;
     [SerializeField] private float _offsetX = 1.2f;
 
-    public Health Health=> _health;
+    public Health Health => _health;
     public int Award => _award;
+    public Vector3 Position => transform.position;
+    public bool IsDied => _health.Value <= 0;
 
     public event UnityAction<IDamageable> Died;
 
@@ -21,9 +23,9 @@ public class Mine : MonoBehaviour, IDamageable, IAward
         _offsetX = Mathf.Clamp(_offsetX, 0f, float.MaxValue);
     }
 
-    private void OnTriggerEnter(Collider other)
+    private void OnCollisionEnter(Collision collision)
     {
-        if (other.TryGetComponent(out Player player))
+        if (collision.gameObject.TryGetComponent(out Player player))
         {
             player.TakeDamage(_damage);
 

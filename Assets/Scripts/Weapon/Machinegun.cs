@@ -37,7 +37,7 @@ public class Machinegun : Weapon, IShooteable
 
                 Reload();
             }
-            else if (_thisITarget.IsDied == false)
+            else if (_thisITarget != null && _target != null)
             {
                 if (_target.IsDied)
                 {

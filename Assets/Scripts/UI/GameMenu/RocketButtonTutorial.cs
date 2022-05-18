@@ -30,7 +30,7 @@ public class RocketButtonTutorial : MonoBehaviour
             _player.StopAnimation();
             _game.StartRocketTutorial();
             _playerMover.StartTutorialMove();
-            _playerWeaponsHolder.StopMainWeaponShooting();
+            _playerWeaponsHolder.StopWeaponShooting();
             _tankGun.StopShooting();
             _rocketLauncherButton.gameObject.SetActive(true);
             _animator.SetTrigger(AnimatorRocketTutorialController.States.StartTutorial);
@@ -42,7 +42,7 @@ public class RocketButtonTutorial : MonoBehaviour
         _player.StartAnimation();
         _game.EndRocketTutorial();
         _playerMover.EndTutorialMove();
-        _playerWeaponsHolder.StartMainWeaponShooting();
+        _playerWeaponsHolder.StartWeaponShooting();
         
         if(_tankGun != null)
             _tankGun.StartShooting();

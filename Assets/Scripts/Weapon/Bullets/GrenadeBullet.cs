@@ -2,8 +2,9 @@ using UnityEngine;
 using UnityEngine.Events;
 
 [RequireComponent(typeof(Collider))]
-public class GrenadeBullet : AttackCollider
+public class GrenadeBullet : AttackCollider, IDamageable
 {
+    [SerializeField] private Health _health;
     [SerializeField] private GameObject _impactPrefab;
     [SerializeField] private float _speed;
     [SerializeField] private Vector3 _offset;
@@ -18,10 +19,13 @@ public class GrenadeBullet : AttackCollider
     private bool _isStopped;
 
     public bool IsTutorial => _isTutorial;
+    public Health Health => _health;
+    public bool IsDied => _health.Value <= 0;
 
     public event UnityAction ButtonShowed;
     public event UnityAction TutorialShowed;
     public event UnityAction TutorialEnded;
+    public event UnityAction<IDamageable> Died;
 
     private void OnValidate()
     {
@@ -132,5 +136,19 @@ public class GrenadeBullet : AttackCollider
         _isStopped = true;
 
         TutorialShowed?.Invoke();
+    }
+
+    public void TakeDamage(int damage)
+    {
+        _health.TakeDamage(damage);
+
+        if (IsDied)
+            Die();
+    }
+
+    public void Die()
+    {
+        Died?.Invoke(this);
+        gameObject.SetActive(false);
     }
 }

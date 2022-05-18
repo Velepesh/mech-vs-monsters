@@ -16,7 +16,6 @@ public class AimShooting : MonoBehaviour
     private DownMover _downMover;
     private PlayerWeaponsHolder _playerWeaponsHolder;
     private bool _canShoot;
-    private Vector3 _hitPoint;
 
     public Player Player => _player;
 
@@ -32,6 +31,7 @@ public class AimShooting : MonoBehaviour
     private void OnEnable()
     {
         _player.Prepeared += OnPrepeared;
+        _player.FightWon += OnFightWon;
         _downMover.Landed += OnLanded;
         _player.Won += OnWon;
     }
@@ -39,6 +39,7 @@ public class AimShooting : MonoBehaviour
     private void OnDisable()
     {
         _player.Prepeared -= OnPrepeared;
+        _player.FightWon -= OnFightWon;
         _downMover.Landed -= OnLanded;
         _player.Won -= OnWon;
     }
@@ -58,7 +59,6 @@ public class AimShooting : MonoBehaviour
 
     public void SetHandTarget(Vector3 position)
     {
-
         _aim.MoveAim(position);
 
         Ray ray = _cameraChanger.Camera.ScreenPointToRay(_aim.Position);
@@ -66,11 +66,8 @@ public class AimShooting : MonoBehaviour
         RaycastHit hit;
 
         if (Physics.Raycast(ray, out hit, float.MaxValue, _layerMask))
-        {
             _lookAt.SetTarget(hit.point);
-        }
     }
-
 
     private void SetWeaponsTarget(Ray ray)
     {
@@ -78,9 +75,9 @@ public class AimShooting : MonoBehaviour
 
         if (Physics.Raycast(ray, out hit, float.MaxValue, _layerMask))
         {
-            for (int i = 0; i < _playerWeaponsHolder.AutomaticWeapons.Count; i++)
+            for (int i = 0; i < _playerWeaponsHolder.DefaultWeapons.Count; i++)
             {
-                Weapon weapon = _playerWeaponsHolder.GetWeapon(i);
+                Weapon weapon = _playerWeaponsHolder.GetDefaultWeapon(i);
                 weapon.SetTarget(hit.point);
             }
         }
@@ -91,10 +88,17 @@ public class AimShooting : MonoBehaviour
         EnableAimShooting();
     }
 
+    private void OnFightWon()
+    {
+        EnableAimShooting();
+    }
+
     private void OnPrepeared(Transform targetPoint, Monster monster, FightType type)
     {
-        if(type == FightType.Hands)
+        if (type == FightType.Hands)
             DisableAimShooting();
+        else
+            _aim.DisableAim();
     }
 
     private void OnWon()

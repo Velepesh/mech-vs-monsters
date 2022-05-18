@@ -9663,7 +9663,7 @@ MonoBehaviour:
     Gradient_custom:
       serializedVersion: 2
       key0: {r: 1, g: 0.9452855, b: 1, a: 0}
-      key1: {r: 0.9467545, g: 0.44852942, b: 1, a: 1}
+      key1: {r: 1, g: 0.26666668, b: 0.07450981, a: 1}
       key2: {r: 1, g: 0, b: 0, a: 1}
       key3: {r: 1, g: 0.39215687, b: 0.003921569, a: 0}
       key4: {r: 0, g: 0, b: 0, a: 0}
@@ -9726,8 +9726,8 @@ MonoBehaviour:
     - {fileID: 198582074855766356}
     Gradient_custom:
       serializedVersion: 2
-      key0: {r: 0.8669373, g: 0.035294116, b: 1, a: 0}
-      key1: {r: 0.42782965, g: 0.035294116, b: 1, a: 1}
+      key0: {r: 1, g: 0.26666668, b: 0.07450981, a: 0}
+      key1: {r: 1, g: 0.035294116, b: 0.19283384, a: 1}
       key2: {r: 1, g: 0.24827586, b: 0, a: 1}
       key3: {r: 0, g: 0, b: 0, a: 0}
       key4: {r: 0, g: 0, b: 0, a: 0}
@@ -9753,8 +9753,8 @@ MonoBehaviour:
       m_Mode: 0
       m_NumColorKeys: 2
       m_NumAlphaKeys: 4
-  applyChanges: 0
-  Keep_applyChanges: 0
+  applyChanges: 1
+  Keep_applyChanges: 1
 --- !u!114 &114715709320567964
 MonoBehaviour:
   m_ObjectHideFlags: 0

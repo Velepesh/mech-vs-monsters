@@ -89,7 +89,6 @@ public class Ahriman : Monster, IDamageable, ITarget, IAward
 
             if (_timerMonsterColliders.Count == 0)
                 Die();
-
         }  
     }
 }

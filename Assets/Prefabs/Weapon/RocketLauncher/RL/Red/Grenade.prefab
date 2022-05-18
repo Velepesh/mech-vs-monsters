@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 2397417123000619188}
   - component: {fileID: 2012003370958954070}
   - component: {fileID: 8005844255857816584}
-  m_Layer: 8
+  m_Layer: 9
   m_Name: Canvas
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -116,7 +116,7 @@ GameObject:
   - component: {fileID: 2732260453754048558}
   - component: {fileID: 6658725039751350700}
   - component: {fileID: 517662377529387566}
-  m_Layer: 8
+  m_Layer: 9
   m_Name: Grenade
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -221,8 +221,8 @@ SphereCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 1
-  m_Center: {x: 0, y: 0, z: 1.83}
+  m_Radius: 1.75
+  m_Center: {x: 0, y: 0, z: 0.7}
 --- !u!114 &2732260453754048558
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -236,8 +236,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _damage: 100
+  _health:
+    _health: 25
   _impactPrefab: {fileID: 6541324304203249341, guid: 2be80a508c87dd9458988c9537a8f652, type: 3}
-  _speed: 20
+  _speed: 17
   _offset: {x: 0, y: 7, z: 0}
   _showButtonDistance: 90
   _stopButtonRotationDistance: 50
@@ -284,7 +286,7 @@ GameObject:
   - component: {fileID: 4852937821973503541}
   - component: {fileID: 8197491281397761089}
   - component: {fileID: 7964652390568518324}
-  m_Layer: 8
+  m_Layer: 9
   m_Name: Target
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -401,11 +403,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1231786695147784, guid: 6637f6efebd5b0d4eb939586be277cd9, type: 3}
       propertyPath: m_Layer
-      value: 7
+      value: 9
       objectReference: {fileID: 0}
     - target: {fileID: 1622348778083768, guid: 6637f6efebd5b0d4eb939586be277cd9, type: 3}
       propertyPath: m_Layer
-      value: 7
+      value: 9
       objectReference: {fileID: 0}
     - target: {fileID: 1622348778083768, guid: 6637f6efebd5b0d4eb939586be277cd9, type: 3}
       propertyPath: m_IsActive
@@ -417,7 +419,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1764654978243476, guid: 6637f6efebd5b0d4eb939586be277cd9, type: 3}
       propertyPath: m_Layer
-      value: 7
+      value: 9
       objectReference: {fileID: 0}
     - target: {fileID: 4232694689350172, guid: 6637f6efebd5b0d4eb939586be277cd9, type: 3}
       propertyPath: m_LocalPosition.y

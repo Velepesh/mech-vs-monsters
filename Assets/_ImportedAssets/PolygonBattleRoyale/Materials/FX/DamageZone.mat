@@ -4,11 +4,12 @@
 Material:
   serializedVersion: 6
   m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
   m_Name: DamageZone
-  m_Shader: {fileID: 4800000, guid: d97b2475e12b5c146a78083b2fdbff44, type: 3}
-  m_ShaderKeywords: 
+  m_Shader: {fileID: 4800000, guid: bee44b4a58655ee4cbff107302a3e131, type: 3}
+  m_ShaderKeywords: _CELPRIMARYMODE_SINGLE _TEXTUREBLENDINGMODE_MULTIPLY _UNITYSHADOWMODE_NONE
   m_LightmapFlags: 0
   m_EnableInstancingVariants: 0
   m_DoubleSidedGI: 0
@@ -23,6 +24,14 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _BumpMap:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _CelCurveTexture:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _CelStepTexture:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
@@ -62,6 +71,18 @@ Material:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
+    - _SampleTexture2D_A3E127FB_Texture_1:
+        m_Texture: {fileID: 2800000, guid: 95853e303d2f5f8458fef0fff2159bb6, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _SampleTexture2D_B845006D_Texture_1:
+        m_Texture: {fileID: 2800000, guid: 95853e303d2f5f8458fef0fff2159bb6, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _SampleTexture2D_F87E20F8_Texture_1:
+        m_Texture: {fileID: 2800000, guid: 95853e303d2f5f8458fef0fff2159bb6, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
     - _TextureSample0:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
@@ -75,11 +96,27 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     m_Floats:
+    - Vector1_682B89C5: -0.4
+    - Vector1_B8DC7D9D: 1
+    - Vector1_F0DE848C: 0
     - _ASEOutlineWidth: 0.03
+    - _AlphaClip: 0
+    - _Blend: 0
     - _BumpScale: 1
+    - _CelExtraEnabled: 0
+    - _CelNumSteps: 3
+    - _CelPrimaryMode: 1
+    - _Cull: 2
     - _Cutoff: 0.5
     - _DetailNormalMapScale: 1
     - _DstBlend: 0
+    - _FlatRimEdgeSmoothness: 0.5
+    - _FlatRimLightAlign: 0
+    - _FlatRimSize: 0.5
+    - _FlatSpecularEdgeSmoothness: 0
+    - _FlatSpecularSize: 0.1
+    - _Flatness: 1
+    - _FlatnessExtra: 1
     - _Float0: 1
     - _Float1: 0
     - _Float2: 2.41
@@ -91,28 +128,51 @@ Material:
     - _GlossMapScale: 1
     - _Glossiness: 0.5
     - _GlossyReflections: 1
+    - _GradientAngle: 0
+    - _GradientCenterX: 0
+    - _GradientCenterY: 0
+    - _GradientEnabled: 0
+    - _GradientSize: 10
     - _Gradient_Height: 15.6
     - _Gradient_Offset: 0.171
     - _Gradient_Opacity: 0.383
     - _Gradient_Smoothness: 1
     - _HitEffect: 1.17
+    - _LightContribution: 0
+    - _LightmapDirectionPitch: 0
+    - _LightmapDirectionYaw: 0
     - _Metallic: 0
     - _Mode: 0
     - _OcclusionStrength: 1
     - _Opacity: 0.417
+    - _OverrideLightmapDir: 0
     - _Parallax: 0.02
     - _Power: 1.83
+    - _QueueOffset: 0
     - _Rim: 0.026
+    - _RimEnabled: 0
+    - _SelfShadingSize: 0.5
+    - _SelfShadingSizeExtra: 0.6
+    - _ShadowEdgeSize: 0.05
+    - _ShadowEdgeSizeExtra: 0.05
     - _Smoother: 1.11
     - _Smoothness: 6.4
     - _SmoothnessTextureChannel: 0
+    - _SpecularEnabled: 0
     - _SpecularHighlights: 1
     - _SrcBlend: 1
+    - _Surface: 0
     - _Test: 0.012
+    - _TextureBlendingMode: 0
+    - _TextureImpact: 1
     - _UVSec: 0
+    - _UnityShadowMode: 0
+    - _UnityShadowPower: 0.2
+    - _UnityShadowSharpness: 1
     - _Value_01: 1.01
     - _Value_02: 1.03
     - _Value_03: 7.9
+    - _VertexColorsEnabled: 0
     - _WaterDepth: 0
     - _WaterFalloff: 0
     - _WaterOpacity: 0
@@ -129,6 +189,8 @@ Material:
     - _Zone_Rim: 0.219
     - __dirty: 0
     m_Colors:
+    - Color_14693D33: {r: 0, g: 0.9382715, b: 1, a: 0}
+    - Color_425B13F6: {r: 1, g: 0.93410516, b: 0, a: 0}
     - _ASEOutlineColor: {r: 0, g: 0.2551723, b: 1, a: 0}
     - _Black: {r: 0, g: 0, b: 0, a: 0}
     - _Bottom: {r: 0.50735295, g: 0.8573022, b: 1, a: 0}
@@ -136,11 +198,21 @@ Material:
     - _Color0: {r: 1, g: 0, b: 0, a: 1}
     - _Color1: {r: 1, g: 1, b: 1, a: 0}
     - _Color2: {r: 1, g: 0, b: 0.31034467, a: 1}
+    - _ColorDim: {r: 1, g: 1, b: 1, a: 1}
+    - _ColorDimCurve: {r: 0.85023, g: 0.85034, b: 0.85045, a: 0.85056}
+    - _ColorDimExtra: {r: 0.85023, g: 0.85034, b: 0.85045, a: 0.85056}
+    - _ColorDimSteps: {r: 0.85023, g: 0.85034, b: 0.85045, a: 0.85056}
+    - _ColorGradient: {r: 0.85023, g: 0.85034, b: 0.85045, a: 0.85056}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
+    - _FlatRimColor: {r: 0.85023, g: 0.85034, b: 0.85045, a: 0.85056}
+    - _FlatSpecularColor: {r: 0.85023, g: 0.85034, b: 0.85045, a: 0.85056}
     - _Gradient_BottomColor: {r: 0, g: 0, b: 0, a: 0}
     - _Gradient_TopColor: {r: 0, g: 0, b: 0, a: 0}
+    - _LightmapDirection: {r: 0, g: 1, b: 0, a: 0}
     - _Top: {r: 0, g: 0.5862067, b: 1, a: 0}
+    - _UnityShadowColor: {r: 0.85023, g: 0.85034, b: 0.85045, a: 0.85056}
     - _WaterDeepColor: {r: 1, g: 1, b: 1, a: 0}
     - _WaterShallowColor: {r: 0, g: 0, b: 0, a: 0}
     - _White: {r: 1, g: 1, b: 1, a: 0}
     - _Zone_Color: {r: 0, g: 0.5862069, b: 1, a: 1}
+  m_BuildTextureStacks: []

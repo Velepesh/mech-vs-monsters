@@ -103,7 +103,7 @@ RectTransform:
   m_GameObject: {fileID: 7304504180723828384}
   m_LocalRotation: {x: 0.001464753, y: 0.0000006342731, z: 0.008603984, w: 0.9999619}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.009999999, y: 0.009999999, z: 0.01}
+  m_LocalScale: {x: 0.012, y: 0.012, z: 0.012}
   m_Children:
   - {fileID: 7304504180033951598}
   m_Father: {fileID: 7121447361080645118}
@@ -188,7 +188,7 @@ GameObject:
   - component: {fileID: 8259419715206983313}
   - component: {fileID: 7304504180000477105}
   - component: {fileID: 7304504180000477110}
-  - component: {fileID: 4576272228394091391}
+  - component: {fileID: 5063323288243906996}
   m_Layer: 16
   m_Name: Mine
   m_TagString: Untagged
@@ -203,8 +203,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7610984449801097028}
-  m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -2.25, y: 1.1, z: -2}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 1.1, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 7304504180723828385}
@@ -291,13 +291,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 947871b659bb7b6418262bcc68f2f1e3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _damage: 100
+  _damage: 70
   _explosionEffect: {fileID: 198717222519016466, guid: 9eb3b1a11c610cd418079f132e291197, type: 3}
   _health:
     _health: 100
   _award: 3
   _offsetX: 0
---- !u!136 &4576272228394091391
+--- !u!136 &5063323288243906996
 CapsuleCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -305,9 +305,9 @@ CapsuleCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7610984449801097028}
   m_Material: {fileID: 0}
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_Enabled: 1
-  m_Radius: 2.0589638
-  m_Height: 12.396757
+  m_Radius: 2.523891
+  m_Height: 5.047782
   m_Direction: 1
-  m_Center: {x: 0, y: 4.795068, z: 0.3332379}
+  m_Center: {x: 0, y: 0.8037038, z: 0.40848517}

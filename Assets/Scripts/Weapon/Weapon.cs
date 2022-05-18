@@ -4,11 +4,13 @@ using UnityEngine.Events;
 public abstract class Weapon : MonoBehaviour, IShooteable
 {
     private ITarget _target;
+    private ITarget _thisITarget;
     private Vector3 _targetPosition;
     private bool _isShooting;
     private bool _isAiming;
 
     public ITarget Target => _target;
+    public ITarget ThisITarget => _thisITarget;
     public Vector3 TargetPosition => _targetPosition;
     public bool IsShooting => _isShooting;
     public bool IsAiming => _isAiming;
@@ -19,6 +21,7 @@ public abstract class Weapon : MonoBehaviour, IShooteable
     public void SetTarget(ITarget target, ITarget thisITarget)
     {
         _target = target;
+        _thisITarget = thisITarget;
     }
 
     public void SetTarget(Vector3 targetPosition)

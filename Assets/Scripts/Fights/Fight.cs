@@ -9,6 +9,7 @@ public class Fight : MonoBehaviour
     [SerializeField] private Transform _targetPlayerPosition;
     [SerializeField] private float _delayTime;
     [SerializeField] private FightType _fightType;
+    [SerializeField] private GameObject _borderCollider;
 
     private Player _player;
 
@@ -62,6 +63,9 @@ public class Fight : MonoBehaviour
         {
             _player.WinInFight();
             _game.WinInBattle();
+            
+            if(_fightType == FightType.Hands == false)
+                _borderCollider.SetActive(false);
         }
     }
 }

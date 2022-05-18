@@ -39,7 +39,7 @@ public class LaserGun : Weapon
             if (_lastCollider != null)
                 _lastCollider.TakeDamage();
 
-            SetHittedPoint(hit.point);
+            SetHittedPoint(hit.point, true);
         }
         else if (Physics.Raycast(inputRay, out hit, _maxDistace, _hittedLayerMask))
         {
@@ -48,7 +48,7 @@ public class LaserGun : Weapon
                 if (_lastCollider != null)
                     _lastCollider.SwitchToDefaultState();
 
-                SetHittedPoint(hit.point);
+                SetHittedPoint(hit.point, false);
             }
         }
         else
@@ -61,9 +61,11 @@ public class LaserGun : Weapon
         Shooted?.Invoke();
     }
 
-    private void SetHittedPoint(Vector3 hitPoint)
+    private void SetHittedPoint(Vector3 hitPoint, bool isTimerMonsterCollider)
     {
         _line.SetPosition(1, hitPoint);
-        Hitted?.Invoke(hitPoint);
+
+        if(isTimerMonsterCollider)
+            Hitted?.Invoke(hitPoint);
     }
 }

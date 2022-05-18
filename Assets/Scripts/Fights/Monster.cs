@@ -24,7 +24,6 @@ public class Monster : MonoBehaviour, IDamageable, ITarget, IAward
     public event UnityAction AttackStopped;
     public event UnityAction<IDamageable> Died;
     public event UnityAction<Monster> Disabled;
-    public event UnityAction Moved;
 
     private void Start()
     {

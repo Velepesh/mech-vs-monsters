@@ -18,6 +18,6 @@ public class RocketLauncherButton : MonoBehaviour
 
     private void OnButtonClick()
     {
-        _rocketLauncher.TryShoot();
+       // _rocketLauncher.TryShoot();
     }
 }

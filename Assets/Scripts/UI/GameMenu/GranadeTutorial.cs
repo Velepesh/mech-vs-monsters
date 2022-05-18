@@ -25,7 +25,7 @@ public class GranadeTutorial : MonoBehaviour
     {
         _tapGrenadeTutorialTarget.SetTarget(_launchGrenadeGun.TutorialBullet.transform);
         _player.StopAnimation();
-        _playerWeaponsHolder.StopMainWeaponShooting();
+        _playerWeaponsHolder.StopWeaponShooting();
         _launchGrenadeGun.Game.StartGrenadeTutorial();
         _playerMover.StartTutorialMove();
         _rocketgunButton.SetActive(false);
@@ -36,7 +36,7 @@ public class GranadeTutorial : MonoBehaviour
         _player.StartAnimation();
         _launchGrenadeGun.Game.EndGrenadeTutorial();
         _playerMover.EndTutorialMove();
-        _playerWeaponsHolder.StartMainWeaponShooting();
+        _playerWeaponsHolder.StartWeaponShooting();
         _rocketgunButton.SetActive(true);
     }
 }

@@ -19,17 +19,17 @@ public class Aim : MonoBehaviour
 
     public void MoveAim(Vector2 mousePosition)
     {
-        _derection = mousePosition * _moveSpeedTouch * Time.deltaTime;
+        _derection = mousePosition * _moveSpeedTouch;
       
-        _aimImage.transform.Translate(_derection);
+        _aimImage.transform.Translate(_derection * Time.deltaTime);
     }
 
     private void LateUpdate()
     {
         _aimImage.transform.position = new Vector2(Mathf.Clamp(_aimImage.transform.position.x, _border, _screenRect.width - _border),
             Mathf.Clamp(_aimImage.transform.position.y, _border, _screenRect.height - _border));
-
     }
+
     public void ShowAim()
     {
         _aimImage.gameObject.SetActive(true);
@@ -38,10 +38,5 @@ public class Aim : MonoBehaviour
     public void DisableAim()
     {
         _aimImage.gameObject.SetActive(false);
-    }
-
-    private void SetAimPosition(Vector2 position)
-    {
-        _aimImage.transform.position = position;
     }
 }
