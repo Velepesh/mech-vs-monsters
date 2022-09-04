@@ -1691,7 +1691,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a4f81d2444ab0f6478557af3574aa309, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  DistanceToPlayer: 22
+  DistanceToPlayer: 26
   Speed: 32
   LookSpeed: 0
   OffsetToTargetPositionZ: 20

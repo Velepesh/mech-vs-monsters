@@ -7,6 +7,7 @@ public class EnemySpawner : MonoBehaviour
     [SerializeField] private Player _player;
     [SerializeField] private Game _game;
     [SerializeField] private List<EnemySpawnPoint> _enemySpawnPoints;
+    [SerializeField] private bool _isSpawnWhenStart;
 
     private Wave _currentWave;
     private int _currentWaveNumber = 0;
@@ -55,10 +56,34 @@ public class EnemySpawner : MonoBehaviour
             _currentWave = null;
     }
 
+    public void StopEnemies()
+    {
+        for (int i = 0; i < _enemies.Count; i++)
+            _enemies[i].StopEnemy();
+
+        for (int i = 0; i < _enemySquads.Count; i++)
+            _enemySquads[i].StopEnemies();
+
+        _currentWave = null;
+    }
+
+    public void ContinueEnemiesAttack()
+    {
+        for (int i = 0; i < _enemies.Count; i++)
+            _enemies[i].ContinueAttack();
+
+        for (int i = 0; i < _enemySquads.Count; i++)
+            _enemySquads[i].ContinueEnemiesAttack();
+
+        SetWave(_currentWaveNumber);
+    }
+
     private void OnLevelStarted()
     {
         SetWave(_currentWaveNumber);
-        _timeAfterLastSpawn = _currentWave.Delay - 1;
+
+        if(_isSpawnWhenStart)
+            _timeAfterLastSpawn = _currentWave.Delay - 1;
     }
 
     private void OnFought(FightType type)

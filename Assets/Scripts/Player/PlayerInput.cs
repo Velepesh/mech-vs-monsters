@@ -18,6 +18,7 @@ public class PlayerInput : MonoBehaviour
     private bool _isFight;
     private bool _isHandsFight;
     private bool _isHold;
+    private bool _canShoot = true;
     private Player _player;
 
     public Vector3 SwipePosition => _swipePosition;
@@ -31,12 +32,14 @@ public class PlayerInput : MonoBehaviour
 
     private void OnEnable()
     {
+        _player.Won += OnWon;
         _player.Prepeared += OnPrepeared;
         _player.FightWon += OnFightWon;
     }
 
     private void OnDisable()
     {
+        _player.Won -= OnWon;
         _player.Prepeared -= OnPrepeared;
         _player.FightWon -= OnFightWon;
     }
@@ -70,19 +73,20 @@ public class PlayerInput : MonoBehaviour
             }
             else if (touch.phase == TouchPhase.Moved)
             {
+                Vector3 position = Input.mousePosition;
                 if (!EventSystem.current.IsPointerOverGameObject())
                 {
-                    Vector3 position = Input.mousePosition;
                     Vector3 aimPosition = position - _mousePosition;
+                    _swipePosition = aimPosition;
 
-                    ApplySwipePosition(position);
-
-                    _aimShooting.Shoot(aimPosition);
-
-                    _mousePosition = position;
+                    if (_isFight)
+                        _aimShooting.SetHandTarget(aimPosition);
+                    else if (_canShoot)
+                        _aimShooting.Shoot(aimPosition);
                 }
 
                 _isHold = true;
+                _mousePosition = position;
             }
             else if (touch.phase == TouchPhase.Ended)
             {
@@ -90,6 +94,8 @@ public class PlayerInput : MonoBehaviour
 
                 if (_isHandsFight == false)
                     _playerWeaponsHolder.StopWeaponShooting();
+
+                _mousePosition = Input.mousePosition;
             }
             else
             {
@@ -121,7 +127,7 @@ public class PlayerInput : MonoBehaviour
 
             if (_isFight)
                 _aimShooting.SetHandTarget(aimPosition);
-            else
+            else if(_canShoot)
                 _aimShooting.Shoot(aimPosition);
 
             _isHold = true;
@@ -163,5 +169,10 @@ public class PlayerInput : MonoBehaviour
     {
         _isFight = false;
         _isHandsFight = false;
+    }
+
+    private void OnWon()
+    {
+        _canShoot = false;
     }
 }

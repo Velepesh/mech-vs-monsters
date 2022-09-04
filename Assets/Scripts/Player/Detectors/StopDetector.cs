@@ -9,31 +9,16 @@ public class StopDetector : MonoBehaviour
 
     public bool IsNearEnemy(float distance)
     {
-        bool isHit = IsHeat(_searchingEnemycollider, _enemyMask, distance);
-
-        if (isHit)
-            return true;
-        else
-            return false;
+        return IsHeat(_searchingEnemycollider, _enemyMask, distance);
     }
 
     public bool IsNearObstacle(float distance)
     {
-        bool isHit = IsHeat(_searchingObstaclecollider, _obstacleMask, distance);
-
-        if (isHit)
-            return true;
-        else
-            return false;
+        return IsHeat(_searchingObstaclecollider, _obstacleMask, distance);
     }
 
     private bool IsHeat(BoxCollider collider, LayerMask mask, float distance)
     {
-        bool isHit = Physics.BoxCast(collider.bounds.center, collider.transform.localScale / 2f, transform.forward, transform.rotation, distance, mask);
-
-        if (isHit)
-            return true;
-        else
-            return false;
+        return Physics.BoxCast(collider.bounds.center, collider.transform.localScale / 2f, transform.forward, transform.rotation, distance, mask);
     }
 }

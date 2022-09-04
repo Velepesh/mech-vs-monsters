@@ -21,7 +21,6 @@ public class PlayerWeaponsHolder : MonoBehaviour
 
     private void OnEnable()
     {
-        _player.Won += OnWon;
         _player.Fought += OnFought;
         _player.FightWon += OnFightWon;
         _player.Prepeared += OnPrepeared;
@@ -29,7 +28,6 @@ public class PlayerWeaponsHolder : MonoBehaviour
 
     private void OnDisable()
     {
-        _player.Won -= OnWon;
         _player.Fought -= OnFought;
         _player.FightWon -= OnFightWon;
         _player.Prepeared -= OnPrepeared;
@@ -61,12 +59,6 @@ public class PlayerWeaponsHolder : MonoBehaviour
     public Weapon GetDefaultWeapon(int index)
     {
         return _defaultWeapons[index];
-    }
-
-    private void OnWon()
-    {
-        StopWeaponShooting();
-        StopLaserGunShooting();
     }
 
     private void OnFought(Monster monster)

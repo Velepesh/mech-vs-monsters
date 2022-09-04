@@ -31,6 +31,18 @@ public class EnemySquad : MonoBehaviour
             _enemies[i].Died -= OnDied;
     }
 
+    public void StopEnemies()
+    {
+        for (int i = 0; i < _enemies.Count; i++)
+            _enemies[i].StopEnemy();
+    }
+
+    public void ContinueEnemiesAttack()
+    {
+        for (int i = 0; i < _enemies.Count; i++)
+            _enemies[i].ContinueAttack();
+    }
+
     public void LoseTarget()
     {
         for (int i = 0; i < _enemies.Count; i++)

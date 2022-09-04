@@ -22,6 +22,8 @@ public class Enemy : MonoBehaviour, IDamageable, ITarget, IAward
     public event UnityAction<IDamageable> Died;
     public event UnityAction Shooted;
     public event UnityAction TargetLost;
+    public event UnityAction Moved;
+    public event UnityAction Stopped;
 
     private void OnEnable()
     {
@@ -40,6 +42,18 @@ public class Enemy : MonoBehaviour, IDamageable, ITarget, IAward
         _target = target;
     }
 
+    public void StopEnemy()
+    {
+        StopShooting();
+        Stopped?.Invoke();
+    }
+
+    public void ContinueAttack()
+    {
+        InitTargetForWeapon();
+        Moved?.Invoke();
+    }
+
     public void LoseTarget()
     {
         _target = null;
@@ -53,6 +67,12 @@ public class Enemy : MonoBehaviour, IDamageable, ITarget, IAward
            if(_weapons[i] is IShooteable shooteable)
                 shooteable.SetTarget(Target, this);
         }
+    }
+
+    public void StopShooting()
+    {
+        for (int i = 0; i < _weapons.Count; i++)
+            _weapons[i].StopShooting();
     }
 
     protected void OnShooted()

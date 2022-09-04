@@ -9729,11 +9729,10 @@ MonoBehaviour:
   _monsterDamage: 150
   _radius: 4.5
   _speed: 30
-  _explosionForce: 25
   _rocketExplosion: {fileID: 1228869523896316, guid: e6cf72797c8570d428c9c658a88b9942, type: 3}
   _layerMask:
     serializedVersion: 2
-    m_Bits: 45568
+    m_Bits: 111104
 --- !u!114 &2127031902301772153
 MonoBehaviour:
   m_ObjectHideFlags: 0

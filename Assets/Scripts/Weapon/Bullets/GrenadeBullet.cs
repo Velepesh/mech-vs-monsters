@@ -59,23 +59,19 @@ public class GrenadeBullet : AttackCollider, IDamageable
         Destroy();
     }
 
-    public void EndTutorial()
-    {
-        _isTutorial = false;
-        TutorialEnded?.Invoke();
-    }
-
     protected override void OnCollisionEnter(Collision collision)
     {
         if (collision.gameObject.TryGetComponent(out IDamageable damageable))
+        {
             Attack(damageable);
+            Explosion();
+        }
+    }
 
-        ContactPoint contact = collision.contacts[0];
-        Quaternion rot = Quaternion.FromToRotation(Vector3.forward, contact.normal);
-
-        Vector3 pos = contact.point;
-        Instantiate(_impactPrefab, pos, rot);
-        Destroy();
+    private void EndTutorial()
+    {
+        _isTutorial = false;
+        TutorialEnded?.Invoke();
     }
 
     private void Move()
@@ -100,7 +96,6 @@ public class GrenadeBullet : AttackCollider, IDamageable
             
         transform.position = Vector3.MoveTowards(transform.position, _player.Position + _offset, _speed * Time.deltaTime);
     }
-
 
     private void TryShowButton()
     {
@@ -141,14 +136,17 @@ public class GrenadeBullet : AttackCollider, IDamageable
     public void TakeDamage(int damage)
     {
         _health.TakeDamage(damage);
-
+       
         if (IsDied)
             Die();
     }
 
     public void Die()
     {
+        if (_isTutorial)
+            EndTutorial();
+
+        Explosion();
         Died?.Invoke(this);
-        gameObject.SetActive(false);
     }
 }

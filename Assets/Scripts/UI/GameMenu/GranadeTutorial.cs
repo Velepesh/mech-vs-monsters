@@ -1,4 +1,5 @@
 using UnityEngine;
+using System.Collections.Generic;
 
 public class GranadeTutorial : MonoBehaviour
 {
@@ -7,7 +8,7 @@ public class GranadeTutorial : MonoBehaviour
     [SerializeField] private LaunchGrenadeGun _launchGrenadeGun;
     [SerializeField] private Player _player;
     [SerializeField] private TapGrenadeTutorialTarget _tapGrenadeTutorialTarget;
-    [SerializeField] private GameObject _rocketgunButton;
+    [SerializeField] private List<EnemySpawner> _enemySpawners;
 
     private void OnEnable()
     {
@@ -28,7 +29,9 @@ public class GranadeTutorial : MonoBehaviour
         _playerWeaponsHolder.StopWeaponShooting();
         _launchGrenadeGun.Game.StartGrenadeTutorial();
         _playerMover.StartTutorialMove();
-        _rocketgunButton.SetActive(false);
+
+        for (int i = 0; i < _enemySpawners.Count; i++)
+            _enemySpawners[i].StopEnemies();
     }
 
     private void OnTutorialEnded()
@@ -37,6 +40,8 @@ public class GranadeTutorial : MonoBehaviour
         _launchGrenadeGun.Game.EndGrenadeTutorial();
         _playerMover.EndTutorialMove();
         _playerWeaponsHolder.StartWeaponShooting();
-        _rocketgunButton.SetActive(true);
+
+        for (int i = 0; i < _enemySpawners.Count; i++)
+            _enemySpawners[i].ContinueEnemiesAttack();
     }
 }

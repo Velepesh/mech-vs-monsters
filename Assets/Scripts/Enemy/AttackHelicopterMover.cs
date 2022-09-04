@@ -7,7 +7,6 @@ public class AttackHelicopterMover : EnemyMover
     [SerializeField] private float _moveOffsetX;
 
     private AttackHelicopter _attackHelicopter;
-    private float _startPositionX;
 
     private void OnValidate()
     {
@@ -18,16 +17,18 @@ public class AttackHelicopterMover : EnemyMover
     private void Start()
     {
         _attackHelicopter = GetComponent<AttackHelicopter>();
-        _startPositionX = transform.position.x;
         Offset.x = _attackHelicopter.Target.Position.x - transform.position.x;
     }
 
     private void Update()
     {
-        if (_attackHelicopter.Target != null && _attackHelicopter.Target.IsDied == false)
-            Move();
-        else
-            MoveWithoutTarget();
+        if (Speed > 0)
+        {
+            if (_attackHelicopter.Target != null && _attackHelicopter.Target.IsDied == false)
+                Move();
+            else
+                MoveWithoutTarget();
+        }
     }
 
     public new void Move()

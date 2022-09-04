@@ -1,23 +1,22 @@
 using UnityEngine;
 using UnityEngine.UI;
 
-public class GrenadeExplosionButton : MonoBehaviour
+public class GrenadeTarget : MonoBehaviour
 {
     [SerializeField] private GrenadeBullet _grenadeBullet;
-    [SerializeField] private Button _button;
+    [SerializeField] private Image _image;
+    [SerializeField] private Collider _collider;
 
     private bool _isShow;
 
     private void OnEnable()
     {
-        _button.onClick.AddListener(OnButtonClick);
         _grenadeBullet.TutorialShowed += OnTutorialShowed;
         _grenadeBullet.ButtonShowed += OnButtonShowed;
     }
 
     private void OnDisable()
     {
-        _button.onClick.RemoveListener(OnButtonClick);
         _grenadeBullet.TutorialShowed -= OnTutorialShowed;
         _grenadeBullet.ButtonShowed -= OnButtonShowed;
     }
@@ -27,38 +26,30 @@ public class GrenadeExplosionButton : MonoBehaviour
         DisableButton();
     }
 
-    private void OnButtonClick()
-    {
-        _grenadeBullet.Explosion();
-
-        if (_grenadeBullet.IsTutorial)
-            _grenadeBullet.EndTutorial();
-    }
-
     private void OnButtonShowed()
     {
         if (_isShow == false)
         {
-            ShowButton();
+            ShowTarget();
             _isShow = true;
         }
     }
-    
+
     private void OnTutorialShowed()
     {
-        _button.interactable = true;
+        _collider.enabled = true;
     }
 
-    private void ShowButton()
+    private void ShowTarget()
     {
-        _button.gameObject.SetActive(true);
+        _image.gameObject.SetActive(true);
 
         if (_grenadeBullet.IsTutorial)
-            _button.interactable = false;
+            _collider.enabled = false;
     }
 
     private void DisableButton()
     {
-        _button.gameObject.SetActive(false);
+        _image.gameObject.SetActive(false);
     }
 }

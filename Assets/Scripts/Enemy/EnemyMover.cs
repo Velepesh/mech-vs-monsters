@@ -10,12 +10,14 @@ public class EnemyMover : MonoBehaviour, IMover
     [SerializeField] protected float OffsetToTargetPositionZ = 20f;
 
     private Enemy _enemy;
+    private float _startSpeed;
 
     protected Vector3 TargetPosition;
     protected Vector3 Offset;
 
     public event UnityAction Moved;
     public event UnityAction Stopped;
+
 
     private void OnValidate()
     {
@@ -27,6 +29,19 @@ public class EnemyMover : MonoBehaviour, IMover
     private void Awake()
     {
         _enemy = GetComponent<Enemy>();
+        _startSpeed = Speed;
+    }
+
+    private void OnEnable()
+    {
+        _enemy.Moved += OnMoved;
+        _enemy.Stopped += OnStopped;
+    }
+
+    private void OnDisable()
+    {
+        _enemy.Moved -= OnMoved;
+        _enemy.Stopped -= OnStopped;
     }
 
     private void Start()
@@ -38,10 +53,13 @@ public class EnemyMover : MonoBehaviour, IMover
 
     private void Update()
     {
-        if (_enemy.Target != null && _enemy.Target.IsDied == false)
-            Move();
-        else
-            MoveWithoutTarget();
+        if (Speed > 0)
+        {
+            if (_enemy.Target != null && _enemy.Target.IsDied == false)
+                Move();
+            else
+                MoveWithoutTarget();
+        }
     }
 
     public void Move()
@@ -69,5 +87,15 @@ public class EnemyMover : MonoBehaviour, IMover
     protected void MoveWithoutTarget()
     {
         transform.Translate(-Vector3.forward * Speed * Time.deltaTime, Space.World);
+    }
+
+    private void OnStopped()
+    {
+        Speed = 0;
+    }
+
+    private void OnMoved()
+    {
+        Speed = _startSpeed;
     }
 }

@@ -8,18 +8,14 @@ public class TapGrenadeTutorialTarget : MonoBehaviour
 
     private Transform _tagret;
 
-    private bool _isStart = false;
-
     public void SetTarget(Transform tagret)
     {
         _tagret = tagret;
-
-        _isStart = true;
     }
 
     private void Update()
     {
-        if (_isStart && _tagret != null)
+        if (_tagret != null)
         {
             Vector2 myPositionOnScreen = _camera.WorldToScreenPoint(_tagret.position);
 
