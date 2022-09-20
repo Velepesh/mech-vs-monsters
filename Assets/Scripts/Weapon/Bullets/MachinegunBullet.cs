@@ -4,7 +4,7 @@ using UnityEngine;
 [RequireComponent(typeof(Collider))]
 public class MachinegunBullet : AttackCollider
 {
-    [SerializeField] private GameObject _impactPrefab;
+    [SerializeField] private ParticleSystem _impactPrefab;
     [SerializeField] private float _destroyTime = 1.2f;
     
     private float _timer;
@@ -43,7 +43,7 @@ public class MachinegunBullet : AttackCollider
         Quaternion rot = Quaternion.FromToRotation(Vector3.forward, contact.normal);
 
         Vector3 pos = contact.point;
-        Instantiate(_impactPrefab, pos, rot);
+        Instantiate(_impactPrefab.gameObject, pos, rot);
 
         Destroy(gameObject);
     }

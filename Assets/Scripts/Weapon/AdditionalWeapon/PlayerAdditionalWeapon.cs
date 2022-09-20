@@ -5,7 +5,7 @@ using System.Collections.Generic;
 public class PlayerAdditionalWeapon : MonoBehaviour
 {
     [SerializeField] private List<PlayerLimb> _playerLimbs;
-    [SerializeField] private GameObject _weapon;
+    [SerializeField] private Weapon _weapon;
 
     private bool _isVisible = false;
 
@@ -42,7 +42,7 @@ public class PlayerAdditionalWeapon : MonoBehaviour
 
     public void Show()
     {
-        _weapon.SetActive(true);
+        _weapon.gameObject.SetActive(true);
     }
 
     private void OnVisibleBecame()
@@ -58,6 +58,6 @@ public class PlayerAdditionalWeapon : MonoBehaviour
 
     private void TurnOffWeapon()
     {
-        _weapon.SetActive(false);
+        _weapon.gameObject.SetActive(false);
     }
 }

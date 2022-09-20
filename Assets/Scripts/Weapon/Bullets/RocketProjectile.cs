@@ -6,7 +6,7 @@ public class RocketProjectile : AttackCollider, IMover
     [SerializeField] private int _monsterDamage = 150;
     [SerializeField] private float _radius = 1;
     [SerializeField] private float _speed;
-    [SerializeField] private GameObject _rocketExplosion;
+    [SerializeField] private ParticleSystem _rocketExplosion;
     [SerializeField] private LayerMask _layerMask;
 
     private ITarget _target;
@@ -74,7 +74,7 @@ public class RocketProjectile : AttackCollider, IMover
             }
         }
 
-        GameObject explosion = Instantiate(_rocketExplosion, transform.position, _rocketExplosion.transform.rotation, null);
+        GameObject explosion = Instantiate(_rocketExplosion.gameObject, transform.position, _rocketExplosion.transform.rotation, null);
        
         Destroy(gameObject);
     }

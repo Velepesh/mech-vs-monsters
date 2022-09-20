@@ -4,7 +4,7 @@ using UnityEngine;
 public class RocketLauncher : Weapon, IShooteable
 {
     [SerializeField] private TargetDetector _targetDetector;
-    [SerializeField] private GameObject _muzzleflare;
+    [SerializeField] private ParticleSystem _muzzleflare;
     [SerializeField] private Transform _shootPoint;
     [SerializeField] private RocketProjectile _bullet;
     [SerializeField] private float _cooldownTime = 4f;
@@ -31,7 +31,7 @@ public class RocketLauncher : Weapon, IShooteable
     {
         ITarget target = _targetDetector.GetClosetEnemy(transform.position);
 
-        Instantiate(_muzzleflare, _shootPoint.position, _shootPoint.rotation);
+        Instantiate(_muzzleflare.gameObject, _shootPoint.position, _shootPoint.rotation);
 
         GameObject bullet = Instantiate(_bullet.gameObject, _shootPoint.position, _shootPoint.rotation);
         bullet.GetComponent<RocketProjectile>().Init(target);

@@ -6,7 +6,7 @@ using UnityEngine.Events;
 public class Rocketgun : Weapon, IShooteable
 {
     [SerializeField] private List<Transform> _shootPoints;
-    [SerializeField] private GameObject _muzzleflare;
+    [SerializeField] private ParticleSystem _muzzleflare;
     [SerializeField] private float _lookSpeed;
     [SerializeField] private float _cooldownTime;
     [SerializeField] private float _minSpeed;
@@ -71,7 +71,7 @@ public class Rocketgun : Weapon, IShooteable
         {
             Transform shootPoint = _shootPoints[i];
 
-            Instantiate(_muzzleflare, shootPoint.position, shootPoint.rotation);
+            Instantiate(_muzzleflare.gameObject, shootPoint.position, shootPoint.rotation);
 
             Rigidbody bullet = Instantiate(_bullet.GetComponent<Rigidbody>(), shootPoint.position, shootPoint.rotation) as Rigidbody;
             

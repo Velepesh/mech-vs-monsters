@@ -5,7 +5,7 @@ using UnityEngine.Events;
 public class GrenadeBullet : AttackCollider, IDamageable
 {
     [SerializeField] private Health _health;
-    [SerializeField] private GameObject _impactPrefab;
+    [SerializeField] private ParticleSystem _impactPrefab;
     [SerializeField] private float _speed;
     [SerializeField] private Vector3 _offset;
     [SerializeField] private float _showButtonDistance;
@@ -55,7 +55,7 @@ public class GrenadeBullet : AttackCollider, IDamageable
 
     public void Explosion()
     {
-        GameObject explosion = Instantiate(_impactPrefab, transform.position, _impactPrefab.transform.rotation);
+        GameObject explosion = Instantiate(_impactPrefab.gameObject, transform.position, _impactPrefab.transform.rotation);
         Destroy();
     }
 
